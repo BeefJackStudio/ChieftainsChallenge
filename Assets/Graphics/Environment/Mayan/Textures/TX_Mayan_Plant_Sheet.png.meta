@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: cfb7f9028f9abe148b631f33fe3e9ff2
+timeCreated: 1455051506
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Plant_2
+    21300002: Plant_3
+    21300004: Plant_4
+    21300006: CC_Plants_01_3
+    21300008: Plant_5
+    21300010: Grass_1
+    21300012: Rock_1
+    21300014: Grass_2
+    21300016: Rpck_2
+    21300018: Rock_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Plant_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 704
+        width: 213
+        height: 197
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plant_3
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 700
+        width: 280
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plant_4
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 680
+        width: 359
+        height: 335
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CC_Plants_01_3
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 677
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plant_5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 412
+        width: 213
+        height: 219
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grass_1
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 535
+        width: 72
+        height: 62
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rock_1
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 380
+        width: 365
+        height: 230
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grass_2
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 424
+        width: 109
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rpck_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 637
+        height: 369
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rock_3
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 153
+        width: 291
+        height: 158
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

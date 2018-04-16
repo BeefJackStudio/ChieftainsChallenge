@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: da26984a5da134e4894b9b4d6102475c
+timeCreated: 1443783721
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mayan_character_variant_texture_sheet_02_0
+    21300002: mayan_character_variant_texture_sheet_02_1
+    21300004: mayan_character_variant_texture_sheet_02_2
+    21300006: mayan_character_variant_texture_sheet_02_3
+    21300008: mayan_character_variant_texture_sheet_02_4
+    21300010: mayan_character_variant_texture_sheet_02_5
+    21300012: mayan_character_variant_texture_sheet_02_6
+    21300014: mayan_character_variant_texture_sheet_02_7
+    21300016: mayan_character_variant_texture_sheet_02_8
+    21300018: mayan_character_variant_texture_sheet_02_9
+    21300020: mayan_character_variant_texture_sheet_02_10
+    21300022: mayan_character_variant_texture_sheet_02_11
+    21300024: mayan_character_variant_texture_sheet_02_12
+    21300026: mayan_character_variant_texture_sheet_02_13
+    21300028: mayan_character_variant_texture_sheet_02_14
+    21300030: mayan_character_variant_texture_sheet_02_15
+    21300032: mayan_character_variant_texture_sheet_02_16
+    21300034: mayan_character_variant_texture_sheet_02_17
+    21300036: mayan_character_variant_texture_sheet_02_18
+    21300038: mayan_character_variant_texture_sheet_02_19
+    21300040: mayan_character_variant_texture_sheet_02_20
+    21300042: mayan_character_variant_texture_sheet_02_21
+    21300044: mayan_character_variant_texture_sheet_02_22
+    21300046: mayan_character_variant_texture_sheet_02_23
+    21300048: mayan_character_variant_texture_sheet_02_24
+    21300050: mayan_character_variant_texture_sheet_02_25
+    21300052: mayan_character_variant_texture_sheet_02_26
+    21300054: mayan_character_variant_texture_sheet_02_27
+    21300056: mayan_character_variant_texture_sheet_02_28
+    21300058: mayan_character_variant_texture_sheet_02_29
+    21300060: mayan_character_variant_texture_sheet_02_30
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 320
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mayan_character_variant_texture_sheet_02_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 722
+        width: 196
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 640
+        width: 328
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_2
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 672
+        width: 308
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_3
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 536
+        width: 100
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 432
+        width: 77
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_5
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 466
+        width: 97
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 472
+        width: 77
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 500
+        width: 74
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_8
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 487
+        width: 51
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_9
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 504
+        width: 68
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_10
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 491
+        width: 51
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_11
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 527
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_12
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 534
+        width: 63
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_13
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 389
+        width: 81
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_14
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 392
+        width: 82
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_15
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 231
+        width: 105
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 172
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_17
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 207
+        width: 162
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_18
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 140
+        width: 59
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_19
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 87
+        width: 46
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_20
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 104
+        width: 56
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_21
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 107
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_22
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 120
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_23
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 114
+        width: 35
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_24
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 123
+        width: 42
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_25
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 116
+        width: 35
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_26
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 134
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_27
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 138
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_28
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 61
+        width: 49
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_29
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 63
+        width: 49
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_character_variant_texture_sheet_02_30
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 16
+        width: 352
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

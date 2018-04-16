@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 41d6bcd0130e605408e1638e0a2bb6af
+timeCreated: 1438781525
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mayan_chief_texture_sheet_00_0
+    21300002: mayan_chief_texture_sheet_00_1
+    21300004: mayan_chief_texture_sheet_00_2
+    21300006: mayan_chief_texture_sheet_00_3
+    21300008: mayan_chief_texture_sheet_00_4
+    21300010: mayan_chief_texture_sheet_00_5
+    21300012: mayan_chief_texture_sheet_00_6
+    21300014: mayan_chief_texture_sheet_00_7
+    21300016: mayan_chief_texture_sheet_00_8
+    21300018: mayan_chief_texture_sheet_00_9
+    21300020: mayan_chief_texture_sheet_00_10
+    21300022: mayan_chief_texture_sheet_00_11
+    21300024: mayan_chief_texture_sheet_00_12
+    21300026: mayan_chief_texture_sheet_00_13
+    21300028: mayan_chief_texture_sheet_00_14
+    21300030: mayan_chief_texture_sheet_00_15
+    21300032: mayan_chief_texture_sheet_00_16
+    21300034: mayan_chief_texture_sheet_00_17
+    21300036: mayan_chief_texture_sheet_00_18
+    21300038: mayan_chief_texture_sheet_00_19
+    21300040: mayan_chief_texture_sheet_00_20
+    21300042: mayan_chief_texture_sheet_00_21
+    21300044: mayan_chief_texture_sheet_00_22
+    21300046: mayan_chief_texture_sheet_00_23
+    21300048: mayan_chief_texture_sheet_00_24
+    21300050: mayan_chief_texture_sheet_00_25
+    21300052: mayan_chief_texture_sheet_00_26
+    21300054: mayan_chief_texture_sheet_00_27
+    21300056: mayan_chief_texture_sheet_00_28
+    21300058: mayan_chief_texture_sheet_00_29
+    21300060: mayan_chief_texture_sheet_00_30
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 320
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mayan_chief_texture_sheet_00_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 720
+        width: 199
+        height: 288
+      alignment: 9
+      pivot: {x: .513879538, y: .0444573313}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 642
+        width: 329
+        height: 366
+      alignment: 9
+      pivot: {x: .720363081, y: .949361682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_2
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 672
+        width: 308
+        height: 340
+      alignment: 9
+      pivot: {x: .476839721, y: .17410171}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_3
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 536
+        width: 101
+        height: 473
+      alignment: 9
+      pivot: {x: .672684789, y: .301184744}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 432
+        width: 87
+        height: 192
+      alignment: 9
+      pivot: {x: .516398668, y: .913637817}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_5
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 466
+        width: 98
+        height: 142
+      alignment: 9
+      pivot: {x: .529115975, y: .794712961}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_6
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 472
+        width: 77
+        height: 128
+      alignment: 9
+      pivot: {x: .237577766, y: .838507175}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_7
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 500
+        width: 76
+        height: 92
+      alignment: 9
+      pivot: {x: .777976215, y: .821184933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_8
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 484
+        width: 54
+        height: 107
+      alignment: 9
+      pivot: {x: .587063253, y: .815685809}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_9
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 504
+        width: 68
+        height: 88
+      alignment: 9
+      pivot: {x: .235670209, y: .742419839}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_10
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 491
+        width: 53
+        height: 100
+      alignment: 9
+      pivot: {x: .385181367, y: .913905025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_11
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 527
+        width: 56
+        height: 61
+      alignment: 9
+      pivot: {x: .604554296, y: .522075713}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_12
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 532
+        width: 64
+        height: 60
+      alignment: 9
+      pivot: {x: .635576248, y: .913050354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_13
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 389
+        width: 83
+        height: 70
+      alignment: 9
+      pivot: {x: .891128004, y: .343355894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_14
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 395
+        width: 70
+        height: 65
+      alignment: 9
+      pivot: {x: .824298978, y: .62534368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 232
+        width: 108
+        height: 151
+      alignment: 9
+      pivot: {x: .507082462, y: .0820802599}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_16
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 192
+        width: 173
+        height: 192
+      alignment: 9
+      pivot: {x: .711267292, y: .924676418}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_17
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 207
+        width: 161
+        height: 177
+      alignment: 9
+      pivot: {x: .488718152, y: .191006854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_18
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 140
+        width: 57
+        height: 244
+      alignment: 9
+      pivot: {x: .646858096, y: .307053804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_19
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 88
+        width: 46
+        height: 103
+      alignment: 9
+      pivot: {x: .473927528, y: .873527467}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_20
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 105
+        width: 56
+        height: 79
+      alignment: 9
+      pivot: {x: .499999851, y: .756587148}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_21
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 108
+        width: 48
+        height: 72
+      alignment: 9
+      pivot: {x: .251831055, y: .811503291}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 120
+        width: 44
+        height: 56
+      alignment: 9
+      pivot: {x: .74414134, y: .747446358}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_23
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 115
+        width: 33
+        height: 61
+      alignment: 9
+      pivot: {x: .624419212, y: .780490339}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_24
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 124
+        width: 44
+        height: 51
+      alignment: 9
+      pivot: {x: .309868544, y: .712568104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_25
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 116
+        width: 33
+        height: 59
+      alignment: 9
+      pivot: {x: .447995275, y: .83777529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_26
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 135
+        width: 38
+        height: 38
+      alignment: 9
+      pivot: {x: .555048883, y: .515327454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_27
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 139
+        width: 40
+        height: 36
+      alignment: 9
+      pivot: {x: .581838965, y: .815143168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_28
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 61
+        width: 49
+        height: 43
+      alignment: 9
+      pivot: {x: .806880414, y: .384327739}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_29
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 64
+        width: 45
+        height: 41
+      alignment: 9
+      pivot: {x: .509325504, y: .786575675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mayan_chief_texture_sheet_00_30
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 16
+        width: 352
+        height: 116
+      alignment: 9
+      pivot: {x: .585528433, y: .649809957}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

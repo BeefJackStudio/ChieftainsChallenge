@@ -1,0 +1,89 @@
+fileFormatVersion: 2
+guid: e83b629d60c007843a03d2ff1213d273
+timeCreated: 1443597928
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: level_data_pinata_v2_0
+    21300002: level_data_pinata_v2_1
+    21300004: level_data_pinata_v2_2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: level_data_pinata_v2_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 128
+        width: 371
+        height: 379
+      alignment: 9
+      pivot: {x: .352891117, y: .908292651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_data_pinata_v2_1
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 174
+        width: 30
+        height: 321
+      alignment: 2
+      pivot: {x: .5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_data_pinata_v2_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 4
+        width: 110
+        height: 114
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
