@@ -2,10 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Options : MonoBehaviour {
-
-    public GameObject MainMenuPanel;
-    public GameObject OptionsPanel;
+public class OptionsMenu : MonoBehaviour {
 
     public Slider MasterVolume;
     public Slider BGMVolume;
@@ -25,17 +22,10 @@ public class Options : MonoBehaviour {
     public void onSoundEffectVolumeChanged(float newVolume) {
         Debug.Log("SoundEffectVolume: " + newVolume.ToString());
         SoundManager.SoundEffectVolume = newVolume;
-
-
     }
 
     public void onBackgroundMusicChanged(float newVolume) {
         Debug.Log("BackgroundMusicVolume: " + newVolume.ToString());
         SoundManager.BackgroundMusicVolume = newVolume;
-    }
-
-    public void onBackClicked() {
-        OptionsPanel.SetActive(false);
-        MainMenuPanel.SetActive(true);
     }
 }
