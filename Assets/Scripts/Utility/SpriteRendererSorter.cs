@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpriteRendererSorter : MonoBehaviour {
 
-    public float orderOffset = 0;
+    public int orderOffset = 0;
 
     [ContextMenu("Sort sprites")]
     private void Sort() {
