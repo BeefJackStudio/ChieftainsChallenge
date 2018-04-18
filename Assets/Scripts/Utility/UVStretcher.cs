@@ -14,6 +14,6 @@ public class UVStretcher : MonoBehaviour {
     }
 
     private void Start() {
-        m_MeshRenderer.material.mainTextureScale = new Vector2(transform.localScale.x, transform.localScale.y) * scaleMultiplier;
+        m_MeshRenderer.material.mainTextureScale = new Vector2(transform.localScale.x, transform.localScale.z) * scaleMultiplier;
     }
 }
