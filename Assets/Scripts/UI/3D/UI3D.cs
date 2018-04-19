@@ -15,7 +15,6 @@ public class UI3D : MonoBehaviour {
     }
 
     private void Update() {
-
         if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
             Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);

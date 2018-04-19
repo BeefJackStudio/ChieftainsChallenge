@@ -7,7 +7,11 @@ using UnityEngine.Events;
 public class Button3D : UI3DElement {
 
     public UnityEvent onButtonClick;
-    public Button3DEffects onButtonClickEffect = Button3DEffects.SWING;
+    public Button3DEffects onButtonClickEffect = Button3DEffects.NONE;
+
+    [Header("Swing effect")]
+    public float swingEffectForce = 30;
+    public float swingEffectReduction = 0.975f;
 
     private Transform m_SwingEffectParent;
     private float m_SwingEffectVelocity = 0;
@@ -24,7 +28,7 @@ public class Button3D : UI3DElement {
     private void Update() {
         m_SwingEffectParent.Rotate(m_SwingEffectVelocity * Time.deltaTime, 0, 0);
         m_SwingEffectVelocity += (m_SwingEffectStartRotation - m_SwingEffectParent.localRotation.x) * 20;
-        m_SwingEffectVelocity *= 0.975f;
+        m_SwingEffectVelocity *= swingEffectReduction;
     }
 
     public override void OnInteract() {
@@ -32,7 +36,9 @@ public class Button3D : UI3DElement {
 
         onButtonClick.Invoke();
 
-        m_SwingEffectVelocity -= 30;
+        if (onButtonClickEffect == Button3DEffects.SWING) {
+            m_SwingEffectVelocity -= swingEffectForce;
+        }
     }
 }
 
