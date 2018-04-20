@@ -7,6 +7,7 @@ public class UVStretcher : MonoBehaviour {
 
     public float scaleMultiplier = 0.5f;
 
+
     private MeshRenderer m_MeshRenderer;
 
     private void Awake() {
