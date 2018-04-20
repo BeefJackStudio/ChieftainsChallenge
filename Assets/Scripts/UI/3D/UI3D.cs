@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI3D : MonoBehaviour {
+public class UI3D : MonoBehaviourSingleton<UI3D> {
 
     public LayerMask layers;
     public AnimationCurve cameraMoveCurve;
@@ -20,11 +20,25 @@ public class UI3D : MonoBehaviour {
             Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, layers)) {
-                UI3DElement element = hit.transform.GetComponent<UI3DElement>();
+                UI3DElement element = hit.transform.GetComponent(typeof(UI3DElement)) as UI3DElement;
                 if (element == null) return;
 
-                element.OnInteract();
+                element.OnInteract(hit);
             }
+        }
+    }
+
+    public bool RaycastMouseOnPlane(Vector3 normal, Vector3 position, out Vector3 hitPosition) {
+        Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+        Plane plane = new Plane(normal, position);
+        float hitRange;
+
+        if (plane.Raycast(ray, out hitRange)) {
+            hitPosition = ray.GetPoint(hitRange);
+            return true;
+        }else {
+            hitPosition = Vector3.zero;
+            return false;
         }
     }
 

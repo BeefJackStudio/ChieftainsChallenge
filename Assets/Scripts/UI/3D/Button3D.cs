@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider))]
 public class Button3D : UI3DElement {
 
     public UnityEvent onButtonClick;
@@ -31,8 +30,8 @@ public class Button3D : UI3DElement {
         m_SwingEffectVelocity *= swingEffectReduction;
     }
 
-    public override void OnInteract() {
-        base.OnInteract();
+    public override void OnInteract(RaycastHit hit) {
+        base.OnInteract(hit);
 
         onButtonClick.Invoke();
 

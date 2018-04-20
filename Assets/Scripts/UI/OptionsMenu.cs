@@ -4,27 +4,31 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour {
 
-    public Slider MasterVolume;
-    public Slider BGMVolume;
-    public Slider SFXVolume;
+    public Slider3D masterVolumeSlider;
+    public Slider3D musicVolumeSlider;
+    public Slider3D sfxVolumeSlider;
 
     public void Start() {
-        MasterVolume.value = SaveDataManager.Instance.data.volumeMaster;
-        BGMVolume.value = SaveDataManager.Instance.data.volumeMusic;
-        SFXVolume.value = SaveDataManager.Instance.data.volumeSFX;
+        masterVolumeSlider.Value = SaveDataManager.Instance.data.volumeMaster;
+        musicVolumeSlider.Value = SaveDataManager.Instance.data.volumeMusic;
+        sfxVolumeSlider.Value = SaveDataManager.Instance.data.volumeSFX;
+
+        masterVolumeSlider.onValueChange += OnMasterVolumeChanged;
+        musicVolumeSlider.onValueChange += OnBackgroundMusicChanged;
+        sfxVolumeSlider.onValueChange += OnSoundEffectVolumeChanged;
     }
 
-    public void onMasterVolumeChanged(float newVolume) {
+    public void OnMasterVolumeChanged(float newVolume) {
         Debug.Log("MasterVolume: " + newVolume.ToString());
         SoundManager.MasterVolume = newVolume;
     }
 
-    public void onSoundEffectVolumeChanged(float newVolume) {
+    public void OnSoundEffectVolumeChanged(float newVolume) {
         Debug.Log("SoundEffectVolume: " + newVolume.ToString());
         SoundManager.SoundEffectVolume = newVolume;
     }
 
-    public void onBackgroundMusicChanged(float newVolume) {
+    public void OnBackgroundMusicChanged(float newVolume) {
         Debug.Log("BackgroundMusicVolume: " + newVolume.ToString());
         SoundManager.BackgroundMusicVolume = newVolume;
     }
