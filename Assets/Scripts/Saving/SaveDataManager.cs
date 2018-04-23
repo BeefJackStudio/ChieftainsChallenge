@@ -11,30 +11,32 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     public SaveData data;
 
     private string m_SaveDataPath;
+    private Dictionary<string, int> m_LevelScores = new Dictionary<string, int>();
 
+    #region Saving and loading
     void OnApplicationQuit() {
         Save();
     }
 
-    private void Awake() {
+    public void Save() {
         if (!Directory.Exists(GetFolderPath())) {
             Directory.CreateDirectory(GetFolderPath());
         }
-    }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) Save();
-        if (Input.GetKeyDown(KeyCode.L)) Load();
-    }
+        data.SerializeScores(m_LevelScores);
 
-    public void Save() {
         string jsonData = JsonUtility.ToJson(data);
         File.WriteAllText(GetFilePath(), jsonData);
     }
 
     public void Load() {
+        if (!Directory.Exists(GetFolderPath())) {
+            Directory.CreateDirectory(GetFolderPath());
+        }
+
         if (File.Exists(GetFilePath())) {
             data = JsonUtility.FromJson<SaveData>(File.ReadAllText(GetFilePath()));
+            m_LevelScores = data.DeserializeScores();
         } else {
             data = new SaveData();
         }
@@ -46,6 +48,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         }
         return m_SaveDataPath;
     }
+    #endregion
 
     public void SetCutsceneWatched(CutsceneTypes cutscene) {
         if (data.watchedCutscenes.Contains(cutscene)) return;
@@ -53,7 +56,14 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     }
 
     public void SetLevelScore(string levelName, int score) {
+        int existingScore = 0;
+        if (m_LevelScores.ContainsKey(levelName)) existingScore = m_LevelScores[levelName];
+        if (score > existingScore) m_LevelScores.Add(levelName, score);
+    }
 
+    public int GetLevelScore(string levelName) {
+        if (m_LevelScores.ContainsKey(levelName)) return m_LevelScores[levelName];
+        return -1;
     }
 
     private string GetFolderPath() {

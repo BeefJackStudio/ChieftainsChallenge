@@ -11,13 +11,18 @@ public class Button3D : UI3DElement {
     [Header("Swing effect")]
     public float swingEffectForce = 30;
     public float swingEffectReduction = 0.975f;
+    public Transform swingEffectParentOverride;
 
     private Transform m_SwingEffectParent;
     private float m_SwingEffectVelocity = 0;
     private float m_SwingEffectStartRotation = 0;
 
     private void Awake() {
-        m_SwingEffectParent = transform.parent;
+        if (swingEffectParentOverride == null) {
+            m_SwingEffectParent = transform.parent;
+        }else {
+            m_SwingEffectParent = swingEffectParentOverride;
+        }
     }
 
     private void Start() {
