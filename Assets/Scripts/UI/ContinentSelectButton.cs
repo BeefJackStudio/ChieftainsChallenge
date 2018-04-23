@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Button3D))]
-public class LevelSelectContinent : MonoBehaviour {
+public class ContinentSelectButton : MonoBehaviour {
 
     public GameLevelCollection levelSet;
     public GameLevelCollection requiredToUnlock;
