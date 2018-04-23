@@ -6,9 +6,11 @@ public class ContinentSelectMenu : MonoBehaviourSingleton<ContinentSelectMenu> {
 
     public Transform levelSelectView;
 
-    public void OnContinentSelect(LevelSelectContinent continent, bool isLocked) {
+    public void OnContinentSelect(ContinentSelectButton continent, bool isLocked) {
         if (isLocked) return;
 
         UI3D.Instance.MoveCameraTo(levelSelectView);
+
+        LevelSelectMenu.Instance.CreateButtons(continent.levelSet);
     }
 }
