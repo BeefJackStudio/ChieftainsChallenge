@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class GameBall : MonoBehaviour {
 
+    [ReadOnly] public bool isSleeping = false;
+    [ReadOnly] public LevelInstance levelInstance = null;
     private Rigidbody2D m_RigidBody;
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
@@ -15,6 +17,7 @@ public class GameBall : MonoBehaviour {
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
+        levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
     }
 
     private void Update() {
@@ -30,12 +33,20 @@ public class GameBall : MonoBehaviour {
             Vector3 delta = Input.mousePosition - m_MouseClickStart;
             HitBall(-delta, delta.magnitude / 10);
         }
+
+        if(!isSleeping && levelInstance != null) {
+           m_RigidBody.AddForce(new Vector2(-levelInstance.GetRandomWindForce(), 0));
+        }
+
     }
 
     public void HitBall(Vector2 direction, float power) {
         StopSleepRoutine();
-
         m_RigidBody.AddForce(direction.normalized * power, ForceMode2D.Impulse);
+
+        if(power > 1 && levelInstance != null) {
+            levelInstance.OnShotFired();
+        }
     }
 
     #region Ball sleeping
@@ -59,14 +70,16 @@ public class GameBall : MonoBehaviour {
     }
 
     private void StartSleepRoutine() {
-        if (m_BallSleepRoutine == null) m_BallSleepRoutine = StartCoroutine(BallSleepRoutine());
+        if (m_BallSleepRoutine != null) { return; }
+        m_BallSleepRoutine = StartCoroutine(BallSleepRoutine());
+        isSleeping = true;
     }
 
     private void StopSleepRoutine() {
-        if (m_BallSleepRoutine != null) {
-            StopCoroutine(m_BallSleepRoutine);
-            m_BallSleepRoutine = null;
-        }
+        if (m_BallSleepRoutine == null) { return; }
+        StopCoroutine(m_BallSleepRoutine);
+        m_BallSleepRoutine = null;
+        isSleeping = false;
     }
 
     private IEnumerator BallSleepRoutine() {
@@ -80,9 +93,10 @@ public class GameBall : MonoBehaviour {
                 m_RigidBody.velocity = Vector2.zero;
                 yield return null;
             }
-        }
+        } 
 
         m_BallSleepRoutine = null;
     }
+
     #endregion
 }

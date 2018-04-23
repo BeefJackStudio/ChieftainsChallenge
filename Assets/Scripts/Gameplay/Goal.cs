@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    [ReadOnly] public LevelInstance levelInstance = null;
+
+	void Awake () {
+		levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
 	}
 
-    void OnCollisionEnter2D(Collision2D coll) {
-        //Not a ball, cancel.
-        if ((coll.gameObject.GetComponent("GameBall") as GameBall) == null) {
-            return;
+    void OnTriggerEnter2D(Collider2D coll) {
+        if(levelInstance != null && (coll.gameObject.GetComponent("GameBall") as GameBall) != null) {
+            levelInstance.EndGame();
         }
-
-        Debug.Log("GOAL");
     }
 }

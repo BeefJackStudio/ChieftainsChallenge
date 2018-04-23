@@ -14,15 +14,16 @@ public class EndGame : MonoBehaviour {
 
 	[ContextMenu("End Game Test")]
 	public void EndGameTest() {
-		OnEndGame(3);
+		ShowEndGameUI(3);
 	}
 
-	public void OnEndGame(int starAmount) {
+	public void ShowEndGameUI(int starAmount) {
 		if(stars.Count < 3) {
 			Debug.LogError("Could not find enough star sprites.");
 			return;
 		}
 
+		gameObject.SetActive(true);
 		StartCoroutine(EndGameAnimation(starAmount));
 	}
 

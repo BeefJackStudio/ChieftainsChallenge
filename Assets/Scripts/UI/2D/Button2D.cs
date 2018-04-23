@@ -10,9 +10,9 @@ public class Button2D : Button {
 
     public override void OnPointerDown(UnityEngine.EventSystems.PointerEventData eventData)
     {
+        transition = Transition.None;   //yuck.
         base.OnPointerDown(eventData);
 
-        transition = Transition.None;   //yuck.
         RectTransform transform = (RectTransform)gameObject.GetComponent("RectTransform");
         if (transform != null) {
             transform.localScale = ClickScale;
