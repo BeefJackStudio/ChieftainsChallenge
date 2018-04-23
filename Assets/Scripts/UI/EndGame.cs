@@ -27,7 +27,7 @@ public class EndGame : MonoBehaviour {
 		StartCoroutine(EndGameAnimation(starAmount));
 	}
 
-	public IEnumerator EndGameAnimation(int starAmount){
+	public IEnumerator EndGameAnimation(int starAmount) {
 		isAnimating = true;
 		for(int i = 0; i < starAmount; i++) {
 			Animator an = stars[i].GetComponent<Animator>();
@@ -37,5 +37,18 @@ public class EndGame : MonoBehaviour {
 			yield return new WaitForSeconds(animationDelay);
 		}
 		isAnimating = false;
+	}
+
+	public void GoNextLevel() {
+		if(LevelManager.CurrentLevel == null) {
+			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
+		} 
+
+		GameLevelSet nextLevel = LevelManager.CurrentLevel.GetNextLevel();
+		if(nextLevel == null) {
+			LevelManager.LoadScene("MainMenu");
+		} else {
+			LevelManager.LoadLevel(nextLevel);
+		}
 	}
 }
