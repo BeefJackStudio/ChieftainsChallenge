@@ -16,6 +16,6 @@ public class GameInitializer : MonoBehaviour {
     private void Start() {
         m_SaveDataManager.Load();
 
-        LevelManager.LoadLevel(cutsceneName);
+        LevelManager.LoadScene(cutsceneName);
     }
 }

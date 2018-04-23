@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu]
 public class GameLevelCollection : ScriptableObject {
 
+    public string displayName;
     public List<GameLevelSet> levels = new List<GameLevelSet>();
 
     public bool IsCompleted() {

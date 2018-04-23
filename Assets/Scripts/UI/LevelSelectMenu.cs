@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelSelectMenu : MonoBehaviourSingleton<LevelSelectMenu> {
+
+    public TextMeshPro titleText;
 
     private LevelSelectButton[] levelSelectButtons;
 
@@ -11,6 +14,8 @@ public class LevelSelectMenu : MonoBehaviourSingleton<LevelSelectMenu> {
     }
 
     public void CreateButtons(GameLevelCollection collection) {
+        titleText.text = collection.displayName;
+
         GameLevelSet previousLevel = null;
         for(int i = 0; i < levelSelectButtons.Length; i++) {
             LevelSelectButton currentButton = levelSelectButtons[i];
