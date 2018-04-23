@@ -10,6 +10,12 @@ public class GameLevelCollection : ScriptableObject {
     public string displayName;
     public List<GameLevelSet> levels = new List<GameLevelSet>();
 
+    private void OnEnable() {
+        foreach(GameLevelSet set in levels) {
+            set.continent = this;
+        }
+    }
+
     public bool IsCompleted() {
         if (levels.Count == 0) return false;
         foreach(GameLevelSet level in levels) {
@@ -29,15 +35,15 @@ public class GameLevelCollection : ScriptableObject {
 public class GameLevelSet {
     public string scene;
     public int index;
-}
 
-public enum GameContinents {
-    EUROPE,
-    MIDDLE_EAST,
-    NORTH_ASIA,
-    ASIA,
-    OCEANIA,
-    AFRICA,
-    NORTH_AMERICA,
-    SOUTH_AMERICA
+    [HideInInspector]
+    public GameLevelCollection continent;
+
+    public GameLevelSet GetNextLevel() {
+        int nextIndex = index + 1;
+        if (nextIndex < continent.levels.Count) {
+            return continent.levels[nextIndex];
+        }
+        return null;
+    }
 }

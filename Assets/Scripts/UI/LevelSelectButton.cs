@@ -37,7 +37,7 @@ public class LevelSelectButton : MonoBehaviour {
         backdrop.color = isLocked ? Color.gray : Color.white;
 
         if (!isLocked) {
-            m_Button3D.onButtonClick.AddListener(() => { LevelManager.LoadLevel(levelData.scene); });
+            m_Button3D.onButtonClick.AddListener(() => { LevelManager.LoadLevel(levelData); });
         }
     }
 }
