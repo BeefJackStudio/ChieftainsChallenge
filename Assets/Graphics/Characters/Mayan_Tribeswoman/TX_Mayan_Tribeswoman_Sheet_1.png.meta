@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d283d8e8e8c8f94408acfb2072a1b54d
-timeCreated: 1455708174
-licenseType: Free
+timeCreated: 1524485014
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: tribe_texture_sheet_01_0
@@ -45,14 +45,16 @@ TextureImporter:
     21300076: tribe_texture_sheet_01_38
     21300078: tribe_texture_sheet_01_39
     21300080: tribe_texture_sheet_01_40
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -62,23 +64,22 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -86,12 +87,28 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 320
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: tribe_texture_sheet_01_0
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_0
       rect:
         serializedVersion: 2
         x: 24
@@ -101,26 +118,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.56, y: 0.057}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 85.8, y: 91.81201}
-        - {x: 80.8, y: 121.81201}
-        - {x: 85.8, y: 197.81201}
-        - {x: 85.8, y: 207.81201}
-        - {x: 59.800003, y: 248.81201}
-        - {x: 4.800003, y: 267.812}
-        - {x: -49.199997, y: 267.812}
-        - {x: -77.2, y: 259.812}
-        - {x: -107.2, y: 234.81201}
-        - {x: -109.2, y: 204.81201}
-        - {x: -109.2, y: 118.81201}
-        - {x: -106.2, y: 78.81201}
-        - {x: -98.2, y: 51.81201}
-        - {x: -81.2, y: 17.812012}
-        - {x: -38.199997, y: -16.187988}
-        - {x: 36.800003, y: -16.187988}
-        - {x: 82.8, y: 17.812012}
-        - {x: 85.8, y: 32.81201}
-    - name: tribe_texture_sheet_01_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_1
       rect:
         serializedVersion: 2
         x: 255
@@ -130,25 +132,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.65, y: 0.91}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 79.79999, y: -102.04004}
-        - {x: 79.79999, y: -32.04004}
-        - {x: 65.79999, y: 4.959961}
-        - {x: 50.799988, y: 19.95996}
-        - {x: 29.799988, y: 21.95996}
-        - {x: -35.200012, y: 21.95996}
-        - {x: -54.200012, y: 14.959961}
-        - {x: -104.20001, y: -18.04004}
-        - {x: -117.20001, y: -65.04004}
-        - {x: -120.20001, y: -124.04004}
-        - {x: -148.20001, y: -169.04004}
-        - {x: -148.20001, y: -185.04004}
-        - {x: -143.20001, y: -191.04004}
-        - {x: -75.20001, y: -222.04004}
-        - {x: 16.799988, y: -222.04004}
-        - {x: 65.79999, y: -211.04004}
-        - {x: 70.79999, y: -162.04004}
-    - name: tribe_texture_sheet_01_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_2
       rect:
         serializedVersion: 2
         x: 514
@@ -158,48 +146,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.5291483, y: 0.23557374}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -62.556152, y: -60.74884}
-        - {x: -67.55615, y: -64.74884}
-        - {x: -69.55615, y: -62.74884}
-        - {x: -59.556152, y: -57.74884}
-        - {x: -55.556152, y: -57.74884}
-        - {x: -42.556152, y: -73.74884}
-        - {x: -14.556152, y: -64.74884}
-        - {x: -16.556152, y: -48.74884}
-        - {x: -21.556152, y: -44.74884}
-        - {x: -24.556152, y: -44.74884}
-        - {x: -26.556152, y: -46.74884}
-        - {x: -35.556152, y: -54.74884}
-        - {x: -24.556152, y: -44.74884}
-        - {x: -16.556152, y: -36.74884}
-        - {x: 56.443848, y: -79.74884}
-        - {x: 72.44385, y: -81.74884}
-        - {x: 84.44385, y: -79.74884}
-        - {x: 121.44385, y: -38.74884}
-        - {x: 134.44385, y: -60.74884}
-        - {x: 162.44385, y: -49.74884}
-        - {x: 162.44385, y: 113.25116}
-        - {x: 156.44385, y: 190.25116}
-        - {x: 104.44385, y: 253.25116}
-        - {x: 67.44385, y: 278.25116}
-        - {x: -77.55615, y: 278.25116}
-        - {x: -114.55615, y: 274.25116}
-        - {x: -182.55615, y: 193.25116}
-        - {x: -182.55615, y: 156.25116}
-        - {x: -181.55615, y: 153.25116}
-        - {x: -167.55615, y: 143.25116}
-        - {x: -182.55615, y: 97.25116}
-        - {x: -182.55615, y: 32.25116}
-        - {x: -158.55615, y: -26.74884}
-        - {x: -131.55615, y: -78.74884}
-        - {x: -97.55615, y: -85.74884}
-        - {x: -54.556152, y: -85.74884}
-        - {x: -51.556152, y: -84.74884}
-        - {x: -47.556152, y: -75.74884}
-        - {x: -48.556152, y: -67.74884}
-        - {x: -53.556152, y: -60.74884}
-    - name: tribe_texture_sheet_01_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_3
       rect:
         serializedVersion: 2
         x: 924
@@ -209,16 +160,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.66, y: 0.51}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -56.359985, y: 284.69}
-        - {x: -63.359985, y: 267.69}
-        - {x: -63.359985, y: 170.69}
-        - {x: -19.359985, y: -293.31}
-        - {x: -18.359985, y: -296.31}
-        - {x: 16.640015, y: -296.31}
-        - {x: 32.640015, y: -176.31}
-        - {x: 32.640015, y: 284.69}
-    - name: tribe_texture_sheet_01_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_4
       rect:
         serializedVersion: 2
         x: 20
@@ -228,15 +174,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.566304, y: 0.8106145}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -110.42929, y: 28.029053}
-        - {x: -110.42929, y: -5.9709473}
-        - {x: -28.42929, y: -118.97095}
-        - {x: -24.42929, y: -119.97095}
-        - {x: 68.57071, y: -119.97095}
-        - {x: 84.57071, y: -76.97095}
-        - {x: 84.57071, y: 28.029053}
-    - name: tribe_texture_sheet_01_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_5
       rect:
         serializedVersion: 2
         x: 273
@@ -246,16 +188,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.51651245, y: 0.925656}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -33.936584, y: 10.036438}
-        - {x: -44.936584, y: -11.963562}
-        - {x: -44.936584, y: -111.96356}
-        - {x: -28.936584, y: -124.96356}
-        - {x: 18.063416, y: -124.96356}
-        - {x: 42.063416, y: -114.96356}
-        - {x: 42.063416, y: -11.963562}
-        - {x: 29.063416, y: 10.036438}
-    - name: tribe_texture_sheet_01_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_6
       rect:
         serializedVersion: 2
         x: 403
@@ -265,15 +202,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.43159086, y: 0.94202757}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25.253632, y: 6.782776}
-        - {x: -36.25363, y: 3.7827759}
-        - {x: -36.25363, y: -44.217224}
-        - {x: -22.253632, y: -109.217224}
-        - {x: -15.253632, y: -110.217224}
-        - {x: 47.74637, y: -110.217224}
-        - {x: 47.74637, y: 6.782776}
-    - name: tribe_texture_sheet_01_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_7
       rect:
         serializedVersion: 2
         x: 534
@@ -283,17 +216,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.59208953, y: 0.7325916}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 29.817017, y: 28.07788}
-        - {x: -10.182983, y: 28.07788}
-        - {x: -46.182983, y: 23.07788}
-        - {x: -46.182983, y: -70.92212}
-        - {x: -40.182983, y: -76.92212}
-        - {x: -16.182983, y: -76.92212}
-        - {x: -10.182983, y: -73.92212}
-        - {x: 31.817017, y: -26.92212}
-        - {x: 31.817017, y: 12.077881}
-    - name: tribe_texture_sheet_01_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_8
       rect:
         serializedVersion: 2
         x: 666
@@ -303,17 +230,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.541641, y: 0.703292}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 18.62677, y: 31.45105}
-        - {x: -2.37323, y: 31.45105}
-        - {x: -37.37323, y: 10.45105}
-        - {x: -37.37323, y: -19.54895}
-        - {x: -24.37323, y: -74.54895}
-        - {x: 18.62677, y: -74.54895}
-        - {x: 31.62677, y: -34.54895}
-        - {x: 31.62677, y: 11.45105}
-        - {x: 29.62677, y: 25.45105}
-    - name: tribe_texture_sheet_01_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_9
       rect:
         serializedVersion: 2
         x: 827
@@ -323,16 +244,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.27, y: 0.86}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16.46997, y: 11.900024}
-        - {x: -16.46997, y: -47.099976}
-        - {x: -15.469971, y: -52.099976}
-        - {x: -0.4699707, y: -73.099976}
-        - {x: 26.53003, y: -73.099976}
-        - {x: 44.53003, y: -60.099976}
-        - {x: 44.53003, y: -37.099976}
-        - {x: 19.53003, y: 11.900024}
-    - name: tribe_texture_sheet_01_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_10
       rect:
         serializedVersion: 2
         x: 16
@@ -342,16 +258,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.39, y: 0.9}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 17.11, y: 8.700012}
-        - {x: -15.889999, y: 8.700012}
-        - {x: -19.89, y: 7.700012}
-        - {x: -19.89, y: -52.299988}
-        - {x: -7.8899994, y: -78.29999}
-        - {x: 24.11, y: -78.29999}
-        - {x: 31.11, y: -70.29999}
-        - {x: 31.11, y: -7.299988}
-    - name: tribe_texture_sheet_01_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_11
       rect:
         serializedVersion: 2
         x: 104
@@ -361,16 +272,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.51, y: 0.9}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21.970001, y: 10.399994}
-        - {x: -23.970001, y: 3.399994}
-        - {x: -23.970001, y: -90.600006}
-        - {x: -14.970001, y: -93.600006}
-        - {x: 9.029999, y: -93.600006}
-        - {x: 23.029999, y: -70.600006}
-        - {x: 23.029999, y: -1.6000061}
-        - {x: 20.029999, y: 10.399994}
-    - name: tribe_texture_sheet_01_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_12
       rect:
         serializedVersion: 2
         x: 188
@@ -380,16 +286,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.61, y: 0.93}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -27.600006, y: 3.850006}
-        - {x: -35.600006, y: -7.149994}
-        - {x: -36.600006, y: -12.149994}
-        - {x: -36.600006, y: -39.149994}
-        - {x: -25.600006, y: -51.149994}
-        - {x: 20.399994, y: -51.149994}
-        - {x: 23.399994, y: -39.149994}
-        - {x: 23.399994, y: 3.850006}
-    - name: tribe_texture_sheet_01_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_13
       rect:
         serializedVersion: 2
         x: 296
@@ -399,17 +300,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 27}
-        - {x: -19, y: 26}
-        - {x: -26, y: 24}
-        - {x: -26, y: -12}
-        - {x: -21, y: -27}
-        - {x: 17, y: -27}
-        - {x: 26, y: -15}
-        - {x: 26, y: 25}
-        - {x: 25, y: 27}
-    - name: tribe_texture_sheet_01_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_14
       rect:
         serializedVersion: 2
         x: 400
@@ -419,15 +314,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.79, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69.890015, y: 33}
-        - {x: -71.890015, y: 29}
-        - {x: -71.890015, y: -7}
-        - {x: -50.890015, y: -27}
-        - {x: 19.109985, y: -27}
-        - {x: 19.109985, y: 17}
-        - {x: -7.8900146, y: 33}
-    - name: tribe_texture_sheet_01_15
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_15
       rect:
         serializedVersion: 2
         x: 548
@@ -437,16 +328,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.72, y: 0.63}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -63.359985, y: -40.47}
-        - {x: -61.359985, y: -43.47}
-        - {x: -1.3599854, y: -43.47}
-        - {x: 24.640015, y: -30.470001}
-        - {x: 24.640015, y: 24.529999}
-        - {x: 23.640015, y: 25.529999}
-        - {x: -41.359985, y: 25.529999}
-        - {x: -63.359985, y: 5.529999}
-    - name: tribe_texture_sheet_01_16
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_16
       rect:
         serializedVersion: 2
         x: 696
@@ -456,14 +342,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.74, y: 0.76}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20.159973, y: 17.279999}
-        - {x: -62.159973, y: -7.720001}
-        - {x: -62.159973, y: -54.72}
-        - {x: -16.159973, y: -54.72}
-        - {x: 21.840027, y: -30.720001}
-        - {x: 21.840027, y: 17.279999}
-    - name: tribe_texture_sheet_01_17
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_17
       rect:
         serializedVersion: 2
         x: 820
@@ -473,110 +356,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.23, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20.080017, y: 19.600006}
-        - {x: -22.080017, y: 14.600006}
-        - {x: -22.080017, y: -25.399994}
-        - {x: -12.080017, y: -35.399994}
-        - {x: -6.080017, y: -36.399994}
-        - {x: 66.91998, y: -36.399994}
-        - {x: 73.91998, y: -27.399994}
-        - {x: 73.91998, y: 2.600006}
-        - {x: 48.919983, y: 19.600006}
-    - name: tribe_texture_sheet_01_18
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 201
-        width: 104
-        height: 148
-      alignment: 9
-      pivot: {x: 0.5690667, y: 0.08261387}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -59.182938, y: 135.77315}
-        - {x: -59.182938, y: -4.2268524}
-        - {x: -47.182938, y: -12.226852}
-        - {x: 43.817062, y: -12.226852}
-        - {x: 44.817062, y: -9.226852}
-        - {x: 44.817062, y: 135.77315}
-    - name: tribe_texture_sheet_01_19
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 220
-        width: 120
-        height: 128
-      alignment: 9
-      pivot: {x: 0.65072936, y: 0.90005827}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -41.087524, y: 12.7925415}
-        - {x: -48.087524, y: 11.7925415}
-        - {x: -78.087524, y: -55.20746}
-        - {x: -78.087524, y: -109.20746}
-        - {x: -51.087524, y: -115.20746}
-        - {x: 39.912476, y: -115.20746}
-        - {x: 41.912476, y: -113.20746}
-        - {x: 41.912476, y: 12.7925415}
-    - name: tribe_texture_sheet_01_20
-      rect:
-        serializedVersion: 2
-        x: 273
-        y: 169
-        width: 179
-        height: 188
-      alignment: 9
-      pivot: {x: 0.5339052, y: 0.24389462}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 44.43097, y: 142.14781}
-        - {x: -56.56903, y: 142.14781}
-        - {x: -67.56903, y: 138.14781}
-        - {x: -95.56903, y: 89.14781}
-        - {x: -95.56903, y: 23.147812}
-        - {x: -94.56903, y: 12.147812}
-        - {x: -86.56903, y: -37.85219}
-        - {x: -63.56903, y: -45.85219}
-        - {x: 45.43097, y: -45.85219}
-        - {x: 83.43097, y: -29.852188}
-        - {x: 83.43097, y: 99.14781}
-    - name: tribe_texture_sheet_01_21
-      rect:
-        serializedVersion: 2
-        x: 470
-        y: 56
-        width: 59
-        height: 300
-      alignment: 9
-      pivot: {x: 0.628733, y: 0.5110791}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -32.095245, y: 146.67628}
-        - {x: -37.095245, y: 134.67628}
-        - {x: -37.095245, y: 43.676285}
-        - {x: -14.095245, y: -153.32372}
-        - {x: 18.904755, y: -153.32372}
-        - {x: 21.904755, y: -128.32372}
-        - {x: 21.904755, y: 146.67628}
-    - name: tribe_texture_sheet_01_22
-      rect:
-        serializedVersion: 2
-        x: 627
-        y: 279
-        width: 40
-        height: 52
-      alignment: 9
-      pivot: {x: 0.35, y: 0.78}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -14, y: 11.440002}
-        - {x: -14, y: -40.559998}
-        - {x: 24, y: -40.559998}
-        - {x: 26, y: -39.559998}
-        - {x: 26, y: -9.559998}
-        - {x: 15, y: 11.440002}
-    - name: tribe_texture_sheet_01_23
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_23
       rect:
         serializedVersion: 2
         x: 699
@@ -586,15 +370,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.74, y: 0.71}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -27.940002, y: 15.080017}
-        - {x: -59.940002, y: 1.0800171}
-        - {x: -59.940002, y: -35.919983}
-        - {x: -55.940002, y: -36.919983}
-        - {x: 21.059998, y: -36.919983}
-        - {x: 21.059998, y: 4.080017}
-        - {x: 11.059998, y: 15.080017}
-    - name: tribe_texture_sheet_01_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_24
       rect:
         serializedVersion: 2
         x: 826
@@ -604,182 +384,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.19, y: 0.83}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 32.98999, y: 9.690002}
-        - {x: -1.0100098, y: 9.690002}
-        - {x: -15.01001, y: 5.6900024}
-        - {x: -15.01001, y: -31.309998}
-        - {x: 3.9899902, y: -47.309998}
-        - {x: 61.98999, y: -47.309998}
-        - {x: 63.98999, y: -41.309998}
-        - {x: 63.98999, y: -9.309998}
-    - name: tribe_texture_sheet_01_25
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 212
-        width: 54
-        height: 48
-      alignment: 9
-      pivot: {x: 0.72, y: 0.67}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21.880005, y: 15.839996}
-        - {x: -38.880005, y: 8.839996}
-        - {x: -38.880005, y: -24.160004}
-        - {x: -31.880005, y: -32.160004}
-        - {x: -3.880005, y: -32.160004}
-        - {x: 12.119995, y: -25.160004}
-        - {x: 15.119995, y: -15.160004}
-        - {x: 15.119995, y: 15.839996}
-    - name: tribe_texture_sheet_01_26
-      rect:
-        serializedVersion: 2
-        x: 625
-        y: 218
-        width: 56
-        height: 38
-      alignment: 9
-      pivot: {x: 0.22, y: 0.6}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.320007, y: 15.199997}
-        - {x: -12.320007, y: 14.199997}
-        - {x: -12.320007, y: -15.800003}
-        - {x: -10.320007, y: -22.800003}
-        - {x: 41.679993, y: -22.800003}
-        - {x: 43.679993, y: -18.800003}
-        - {x: 43.679993, y: 9.199997}
-        - {x: 34.679993, y: 15.199997}
-    - name: tribe_texture_sheet_01_27
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 173
-        width: 50
-        height: 36
-      alignment: 9
-      pivot: {x: 0.71, y: 0.73}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 8.5, y: 9.720001}
-        - {x: -24.5, y: 9.720001}
-        - {x: -29.5, y: 8.720001}
-        - {x: -35.5, y: 4.720001}
-        - {x: -35.5, y: -20.279999}
-        - {x: -33.5, y: -26.279999}
-        - {x: 5.5, y: -26.279999}
-        - {x: 14.5, y: -16.279999}
-        - {x: 14.5, y: 5.720001}
-    - name: tribe_texture_sheet_01_28
-      rect:
-        serializedVersion: 2
-        x: 627
-        y: 173
-        width: 50
-        height: 38
-      alignment: 9
-      pivot: {x: 0.21, y: 0.72}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 23.5, y: 10.639999}
-        - {x: -10.5, y: 10.639999}
-        - {x: -10.5, y: -19.36}
-        - {x: -3.5, y: -27.36}
-        - {x: 38.5, y: -27.36}
-        - {x: 39.5, y: -26.36}
-        - {x: 39.5, y: 1.6399994}
-    - name: tribe_texture_sheet_01_29
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 93
-        width: 104
-        height: 80
-      alignment: 9
-      pivot: {x: 0.5690669, y: 0.8000542}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -59.182953, y: 15.9956665}
-        - {x: -59.182953, y: -9.0043335}
-        - {x: -22.182953, y: -64.00433}
-        - {x: 38.817047, y: -64.00433}
-        - {x: 44.817047, y: -33.004333}
-        - {x: 44.817047, y: 15.9956665}
-    - name: tribe_texture_sheet_01_30
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 87
-        width: 49
-        height: 74
-      alignment: 9
-      pivot: {x: 0.52, y: 0.85}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 14.520004, y: 11.100006}
-        - {x: -21.479996, y: 11.100006}
-        - {x: -25.479996, y: 7.100006}
-        - {x: -25.479996, y: -61.899994}
-        - {x: -22.479996, y: -62.899994}
-        - {x: 20.520004, y: -62.899994}
-        - {x: 23.520004, y: -45.899994}
-        - {x: 23.520004, y: 6.100006}
-        - {x: 19.520004, y: 10.100006}
-    - name: tribe_texture_sheet_01_31
-      rect:
-        serializedVersion: 2
-        x: 218
-        y: 91
-        width: 48
-        height: 64
-      alignment: 9
-      pivot: {x: 0.39, y: 0.77}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -18.720001, y: 14.720001}
-        - {x: -18.720001, y: -26.279999}
-        - {x: -16.720001, y: -43.28}
-        - {x: -10.720001, y: -49.28}
-        - {x: 29.279999, y: -49.28}
-        - {x: 29.279999, y: 4.720001}
-        - {x: 23.279999, y: 14.720001}
-    - name: tribe_texture_sheet_01_32
-      rect:
-        serializedVersion: 2
-        x: 283
-        y: 102
-        width: 45
-        height: 58
-      alignment: 9
-      pivot: {x: 0.6215868, y: 0.7194685}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -26.971405, y: 16.270828}
-        - {x: -27.971405, y: 12.270828}
-        - {x: -27.971405, y: -41.72917}
-        - {x: 9.028595, y: -41.72917}
-        - {x: 17.028595, y: -23.729172}
-        - {x: 17.028595, y: 16.270828}
-    - name: tribe_texture_sheet_01_33
-      rect:
-        serializedVersion: 2
-        x: 349
-        y: 102
-        width: 41
-        height: 59
-      alignment: 9
-      pivot: {x: 0.52, y: 0.71}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -9.320007, y: 17.11}
-        - {x: -21.320007, y: 11.110001}
-        - {x: -21.320007, y: -22.89}
-        - {x: -16.320007, y: -41.89}
-        - {x: 14.679993, y: -41.89}
-        - {x: 19.679993, y: -39.89}
-        - {x: 19.679993, y: 17.11}
-    - name: tribe_texture_sheet_01_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: tribe_texture_sheet_01_34
       rect:
         serializedVersion: 2
         x: 544
@@ -789,135 +398,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: 0.59, y: 0.63}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 60.320007, y: 42.92}
-        - {x: -125.67999, y: 42.92}
-        - {x: -172.68, y: 34.92}
-        - {x: -184.68, y: 28.919998}
-        - {x: -200.68, y: 15.919998}
-        - {x: -207.68, y: 5.919998}
-        - {x: -207.68, y: -34.08}
-        - {x: -204.68, y: -44.08}
-        - {x: -179.68, y: -64.08}
-        - {x: -145.68, y: -73.08}
-        - {x: 129.32, y: -73.08}
-        - {x: 144.32, y: -47.08}
-        - {x: 144.32, y: 21.919998}
-        - {x: 117.32001, y: 36.92}
-    - name: tribe_texture_sheet_01_35
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 28
-        width: 33
-        height: 53
-      alignment: 9
-      pivot: {x: 0.18, y: 0.79}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -3.9400005, y: 11.129997}
-        - {x: -5.9400005, y: 10.129997}
-        - {x: -5.9400005, y: -34.870003}
-        - {x: -1.9400005, y: -41.870003}
-        - {x: 26.06, y: -41.870003}
-        - {x: 27.06, y: -40.870003}
-        - {x: 27.06, y: 4.1299973}
-        - {x: 20.06, y: 11.129997}
-    - name: tribe_texture_sheet_01_36
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 20
-        width: 36
-        height: 61
-      alignment: 9
-      pivot: {x: 0.44, y: 0.88}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 16.160004, y: 7.3199997}
-        - {x: -7.8399963, y: 7.3199997}
-        - {x: -13.839996, y: 5.3199997}
-        - {x: -15.839996, y: -0.6800003}
-        - {x: -15.839996, y: -52.68}
-        - {x: -12.839996, y: -53.68}
-        - {x: 14.160004, y: -53.68}
-        - {x: 18.160004, y: -50.68}
-        - {x: 20.160004, y: -36.68}
-        - {x: 20.160004, y: 3.3199997}
-    - name: tribe_texture_sheet_01_37
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 36
-        width: 40
-        height: 37
-      alignment: 9
-      pivot: {x: 0.55, y: 0.83}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -22, y: 6.290001}
-        - {x: -22, y: -22.71}
-        - {x: -17, y: -30.71}
-        - {x: 17, y: -30.71}
-        - {x: 18, y: -24.71}
-        - {x: 18, y: 6.290001}
-    - name: tribe_texture_sheet_01_38
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 37
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 18}
-        - {x: -17, y: 15}
-        - {x: -17, y: -11}
-        - {x: -12, y: -18}
-        - {x: 11, y: -18}
-        - {x: 17, y: -8}
-        - {x: 17, y: 18}
-    - name: tribe_texture_sheet_01_39
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 32
-        width: 57
-        height: 41
-      alignment: 9
-      pivot: {x: 0.7, y: 0.51}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -5.899994, y: 20.09}
-        - {x: -36.899994, y: 20.09}
-        - {x: -39.899994, y: 15.09}
-        - {x: -39.899994, y: -7.91}
-        - {x: -17.899994, y: -20.91}
-        - {x: 11.100006, y: -20.91}
-        - {x: 17.100006, y: -10.91}
-        - {x: 17.100006, y: 11.09}
-        - {x: 7.100006, y: 16.09}
-    - name: tribe_texture_sheet_01_40
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 34
-        width: 53
-        height: 43
-      alignment: 9
-      pivot: {x: 0.74, y: 0.62}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 8.779999, y: 16.34}
-        - {x: -28.220001, y: 16.34}
-        - {x: -39.22, y: 8.34}
-        - {x: -39.22, y: -26.66}
-        - {x: -1.2200012, y: -26.66}
-        - {x: 13.779999, y: -14.66}
-        - {x: 13.779999, y: 14.34}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

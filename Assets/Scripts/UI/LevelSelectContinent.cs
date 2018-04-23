@@ -11,12 +11,12 @@ public class LevelSelectContinent : MonoBehaviour {
     public SpriteRenderer continentImage;
 
     private Button3D m_Button3D;
-    private LevelSelectMenu m_LevelMenu;
+    private ContinentSelectMenu m_LevelMenu;
     private bool m_IsLocked = false;
 
     private void Awake() {
         m_Button3D = GetComponent<Button3D>();
-        m_LevelMenu = GetComponentInParent<LevelSelectMenu>();
+        m_LevelMenu = GetComponentInParent<ContinentSelectMenu>();
     }
 
     private void Start() {

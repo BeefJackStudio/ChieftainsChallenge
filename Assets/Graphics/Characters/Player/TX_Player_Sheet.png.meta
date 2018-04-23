@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 3e34b3821287e484a85b9d26d44ea08f
-timeCreated: 1444840208
-licenseType: Free
+timeCreated: 1524484973
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: player_character_texture_sheet_00_0
@@ -45,52 +45,70 @@ TextureImporter:
     21300076: player_character_texture_sheet_00_38
     21300078: player_character_texture_sheet_00_39
     21300080: player_character_texture_sheet_00_40
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 320
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: player_character_texture_sheet_00_0
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_0
       rect:
         serializedVersion: 2
         x: 20
@@ -98,9 +116,13 @@ TextureImporter:
         width: 200
         height: 288
       alignment: 9
-      pivot: {x: .568113506, y: .0572617836}
+      pivot: {x: 0.5681135, y: 0.057261784}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_1
       rect:
         serializedVersion: 2
         x: 255
@@ -108,9 +130,13 @@ TextureImporter:
         width: 256
         height: 318
       alignment: 9
-      pivot: {x: .652274251, y: .91718626}
+      pivot: {x: 0.65227425, y: 0.91718626}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_2
       rect:
         serializedVersion: 2
         x: 548
@@ -118,9 +144,13 @@ TextureImporter:
         width: 309
         height: 339
       alignment: 9
-      pivot: {x: .449130654, y: .258888096}
+      pivot: {x: 0.44913065, y: 0.2588881}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_3
       rect:
         serializedVersion: 2
         x: 920
@@ -128,9 +158,13 @@ TextureImporter:
         width: 103
         height: 585
       alignment: 9
-      pivot: {x: .662124038, y: .505444825}
+      pivot: {x: 0.66212404, y: 0.5054448}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_4
       rect:
         serializedVersion: 2
         x: 23
@@ -138,9 +172,13 @@ TextureImporter:
         width: 197
         height: 122
       alignment: 9
-      pivot: {x: .546173394, y: .76817745}
+      pivot: {x: 0.5461734, y: 0.76817745}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_5
       rect:
         serializedVersion: 2
         x: 274
@@ -148,9 +186,13 @@ TextureImporter:
         width: 84
         height: 127
       alignment: 9
-      pivot: {x: .553085327, y: .907293379}
+      pivot: {x: 0.5530853, y: 0.9072934}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_6
       rect:
         serializedVersion: 2
         x: 403
@@ -158,9 +200,13 @@ TextureImporter:
         width: 85
         height: 115
       alignment: 9
-      pivot: {x: .410817236, y: .899385393}
+      pivot: {x: 0.41081724, y: 0.8993854}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_7
       rect:
         serializedVersion: 2
         x: 536
@@ -168,9 +214,13 @@ TextureImporter:
         width: 73
         height: 101
       alignment: 9
-      pivot: {x: .604748011, y: .719554961}
+      pivot: {x: 0.604748, y: 0.71955496}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_8
       rect:
         serializedVersion: 2
         x: 673
@@ -178,9 +228,13 @@ TextureImporter:
         width: 59
         height: 103
       alignment: 9
-      pivot: {x: .538880408, y: .715292335}
+      pivot: {x: 0.5388804, y: 0.71529233}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_9
       rect:
         serializedVersion: 2
         x: 16
@@ -188,9 +242,13 @@ TextureImporter:
         width: 51
         height: 87
       alignment: 9
-      pivot: {x: .394109249, y: .897756636}
+      pivot: {x: 0.39410925, y: 0.89775664}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_10
       rect:
         serializedVersion: 2
         x: 104
@@ -198,9 +256,13 @@ TextureImporter:
         width: 47
         height: 104
       alignment: 9
-      pivot: {x: .512028813, y: .904640794}
+      pivot: {x: 0.5120288, y: 0.9046408}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_11
       rect:
         serializedVersion: 2
         x: 188
@@ -208,9 +270,13 @@ TextureImporter:
         width: 60
         height: 55
       alignment: 9
-      pivot: {x: .605658948, y: .931561291}
+      pivot: {x: 0.60565895, y: 0.9315613}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_12
       rect:
         serializedVersion: 2
         x: 296
@@ -218,9 +284,13 @@ TextureImporter:
         width: 52
         height: 54
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_13
       rect:
         serializedVersion: 2
         x: 400
@@ -228,9 +298,13 @@ TextureImporter:
         width: 91
         height: 60
       alignment: 9
-      pivot: {x: .792031407, y: .454804987}
+      pivot: {x: 0.7920314, y: 0.454805}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_14
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_14
       rect:
         serializedVersion: 2
         x: 548
@@ -238,99 +312,13 @@ TextureImporter:
         width: 88
         height: 69
       alignment: 9
-      pivot: {x: .721868336, y: .633620977}
+      pivot: {x: 0.72186834, y: 0.633621}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_15
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 201
-        width: 108
-        height: 151
-      alignment: 9
-      pivot: {x: .559417069, y: .0677034482}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_16
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 184
-        width: 138
-        height: 168
-      alignment: 9
-      pivot: {x: .636940241, y: .890048623}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_17
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 172
-        width: 163
-        height: 178
-      alignment: 9
-      pivot: {x: .459809482, y: .271002173}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_18
-      rect:
-        serializedVersion: 2
-        x: 467
-        y: 52
-        width: 63
-        height: 307
-      alignment: 9
-      pivot: {x: .641759455, y: .504910111}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_19
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 89
-        width: 108
-        height: 70
-      alignment: 9
-      pivot: {x: .55361563, y: .704045773}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_20
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 88
-        width: 53
-        height: 72
-      alignment: 9
-      pivot: {x: .519999981, y: .853994131}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_21
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 92
-        width: 52
-        height: 68
-      alignment: 9
-      pivot: {x: .390753537, y: .769496679}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_22
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 103
-        width: 48
-        height: 61
-      alignment: 9
-      pivot: {x: .620313644, y: .604904413}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_23
-      rect:
-        serializedVersion: 2
-        x: 351
-        y: 102
-        width: 38
-        height: 60
-      alignment: 9
-      pivot: {x: .520073354, y: .709767401}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_24
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_24
       rect:
         serializedVersion: 2
         x: 544
@@ -338,69 +326,13 @@ TextureImporter:
         width: 352
         height: 116
       alignment: 9
-      pivot: {x: .589476645, y: .627274692}
+      pivot: {x: 0.58947664, y: 0.6272747}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_25
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 28
-        width: 33
-        height: 53
-      alignment: 9
-      pivot: {x: .175063625, y: .792238355}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_26
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 20
-        width: 36
-        height: 61
-      alignment: 9
-      pivot: {x: .441949636, y: .880776465}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_27
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 36
-        width: 40
-        height: 37
-      alignment: 9
-      pivot: {x: .552108407, y: .833179772}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_28
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 37
-        width: 34
-        height: 36
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_29
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 32
-        width: 57
-        height: 41
-      alignment: 9
-      pivot: {x: .704767048, y: .509595752}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_30
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 34
-        width: 53
-        height: 43
-      alignment: 9
-      pivot: {x: .741455078, y: .623805225}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_31
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_31
       rect:
         serializedVersion: 2
         x: 697
@@ -408,9 +340,13 @@ TextureImporter:
         width: 86
         height: 73
       alignment: 9
-      pivot: {x: .739147782, y: .756771564}
+      pivot: {x: 0.7391478, y: 0.75677156}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_32
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_32
       rect:
         serializedVersion: 2
         x: 820
@@ -418,9 +354,13 @@ TextureImporter:
         width: 97
         height: 62
       alignment: 9
-      pivot: {x: .228927135, y: .645947099}
+      pivot: {x: 0.22892714, y: 0.6459471}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_33
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_33
       rect:
         serializedVersion: 2
         x: 826
@@ -428,9 +368,13 @@ TextureImporter:
         width: 64
         height: 89
       alignment: 9
-      pivot: {x: .272205353, y: .862718225}
+      pivot: {x: 0.27220535, y: 0.8627182}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_34
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_34
       rect:
         serializedVersion: 2
         x: 695
@@ -438,9 +382,13 @@ TextureImporter:
         width: 93
         height: 63
       alignment: 9
-      pivot: {x: .740743637, y: .710749567}
+      pivot: {x: 0.74074364, y: 0.71074957}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_35
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: player_character_texture_sheet_00_35
       rect:
         serializedVersion: 2
         x: 825
@@ -448,58 +396,13 @@ TextureImporter:
         width: 86
         height: 66
       alignment: 9
-      pivot: {x: .191227406, y: .831339061}
+      pivot: {x: 0.1912274, y: 0.83133906}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_36
-      rect:
-        serializedVersion: 2
-        x: 625
-        y: 275
-        width: 44
-        height: 58
-      alignment: 9
-      pivot: {x: .352804005, y: .778816462}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_37
-      rect:
-        serializedVersion: 2
-        x: 562
-        y: 213
-        width: 53
-        height: 50
-      alignment: 9
-      pivot: {x: .716130078, y: .671823144}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_38
-      rect:
-        serializedVersion: 2
-        x: 622
-        y: 214
-        width: 64
-        height: 46
-      alignment: 9
-      pivot: {x: .219324112, y: .59621197}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_39
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 170
-        width: 53
-        height: 40
-      alignment: 9
-      pivot: {x: .706305742, y: .727795005}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: player_character_texture_sheet_00_40
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 169
-        width: 58
-        height: 42
-      alignment: 9
-      pivot: {x: .212730676, y: .723146319}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d8fed80721a32f04990b3ea9ed1a4ca6
-timeCreated: 1438994824
-licenseType: Free
+timeCreated: 1524485098
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: mayan_tribeman_texture_sheet_00_0
@@ -33,52 +33,70 @@ TextureImporter:
     21300052: mayan_tribeman_texture_sheet_00_26
     21300054: mayan_tribeman_texture_sheet_00_27
     21300056: mayan_tribeman_texture_sheet_00_28
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 320
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: mayan_tribeman_texture_sheet_00_0
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_0
       rect:
         serializedVersion: 2
         x: 16
@@ -86,9 +104,13 @@ TextureImporter:
         width: 214
         height: 290
       alignment: 9
-      pivot: {x: .482388377, y: .037708994}
+      pivot: {x: 0.48238838, y: 0.037708994}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_1
       rect:
         serializedVersion: 2
         x: 256
@@ -96,9 +118,13 @@ TextureImporter:
         width: 308
         height: 340
       alignment: 9
-      pivot: {x: .483093649, y: .178380802}
+      pivot: {x: 0.48309365, y: 0.1783808}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_2
       rect:
         serializedVersion: 2
         x: 604
@@ -106,9 +132,13 @@ TextureImporter:
         width: 78
         height: 127
       alignment: 9
-      pivot: {x: .46858725, y: .912214637}
+      pivot: {x: 0.46858725, y: 0.91221464}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_3
       rect:
         serializedVersion: 2
         x: 726
@@ -116,9 +146,13 @@ TextureImporter:
         width: 73
         height: 112
       alignment: 9
-      pivot: {x: .113829732, y: .844636083}
+      pivot: {x: 0.11382973, y: 0.8446361}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_4
       rect:
         serializedVersion: 2
         x: 859
@@ -126,9 +160,13 @@ TextureImporter:
         width: 101
         height: 472
       alignment: 9
-      pivot: {x: .655681968, y: .241821423}
+      pivot: {x: 0.65568197, y: 0.24182142}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_5
       rect:
         serializedVersion: 2
         x: 604
@@ -136,9 +174,13 @@ TextureImporter:
         width: 90
         height: 96
       alignment: 9
-      pivot: {x: .52479589, y: .709216416}
+      pivot: {x: 0.5247959, y: 0.7092164}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_6
       rect:
         serializedVersion: 2
         x: 723
@@ -146,9 +188,13 @@ TextureImporter:
         width: 82
         height: 84
       alignment: 9
-      pivot: {x: .502460778, y: .837692976}
+      pivot: {x: 0.5024608, y: 0.837693}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_7
       rect:
         serializedVersion: 2
         x: 16
@@ -156,9 +202,13 @@ TextureImporter:
         width: 209
         height: 174
       alignment: 9
-      pivot: {x: .482107878, y: .799863279}
+      pivot: {x: 0.48210788, y: 0.7998633}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_8
       rect:
         serializedVersion: 2
         x: 256
@@ -166,9 +216,13 @@ TextureImporter:
         width: 52
         height: 54
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_9
       rect:
         serializedVersion: 2
         x: 346
@@ -176,9 +230,13 @@ TextureImporter:
         width: 78
         height: 60
       alignment: 9
-      pivot: {x: .848185599, y: .509775817}
+      pivot: {x: 0.8481856, y: 0.5097758}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_10
       rect:
         serializedVersion: 2
         x: 456
@@ -186,9 +244,13 @@ TextureImporter:
         width: 88
         height: 69
       alignment: 9
-      pivot: {x: .754233599, y: .73040241}
+      pivot: {x: 0.7542336, y: 0.7304024}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_11
       rect:
         serializedVersion: 2
         x: 576
@@ -196,9 +258,13 @@ TextureImporter:
         width: 60
         height: 56
       alignment: 9
-      pivot: {x: .699186206, y: .915830314}
+      pivot: {x: 0.6991862, y: 0.9158303}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_12
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_12
       rect:
         serializedVersion: 2
         x: 664
@@ -206,9 +272,13 @@ TextureImporter:
         width: 48
         height: 103
       alignment: 9
-      pivot: {x: .70039624, y: .851103842}
+      pivot: {x: 0.70039624, y: 0.85110384}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_13
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_13
       rect:
         serializedVersion: 2
         x: 748
@@ -216,149 +286,13 @@ TextureImporter:
         width: 52
         height: 87
       alignment: 9
-      pivot: {x: .173443139, y: .906571329}
+      pivot: {x: 0.17344314, y: 0.9065713}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_14
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 322
-        width: 116
-        height: 154
-      alignment: 9
-      pivot: {x: .474869162, y: .0566186272}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_15
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 303
-        width: 164
-        height: 177
-      alignment: 9
-      pivot: {x: .481806487, y: .197765633}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_16
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 403
-        width: 52
-        height: 72
-      alignment: 9
-      pivot: {x: .475071251, y: .860078156}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_17
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 411
-        width: 48
-        height: 65
-      alignment: 9
-      pivot: {x: .236766815, y: .787198603}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_18
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 231
-        width: 60
-        height: 245
-      alignment: 9
-      pivot: {x: .644288123, y: .251285732}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_19
-      rect:
-        serializedVersion: 2
-        x: 310
-        y: 343
-        width: 53
-        height: 56
-      alignment: 9
-      pivot: {x: .515896797, y: .673011243}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_20
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 357
-        width: 51
-        height: 50
-      alignment: 9
-      pivot: {x: .511659503, y: .83299011}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_21
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 219
-        width: 113
-        height: 95
-      alignment: 9
-      pivot: {x: .486370534, y: .782144964}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_22
-      rect:
-        serializedVersion: 2
-        x: 135
-        y: 254
-        width: 37
-        height: 38
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_23
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 254
-        width: 48
-        height: 37
-      alignment: 9
-      pivot: {x: .825279534, y: .488098145}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_24
-      rect:
-        serializedVersion: 2
-        x: 236
-        y: 248
-        width: 53
-        height: 44
-      alignment: 9
-      pivot: {x: .724387109, y: .689198554}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_25
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 255
-        width: 40
-        height: 36
-      alignment: 9
-      pivot: {x: .65581286, y: .803274393}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_26
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 231
-        width: 33
-        height: 61
-      alignment: 9
-      pivot: {x: .651661277, y: .8199808}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_27
-      rect:
-        serializedVersion: 2
-        x: 380
-        y: 239
-        width: 36
-        height: 52
-      alignment: 9
-      pivot: {x: .277562469, y: .817614019}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: mayan_tribeman_texture_sheet_00_28
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: mayan_tribeman_texture_sheet_00_28
       rect:
         serializedVersion: 2
         x: 656
@@ -366,8 +300,13 @@ TextureImporter:
         width: 352
         height: 116
       alignment: 9
-      pivot: {x: .548325777, y: .618179321}
+      pivot: {x: 0.5483258, y: 0.6181793}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
