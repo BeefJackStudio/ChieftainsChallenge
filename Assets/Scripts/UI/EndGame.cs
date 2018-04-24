@@ -42,6 +42,7 @@ public class EndGame : MonoBehaviour {
 	public void GoNextLevel() {
 		if(LevelManager.CurrentLevel == null) {
 			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
+			return;
 		} 
 
 		GameLevelSet nextLevel = LevelManager.CurrentLevel.GetNextLevel();

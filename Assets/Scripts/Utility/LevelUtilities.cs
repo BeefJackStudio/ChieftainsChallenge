@@ -17,4 +17,8 @@ public class LevelUtilities : MonoBehaviour {
         Scene loadedLevel = SceneManager.GetActiveScene();
         SceneManager.LoadScene(loadedLevel.buildIndex);
     }
+
+    public void QuitToMenu() {
+		LevelManager.LoadScene("MainMenu");
+    }
 }

@@ -13,6 +13,7 @@ public class LevelInstance : MonoBehaviour {
 	[ReadOnly] public LevelState levelState = LevelState.inGame;
 
 	[Header("Wind")]
+	public bool enableWind = false;
 	public float minWindForce = 0.1f;
 	public float maxWindForce = 0.3f;
 
