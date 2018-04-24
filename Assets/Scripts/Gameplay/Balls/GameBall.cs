@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameBall : MonoBehaviour {
 
     [Header("Status")]
-    [ReadOnly] public bool isSleeping = false;
+    [ReadOnly] public bool isSleeping = true;
+    [ReadOnly] public bool dragging = false;
     [ReadOnly] public LevelInstance levelInstance = null;
     [ReadOnly] public Vector3 dragDelta = Vector3.zero;
 
@@ -22,27 +23,49 @@ public class GameBall : MonoBehaviour {
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
         levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
+
+        if(levelInstance == null) {
+            Debug.LogError("GameBall could not find levelinstance!");
+            return;
+        }
+
+        levelInstance.SetBall(this);
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            HitBall(new Vector2(1, 1), 5);
-        }
+        if(levelInstance == null) { return; }
 
         if (Input.GetMouseButtonDown(0)) {
-            m_MouseClickStart = Input.mousePosition;
-            if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StartRender(); }
+            Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity);
+            bool hitMe = false;
+            foreach(RaycastHit2D hit in hits) {
+                if (hit.collider && hit.collider.gameObject == this.gameObject && 
+                    levelInstance.levelState == LevelState.inGame) {
+                    hitMe = true;
+                }
+            }
+
+            if(hitMe) {
+                m_MouseClickStart = Input.mousePosition;
+                dragging = true;
+                if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StartRender(); }
+            }
         }
 
-        //make additional delta calcs for trajectory renderer.
-        if(Input.GetMouseButton(0)) {
-            dragDelta = Input.mousePosition - m_MouseClickStart;
-        }
+        if(dragging) {
+            //make additional delta calcs for trajectory renderer.
+            if(Input.GetMouseButton(0)) {
+                dragDelta = Input.mousePosition - m_MouseClickStart;
+            }
 
-        if (Input.GetMouseButtonUp(0)) {
-            dragDelta = Input.mousePosition - m_MouseClickStart;
-            if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StopRender(); }
-            HitBall(-dragDelta, dragDelta.magnitude / 10);
+            if (Input.GetMouseButtonUp(0)) {
+                dragging = false;
+                dragDelta = Input.mousePosition - m_MouseClickStart;
+                if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StopRender(); }
+                HitBall(-dragDelta, dragDelta.magnitude / 10);
+            }
         }
 
         if(!isSleeping && levelInstance != null && levelInstance.enableWind) {

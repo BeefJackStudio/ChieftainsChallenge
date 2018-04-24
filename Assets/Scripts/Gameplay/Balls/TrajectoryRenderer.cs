@@ -69,6 +69,8 @@ public class TrajectoryRenderer : MonoBehaviour {
 
         for(int i = 0; i < steps; i++) {
             GameObject rtgo = Instantiate(trajectoryPointPrefab);
+            rtgo.transform.SetParent(gameObject.transform);
+            rtgo.transform.position = gameObject.transform.position;
 			rtgo.transform.localScale = rtgo.transform.localScale - (scaleDecreasePerStep * i);
             trajectoryPoints.Add(rtgo);
         }

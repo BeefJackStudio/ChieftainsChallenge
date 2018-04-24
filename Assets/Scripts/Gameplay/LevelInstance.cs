@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum LevelState{
+public enum LevelState {
+	intro,
 	inGame,
 	ended
 }
 
 public class LevelInstance : MonoBehaviour {
 	
-	[ReadOnly] public LevelState levelState = LevelState.inGame;
+	//Note: see GameCamera.cs triggers the go to ingame.
+	[ReadOnly] public LevelState levelState = LevelState.intro;
+	private GameObject m_currentBall = null;
 
 	[Header("Wind")]
 	public bool enableWind = false;
@@ -26,6 +29,7 @@ public class LevelInstance : MonoBehaviour {
 
 	[Header("UI")]
 	public EndGame endGameUI = null;
+
 
 	public float GetRandomWindForce() {
 		return Random.Range(minWindForce, maxWindForce);
@@ -60,5 +64,19 @@ public class LevelInstance : MonoBehaviour {
 		
 		//set level ended.
 		levelState = LevelState.ended;
+	}
+
+	public void SetBall(GameObject go) {
+		if(go.GetComponent<GameBall>() == null) { return; }
+		m_currentBall = go;
+	}
+
+	public void SetBall(GameBall gb) {
+		m_currentBall = gb.gameObject;
+	}
+
+	public GameBall GetBall() {
+		if(m_currentBall == null) { return null; }
+		return m_currentBall.GetComponent<GameBall>();
 	}
 }
