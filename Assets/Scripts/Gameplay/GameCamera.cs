@@ -11,8 +11,23 @@ public class GameCamera : MonoBehaviour {
     [ReadOnly]  public Vector3 desiredPosition;
 
     [Header("Config")]
-    public Vector3 defaultOffset = new Vector3(0, 5, -25);
-    public float followSpeed = 0.1f;
+    public Vector3 defaultOffset = new Vector3(5, 5, -25);
+    public float followSpeed = 0.02f;
+    public float panSpeed = 20f;
+    public float zoomSpeedTouch = 0.1f;
+    public float zoomSpeedMouse = 0.5f;
+    
+    [Header("Restrictions")]
+    public Transform leftBound;
+    public Transform rightBound;
+    public float maxZ = -9f;
+    public float minZ = -50f;
+
+    private void OnValidate() {
+        if(maxZ > 0) { maxZ = 0; }
+        if(maxZ < minZ) { maxZ = minZ; }
+        if(minZ > maxZ) { minZ = maxZ; }
+    }
 
     //Note: set on start because ball is set in levelinstance on awake.
     private void Start() {
@@ -54,6 +69,9 @@ public class GameCamera : MonoBehaviour {
         }
 
         //Apply position!
+        desiredPosition.x = Mathf.Clamp(desiredPosition.x, leftBound.transform.position.x, rightBound.transform.position.x);
+        desiredPosition.z = Mathf.Clamp(desiredPosition.z, minZ, maxZ);
+
         m_PreviousBallPosition = ball.transform.position;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed);
     }
