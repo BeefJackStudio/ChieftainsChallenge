@@ -25,6 +25,7 @@ public class Slider3D : UI3DElement {
         m_SliderArea = GetComponent<BoxCollider>();
         m_MinPosition = m_SliderArea.size.x / -2;
         m_MaxPosition = m_SliderArea.size.x / 2;
+        m_SliderArea.size = new Vector3(m_SliderArea.size.x + 0.3f, m_SliderArea.size.y, m_SliderArea.size.z);
 
         m_StartLocation = transform.localPosition;
         m_LiftedLocation = m_StartLocation + new Vector3(0, 0, -0.15f);
