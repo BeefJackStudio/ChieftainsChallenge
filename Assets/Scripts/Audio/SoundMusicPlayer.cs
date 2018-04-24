@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class SoundMusicPlayer : MonoBehaviourSingleton<SoundMusicPlayer> {
 
     private AudioSource m_AudioSource;
@@ -8,18 +9,20 @@ public class SoundMusicPlayer : MonoBehaviourSingleton<SoundMusicPlayer> {
 
     private void Awake() {
         m_AudioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetVolume(float f) {
+        m_AudioSource.volume = f;
     }
 
     public void PlayMusic(AudioClip clip) {
-        m_AudioSource.volume = SaveDataManager.Instance.data.volumeMusic;
-        m_AudioSource.Play();
+        if (m_AudioSource.isPlaying && m_AudioSource.clip == clip) return;
 
         if (m_FadeRoutine != null) StopCoroutine(m_FadeRoutine);
         m_FadeRoutine = StartCoroutine(CrossfadeMusic(clip));
     }
 
-    private IEnumerator CrossfadeMusic(AudioClip nextClip, float fadeTime = 1) {
+    private IEnumerator CrossfadeMusic(AudioClip nextClip, float fadeTime = 2) {
         if (m_AudioSource.isPlaying) {
             float startVolume = m_AudioSource.volume;
             float startTime = Time.time;
@@ -27,13 +30,17 @@ public class SoundMusicPlayer : MonoBehaviourSingleton<SoundMusicPlayer> {
                 m_AudioSource.volume = (1 - MathUtilities.GetNormalizedTime(startTime, fadeTime, Time.time)) * startVolume;
                 yield return null;
             }
+
+            m_AudioSource.Stop();
         }
 
         if (nextClip != null) {
-            float endVolume = SaveDataManager.Instance.data.volumeMusic;
+            m_AudioSource.clip = nextClip;
+            m_AudioSource.Play();
+
             float startTime = Time.time;
-            while (m_AudioSource.volume != endVolume) {
-                m_AudioSource.volume = MathUtilities.GetNormalizedTime(startTime, fadeTime, Time.time) * endVolume;
+            while (m_AudioSource.volume != SoundManager.BackgroundMusicVolume) {
+                m_AudioSource.volume = MathUtilities.GetNormalizedTime(startTime, fadeTime, Time.time) * SoundManager.BackgroundMusicVolume;
                 yield return null;
             }
         } else {
