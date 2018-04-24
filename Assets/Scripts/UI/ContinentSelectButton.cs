@@ -10,6 +10,9 @@ public class ContinentSelectButton : MonoBehaviour {
     public GameObject lockImage;
     public SpriteRenderer continentImage;
 
+    public SoundEffectCollection unlockedSounds;
+    public SoundEffectCollection lockedSounds;
+
     private Button3D m_Button3D;
     private ContinentSelectMenu m_LevelMenu;
     private bool m_IsLocked = false;
@@ -31,6 +34,8 @@ public class ContinentSelectButton : MonoBehaviour {
         if (!m_IsLocked) {
             m_Button3D.onButtonClick.AddListener(() => { m_LevelMenu.OnContinentSelect(this, m_IsLocked); });
         }
+
+        m_Button3D.onInteractSound = m_IsLocked ? lockedSounds : unlockedSounds;
     }
 
 }

@@ -13,6 +13,9 @@ public class LevelSelectButton : MonoBehaviour {
     public Sprite starEmptySprite;
     public Sprite starAcquiredSprite;
 
+    public SoundEffectCollection unlockedSounds;
+    public SoundEffectCollection lockedSounds;
+
     private Button3D m_Button3D;
     private GameLevelSet m_LevelSet;
     private bool m_IsLocked = false;
@@ -39,5 +42,7 @@ public class LevelSelectButton : MonoBehaviour {
         if (!isLocked) {
             m_Button3D.onButtonClick.AddListener(() => { LevelManager.LoadLevel(levelData); });
         }
+
+        m_Button3D.onInteractSound = m_IsLocked ? lockedSounds : unlockedSounds;
     }
 }

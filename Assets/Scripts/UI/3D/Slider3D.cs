@@ -9,11 +9,13 @@ public class Slider3D : UI3DElement {
 
     public Transform sliderKnob;
     public Action<float> onValueChange = delegate { };
+    public SoundEffectCollection onValueChangeSound;
 
     private BoxCollider m_SliderArea;
     private float m_SliderValue = 1;
     private float m_MinPosition;
     private float m_MaxPosition;
+    private float m_OriginalWidth;
     private Vector3 m_StartLocation;
     private Vector3 m_LiftedLocation;
 
@@ -23,8 +25,10 @@ public class Slider3D : UI3DElement {
 
     private void Awake() {
         m_SliderArea = GetComponent<BoxCollider>();
-        m_MinPosition = m_SliderArea.size.x / -2;
-        m_MaxPosition = m_SliderArea.size.x / 2;
+
+        m_OriginalWidth = m_SliderArea.size.x;
+        m_MinPosition = m_OriginalWidth / -2;
+        m_MaxPosition = m_OriginalWidth / 2;
         m_SliderArea.size = new Vector3(m_SliderArea.size.x + 0.3f, m_SliderArea.size.y, m_SliderArea.size.z);
 
         m_StartLocation = transform.localPosition;
@@ -63,7 +67,12 @@ public class Slider3D : UI3DElement {
 
     private void SetValueFromWorldPoint(Vector3 worldPoint) {
         Vector3 localHit = transform.InverseTransformPoint(worldPoint);
-        Value = (localHit.x / m_SliderArea.size.x) + (m_MaxPosition / m_SliderArea.size.x);
+        float oldValue = Value;
+        Value = (localHit.x / m_OriginalWidth) + (m_MaxPosition / m_OriginalWidth);
+
+        if(Mathf.Abs(Value - oldValue) >= m_OriginalWidth / 500 && onValueChangeSound != null) {
+            SoundEffectsPlayer.Instance.PlaySFX(onValueChangeSound);
+        }
 
         m_RotationTarget = (Value - 0.5f) * -0.15f;
     }
