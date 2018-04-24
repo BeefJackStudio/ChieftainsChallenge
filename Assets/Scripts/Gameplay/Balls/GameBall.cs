@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameBall : MonoBehaviour {
 
     [Header("Status")]
-    [ReadOnly] public bool isSleeping = true;
+    [ReadOnly] public bool isSleeping = false;
     [ReadOnly] public bool dragging = false;
     [ReadOnly] public LevelInstance levelInstance = null;
     [ReadOnly] public Vector3 dragDelta = Vector3.zero;
@@ -18,7 +18,7 @@ public class GameBall : MonoBehaviour {
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
     private Vector3 m_MouseClickStart;
-    private const float VELOCITY_SLEEP_THRESHOLD = 0.05f;
+    private const float VELOCITY_SLEEP_THRESHOLD = 0.1f;
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -39,15 +39,15 @@ public class GameBall : MonoBehaviour {
             Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity);
-            bool hitMe = false;
+            bool allowShot = false;
             foreach(RaycastHit2D hit in hits) {
                 if (hit.collider && hit.collider.gameObject == this.gameObject && 
-                    levelInstance.levelState == LevelState.inGame) {
-                    hitMe = true;
+                    levelInstance.levelState == LevelState.inGame && isSleeping) {
+                    allowShot = true;
                 }
             }
 
-            if(hitMe) {
+            if(allowShot) {
                 m_MouseClickStart = Input.mousePosition;
                 dragging = true;
                 if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StartRender(); }

@@ -11,14 +11,15 @@ public class TrajectoryRenderer : MonoBehaviour {
 	[ReadOnly]	private bool m_doRender = false;
 
 	[Header("Config")]
-    public int trajectorySteps = 10;
-    public GameObject trajectoryPointPrefab;
-    public float trajectoryCalculateEachSeconds = 0.01f;
+    public int steps = 15;
+    public GameObject pointPrefab;
+    public float calculateEachSeconds = 0.01f;
 	public Vector2 StartScale = new Vector3(1f, 1f, 1f);
 	public Vector2 EndScale = new Vector3(0.2f, 0.2f, 0.2f);
+    public Color color = Color.white;
 
 	public void StartRender() {
-		InstantiateRenderTrajectoryGameObjects(trajectorySteps);
+		InstantiateRenderTrajectoryGameObjects(steps);
 		m_doRender = true;
 	}
 
@@ -32,14 +33,14 @@ public class TrajectoryRenderer : MonoBehaviour {
 		if(!m_doRender) { return; }
 
 		timer += Time.fixedDeltaTime;
-		if(timer < trajectoryCalculateEachSeconds) { return; }
+		if(timer < calculateEachSeconds) { return; }
 
         //dirty getcomponent, we requirecomponent. but, todo: improve.
 		timer = 0;
 		List<Vector2> trajectory = PlotTrajectory(gameObject.GetComponent<Rigidbody2D>(), 
 													gameObject.transform.position, 
 													-gameObject.GetComponent<GameBall>().dragDelta, 
-													trajectorySteps
+													steps
 									);
 		RenderTrajectory(trajectory);
 	}
@@ -68,10 +69,12 @@ public class TrajectoryRenderer : MonoBehaviour {
 		scaleDecreasePerStep /= steps;
 
         for(int i = 0; i < steps; i++) {
-            GameObject rtgo = Instantiate(trajectoryPointPrefab);
+            GameObject rtgo = Instantiate(pointPrefab);
             rtgo.transform.SetParent(gameObject.transform);
             rtgo.transform.position = gameObject.transform.position;
 			rtgo.transform.localScale = rtgo.transform.localScale - (scaleDecreasePerStep * i);
+            rtgo.GetComponent<SpriteRenderer>().color = color;
+
             trajectoryPoints.Add(rtgo);
         }
     }
