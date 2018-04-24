@@ -58,7 +58,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     public void SetLevelScore(string levelName, int score) {
         int existingScore = 0;
         if (m_LevelScores.ContainsKey(levelName)) existingScore = m_LevelScores[levelName];
-        if (score > existingScore) m_LevelScores.Add(levelName, score);
+        if (score > existingScore) m_LevelScores[levelName] = score;
     }
 
     public int GetLevelScore(string levelName) {
