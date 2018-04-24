@@ -46,7 +46,8 @@ public class GameBall : MonoBehaviour {
         }
 
         if(!isSleeping && levelInstance != null && levelInstance.enableWind) {
-            m_RigidBody.AddForce(new Vector2(-levelInstance.GetRandomWindForce(), 0));
+            Vector2 windForce = levelInstance.windDirection.normalized * levelInstance.GetRandomWindForce();
+            m_RigidBody.AddForce(windForce);
         }
     }
 

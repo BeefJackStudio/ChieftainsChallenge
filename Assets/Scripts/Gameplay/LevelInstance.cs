@@ -16,6 +16,7 @@ public class LevelInstance : MonoBehaviour {
 	public bool enableWind = false;
 	public float minWindForce = 0.1f;
 	public float maxWindForce = 0.3f;
+	public Vector2 windDirection = Vector2.zero;
 
 	[Header("Stars")]
 	[ReadOnly] 													public int shotsFired = 0;
