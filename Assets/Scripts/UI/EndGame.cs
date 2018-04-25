@@ -34,12 +34,16 @@ public class EndGame : MonoBehaviour {
 		}
 
 		gameObject.SetActive(true);
-		if(sepRef != null && onCompletedLevel != null) { sepRef.PlaySFX(onCompletedLevel); }
 		StartCoroutine(EndGameAnimation(starAmount));
 	}
 
 	public IEnumerator EndGameAnimation(int starAmount) {
 		isAnimating = true;
+		if(sepRef != null && onCompletedLevel != null) { 
+			sepRef.PlaySFX(onCompletedLevel);
+			yield return new WaitForSeconds(onCompletedLevel.GetLengthInSeconds());
+		}
+
 		for(int i = 0; i < starAmount; i++) {
 			Animator an = stars[i].GetComponent<Animator>();
 			if(an == null){ continue; }
