@@ -9,6 +9,7 @@ public class SoundMusicPlayer : MonoBehaviourSingleton<SoundMusicPlayer> {
 
     private void Awake() {
         m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.loop = true;
     }
 
     public void SetVolume(float f) {

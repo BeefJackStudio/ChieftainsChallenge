@@ -23,7 +23,7 @@ public class Cutscene : MonoBehaviour {
             SaveDataManager.Instance.SetCutsceneWatched(cType);
         }
 
-        LevelManager.LoadScene(nextLevel);
+        LevelManager.Instance.LoadScene(nextLevel);
     }
 
     private string GetAnimationClip(CutsceneTypes type) {
