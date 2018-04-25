@@ -56,8 +56,8 @@ public class LevelInstance : MonoBehaviour {
 			return;
 		}
 		endGameUI.ShowEndGameUI(stars);
-		if(LevelManager.CurrentLevel != null) {
-			SaveDataManager.Instance.SetLevelScore(LevelManager.CurrentLevel.scene, stars);
+		if(LevelManager.Instance.CurrentLevel != null) {
+			SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
 		} else {
 			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
 		}

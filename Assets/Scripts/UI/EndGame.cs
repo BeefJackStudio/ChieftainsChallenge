@@ -40,16 +40,16 @@ public class EndGame : MonoBehaviour {
 	}
 
 	public void GoNextLevel() {
-		if(LevelManager.CurrentLevel == null) {
+		if(LevelManager.Instance.CurrentLevel == null) {
 			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
 			return;
 		} 
 
-		GameLevelSet nextLevel = LevelManager.CurrentLevel.GetNextLevel();
+		GameLevelSet nextLevel = LevelManager.Instance.CurrentLevel.GetNextLevel();
 		if(nextLevel == null) {
-			LevelManager.LoadScene("MainMenu");
+			LevelManager.Instance.LoadScene("MainMenu");
 		} else {
-			LevelManager.LoadLevel(nextLevel);
+			LevelManager.Instance.LoadLevel(nextLevel);
 		}
 	}
 }
