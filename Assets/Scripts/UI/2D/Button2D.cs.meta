@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 76fbc875abbc995478019889f0f438da
-timeCreated: 1524473044
+timeCreated: 1524657616
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_TargetGraphic: {instanceID: 0}
+  - onClickSound: {fileID: 11400000, guid: 1559e0d9f3336574fbf605ac9e0e21e9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

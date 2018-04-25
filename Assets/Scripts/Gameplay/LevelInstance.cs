@@ -30,6 +30,23 @@ public class LevelInstance : MonoBehaviour {
 	[Header("UI")]
 	public EndGame endGameUI = null;
 
+	[Header("Music")]
+	[ReadOnly]	public SoundMusicPlayer smpRef = null;
+				public AudioClip backgroundMusic;
+
+
+	private void Start() {
+		smpRef = SoundMusicPlayer.Instance;
+
+		if(backgroundMusic == null) {
+			Debug.LogWarning("You did not set background music for this level. If there's already music playing it will continue.");
+			return;
+		}
+
+		if(smpRef != null) {
+			smpRef.PlayMusic(backgroundMusic);
+		}
+	}
 
 	public float GetRandomWindForce() {
 		return Random.Range(minWindForce, maxWindForce);
