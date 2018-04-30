@@ -49,7 +49,7 @@ public class TrajectoryRenderer : MonoBehaviour {
         Vector2[] results = new Vector2[steps];
 
         float timestep = (Time.fixedDeltaTime / Physics2D.velocityIterations) * timeScale;
-        Vector2 gravityAccel = ((Physics2D.gravity * rigidbody.gravityScale) + LevelInstance.Instance.windForce) * timestep * timestep;
+        Vector2 gravityAccel = ((Physics2D.gravity * rigidbody.gravityScale) + LevelInstance.Instance.windForce) * timestep;
         float drag = 1f - timestep * rigidbody.drag;
         Vector2 moveStep = velocity * timestep;
 

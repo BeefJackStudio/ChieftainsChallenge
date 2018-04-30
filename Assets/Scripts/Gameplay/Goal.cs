@@ -12,7 +12,7 @@ public class Goal : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll) {
         if(levelInstance != null && (coll.gameObject.GetComponent("GameBall") as GameBall) != null) {
-            levelInstance.EndGame();
+            levelInstance.ShowEndGame();
         }
     }
 }

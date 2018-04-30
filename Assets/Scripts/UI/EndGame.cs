@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EndGame : MonoBehaviour {
+public class EndGame : MonoBehaviourSingleton<EndGame> {
 
 	[Header("Stars")]
 	public List<GameObject> stars;
@@ -17,7 +17,12 @@ public class EndGame : MonoBehaviour {
 				public SoundEffectCollection onCompletedLevel;
 				public SoundEffectCollection onStarEarned;
 
-	[ContextMenu("End Game Test")]
+    private void Awake() {
+        Instance = this;
+        gameObject.SetActive(false);
+    }
+
+    [ContextMenu("End Game Test")]
 	public void EndGameTest() {
 		ShowEndGameUI(3);
 	}
