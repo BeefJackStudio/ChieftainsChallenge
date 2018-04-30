@@ -1,25 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum LevelState {
-	intro,
-	inGame,
-	ended
+	INTRO,
+	SHOOTING,
+	ENDING
 }
 
-public class LevelInstance : MonoBehaviour {
+public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
+
+    private const float SHOOT_POWER_MULTIPLIER = 100;
 	
 	//Note: see GameCamera.cs triggers the go to ingame.
-	[ReadOnly] public LevelState levelState = LevelState.intro;
+	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_currentBall = null;
 
 	[Header("Wind")]
 	public bool enableWind = false;
 	public float minWindForce = 0.1f;
 	public float maxWindForce = 0.3f;
-	public Vector2 windDirection = Vector2.zero;
+	public Vector2 windForce = Vector2.zero;
 
 	[Header("Stars")]
 	[ReadOnly] 													public int shotsFired = 0;
@@ -34,30 +37,59 @@ public class LevelInstance : MonoBehaviour {
 	[ReadOnly]	public SoundMusicPlayer smpRef = null;
 				public AudioClip backgroundMusic;
 
+    [Header("Shooting")]
+    [ReadOnly] public Vector2 shootAngle;
+    [ReadOnly] public float normalizedShootPower = 0.5f;
+    public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER); } }
+    //public Vector2 ShootPower { get { return new Vector2(1, 1) * SHOOT_POWER_MULTIPLIER; } }
 
-	private void Start() {
+    public Action OnNextTurn = delegate { };
+
+    private void Awake() {
+        ResetShootingAngle();
+    }
+
+    private void Start() {
 		smpRef = SoundMusicPlayer.Instance;
 
-		if(backgroundMusic == null) {
-			Debug.LogWarning("You did not set background music for this level. If there's already music playing it will continue.");
-			return;
-		}
-
 		if(smpRef != null) {
-			smpRef.PlayMusic(backgroundMusic);
+            if (backgroundMusic == null) {
+                Debug.LogWarning("You did not set background music for this level. If there's already music playing it will continue.");
+            } else {
+                smpRef.PlayMusic(backgroundMusic);
+            }
 		}
-	}
 
-	public float GetRandomWindForce() {
-		return Random.Range(minWindForce, maxWindForce);
-	}
+        OnNextTurn();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.U)) {
+            TriggerNextTurn();
+        }
+    }
+
+    public void ShootBall() {
+        GetBall().HitBall(ShootPower);
+        ResetShootingAngle();
+    }
+
+    public void TriggerNextTurn() {
+        levelState = LevelState.SHOOTING;
+        RandomizeWind();
+        OnNextTurn();
+    }
+
+    public void RandomizeWind() {
+        windForce = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized * UnityEngine.Random.Range(minWindForce, maxWindForce);
+    }
 
 	public void OnShotFired() {
 		shotsFired++;
 	}
 
 	public void EndGame() {
-		if(levelState == LevelState.ended) { return; }
+		if(levelState == LevelState.ENDING) { return; }
 		Debug.Log("Game ending.");
 
 		//calc stars
@@ -81,8 +113,12 @@ public class LevelInstance : MonoBehaviour {
 		}
 		
 		//set level ended.
-		levelState = LevelState.ended;
+		levelState = LevelState.ENDING;
 	}
+
+    public void ResetShootingAngle() {
+        shootAngle = new Vector2(0.5f, 0.5f).normalized;
+    }
 
 	public void SetBall(GameObject go) {
 		if(go.GetComponent<GameBall>() == null) { return; }

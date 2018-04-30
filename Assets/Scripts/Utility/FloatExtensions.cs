@@ -1,11 +1,4 @@
-﻿//
-//  FloatExtensions.cs
-//  
-//  Created by Scott Mitchell on (DATE).
-//  Copyright (c) 2015 Scott Mitchell. All rights reserved.
-//
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class FloatExtensions {
 

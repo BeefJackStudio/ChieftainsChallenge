@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WindIndicator : MonoBehaviour {
@@ -10,11 +11,20 @@ public class WindIndicator : MonoBehaviour {
 
 	[Header("Pin Setup")]
 	public GameObject pin = null;
-	public float speedMultiplier = 4f;
-	public float angleRange = 10f;
+	public float wobbleSpeed = 4f;
+	public float wobbleRange = 4f;
 
+    [Header("Text")]
+    public TextMeshProUGUI text;
 
-	void Start () {
+    private float velocityTargetNumber = 0;
+    private float velocityDisplayNumber = 0;
+
+    private void Awake() {
+        LevelInstance.Instance.OnNextTurn += UpdateWind;
+    }
+
+    void Start () {
 		levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
 		if(levelInstance == null) { return; }
 
@@ -26,17 +36,23 @@ public class WindIndicator : MonoBehaviour {
 				Debug.LogWarning("WindIndicator: You didn't setup a pin in config!");
 				return; 
 			}
-
-			pinAngle = -(Mathf.Atan2(levelInstance.windDirection.x, levelInstance.windDirection.y) * Mathf.Rad2Deg);
-			pin.transform.rotation = Quaternion.AngleAxis(pinAngle, Vector3.forward);
-		}
+        }
 	}
 	
 	void Update () {
-		if(!gameObject.active) { return; }
 
-		//apply pin rocking effect
-		float f = Mathf.Sin(Time.time * speedMultiplier) * angleRange;
-		pin.transform.rotation = Quaternion.AngleAxis(f + pinAngle, Vector3.forward);
+        //apply pin rocking effect
+        float f = Mathf.Sin(Time.time * wobbleSpeed) * wobbleRange;
+		pin.transform.localRotation = Quaternion.Lerp(pin.transform.localRotation, Quaternion.AngleAxis(f + pinAngle, Vector3.forward), 0.1f);
+
+        velocityDisplayNumber = Mathf.Lerp(velocityDisplayNumber, velocityTargetNumber, 0.1f);
+
+        string velText = velocityDisplayNumber.ToString().Length >= 3 ? velocityDisplayNumber.ToString().Substring(0, 3) : "" + velocityDisplayNumber;
+        text.text = velText;
 	}
+
+    public void UpdateWind() {
+        pinAngle = -(Mathf.Atan2(levelInstance.windForce.x, levelInstance.windForce.y) * Mathf.Rad2Deg);
+        velocityTargetNumber = levelInstance.windForce.magnitude;
+    }
 }

@@ -39,7 +39,7 @@ public class GameCamera : MonoBehaviour {
 
     //Note: set on start because ball is set in levelinstance on awake.
     private void Start() {
-        levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
+        levelInstance = LevelInstance.Instance;
         desiredPosition = transform.position;
 
         if(levelInstance == null) {
@@ -65,15 +65,10 @@ public class GameCamera : MonoBehaviour {
         }
 
         //In intro or when we are shooting, we need to move the camera.
-        if(!ball.isSleeping || levelInstance.levelState == LevelState.intro) {
+        if(!ball.isSleeping || levelInstance.levelState == LevelState.INTRO) {
             Vector3 ballPosition = ball.transform.position;
             Vector3 ballDelta = (ballPosition - m_PreviousBallPosition) * 10;
             desiredPosition = ball.transform.position + (ballDelta * 2) + defaultOffset + new Vector3(0, 0, -ballDelta.magnitude);
-
-            //if cam position is close to desired, and levelstate is now intro, set it to ingame.
-            if(Vector3.Distance(transform.position, desiredPosition) <= 2 && levelInstance.levelState == LevelState.intro) {
-                levelInstance.levelState = LevelState.inGame;
-            }
         } else {
             if(Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
                 HandleTouch();
@@ -88,7 +83,7 @@ public class GameCamera : MonoBehaviour {
         desiredPosition.z = Mathf.Clamp(desiredPosition.z, minZ, maxZ);
 
         m_PreviousBallPosition = ball.transform.position;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed);
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, ball.isSleeping ? 0.2f : followSpeed);
     }
 
 #region Panning and Zooming
@@ -101,7 +96,7 @@ public class GameCamera : MonoBehaviour {
         if(Input.GetMouseButtonDown(0)) {
             lastPanPosition = Input.mousePosition;
         }
-        if(Input.GetMouseButton(0) && !ball.dragging) {
+        if(Input.GetMouseButton(0)) {
             PanCamera(Input.mousePosition);
         }
     }
@@ -116,7 +111,7 @@ public class GameCamera : MonoBehaviour {
                     lastPanPosition = touch.position;
                     panFingerId = touch.fingerId;
                 } 
-                if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && !ball.dragging) {
+                if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved) {
                     PanCamera(touch.position);
                 }
                 break;

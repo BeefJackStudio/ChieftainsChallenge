@@ -12,6 +12,7 @@ public class TrajectoryRenderer : MonoBehaviour {
 
 	[Header("Config")]
     public int steps = 15;
+    public int timeScale = 5;
     public GameObject pointPrefab;
     public float calculateEachSeconds = 0.01f;
 	public Vector2 StartScale = new Vector3(1f, 1f, 1f);
@@ -37,31 +38,29 @@ public class TrajectoryRenderer : MonoBehaviour {
 
         //dirty getcomponent, we requirecomponent. but, todo: improve.
 		timer = 0;
-		List<Vector2> trajectory = PlotTrajectory(gameObject.GetComponent<Rigidbody2D>(), 
+		Vector2[] trajectory = Plot(gameObject.GetComponent<Rigidbody2D>(), 
 													gameObject.transform.position, 
-													-gameObject.GetComponent<GameBall>().dragDelta, 
-													steps
-									);
+													LevelInstance.Instance.ShootPower);
 		RenderTrajectory(trajectory);
 	}
 
-	//https://tech.spaceapegames.com/2016/07/05/trajectory-prediction-with-unity-physics/
-    public List<Vector2> PlotTrajectory(Rigidbody2D rigidbody, Vector2 position, Vector2 velocity, int steps) {
-        List<Vector2> toReturn = new List<Vector2>();
+    //https://tech.spaceapegames.com/2016/07/05/trajectory-prediction-with-unity-physics/
+    public Vector2[] Plot(Rigidbody2D rigidbody, Vector2 pos, Vector2 velocity) {
+        Vector2[] results = new Vector2[steps];
 
-        float timeStep = Time.fixedDeltaTime / Physics2D.velocityIterations;
-        Vector2 gravityAcceleration = Physics2D.gravity * rigidbody.gravityScale * timeStep;
-        float drag = 1f - timeStep * rigidbody.drag;
-        Vector2 moveStep = velocity * timeStep;
+        float timestep = (Time.fixedDeltaTime / Physics2D.velocityIterations) * timeScale;
+        Vector2 gravityAccel = ((Physics2D.gravity * rigidbody.gravityScale) + LevelInstance.Instance.windForce) * timestep * timestep;
+        float drag = 1f - timestep * rigidbody.drag;
+        Vector2 moveStep = velocity * timestep;
 
-        for(int i = 0; i < steps; i++) {
-            moveStep += gravityAcceleration;
+        for (int i = 0; i < steps; ++i) {
+            moveStep += gravityAccel;
             moveStep *= drag;
-            position += moveStep;
-            toReturn.Add(position);
+            pos += moveStep;
+            results[i] = pos;
         }
 
-        return toReturn;
+        return results;
     }
 
     void InstantiateRenderTrajectoryGameObjects(int steps) {
@@ -87,10 +86,10 @@ public class TrajectoryRenderer : MonoBehaviour {
         trajectoryPoints.Clear();
     }
 
-    void RenderTrajectory(List<Vector2> plottedData) {
-        if(plottedData.Count != trajectoryPoints.Count) { return; }
+    void RenderTrajectory(Vector2[] plottedData) {
+        if(plottedData.Length != trajectoryPoints.Count) { return; }
 
-        for(int i = 0; i < plottedData.Count; i++) {
+        for(int i = 0; i < plottedData.Length; i++) {
             trajectoryPoints[i].transform.position = plottedData[i];
         }
     }

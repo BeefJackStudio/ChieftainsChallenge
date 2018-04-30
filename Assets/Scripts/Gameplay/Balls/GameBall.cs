@@ -7,22 +7,20 @@ public class GameBall : MonoBehaviour {
 
     [Header("Status")]
     [ReadOnly] public bool isSleeping = false;
-    [ReadOnly] public bool dragging = false;
     [ReadOnly] public LevelInstance levelInstance = null;
-    [ReadOnly] public Vector3 dragDelta = Vector3.zero;
-
-    [Header("Config")]
-    public bool enableTrajectoryPrediction = true;
 
     private Rigidbody2D m_RigidBody;
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
-    private Vector3 m_MouseClickStart;
+    private TrajectoryRenderer m_TrajectoryRenderer;
+
     private const float VELOCITY_SLEEP_THRESHOLD = 0.1f;
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
-        levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
+        m_TrajectoryRenderer = GetComponent<TrajectoryRenderer>();
+
+        levelInstance = LevelInstance.Instance;
 
         if(levelInstance == null) {
             Debug.LogError("GameBall could not find levelinstance!");
@@ -35,52 +33,26 @@ public class GameBall : MonoBehaviour {
     private void Update() {
         if(levelInstance == null) { return; }
 
-        if (Input.GetMouseButtonDown(0)) {
-            Vector3 touchpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity);
-            bool allowShot = false;
-            foreach(RaycastHit2D hit in hits) {
-                if (hit.collider && hit.collider.gameObject == this.gameObject && 
-                    levelInstance.levelState == LevelState.inGame && isSleeping) {
-                    allowShot = true;
-                }
-            }
-
-            if(allowShot) {
-                m_MouseClickStart = Input.mousePosition;
-                dragging = true;
-                if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StartRender(); }
-            }
+        if (Input.GetKeyDown(KeyCode.D)) {
+            m_RigidBody.AddForce(levelInstance.ShootPower, ForceMode2D.Impulse);
         }
 
-        if(dragging) {
-            //make additional delta calcs for trajectory renderer.
-            if(Input.GetMouseButton(0)) {
-                dragDelta = Input.mousePosition - m_MouseClickStart;
-            }
-
-            if (Input.GetMouseButtonUp(0)) {
-                dragging = false;
-                dragDelta = Input.mousePosition - m_MouseClickStart;
-                if(enableTrajectoryPrediction) { gameObject.GetComponent<TrajectoryRenderer>().StopRender(); }
-                HitBall(-dragDelta, dragDelta.magnitude / 10);
-            }
-        }
-
-        if(!isSleeping && levelInstance != null && levelInstance.enableWind) {
-            Vector2 windForce = levelInstance.windDirection.normalized * levelInstance.GetRandomWindForce();
-            m_RigidBody.AddForce(windForce);
+        if (!isSleeping && levelInstance != null && levelInstance.enableWind) {
+            m_RigidBody.AddForce(levelInstance.windForce);
+        }else {
+            m_TrajectoryRenderer.Plot(m_RigidBody, transform.position, levelInstance.ShootPower);
         }
     }
 
     public void HitBall(Vector2 direction, float power) {
-        StopSleepRoutine();
-        m_RigidBody.AddForce(direction.normalized * power, ForceMode2D.Impulse);
+        HitBall(direction * power);
+    }
 
-        if(power > 1 && levelInstance != null) {
-            levelInstance.OnShotFired();
-        }
+    public void HitBall(Vector2 power) {
+        StopSleepRoutine();
+        m_RigidBody.AddForce(power, ForceMode2D.Impulse);
+        m_TrajectoryRenderer.StopRender();
+        levelInstance.OnShotFired();
     }
 
 #region Ball sleeping
@@ -104,16 +76,16 @@ public class GameBall : MonoBehaviour {
     }
 
     private void StartSleepRoutine() {
+        isSleeping = true;
         if (m_BallSleepRoutine != null) { return; }
         m_BallSleepRoutine = StartCoroutine(BallSleepRoutine());
-        isSleeping = true;
     }
 
     private void StopSleepRoutine() {
+        isSleeping = false;
         if (m_BallSleepRoutine == null) { return; }
         StopCoroutine(m_BallSleepRoutine);
         m_BallSleepRoutine = null;
-        isSleeping = false;
     }
 
     private IEnumerator BallSleepRoutine() {
@@ -123,7 +95,11 @@ public class GameBall : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
 
         if(m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD) {
-            while (true) {
+
+            LevelInstance.Instance.TriggerNextTurn();
+            m_TrajectoryRenderer.StartRender();
+
+            while (isSleeping) {
                 m_RigidBody.velocity = Vector2.zero;
                 yield return null;
             }
@@ -132,5 +108,6 @@ public class GameBall : MonoBehaviour {
         m_BallSleepRoutine = null;
     }
 
-#endregion
+    #endregion
+
 }
