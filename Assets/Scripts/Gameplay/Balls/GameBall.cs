@@ -139,5 +139,10 @@ public class GameBall : MonoBehaviour {
         }
     }
 
+    public bool IsAimingRight() {
+        if(levelInstance.shootAngle.x < 0) { return false; }
+        return true;
+    }
+
 #endregion
 }

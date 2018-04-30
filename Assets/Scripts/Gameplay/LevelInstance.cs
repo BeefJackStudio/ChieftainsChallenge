@@ -14,7 +14,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private const float SHOOT_POWER_MULTIPLIER = 50;
 	
-	//Note: see GameCamera.cs triggers the go to ingame.
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_currentBall = null;
 
@@ -43,7 +42,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
     public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER); } }
-    //public Vector2 ShootPower { get { return new Vector2(1, 1) * SHOOT_POWER_MULTIPLIER; } }
 
     public Action OnNextTurn = delegate { };
 
@@ -66,9 +64,21 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     private void Update() {
+		if(GetBall() == null) { return; }
+
         if (Input.GetKeyDown(KeyCode.U)) {
             TriggerNextTurn();
         }
+
+		if(GetBall().isSleeping && characterInstance != null) { 
+			if(GetBall().IsAimingRight()) {
+				characterInstance.transform.position = GetBall().slotLeft;
+				characterInstance.transform.rotation = new Quaternion(0, 0, 0, 0);
+			} else {
+				characterInstance.transform.position = GetBall().slotRight;
+				characterInstance.transform.rotation = new Quaternion(0, 180, 0, 0);
+			}
+		}
     }
 
     public void ShootBall() {
@@ -77,7 +87,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 	public IEnumerator ShootSequence() {
 		if(characterInstance == null) {
-
 			yield return null;
 		}
 
