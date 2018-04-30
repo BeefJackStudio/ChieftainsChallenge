@@ -14,8 +14,7 @@ public class LevelUtilities : MonoBehaviour {
     }
 
     public void RestartLevel() {
-        Scene loadedLevel = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(loadedLevel.buildIndex);
+        LevelManager.Instance.LoadLevel(LevelManager.Instance.CurrentLevel);
     }
 
     public void QuitToMenu() {

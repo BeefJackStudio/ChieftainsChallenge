@@ -9,11 +9,13 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class LevelManager : MonoBehaviourSingleton<LevelManager> {
 
-    private static string GAME_HUD_SCENE = "";
+    private static string GAME_HUD_SCENE = "Game_HUD";
 
     private GameLevelSet m_CurrentLevel = null;
     private int m_ScenesToLoad = 0;
+    private List<string> m_QueuedScenes = new List<string>();
 
+    public Action OnScenesLoaded = delegate { };
     public GameLevelSet CurrentLevel { get { return m_CurrentLevel; } }
 
     public void Initialize() {
@@ -25,10 +27,14 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager> {
     /// </summary>
     /// <param name="levelName"></param>
     public void LoadScene(string levelName, LoadSceneMode mode = LoadSceneMode.Single) {
-        LoadingScreen.Instance.Show(() => {
-            SceneManager.LoadSceneAsync(levelName, mode);
-        });
         m_ScenesToLoad++;
+        if (LoadingScreen.Instance.IsShown) {
+            SceneManager.LoadSceneAsync(levelName, mode);
+        } else {
+            LoadingScreen.Instance.Show(() => {
+                SceneManager.LoadSceneAsync(levelName, mode);
+            });
+        }
     }
 
     /// <summary>
@@ -38,13 +44,21 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager> {
     public void LoadLevel(GameLevelSet level) {
         m_CurrentLevel = level;
         LoadScene(level.scene);
-        if (!string.IsNullOrEmpty(GAME_HUD_SCENE)) LoadScene(GAME_HUD_SCENE, LoadSceneMode.Additive);
+        m_QueuedScenes.Add(GAME_HUD_SCENE);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         m_ScenesToLoad--;
         if(m_ScenesToLoad == 0) {
-            LoadingScreen.Instance.Hide(() => { });
+            if (m_QueuedScenes.Count == 0) {
+                LoadingScreen.Instance.Hide(() => { });
+                OnScenesLoaded();
+            }else {
+                foreach(string s in m_QueuedScenes) {
+                    LoadScene(s, LoadSceneMode.Additive);
+                }
+                m_QueuedScenes.Clear();
+            }
         }
     }
 }

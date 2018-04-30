@@ -12,7 +12,7 @@ public enum LevelState {
 
 public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
-    private const float SHOOT_POWER_MULTIPLIER = 100;
+    private const float SHOOT_POWER_MULTIPLIER = 50;
 	
 	//Note: see GameCamera.cs triggers the go to ingame.
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
@@ -29,9 +29,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	[Tooltip("Amount of shots when we drop to two stars.")]		public int starThreshold2 = 4;
 	[Tooltip("Amount of shots when we drop to one star.")]		public int starThreshold1 = 6;
 	[Tooltip("Amount of shots when we drop to no stars.")]		public int starThreshold0 = 8;
-
-	[Header("UI")]
-	public EndGame endGameUI = null;
 
 	[Header("Music")]
 	[ReadOnly]	public SoundMusicPlayer smpRef = null;
@@ -88,7 +85,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		shotsFired++;
 	}
 
-	public void EndGame() {
+	public void ShowEndGame() {
 		if(levelState == LevelState.ENDING) { return; }
 		Debug.Log("Game ending.");
 
@@ -100,11 +97,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
 
 		//show end game
-		if(endGameUI == null){
+		if(EndGame.Instance == null){
 			Debug.LogError("No end game UI was assigned to LevelInstance!");
 			return;
 		}
-		endGameUI.ShowEndGameUI(stars);
+        EndGame.Instance.ShowEndGameUI(stars);
 
 		if(LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
 			SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);

@@ -12,6 +12,7 @@ public class LoadingScreen : MonoBehaviourSingleton<LoadingScreen> {
 
     private Coroutine m_Routine;
     private bool m_IsShown = false;
+    public bool IsShown { get { return m_IsShown; } }
 
     public void Initialize() {
         gameObject.SetActive(false);
@@ -30,8 +31,6 @@ public class LoadingScreen : MonoBehaviourSingleton<LoadingScreen> {
     }
 
     private void AnimateTransition(bool state, Action onComplete) {
-        Debug.Log("Transition started, state: " + state);
-
         if (m_Routine != null) StopCoroutine(m_Routine);
 
         gameObject.SetActive(true);

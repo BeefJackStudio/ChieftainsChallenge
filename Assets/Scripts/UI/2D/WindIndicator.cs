@@ -6,8 +6,8 @@ using UnityEngine;
 public class WindIndicator : MonoBehaviour {
 
     [Header("Status")]
-    [ReadOnly] 	public LevelInstance levelInstance = null;
-	[ReadOnly]	public float pinAngle = 0f;
+    [ReadOnly] public LevelInstance levelInstance;
+    [ReadOnly]	public float pinAngle = 0f;
 
 	[Header("Pin Setup")]
 	public GameObject pin = null;
@@ -20,24 +20,22 @@ public class WindIndicator : MonoBehaviour {
     private float velocityTargetNumber = 0;
     private float velocityDisplayNumber = 0;
 
-    private void Awake() {
-        LevelInstance.Instance.OnNextTurn += UpdateWind;
-    }
+    private void Start() {
+        levelInstance = LevelInstance.Instance;
+        if (levelInstance == null) { return; }
 
-    void Start () {
-		levelInstance = GameObject.Find("LevelInstance").GetComponent<LevelInstance>();
-		if(levelInstance == null) { return; }
-
-		if(!levelInstance.enableWind) {
-			gameObject.SetActive(false);
-			return;
-		} else {
-			if(pin == null) { 
-				Debug.LogWarning("WindIndicator: You didn't setup a pin in config!");
-				return; 
-			}
+        if (!levelInstance.enableWind) {
+            gameObject.SetActive(false);
+            return;
+        } else {
+            if (pin == null) {
+                Debug.LogWarning("WindIndicator: You didn't setup a pin in config!");
+                return;
+            }
         }
-	}
+
+        levelInstance.OnNextTurn += UpdateWind;
+    }
 	
 	void Update () {
 

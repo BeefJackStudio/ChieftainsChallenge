@@ -42,7 +42,6 @@ public class TrajectoryRenderer : MonoBehaviour {
 		RenderTrajectory(trajectory);
 	}
 
-    //https://tech.spaceapegames.com/2016/07/05/trajectory-prediction-with-unity-physics/
     public Vector2[] Plot(Rigidbody2D rigidbody) {
         Vector2[] velocities;
         return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower, ForceMode2D.Impulse, out velocities, predictionDuration, false);
