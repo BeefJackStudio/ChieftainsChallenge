@@ -32,7 +32,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 	[Header("Character")]
 	[ReadOnly] 	public GameObject characterInstance;
-				public GameObject characterPrefab;
+				public GenericLevelData levelData;
 				public float animationDelayShoot = 2.1f;
 
 	[Header("Music")]
@@ -104,7 +104,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         OnNextTurn();
 
 		if(characterInstance == null) { 
-			characterInstance = Instantiate(characterPrefab);
+			characterInstance = Instantiate(levelData.playerCharacterPrefab);
 		}
 		GetBall().CalculateSlotLocations();
 		characterInstance.transform.position = GetBall().slotLeft;
