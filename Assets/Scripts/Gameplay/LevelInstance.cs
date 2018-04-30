@@ -30,6 +30,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	[Tooltip("Amount of shots when we drop to one star.")]		public int starThreshold1 = 6;
 	[Tooltip("Amount of shots when we drop to no stars.")]		public int starThreshold0 = 8;
 
+	[Header("Character")]
+	[ReadOnly] 	public GameObject characterInstance;
+				public GameObject characterPrefab;
+				public float animationDelayShoot = 2.1f;
+
 	[Header("Music")]
 	[ReadOnly]	public SoundMusicPlayer smpRef = null;
 				public AudioClip backgroundMusic;
@@ -67,14 +72,42 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     public void ShootBall() {
+		StartCoroutine(ShootSequence());
+    }
+
+	public IEnumerator ShootSequence() {
+		if(characterInstance == null) {
+
+			yield return null;
+		}
+
+		//start play animation
+		Animation a = characterInstance.GetComponentInChildren<Animation>();
+		a.Play("AN_Golf_Swing", PlayMode.StopAll);
+
+		//wait for seconds
+		yield return new WaitForSeconds(animationDelayShoot);
+		
+		//shoot ball.
         GetBall().HitBall(ShootPower);
         ResetShootingAngle();
-    }
+
+		yield return new WaitForSeconds(1);
+		a.Play("AN_Base_Pose", PlayMode.StopAll);
+		
+		yield return null;
+	}
 
     public void TriggerNextTurn() {
         levelState = LevelState.SHOOTING;
         RandomizeWind();
         OnNextTurn();
+
+		if(characterInstance == null) { 
+			characterInstance = Instantiate(characterPrefab);
+		}
+		GetBall().CalculateSlotLocations();
+		characterInstance.transform.position = GetBall().slotLeft;
     }
 
     public void RandomizeWind() {

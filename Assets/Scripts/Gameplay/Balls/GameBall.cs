@@ -5,9 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TrajectoryRenderer))]
 public class GameBall : MonoBehaviour {
 
+    [Header("Config")]
+    public float characterSlotDistance = 2f;
+
+    [Header("SFX")]
+	[ReadOnly]	public SoundEffectsPlayer sepRef = null;
+				public SoundEffectCollection BallHitSound;
+
     [Header("Status")]
     [ReadOnly] public bool isSleeping = false;
     [ReadOnly] public LevelInstance levelInstance = null;
+    [ReadOnly] public Vector2 slotLeft;
+    [ReadOnly] public Vector2 slotRight;
 
     private Rigidbody2D m_RigidBody;
     private Coroutine m_BallSleepRoutine;
@@ -19,6 +28,7 @@ public class GameBall : MonoBehaviour {
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_TrajectoryRenderer = GetComponent<TrajectoryRenderer>();
+        sepRef = SoundEffectsPlayer.Instance;
 
         levelInstance = LevelInstance.Instance;
 
@@ -46,6 +56,9 @@ public class GameBall : MonoBehaviour {
     
     public void HitBall(Vector2 power) {
         StopSleepRoutine();
+        if(sepRef != null && BallHitSound != null) { 
+            sepRef.PlaySFX(BallHitSound);
+        }
         m_RigidBody.AddForce(power, ForceMode2D.Impulse);
         m_TrajectoryRenderer.StopRender();
         levelInstance.OnShotFired();
@@ -107,7 +120,24 @@ public class GameBall : MonoBehaviour {
 
         m_BallSleepRoutine = null;
     }
+#endregion
 
-    #endregion
+#region Character
+    public void CalculateSlotLocations() {
+        slotLeft = transform.position;
+        slotLeft.x -= characterSlotDistance;
+        RaycastHit2D hitLeft = Physics2D.Raycast(slotLeft, new Vector2(0,-1), 40);
+        if(hitLeft != null) {
+            slotLeft = hitLeft.point;
+        }
 
+        slotRight = transform.position;
+        slotRight.x += characterSlotDistance;
+        RaycastHit2D hitRight = Physics2D.Raycast(slotRight, new Vector2(0,-1), 40);
+        if(hitRight != null) {
+            slotRight = hitRight.point;
+        }
+    }
+
+#endregion
 }
