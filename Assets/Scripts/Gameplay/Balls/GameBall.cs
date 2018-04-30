@@ -40,14 +40,10 @@ public class GameBall : MonoBehaviour {
         if (!isSleeping && levelInstance != null && levelInstance.enableWind) {
             m_RigidBody.AddForce(levelInstance.windForce);
         }else {
-            m_TrajectoryRenderer.Plot(m_RigidBody, transform.position, levelInstance.ShootPower);
+            m_TrajectoryRenderer.Plot(m_RigidBody);
         }
     }
-
-    public void HitBall(Vector2 direction, float power) {
-        HitBall(direction * power);
-    }
-
+    
     public void HitBall(Vector2 power) {
         StopSleepRoutine();
         m_RigidBody.AddForce(power, ForceMode2D.Impulse);
