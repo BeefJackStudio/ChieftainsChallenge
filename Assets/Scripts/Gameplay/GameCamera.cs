@@ -11,7 +11,7 @@ public class GameCamera : MonoBehaviour {
     [ReadOnly]  public Vector3 desiredPosition;
 
     [Header("Config")]
-    public Vector3 defaultOffset = new Vector3(5, 5, -25);
+    private Vector3 defaultOffset = new Vector3(0, 5, -25);
     public float followSpeed = 0.02f;
     public float panSpeed = 30f;
     public float zoomSpeedTouch = 0.1f;
