@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour {
     public AudioClip songToPlay;
 
     private void Start() {
+        SaveDataManager.Instance.Save();
         SoundMusicPlayer.Instance.PlayMusic(songToPlay);
     }
 

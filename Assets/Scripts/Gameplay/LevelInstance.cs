@@ -155,7 +155,9 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		
 		//set level ended.
 		levelState = LevelState.ENDING;
-	}
+
+        SaveDataManager.Instance.Save();
+    }
 
     public void ResetShootingAngle() {
 		DirectionZoneDirection direction = DirectionZoneDirection.RIGHT;

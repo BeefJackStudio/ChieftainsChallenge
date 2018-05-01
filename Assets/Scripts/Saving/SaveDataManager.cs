@@ -48,7 +48,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         }
         return m_SaveDataPath;
     }
-    #endregion
+#endregion
 
     public void SetCutsceneWatched(CutsceneTypes cutscene) {
         if (data.watchedCutscenes.Contains(cutscene)) return;
