@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameCamera : MonoBehaviour {
 
@@ -10,12 +11,13 @@ public class GameCamera : MonoBehaviour {
                 private Vector3 m_PreviousBallPosition;
     [ReadOnly]  public Vector3 desiredPosition;
 
-    [Header("Config")]
-    private Vector3 defaultOffset = new Vector3(0, 5, -25);
+    [Header("Input")]
+    [ReadOnly]  public bool isAllowingInput = false;
     public float followSpeed = 0.02f;
     public float panSpeed = 30f;
     public float zoomSpeedTouch = 0.1f;
     public float zoomSpeedMouse = 15f;
+    private Vector3 defaultOffset = new Vector3(0, 5, -25);
     
     [Header("Restrictions")]
     public Transform leftBound;
@@ -70,11 +72,12 @@ public class GameCamera : MonoBehaviour {
             Vector3 ballDelta = (ballPosition - m_PreviousBallPosition) * 10;
             desiredPosition = ball.transform.position + (ballDelta * 2) + defaultOffset + new Vector3(0, 0, -ballDelta.magnitude);
         } else {
-            if(Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
-                HandleTouch();
-            } else {
-                HandleMouse();
-            }
+                if(Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
+                    HandleTouch();
+                } else {
+                    HandleMouse();
+                }
+            
         }
 
         //Apply position!
@@ -84,6 +87,10 @@ public class GameCamera : MonoBehaviour {
 
         m_PreviousBallPosition = ball.transform.position;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, ball.isSleeping ? 0.2f : followSpeed);
+
+        if(Input.GetMouseButtonUp(0)) {
+            isAllowingInput = false;
+        }
     }
 
 #region Panning and Zooming
@@ -93,10 +100,11 @@ public class GameCamera : MonoBehaviour {
             ZoomCamera(scroll, zoomSpeedMouse);
         }
 
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             lastPanPosition = Input.mousePosition;
+            isAllowingInput = true;
         }
-        if(Input.GetMouseButton(0)) {
+        if(Input.GetMouseButton(0) && isAllowingInput) {
             PanCamera(Input.mousePosition);
         }
     }
@@ -107,12 +115,16 @@ public class GameCamera : MonoBehaviour {
                 //panning
                 wasZoomingLastFrame = false;
                 Touch touch = Input.GetTouch(0);
-                if(touch.phase == TouchPhase.Began) {
+                if(touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject()) {
                     lastPanPosition = touch.position;
                     panFingerId = touch.fingerId;
+                    isAllowingInput = true;
                 } 
-                if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved) {
+                if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && isAllowingInput) {
                     PanCamera(touch.position);
+                }
+                if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Ended) {
+                    isAllowingInput = false;
                 }
                 break;
             case 2: 
