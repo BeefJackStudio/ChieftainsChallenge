@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public enum DirectionZoneDirection {
 	RIGHT,
@@ -88,7 +87,7 @@ public class DirectionZone : MonoBehaviour {
 			return false;
 		}
 
-		if(objectPosition.x < boundaries.bot || objectPosition.x > boundaries.top) {
+		if(objectPosition.y < boundaries.bot || objectPosition.y > boundaries.top) {
 			return false;
 		}
 
