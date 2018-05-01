@@ -14,7 +14,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private const float SHOOT_POWER_MULTIPLIER = 50;
 	
-	//Note: see GameCamera.cs triggers the go to ingame.
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_currentBall = null;
 
@@ -40,15 +39,16 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 				public AudioClip backgroundMusic;
 
     [Header("Shooting")]
+	[ReadOnly] public DirectionZone[] directionZones;
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
     public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER); } }
-    //public Vector2 ShootPower { get { return new Vector2(1, 1) * SHOOT_POWER_MULTIPLIER; } }
 
     public Action OnNextTurn = delegate { };
 
     private void Awake() {
         ResetShootingAngle();
+		FindDirectionZones();
     }
 
     private void Start() {
@@ -66,9 +66,21 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     private void Update() {
+		if(GetBall() == null) { return; }
+
         if (Input.GetKeyDown(KeyCode.U)) {
             TriggerNextTurn();
         }
+
+		if(GetBall().isSleeping && characterInstance != null) { 
+			if(GetBall().IsAimingRight()) {
+				characterInstance.transform.position = GetBall().slotLeft;
+				characterInstance.transform.rotation = new Quaternion(0, 0, 0, 0);
+			} else {
+				characterInstance.transform.position = GetBall().slotRight;
+				characterInstance.transform.rotation = new Quaternion(0, 180, 0, 0);
+			}
+		}
     }
 
     public void ShootBall() {
@@ -77,7 +89,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 	public IEnumerator ShootSequence() {
 		if(characterInstance == null) {
-
 			yield return null;
 		}
 
@@ -90,7 +101,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		
 		//shoot ball.
         GetBall().HitBall(ShootPower);
-        ResetShootingAngle();
 
 		yield return new WaitForSeconds(1);
 		a.Play("AN_Base_Pose", PlayMode.StopAll);
@@ -101,6 +111,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     public void TriggerNextTurn() {
         levelState = LevelState.SHOOTING;
         RandomizeWind();
+		ResetShootingAngle();
         OnNextTurn();
 
 		if(characterInstance == null) { 
@@ -147,7 +158,28 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	}
 
     public void ResetShootingAngle() {
-        shootAngle = new Vector2(0.5f, 0.5f).normalized;
+		DirectionZoneDirection direction = DirectionZoneDirection.RIGHT;
+
+		foreach(DirectionZone dz in directionZones) {
+			if(dz.isPositionInZone(GetBall().transform.position)) {
+				direction = dz.shootingDirection;
+				break;
+			}
+		}
+
+		switch(direction) {
+			case DirectionZoneDirection.RIGHT:
+				shootAngle = new Vector2(0.5f, 0.5f).normalized;
+				break;
+			case DirectionZoneDirection.LEFT:
+				shootAngle = new Vector2(-0.5f, 0.5f).normalized;
+				break;
+			default:
+				shootAngle = new Vector2(0.5f, 0.5f).normalized;
+				break;
+		}
+
+        
     }
 
 	public void SetBall(GameObject go) {
@@ -162,5 +194,9 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	public GameBall GetBall() {
 		if(m_currentBall == null) { return null; }
 		return m_currentBall.GetComponent<GameBall>();
+	}
+
+	public void FindDirectionZones() {
+		directionZones = FindObjectsOfType<DirectionZone>();
 	}
 }
