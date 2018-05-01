@@ -162,7 +162,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 		foreach(DirectionZone dz in directionZones) {
 			if(dz.isPositionInZone(GetBall().transform.position)) {
-				Debug.Log("DZ is " + dz.name);
 				direction = dz.shootingDirection;
 				break;
 			}
