@@ -67,17 +67,17 @@ public class GameCamera : MonoBehaviour {
         }
 
         //In intro or when we are shooting, we need to move the camera.
-        if(!ball.isSleeping || levelInstance.levelState == LevelState.INTRO) {
+        if (!ball.isSleeping || levelInstance.levelState == LevelState.INTRO) {
             Vector3 ballPosition = ball.transform.position;
             Vector3 ballDelta = (ballPosition - m_PreviousBallPosition) * 10;
             desiredPosition = ball.transform.position + (ballDelta * 2) + defaultOffset + new Vector3(0, 0, -ballDelta.magnitude);
         } else {
-                if(Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
-                    HandleTouch();
-                } else {
-                    HandleMouse();
-                }
-            
+            if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {
+                HandleTouch();
+            } else {
+                HandleMouse();
+            }
+
         }
 
         //Apply position!
@@ -100,7 +100,7 @@ public class GameCamera : MonoBehaviour {
             ZoomCamera(scroll, zoomSpeedMouse);
         }
 
-        if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if(Input.GetMouseButtonDown(0) && !IsPointerOverUIObject()) {
             lastPanPosition = Input.mousePosition;
             isAllowingInput = true;
         }
@@ -111,15 +111,15 @@ public class GameCamera : MonoBehaviour {
 
     private void HandleTouch() {
         switch(Input.touchCount) {
-            case 1: 
+            case 1:
                 //panning
                 wasZoomingLastFrame = false;
                 Touch touch = Input.GetTouch(0);
-                if(touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject()) {
+                if (touch.phase == TouchPhase.Began && !IsPointerOverUIObject()) {
                     lastPanPosition = touch.position;
                     panFingerId = touch.fingerId;
                     isAllowingInput = true;
-                } 
+                }
                 if(touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved && isAllowingInput) {
                     PanCamera(touch.position);
                 }
@@ -147,6 +147,14 @@ public class GameCamera : MonoBehaviour {
                 wasZoomingLastFrame = false;
                 break;
         }
+    }
+
+    private bool IsPointerOverUIObject() {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
     private void ZoomCamera(float offset, float speed) {
