@@ -39,6 +39,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 				public AudioClip backgroundMusic;
 
     [Header("Shooting")]
+	[ReadOnly] public ShootingHUD shootingHudRef;
 	[ReadOnly] public DirectionZone[] directionZones;
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
@@ -53,6 +54,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private void Start() {
 		smpRef = SoundMusicPlayer.Instance;
+		shootingHudRef = FindObjectOfType<ShootingHUD>();
 
 		if(smpRef != null) {
             if (backgroundMusic == null) {
@@ -60,6 +62,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             } else {
                 smpRef.PlayMusic(backgroundMusic);
             }
+		}
+
+		if(shootingHudRef != null) {
+			shootingHudRef.Hide(true);
 		}
 
         OnNextTurn();
@@ -92,6 +98,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 			yield return null;
 		}
 
+		if(shootingHudRef != null) {
+			shootingHudRef.Hide();
+		}
+
 		//start play animation
 		Animation a = characterInstance.GetComponentInChildren<Animation>();
 		a.Play("AN_Golf_Swing", PlayMode.StopAll);
@@ -119,6 +129,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
 		GetBall().CalculateSlotLocations();
 		characterInstance.transform.position = GetBall().slotLeft;
+
+		if(shootingHudRef != null) {
+			shootingHudRef.Show();
+		}
     }
 
     public void RandomizeWind() {
@@ -142,7 +156,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 		//show end game
 		if(EndGame.Instance == null){
-			Debug.LogError("No end game UI was assigned to LevelInstance!");
+			Debug.LogWarning("Levelinstance could not find end game instance.");
 			return;
 		}
         EndGame.Instance.ShowEndGameUI(stars);
