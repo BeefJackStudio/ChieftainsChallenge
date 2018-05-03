@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShootingHUD : MonoBehaviour {
+public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
 
     private float m_RotationSpeed = 36;
     private bool m_IsAimingLeft = false;
@@ -21,6 +21,10 @@ public class ShootingHUD : MonoBehaviour {
         objectsToLerp = new List<ObjectLerper>();
         objectsToLerp.AddRange(maDownMoveTransforms);
         objectsToLerp.AddRange(maRightMoveTransforms);
+    }
+
+    private void Start() {
+        Hide(true);
     }
 
     private void Update() {

@@ -39,7 +39,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 				public AudioClip backgroundMusic;
 
     [Header("Shooting")]
-	[ReadOnly] public ShootingHUD shootingHudRef;
 	[ReadOnly] public DirectionZone[] directionZones;
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
@@ -54,7 +53,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private void Start() {
 		smpRef = SoundMusicPlayer.Instance;
-		shootingHudRef = FindObjectOfType<ShootingHUD>();
 
 		if(smpRef != null) {
             if (backgroundMusic == null) {
@@ -62,10 +60,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             } else {
                 smpRef.PlayMusic(backgroundMusic);
             }
-		}
-
-		if(shootingHudRef != null) {
-			shootingHudRef.Hide(true);
 		}
 
         OnNextTurn();
@@ -98,9 +92,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 			yield return null;
 		}
 
-		if(shootingHudRef != null) {
-			shootingHudRef.Hide();
-		}
+        ShootingHUD.Instance.Hide();
 
 		//start play animation
 		Animation a = characterInstance.GetComponentInChildren<Animation>();
@@ -130,9 +122,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		GetBall().CalculateSlotLocations();
 		characterInstance.transform.position = GetBall().slotLeft;
 
-		if(shootingHudRef != null) {
-			shootingHudRef.Show();
-		}
+        ShootingHUD.Instance.Show();
     }
 
     public void RandomizeWind() {
