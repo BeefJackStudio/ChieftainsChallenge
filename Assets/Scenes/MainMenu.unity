@@ -2543,6 +2543,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songToPlay: {fileID: 8300000, guid: 7fb4073c242c5804eadd57a144fd0c89, type: 3}
+  mainMenuView: {fileID: 1797268666}
+  mapView: {fileID: 1425246448}
+  optionsView: {fileID: 1491853704}
+  levelSelectView: {fileID: 950776186}
+  boxOverlay: {fileID: 776274524}
 --- !u!4 &442480507
 Transform:
   m_ObjectHideFlags: 0

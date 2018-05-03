@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelState: 0
-  enableWind: 0
+  enableWind: 1
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
@@ -2253,7 +2253,6 @@ MonoBehaviour:
   animationDelayShoot: 2.1
   smpRef: {fileID: 0}
   backgroundMusic: {fileID: 0}
-  shootingHudRef: {fileID: 0}
   directionZones: []
   shootAngle: {x: 0.5, y: 0.5}
   normalizedShootPower: 0.5

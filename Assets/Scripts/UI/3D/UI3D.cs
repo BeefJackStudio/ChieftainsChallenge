@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,11 @@ public class UI3D : MonoBehaviourSingleton<UI3D> {
 
     private Camera m_Camera;
     private Coroutine m_CameraMoveRoutine;
+    private string m_CurrentLocation = "";
+
+    public string GetCurrentLocation() {
+        return m_CurrentLocation;
+    }
 
     private void Start() {
         m_Camera = Camera.main;
@@ -53,6 +58,7 @@ public class UI3D : MonoBehaviourSingleton<UI3D> {
         Quaternion startRotation = m_Camera.transform.rotation;
         Quaternion endRotation = target.rotation;
         float startTime = Time.time;
+        m_CurrentLocation = target.name;
 
         float animationDuration = 1f;
 

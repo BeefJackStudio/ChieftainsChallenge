@@ -11,6 +11,7 @@ public class TrajectoryRenderer : MonoBehaviour {
 	[ReadOnly]	private bool m_doRender = false;
 
 	[Header("Config")]
+    public bool includeWindInPrediction = false;
     public float predictionDuration = 0.35f;
     public int predictionStepsPerPoint = 1;
     public GameObject pointPrefab;
@@ -44,12 +45,15 @@ public class TrajectoryRenderer : MonoBehaviour {
 
     public Vector2[] Plot(Rigidbody2D rigidbody) {
         Vector2[] velocities;
-        return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower, ForceMode2D.Impulse, out velocities, predictionDuration, false);
+        if(includeWindInPrediction && LevelInstance.Instance != null && LevelInstance.Instance.enableWind) {
+            return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 2, ForceMode2D.Impulse, out velocities, LevelInstance.Instance.windForce, predictionDuration, false);
+        } 
+
+        return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 2, ForceMode2D.Impulse, out velocities, predictionDuration, false);
     }
 
     void InstantiateRenderTrajectoryGameObjects(Rigidbody2D rigidbody) {
-        Vector2[] velocities;
-        Vector2[] positions = TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower, ForceMode2D.Impulse, out velocities, predictionDuration, false);
+        Vector2[] positions = Plot(rigidbody);
 
 		Vector3 scaleDecreasePerStep = StartScale - EndScale;
 		scaleDecreasePerStep /= positions.Length;

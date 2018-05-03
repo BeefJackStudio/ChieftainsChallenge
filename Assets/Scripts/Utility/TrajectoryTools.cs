@@ -99,6 +99,57 @@ public static class TrajectoryTools
         return positions;
     }
 
+    public static Vector2[] GetTrajectory(this Rigidbody2D rb, Vector2 force, ForceMode2D mode, out Vector2[] velocities, Vector2 WindForce, float trajectoryDuration = 1.0f, bool constantForce = false)
+    {
+        var maxSpeedErrorThrown = false;
+        var physicsFramerate = 1 / Time.fixedDeltaTime;
+
+        if (rb.drag >= physicsFramerate)
+            Debug.LogWarning(rb + " Linear Drag(" + rb.drag + ") too high, trajectory Prediction will be inaccurate."
+                             + " Maximum safe drag = (1 / Time.fixedDeltaTime), currently: " + (physicsFramerate) +
+                             ").");
+
+        trajectoryDuration = Mathf.Max(Time.fixedDeltaTime * 2, trajectoryDuration);
+        var points = Mathf.Max(2, Mathf.RoundToInt(trajectoryDuration / Time.fixedDeltaTime));
+
+        var positions = new Vector2[points];
+        velocities = new Vector2[points];
+
+        positions[0] = rb.transform.position;
+        velocities[0] = rb.velocity;
+        
+        for (var i = 0; i < positions.Length - 1; i++)
+        {
+            var updatedVelocity = velocities[i];
+
+            updatedVelocity = updatedVelocity.ApplyGravity(rb);
+            updatedVelocity = updatedVelocity.ApplyDrag(rb);
+            updatedVelocity = updatedVelocity.ApplyWind(rb, WindForce);
+
+            if (i == 0 || constantForce)
+                updatedVelocity = updatedVelocity.ApplyForce(rb, force, mode);
+
+            if (!maxSpeedErrorThrown && updatedVelocity.magnitude > Physics2D.maxTranslationSpeed * physicsFramerate)
+            {
+                Debug.Log(rb + "is expected to reach a speed (" + updatedVelocity.magnitude * Time.fixedDeltaTime +
+                          ") greater than Physics2D.maxTranslationSpeed(" + Physics2D.maxTranslationSpeed +
+                          ") trajectory prediction may be innaccurate, Consider increasing maxTranslationSpeed," +
+                          " mass, linear drag or decreasing manually applied forces");
+                maxSpeedErrorThrown = true;
+            }
+
+            updatedVelocity = updatedVelocity.ApplyConstraints(rb);
+
+            velocities[i] = updatedVelocity;
+
+            positions[i + 1] = positions[i] + (velocities[i] * Time.fixedDeltaTime);
+            velocities[i + 1] = velocities[i];
+        }
+
+        return positions;
+    }
+
+
     /// <summary>
     ///     Calculates a <seealso cref="Rigidbody2D" />'s trajectory and returns it as an array of position vectors.
     /// </summary>
@@ -317,6 +368,19 @@ public static class TrajectoryTools
             gravity.y = 0;
 
         var newVelocity = velocity + (gravity * gravityScale * Time.fixedDeltaTime);
+        return newVelocity;
+    }
+
+    /// <summary>
+    ///     Takes a velocity vector, calculates and adds the wind forces
+    ///     which the given Rigidbody2D would recieve, then returns the result.
+    /// </summary>
+    /// <param name="velocity"> The velocity vector to modify </param>
+    /// <param name="rb"> The Rigidbody2D used to calculate the wind forces. </param>
+    /// <returns> Velocity vector with wind applied. </returns>
+    private static Vector2 ApplyWind(this Vector2 velocity, Rigidbody2D rb, Vector2 WindForce)
+    {
+        var newVelocity = velocity + (WindForce * Time.fixedDeltaTime);
         return newVelocity;
     }
 
