@@ -2858,8 +2858,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 865760002}
-  - {fileID: 2032564375}
   - {fileID: 1841535396}
+  - {fileID: 2032564375}
   - {fileID: 150498495}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -8979,6 +8979,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 111963349839461426, guid: b96454e19b8b45d438d6b331c093a450,
+        type: 2}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 8f3909dfebfdc2145bc40bcfc991017c, type: 2}
+    - target: {fileID: 114334144322927392, guid: b96454e19b8b45d438d6b331c093a450,
+        type: 2}
+      propertyPath: useJiggleBones
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b96454e19b8b45d438d6b331c093a450, type: 2}
   m_IsPrefabParent: 0
@@ -9530,7 +9540,7 @@ Transform:
   m_Children:
   - {fileID: 730830417}
   m_Father: {fileID: 542595946}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853347189
 GameObject:

@@ -18,7 +18,7 @@ public class CharacterMask : MonoBehaviour {
         m_LastPosition = transform.position;
         foreach (Transform t in jigglebones) {
             m_StartScales.Add(t, t.localScale);
-            m_StartRotations.Add(t, t.transform.rotation.eulerAngles.z);
+            m_StartRotations.Add(t, t.transform.localEulerAngles.z);
         }
     }
 
@@ -42,9 +42,9 @@ public class CharacterMask : MonoBehaviour {
         float targetRotation = m_Velocity.x * 150 * jiggleAmount;
 
         foreach (Transform t in jigglebones) {
+            //float rotation = Mathf.Lerp(t.rotation.eulerAngles.z, m_StartRotations[t] + targetRotation, 0.05f);
             t.localScale = Vector3.Lerp(t.localScale, m_StartScales[t] + targetScale, 0.1f);
-            t.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(t.rotation.eulerAngles.z, m_StartRotations[t] + targetRotation, 0.05f));
-           
+            t.localRotation = Quaternion.Euler(0, 180, Mathf.Lerp(t.localEulerAngles.z, m_StartRotations[t] + targetRotation, 0.05f));           
         }
         m_LastPosition = pos;
     }

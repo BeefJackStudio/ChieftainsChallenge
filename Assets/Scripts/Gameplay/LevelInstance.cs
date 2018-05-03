@@ -75,14 +75,16 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             TriggerNextTurn();
         }
 
-		if(GetBall().isSleeping && characterInstance != null) { 
-			if(GetBall().IsAimingRight()) {
+		if(GetBall().isSleeping && characterInstance != null) {
+            Vector3 scale = characterInstance.transform.localScale;
+
+            if (GetBall().IsAimingRight()) {
 				characterInstance.transform.position = GetBall().slotLeft;
-				characterInstance.transform.rotation = new Quaternion(0, 0, 0, 0);
+                characterInstance.transform.localScale = new Vector3(Mathf.Abs(scale.x), scale.y, scale.z);
 			} else {
 				characterInstance.transform.position = GetBall().slotRight;
-				characterInstance.transform.rotation = new Quaternion(0, 180, 0, 0);
-			}
+                characterInstance.transform.localScale = new Vector3(-Mathf.Abs(scale.x), scale.y, scale.z);
+            }
 		}
     }
 
