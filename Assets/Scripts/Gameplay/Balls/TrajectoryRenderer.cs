@@ -6,14 +6,14 @@ using UnityEngine;
 public class TrajectoryRenderer : MonoBehaviour {
 
 	[Header("Status")]
-	[ReadOnly]  public List<GameObject> trajectoryPoints;
+    [ReadOnly]  public Vector2[] trajectoryPositions;
 	[ReadOnly]	public float timer = 0.0f;
 	[ReadOnly]	private bool m_doRender = false;
+	private List<GameObject> trajectoryPoints;
 
 	[Header("Config")]
     public bool includeWindInPrediction = false;
-    public float predictionDuration = 0.35f;
-    public int predictionStepsPerPoint = 1;
+    public float predictionDuration = 0.25f;
     public GameObject pointPrefab;
     public float calculateEachSeconds = 0.01f;
 	public Vector2 StartScale = new Vector3(1f, 1f, 1f);
@@ -21,6 +21,7 @@ public class TrajectoryRenderer : MonoBehaviour {
     public Color color = Color.white;
 
 	public void StartRender() {
+        trajectoryPoints = new List<GameObject>();
 		InstantiateRenderTrajectoryGameObjects(gameObject.GetComponent<Rigidbody2D>());
 		m_doRender = true;
 	}
@@ -39,17 +40,17 @@ public class TrajectoryRenderer : MonoBehaviour {
 
         //dirty getcomponent, we requirecomponent. but, todo: improve.
 		timer = 0;
-		Vector2[] trajectory = Plot(gameObject.GetComponent<Rigidbody2D>());
-		RenderTrajectory(trajectory);
+		trajectoryPositions = Plot(gameObject.GetComponent<Rigidbody2D>());
+		RenderTrajectory(trajectoryPositions);
 	}
 
     public Vector2[] Plot(Rigidbody2D rigidbody) {
         Vector2[] velocities;
         if(includeWindInPrediction && LevelInstance.Instance != null && LevelInstance.Instance.enableWind) {
-            return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 2, ForceMode2D.Impulse, out velocities, LevelInstance.Instance.windForce, predictionDuration, false);
+            return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 1.5f, ForceMode2D.Impulse, out velocities, LevelInstance.Instance.windForce, predictionDuration, false);
         } 
 
-        return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 2, ForceMode2D.Impulse, out velocities, predictionDuration, false);
+        return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 1.5f, ForceMode2D.Impulse, out velocities, predictionDuration, false);
     }
 
     void InstantiateRenderTrajectoryGameObjects(Rigidbody2D rigidbody) {

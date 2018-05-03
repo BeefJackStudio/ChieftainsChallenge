@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec006b146c1b6048b4ae2ad68ea23ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trajectoryPoints: []
+  trajectoryPositions: []
   timer: 0
-  predictionDuration: 0.35
-  predictionStepsPerPoint: 1
+  includeWindInPrediction: 0
+  predictionDuration: 0.25
   pointPrefab: {fileID: 1089893719854048, guid: a70cf672962beb645afae11a459dfd6e,
     type: 2}
   calculateEachSeconds: 0.01
