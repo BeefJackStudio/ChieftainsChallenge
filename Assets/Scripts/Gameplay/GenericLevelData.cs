@@ -5,4 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GenericLevelData : ScriptableObject {
     public GameObject playerCharacterPrefab;
+    public GameObject playerAppearParticle;
 }

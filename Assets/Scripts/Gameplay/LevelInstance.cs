@@ -46,6 +46,9 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     public Action OnNextTurn = delegate { };
 
+    private GameObject m_PlayerDisappearParticle;
+    private GameObject m_PlayerAppearParticle;
+
     private void Awake() {
         ResetShootingAngle();
 		FindDirectionZones();
@@ -118,9 +121,22 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 		if(characterInstance == null) { 
 			characterInstance = Instantiate(levelData.playerCharacterPrefab);
-		}
+        }else {
+            if (m_PlayerDisappearParticle != null) {
+                Destroy(m_PlayerDisappearParticle);
+            }
+
+            m_PlayerDisappearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
+        }
+
 		GetBall().CalculateSlotLocations();
 		characterInstance.transform.position = GetBall().slotLeft;
+
+        if(m_PlayerAppearParticle != null) {
+            Destroy(m_PlayerAppearParticle);
+        }
+
+        m_PlayerAppearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
 
         ShootingHUD.Instance.Show();
     }

@@ -16,7 +16,7 @@ public class CharacterMask : MonoBehaviour {
 
     private void Awake() {
         m_LastPosition = transform.position;
-        foreach(Transform t in jigglebones) {
+        foreach (Transform t in jigglebones) {
             m_StartScales.Add(t, t.localScale);
             m_StartRotations.Add(t, t.transform.rotation.eulerAngles.z);
         }
@@ -27,6 +27,11 @@ public class CharacterMask : MonoBehaviour {
 
         Vector3 pos = transform.position;
         Vector3 delta = pos - m_LastPosition;
+
+        if(delta.magnitude >= 3) {
+            m_LastPosition = transform.position;
+            delta = Vector3.zero;
+        }
 
         m_Velocity = delta;
         m_Velocity *= damping;
