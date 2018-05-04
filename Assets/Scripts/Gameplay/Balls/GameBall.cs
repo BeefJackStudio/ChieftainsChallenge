@@ -74,7 +74,7 @@ public class GameBall : MonoBehaviour {
         float angle = Vector2.SignedAngle(direction, Vector2.up);
         if (Mathf.Abs(angle) >= 20) return;
 
-        m_RigidBody.velocity *= (1f - (Time.time - m_BallCollisionStart) * 0.05f);
+        m_RigidBody.velocity *= (1f - (Time.time - m_BallCollisionStart) * 0.075f);
 
         //Start a routine to check if the ball will stay still
         if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD) {
@@ -103,7 +103,7 @@ public class GameBall : MonoBehaviour {
 
     private IEnumerator BallSleepRoutine() {
         float startTime = Time.time;
-        float waitTime = 2;
+        float waitTime = 1;
 
         yield return new WaitForSeconds(waitTime);
 

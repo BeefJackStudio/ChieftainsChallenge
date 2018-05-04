@@ -22,7 +22,7 @@ public static class SoundManager {
     }
 
     public static float BackgroundMusicVolume {
-        get { return SaveDataManager.Instance.data.volumeMusic * MasterVolume * 0.4f; }
+        get { return SaveDataManager.Instance.data.volumeMusic * MasterVolume * 0.2f; }
         set {
             SaveDataManager.Instance.data.volumeMusic = value;
             SoundMusicPlayer.Instance.SetVolume(BackgroundMusicVolume);
