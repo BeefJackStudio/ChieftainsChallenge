@@ -13,12 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: South America
   levels:
-  - scene: Level_1
+  - scene: Level_2
     index: 0
     continent: {fileID: 11400000}
-  - scene: Level_2
+  - scene: Level_3
     index: 1
     continent: {fileID: 11400000}
-  - scene: Level_3
+  - scene: Level_4
     index: 2
     continent: {fileID: 11400000}
