@@ -43,6 +43,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
     public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER); } }
+    //public Vector2 ShootPower { get { return new Vector2(0, 1) * SHOOT_POWER_MULTIPLIER; } }
 
     public Action OnNextTurn = delegate { };
 

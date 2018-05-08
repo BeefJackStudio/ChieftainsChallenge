@@ -19,6 +19,7 @@ public class GameBall : MonoBehaviour {
     [ReadOnly] public Vector2 slotRight;
 
     private Rigidbody2D m_RigidBody;
+    private Collider2D m_Collider;
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
     private TrajectoryRenderer m_TrajectoryRenderer;
@@ -27,6 +28,7 @@ public class GameBall : MonoBehaviour {
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
+        m_Collider = GetComponent<Collider2D>();
         m_TrajectoryRenderer = GetComponent<TrajectoryRenderer>();
         sepRef = SoundEffectsPlayer.Instance;
 
@@ -41,6 +43,9 @@ public class GameBall : MonoBehaviour {
     }
 
     private void Update() {
+
+        Debug.DrawLine(transform.position, transform.position + new Vector3(m_RigidBody.velocity.x, m_RigidBody.velocity.y, 0), Color.yellow, 5);
+
         if(levelInstance == null) { return; }
 
         if (Input.GetKeyDown(KeyCode.D)) {
@@ -55,13 +60,22 @@ public class GameBall : MonoBehaviour {
     }
     
     public void HitBall(Vector2 power) {
+        StartCoroutine(HitBallRoutine(power));
+    }
+
+    private IEnumerator HitBallRoutine(Vector2 power) {
         StopSleepRoutine();
-        if(sepRef != null && BallHitSound != null) { 
+        if (sepRef != null && BallHitSound != null) {
             sepRef.PlaySFX(BallHitSound);
         }
+
+        m_Collider.enabled = false;
         m_RigidBody.AddForce(power, ForceMode2D.Impulse);
         m_TrajectoryRenderer.StopRender();
         levelInstance.OnShotFired();
+
+        yield return new WaitForFixedUpdate();
+        m_Collider.enabled = true;
     }
 
 #region Ball sleeping

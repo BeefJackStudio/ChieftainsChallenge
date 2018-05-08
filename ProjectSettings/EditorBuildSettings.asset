@@ -20,21 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DebugSettings.unity
     guid: e10409c9f49002247afd3f56b8cd31fc
-  - enabled: 1
-    path: Assets/Scenes/Levels/Mayan/Level_1.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/213291dd2b063ad4bb4a965bd7bad599
     guid: 213291dd2b063ad4bb4a965bd7bad599
   - enabled: 1
     path: Assets/Scenes/Levels/Game_HUD.unity
     guid: 047a8b2d57e71034eab0a3c0667d35cd
   - enabled: 1
-    path: Assets/Scenes/Levels/Mayan/Level_2.unity
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_1.unity
     guid: 29a24d9e5e1b5e241b62a7cf8646a28c
   - enabled: 1
-    path: Assets/Scenes/Levels/Mayan/Level_3.unity
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_2.unity
     guid: 2cc8f2d7c38e85849923dbc01d34a096
   - enabled: 1
     path: Assets/Scenes/Levels/OneShots/Level_OS_Japan.unity
     guid: ab67bdfd6fe200544b6ba69f218bfd3d
   - enabled: 1
-    path: Assets/Scenes/Levels/Mayan/Level_4.unity
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_3.unity
     guid: 1c5598fc7f656d34094f461194481c90
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_4.unity
+    guid: f6ef620cc491a9243bfb200b2ba33d2e
