@@ -22,3 +22,6 @@ MonoBehaviour:
   - scene: Level_4
     index: 2
     continent: {fileID: 11400000}
+  - scene: Level_5
+    index: 3
+    continent: {fileID: 11400000}
