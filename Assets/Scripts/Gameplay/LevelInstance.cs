@@ -12,7 +12,7 @@ public enum LevelState {
 
 public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
-    private const float SHOOT_POWER_MULTIPLIER = 50;
+    private const float SHOOT_POWER_MULTIPLIER = 30;
 	
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_currentBall = null;
