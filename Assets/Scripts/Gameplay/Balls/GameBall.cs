@@ -86,12 +86,13 @@ public class GameBall : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
         Vector2 direction = new Vector2(transform.position.x, transform.position.y) - collision.contacts[0].point;
         float angle = Vector2.SignedAngle(direction, Vector2.up);
-        if (Mathf.Abs(angle) >= 20) return;
+        float velocityMagnitude = m_RigidBody.velocity.magnitude;
+        if (Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) return;
 
         m_RigidBody.velocity *= (1f - (Time.time - m_BallCollisionStart) * 0.075f);
 
         //Start a routine to check if the ball will stay still
-        if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD) {
+        if (velocityMagnitude <= VELOCITY_SLEEP_THRESHOLD) {
             StartSleepRoutine();
         } else {
             StopSleepRoutine();

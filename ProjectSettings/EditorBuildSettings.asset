@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DebugSettings.unity
     guid: e10409c9f49002247afd3f56b8cd31fc
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/213291dd2b063ad4bb4a965bd7bad599
+    path: 
     guid: 213291dd2b063ad4bb4a965bd7bad599
   - enabled: 1
     path: Assets/Scenes/Levels/Game_HUD.unity
@@ -44,3 +44,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Mayan/Level_Mayan_5.unity
     guid: cd485fea80a65b640920c2165beb5a26
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_6.unity
+    guid: 3fb01a80597d5b34aadd31af9dbc6c8f

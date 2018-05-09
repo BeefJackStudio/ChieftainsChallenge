@@ -51,14 +51,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950375309940032}
-  m_LocalRotation: {x: -0, y: -0, z: -0.5620732, w: 0.8270876}
-  m_LocalPosition: {x: -16.100855, y: -3.4208822, z: 10.6331215}
-  m_LocalScale: {x: 31.823774, y: 67.50475, z: 18.12827}
+  m_LocalRotation: {x: -0, y: -0, z: -0.95181185, w: 0.30668274}
+  m_LocalPosition: {x: 6.41, y: 15.6, z: 0}
+  m_LocalScale: {x: 3.4033825, y: 14.715566, z: 10}
   m_Children:
   - {fileID: 4859112747563310}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -68.399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -144.281}
 --- !u!4 &4859112747563310
 Transform:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab98459a74ae0944aac4c2f70ac1cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 50
 --- !u!198 &198514533788771092
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -168,15 +168,15 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -360680389
+  randomSeed: 1805624360
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.3
+      scalar: 6
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -216,8 +216,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 1
+      scalar: 0.2
+      minScalar: -0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -617,9 +617,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: -0.5}
+    m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 0.04}
+    m_Scale: {x: 1, y: 0.09, z: 1}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -1523,7 +1523,7 @@ ParticleSystem:
     enabled: 0
     multiplier: 1
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -1650,7 +1650,7 @@ ParticleSystem:
     magnitude:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1696,7 +1696,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.77
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1826,7 +1826,7 @@ ParticleSystem:
     scrollSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.03
+      scalar: 0.17
       minScalar: 0
       maxCurve:
         serializedVersion: 2
