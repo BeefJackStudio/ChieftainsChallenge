@@ -26,12 +26,12 @@ SpriteAtlas:
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: 353ef27b57122548125bf0785df59188
+      Hash: 99f2b0aa78b780a8a81ab91560739784
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: 353ef27b57122548125bf0785df59188
-    totalSpriteSurfaceArea: 1192661
+    hashString: 99f2b0aa78b780a8a81ab91560739784
+    totalSpriteSurfaceArea: 1258197
     packables:
     - {fileID: 102900000, guid: 45413f59fa829c544b43168e4cadf625, type: 3}
     - {fileID: 102900000, guid: 513cd4ce42cda1244b18ce60165c2db7, type: 3}
@@ -47,6 +47,7 @@ SpriteAtlas:
     - aa507c4bd973d874086becce600a665c: 21300000
     - 0f912ede24879f240bc454dc9295f541: 21300000
     - 8c35f2a7e256f4b48ad00f12180f9ff0: 21300000
+    - a7ea3892635a38846a716d9d89fb9dc0: 21300000
     - ade23d3d926614746ab1148eb9122cfe: 21300000
     - 2483f2800bbd5df4d8273732d0a1d27c: 21300000
     - e4694f49aadd5b0439cceb0e6792b4da: 21300000
@@ -67,6 +68,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: aa507c4bd973d874086becce600a665c, type: 3}
   - {fileID: 21300000, guid: 0f912ede24879f240bc454dc9295f541, type: 3}
   - {fileID: 21300000, guid: 8c35f2a7e256f4b48ad00f12180f9ff0, type: 3}
+  - {fileID: 21300000, guid: a7ea3892635a38846a716d9d89fb9dc0, type: 3}
   - {fileID: 21300000, guid: ade23d3d926614746ab1148eb9122cfe, type: 3}
   - {fileID: 21300000, guid: 2483f2800bbd5df4d8273732d0a1d27c, type: 3}
   - {fileID: 21300000, guid: e4694f49aadd5b0439cceb0e6792b4da, type: 3}
@@ -86,6 +88,7 @@ SpriteAtlas:
   - UI_Sunshot_Zone
   - UI_Sunshot_Zone_Active
   - UI_Cannon_Shoot
+  - speedArrow
   - UI_Wind_Arrow
   - UI_Wind_Backdrop
   - UI_Windshot_Icon

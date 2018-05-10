@@ -1325,11 +1325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 25.63779
-    bot: -1.8377914
-    left: -15.862356
-    right: 63.522354
-    squaredArea: 2181.141
+    top: 19.517113
+    bot: -1.8371124
+    left: -15.861924
+    right: 46.761925
+    squaredArea: 1337.2838
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -2877,11 +2877,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 26.912647
-    bot: -5.6326475
-    left: 63.510323
-    right: 83.34968
-    squaredArea: 645.6777
+    top: 26.91439
+    bot: 4.4256086
+    left: 46.892776
+    right: 83.34723
+    squaredArea: 819.8162
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1898996658
@@ -2968,11 +2968,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 26.91
-    bot: 4.4300013
-    left: 46.890007
-    right: 83.35
-    squaredArea: 819.62054
+    top: 45.539997
+    bot: 23.060001
+    left: 19.07003
+    right: 68.20997
+    squaredArea: 1104.6656
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1952634553
