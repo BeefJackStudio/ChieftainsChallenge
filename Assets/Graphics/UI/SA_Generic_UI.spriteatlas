@@ -26,7 +26,7 @@ SpriteAtlas:
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: 00000000000000000000000000000000
+      Hash: 0ebf707bf87c903432d2d882d1651e16
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
