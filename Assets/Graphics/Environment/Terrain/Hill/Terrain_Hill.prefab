@@ -45,7 +45,7 @@ MonoBehaviour:
   descriptors:
   - applyTo: 0
     zOffset: 0
-    yOffset: 0
+    yOffset: 0.66
     leftCap:
       serializedVersion: 2
       x: 0
@@ -145,13 +145,13 @@ MonoBehaviour:
       width: 0.09765625
       height: 0.1953125
     capOffset: 0
-  - applyTo: 0
+  - applyTo: 3
     zOffset: 0
     yOffset: 0
     leftCap:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 0.1796875
       width: 0
       height: 0
     innerLeftCap:
@@ -162,8 +162,8 @@ MonoBehaviour:
       height: 0
     rightCap:
       serializedVersion: 2
-      x: 0
-      y: 0
+      x: 1
+      y: 0.1796875
       width: 0
       height: 0
     innerRightCap:
@@ -175,9 +175,9 @@ MonoBehaviour:
     body:
     - serializedVersion: 2
       x: 0
-      y: 0
-      width: 0.09765625
-      height: 0.1953125
+      y: 0.1796875
+      width: 1
+      height: 0.5859375
     capOffset: 0
   isPixel: 0
 --- !u!1001 &100100000

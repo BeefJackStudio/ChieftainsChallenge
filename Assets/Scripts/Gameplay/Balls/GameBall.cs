@@ -89,7 +89,8 @@ public class GameBall : MonoBehaviour {
         float velocityMagnitude = m_RigidBody.velocity.magnitude;
         if (Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) return;
 
-        m_RigidBody.velocity *= (1f - (Time.time - m_BallCollisionStart) * 0.075f);
+        float materialFriction = Mathf.Clamp01((collision.collider.sharedMaterial.friction - 1) * 0.5f);
+        m_RigidBody.velocity *= ((1f - materialFriction) - (Time.time - m_BallCollisionStart) * 0.075f);
 
         //Start a routine to check if the ball will stay still
         if (velocityMagnitude <= VELOCITY_SLEEP_THRESHOLD) {

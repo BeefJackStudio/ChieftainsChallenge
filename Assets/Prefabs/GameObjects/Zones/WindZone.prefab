@@ -64,14 +64,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650449205326894}
-  m_LocalRotation: {x: -0, y: -0, z: -0.5620732, w: 0.8270876}
-  m_LocalPosition: {x: 7.9, y: 22.8, z: 4.6}
-  m_LocalScale: {x: 31.823774, y: 67.50475, z: 18.12827}
+  m_LocalRotation: {x: -0, y: -0, z: -0.107348286, w: 0.9942215}
+  m_LocalPosition: {x: 18.5, y: -11, z: 4.6}
+  m_LocalScale: {x: 10.037847, y: 52.199005, z: 18.12827}
   m_Children:
   - {fileID: 4084263094219602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -68.399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.325001}
 --- !u!61 &61566235338086682
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -168,7 +168,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -360680389
+  randomSeed: -1260192655
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3385,7 +3385,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97db3193cb14f6d4dad8b80448eeadff, type: 3}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: 5947492a9746879468fd05cac35c9950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
