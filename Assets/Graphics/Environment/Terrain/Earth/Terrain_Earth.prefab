@@ -44,7 +44,7 @@ MonoBehaviour:
   edgeMaterial: {fileID: 2100000, guid: 14dc88aaa1fd98b478a181662d3dd2ac, type: 2}
   descriptors:
   - applyTo: 0
-    zOffset: -1
+    zOffset: 0
     yOffset: 0.33
     leftCap:
       serializedVersion: 2
