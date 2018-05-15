@@ -14,5 +14,6 @@ Assets/Graphics/Environment/Terrain/Hot_Spring/Terrain_Hotspring.prefab
 Assets/Graphics/Environment/Terrain/Sand/Terrain_Sand.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/SandTerrainMaterial.prefab
 Assets/Graphics/Environment/Terrain/Soil_Dark/Terrain_Soil_Dark.prefab
+Assets/Graphics/Environment/Terrain/Gum/Terrain_Gum.prefab
 
 [Ferr2DT_PathTerrain]
