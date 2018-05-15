@@ -37,3 +37,6 @@ MonoBehaviour:
   - scene: Level_Mayan_8
     index: 7
     continent: {fileID: 11400000}
+  - scene: Level_Mayan_9
+    index: 8
+    continent: {fileID: 11400000}

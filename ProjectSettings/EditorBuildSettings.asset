@@ -44,3 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Mayan/Level_Mayan_7.unity
     guid: 750b379e1a3d17f4cad52822d47947cf
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_8.unity
+    guid: d12a8b0119d389b4791b89a3de751913
+  - enabled: 1
+    path: Assets/Scenes/Levels/Mayan/Level_Mayan_9.unity
+    guid: 7e1b197948cfa9d44bf023cab6a5deb8
