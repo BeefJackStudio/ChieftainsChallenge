@@ -146,7 +146,7 @@ MonoBehaviour:
       height: 0.16601562
     capOffset: 0
   - applyTo: 3
-    zOffset: -1
+    zOffset: 0
     yOffset: 0
     leftCap:
       serializedVersion: 2
