@@ -20,7 +20,7 @@ public class ObjectLerper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Vector2.Distance(rectTransform.anchoredPosition, targetPosition) > 0.1) {
+		if(Vector2.Distance(rectTransform.anchoredPosition, targetPosition) > 0.01f) {
 			rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, targetPosition, speed);
 		}
 	}

@@ -45,12 +45,13 @@ public class TrajectoryRenderer : MonoBehaviour {
 	}
 
     public Vector2[] Plot(Rigidbody2D rigidbody) {
+        Vector2 angle = LevelInstance.Instance.shootAngle.normalized * 20;
         Vector2[] velocities;
         if(includeWindInPrediction && LevelInstance.Instance != null && LevelInstance.Instance.enableWind) {
-            return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 1.5f, ForceMode2D.Impulse, out velocities, LevelInstance.Instance.windForce, predictionDuration, false);
+            return TrajectoryTools.GetTrajectory(rigidbody, angle, ForceMode2D.Impulse, out velocities, LevelInstance.Instance.windForce, predictionDuration, false);
         } 
 
-        return TrajectoryTools.GetTrajectory(rigidbody, LevelInstance.Instance.ShootPower / 1.5f, ForceMode2D.Impulse, out velocities, predictionDuration, false);
+        return TrajectoryTools.GetTrajectory(rigidbody, angle, ForceMode2D.Impulse, out velocities, predictionDuration, false);
     }
 
     void InstantiateRenderTrajectoryGameObjects(Rigidbody2D rigidbody) {
