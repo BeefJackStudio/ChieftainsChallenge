@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CharacterMask : MonoBehaviour {
 
+    [Header("Gameplay")]
+    public string displayName = "Mask name";
+    [Multiline] public string description = "Mask description";
+    public AnimationCurve powerCurve;
+    public float powerMultiplier = 1;
+    public float powerTimeScale = 0.5f;
+
+    [Header("Visuals")]
     public bool useJiggleBones = true;
     public Transform[] jigglebones;
     public float jiggleAmount = 1;

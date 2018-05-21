@@ -349,6 +349,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96e6ee6be2d3dd45abc38dab8bac777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Royal Mask
+  description: A balanced mask that allows for greater control over powerful shots,
+    but with less overall power.
+  powerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1.2793351
+      outSlope: 1.2793351
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  powerMultiplier: 0.95
+  powerTimeScale: 0.6
   useJiggleBones: 1
   jigglebones:
   - {fileID: 4070598193411054}

@@ -50,11 +50,15 @@ public class CharacterSpriteHandler : MonoBehaviour {
         handRight.ApplySprite(bodyType.handRight, spriteMaterial, outlineMaterial, outlineWidth);
         handLeft.ApplySprite(bodyType.handLeft, spriteMaterial, outlineMaterial, outlineWidth);
 
+        ApplyMask(maskPrefab);
+    }
+
+    public void ApplyMask(CharacterMask mask) {
         foreach (CharacterMask oldMask in maskParent.GetComponentsInChildren<CharacterMask>()) {
             DestroyImmediate(oldMask.gameObject);
         }
 
-        CharacterMask nMask = Instantiate(maskPrefab, maskParent, false);
+        CharacterMask nMask = Instantiate(mask, maskParent, false);
         nMask.transform.localPosition = Vector3.zero;
     }
 

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
 
     public RectTransform powerBar;
-    public AnimationCurve curve;
+    public AnimationCurve powerCurve;
+    public float powerTimeScale = 0.5f;
 
     [Header("Move Animation (hiding)")]
     public float maDistance = 150;       
@@ -46,7 +47,7 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
         }
 
         if (m_IsShooting) {
-            OnPowerChange(curve.Evaluate((Time.time - m_ShootStartTime) * 0.5f));
+            OnPowerChange(powerCurve.Evaluate((Time.time - m_ShootStartTime) * powerTimeScale));
         }
     }
 

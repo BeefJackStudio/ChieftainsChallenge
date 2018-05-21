@@ -42,7 +42,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	[ReadOnly] public DirectionZone[] directionZones;
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
-    public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER); } }
+    private float m_PowerMaskMultiplier = 1;
+    public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER * m_PowerMaskMultiplier); } }
     //public Vector2 ShootPower { get { return new Vector2(0, 1) * SHOOT_POWER_MULTIPLIER; } }
 
     public Action OnNextTurn = delegate { };
@@ -124,7 +125,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
 		if(characterInstance == null) { 
 			characterInstance = Instantiate(levelData.playerCharacterPrefab);
-        }else {
+            ApplyCharacterMask(characterInstance.GetComponent<CharacterSpriteHandler>().maskPrefab);
+        } else {
             if (m_PlayerDisappearParticle != null) {
                 Destroy(m_PlayerDisappearParticle);
             }
@@ -151,6 +153,13 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	public void OnShotFired() {
 		shotsFired++;
 	}
+
+    public void ApplyCharacterMask(CharacterMask mask) {
+        characterInstance.GetComponent<CharacterSpriteHandler>().ApplyMask(mask);
+        ShootingHUD.Instance.powerCurve = mask.powerCurve;
+        ShootingHUD.Instance.powerTimeScale = mask.powerTimeScale;
+        m_PowerMaskMultiplier = mask.powerMultiplier;
+    }
 
 	public void ShowEndGame() {
 		if(levelState == LevelState.ENDING) { return; }
