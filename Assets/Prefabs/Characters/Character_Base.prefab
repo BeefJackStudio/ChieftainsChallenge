@@ -2210,6 +2210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96e6ee6be2d3dd45abc38dab8bac777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Mask name
+  description: Mask description
+  powerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  powerMultiplier: 1
+  powerTimeScale: 0.5
   useJiggleBones: 1
   jigglebones:
   - {fileID: 4861710100872578}
@@ -2227,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7032fd3a7d0f96b4ea9acbab5dd82cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maskPrefab: {fileID: 114317567936553688, guid: 0daabb7d8b305ef45899acce053bc1b1,
+  maskPrefab: {fileID: 114430628317662518, guid: 2f41c0245407eab4eb0e4cb54336fefa,
     type: 2}
   bodyType: {fileID: 11400000, guid: 9100d7f54c1925f4ebdc1511b92934c4, type: 2}
   maskParent: {fileID: 4032150637420946}
