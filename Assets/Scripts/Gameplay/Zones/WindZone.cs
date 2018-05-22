@@ -14,4 +14,19 @@ public class WindZone : MonoBehaviour {
         collision.GetComponent<Rigidbody2D>().AddForce(transform.up * windForce * ball.windEffectMultiplier);
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        GameBall ball = collision.gameObject.GetComponent<GameBall>();
+        if (ball == null) return;
+
+        ball.allowSleeping = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        GameBall ball = collision.gameObject.GetComponent<GameBall>();
+        if (ball == null) return;
+
+        ball.allowSleeping = true;
+    }
+
 }
