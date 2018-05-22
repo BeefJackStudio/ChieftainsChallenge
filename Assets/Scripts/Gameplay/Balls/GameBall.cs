@@ -5,7 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TrajectoryRenderer))]
 public class GameBall : MonoBehaviour {
 
+    [Header("Visualization")]
+    public string displayName;
+    public string description;
+
     [Header("Config")]
+    public float windEffectMultiplier = 1;
     public float characterSlotDistance = 2f;
 
     [Header("SFX")]
@@ -43,7 +48,6 @@ public class GameBall : MonoBehaviour {
     }
 
     private void Update() {
-
         Debug.DrawLine(transform.position, transform.position + new Vector3(m_RigidBody.velocity.x, m_RigidBody.velocity.y, 0), Color.yellow, 5);
 
         if(levelInstance == null) { return; }
@@ -104,10 +108,10 @@ public class GameBall : MonoBehaviour {
         StopSleepRoutine();
     }
 
-    private void StartSleepRoutine() {
+    public void StartSleepRoutine(bool forceSleep = false) {
         isSleeping = true;
         if (m_BallSleepRoutine != null) { return; }
-        m_BallSleepRoutine = StartCoroutine(BallSleepRoutine());
+        m_BallSleepRoutine = StartCoroutine(BallSleepRoutine(forceSleep));
     }
 
     private void StopSleepRoutine() {
@@ -117,15 +121,17 @@ public class GameBall : MonoBehaviour {
         m_BallSleepRoutine = null;
     }
 
-    private IEnumerator BallSleepRoutine() {
+    private IEnumerator BallSleepRoutine(bool forceSleep) {
         float startTime = Time.time;
         float waitTime = 1;
 
-        yield return new WaitForSeconds(waitTime);
+        if (!forceSleep) {
+            yield return new WaitForSeconds(waitTime);
+        }
 
-        if(m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD) {
+        if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD || forceSleep) {
 
-            LevelInstance.Instance.TriggerNextTurn();
+            if(!forceSleep) LevelInstance.Instance.TriggerNextTurn();
             m_TrajectoryRenderer.StartRender();
 
             while (isSleeping) {

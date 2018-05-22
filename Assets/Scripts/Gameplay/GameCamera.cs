@@ -60,11 +60,8 @@ public class GameCamera : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        //Update ball in case it had changed.
-        if(levelInstance.GetBall() != ball) {
-            ball = levelInstance.GetBall();
-            if(ball == null) { return; }
-        }
+        ball = levelInstance.GetBall();
+        if (ball == null) { return; }
 
         //In intro or when we are shooting, we need to move the camera.
         if (!ball.isSleeping || levelInstance.levelState == LevelState.INTRO) {

@@ -8,9 +8,10 @@ public class WindZone : MonoBehaviour {
     public float windForce = 10;
 
     private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.gameObject.GetComponent<GameBall>() == null) return;
+        GameBall ball = collision.gameObject.GetComponent<GameBall>();
+        if (ball == null) return;
 
-        collision.GetComponent<Rigidbody2D>().AddForce(transform.up * windForce);
+        collision.GetComponent<Rigidbody2D>().AddForce(transform.up * windForce * ball.windEffectMultiplier);
     }
 
 }

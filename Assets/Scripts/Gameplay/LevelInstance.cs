@@ -15,7 +15,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     private const float SHOOT_POWER_MULTIPLIER = 30;
 	
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
-	private GameObject m_currentBall = null;
+	private GameObject m_CurrentBall = null;
+    private GameObject m_BallToDelete = null;
 
 	[Header("Wind")]
 	public bool enableWind = false;
@@ -101,6 +102,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
         ShootingHUD.Instance.Hide();
         MaskSelectionMenu.Instance.HideOpenButton();
+        BallSelectionMenu.Instance.HideOpenButton();
 
 		//start play animation
 		Animation a = characterInstance.GetComponentInChildren<Animation>();
@@ -146,6 +148,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
         ShootingHUD.Instance.Show();
         MaskSelectionMenu.Instance.ShowOpenButton();
+        BallSelectionMenu.Instance.ShowOpenButton();
     }
 
     public void RandomizeWind() {
@@ -214,22 +217,29 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 				shootAngle = new Vector2(0.5f, 0.5f).normalized;
 				break;
 		}
-
-        
     }
 
 	public void SetBall(GameObject go) {
 		if(go.GetComponent<GameBall>() == null) { return; }
-		m_currentBall = go;
+		m_CurrentBall = go;
 	}
 
 	public void SetBall(GameBall gb) {
-		m_currentBall = gb.gameObject;
+        Vector3 pos = gb.transform.position;
+        if(m_CurrentBall != null) {
+            m_BallToDelete = m_CurrentBall;
+            pos = m_BallToDelete.transform.position;
+            Destroy(m_BallToDelete, 0.01f);
+            gb.StartSleepRoutine(true);
+        }
+        m_CurrentBall = gb.gameObject;
+        m_CurrentBall.transform.position = pos;
+        m_CurrentBall.GetComponent<GameBall>().CalculateSlotLocations();
 	}
 
 	public GameBall GetBall() {
-		if(m_currentBall == null) { return null; }
-		return m_currentBall.GetComponent<GameBall>();
+		if(m_CurrentBall == null) { return null; }
+		return m_CurrentBall.GetComponent<GameBall>();
 	}
 
 	public void FindDirectionZones() {
