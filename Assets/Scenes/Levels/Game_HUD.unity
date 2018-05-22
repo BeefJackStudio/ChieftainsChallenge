@@ -1328,6 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 119554520}
+  openButton: {fileID: 638600626}
   masksToGenerate:
   - {fileID: 114430628317662518, guid: 2f41c0245407eab4eb0e4cb54336fefa, type: 2}
   - {fileID: 114199927375840670, guid: 95c1f93eba5540c45a38c851b739b851, type: 2}

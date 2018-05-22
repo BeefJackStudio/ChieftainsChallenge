@@ -100,6 +100,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
 
         ShootingHUD.Instance.Hide();
+        MaskSelectionMenu.Instance.HideOpenButton();
 
 		//start play animation
 		Animation a = characterInstance.GetComponentInChildren<Animation>();
@@ -144,6 +145,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         m_PlayerAppearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
 
         ShootingHUD.Instance.Show();
+        MaskSelectionMenu.Instance.ShowOpenButton();
     }
 
     public void RandomizeWind() {
