@@ -23,7 +23,7 @@ public class GameBall : MonoBehaviour {
     [ReadOnly] public Vector2 slotLeft;
     [ReadOnly] public Vector2 slotRight;
     [ReadOnly]
-    public bool allowSleeping = true;
+    public bool isInSpeedzone = true;
 
     private Rigidbody2D m_RigidBody;
     private Collider2D m_Collider;
@@ -93,7 +93,7 @@ public class GameBall : MonoBehaviour {
         Vector2 direction = new Vector2(transform.position.x, transform.position.y) - collision.contacts[0].point;
         float angle = Vector2.SignedAngle(direction, Vector2.up);
         float velocityMagnitude = m_RigidBody.velocity.magnitude;
-        if ((Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) || !allowSleeping) return;
+        if ((Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) || (isInSpeedzone && velocityMagnitude >= 0.1f)) return;
 
         float materialFriction = Mathf.Clamp01((collision.collider.sharedMaterial.friction - 1) * 0.5f);
         m_RigidBody.velocity *= ((1f - materialFriction) - (Time.time - m_BallCollisionStart) * 0.075f);

@@ -19,14 +19,14 @@ public class WindZone : MonoBehaviour {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
         if (ball == null) return;
 
-        ball.allowSleeping = false;
+        ball.isInSpeedzone = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
         if (ball == null) return;
 
-        ball.allowSleeping = true;
+        ball.isInSpeedzone = false;
     }
 
 }
