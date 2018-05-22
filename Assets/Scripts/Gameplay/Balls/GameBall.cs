@@ -23,7 +23,7 @@ public class GameBall : MonoBehaviour {
     [ReadOnly] public Vector2 slotLeft;
     [ReadOnly] public Vector2 slotRight;
     [ReadOnly]
-    public bool isInSpeedzone = true;
+    public bool isInSpeedzone = false;
 
     private Rigidbody2D m_RigidBody;
     private Collider2D m_Collider;
@@ -45,6 +45,8 @@ public class GameBall : MonoBehaviour {
             Debug.LogError("GameBall could not find levelinstance!");
             return;
         }
+
+        isInSpeedzone = false;
 
         levelInstance.SetBall(this);
     }
