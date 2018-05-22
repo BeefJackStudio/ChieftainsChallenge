@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Mud Ball
-  description: A heavier ball that rolls and bounces less.
+  description: A heavier ball that rolls and bounces less as well as having resistance
+    against wind.
   windEffectMultiplier: 0.8
   characterSlotDistance: 2
   sepRef: {fileID: 0}
@@ -121,7 +122,7 @@ MonoBehaviour:
   levelInstance: {fileID: 0}
   slotLeft: {x: 0, y: 0}
   slotRight: {x: 0, y: 0}
-  allowSleeping: 1
+  isInSpeedzone: 0
 --- !u!212 &212354625978125896
 SpriteRenderer:
   m_ObjectHideFlags: 1
