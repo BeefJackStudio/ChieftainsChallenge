@@ -54,6 +54,12 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
         ballSelectButtons[0].onClick.Invoke();
     }
 
+    private void Start() {
+        if (LevelInstance.Instance.useCannon) {
+            openButton.anchoredPosition = new Vector2(0, openButton.anchoredPosition.y);
+        }
+    }
+
     private void Update() {
         Vector2 containerPos = container.anchoredPosition;
         containerPos = Vector2.Lerp(containerPos, new Vector2(containerPos.x, m_ContainerTargetY), 0.1f);
@@ -78,7 +84,7 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
 
     public void ApplyBall() {
         GameObject newBall = Instantiate(m_SelectedBall).gameObject;
-        LevelInstance.Instance.SetBall(newBall);
+        LevelInstance.Instance.SetBall(newBall.GetComponent<GameBall>());
         Hide();
     }
 

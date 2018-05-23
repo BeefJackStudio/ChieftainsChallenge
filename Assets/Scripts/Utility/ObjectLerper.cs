@@ -12,7 +12,7 @@ public class ObjectLerper : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		rectTransform = (RectTransform) this.transform;
+		rectTransform = GetComponent<RectTransform>();
 
 		beginPosition = rectTransform.anchoredPosition;
 		targetPosition = rectTransform.anchoredPosition;

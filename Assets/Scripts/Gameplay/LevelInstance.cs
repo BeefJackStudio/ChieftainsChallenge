@@ -13,6 +13,9 @@ public enum LevelState {
 public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private const float SHOOT_POWER_MULTIPLIER = 30;
+    private const float SHOOT_POWER_MULTIPLIER_CANNON = 45;
+
+    public bool useCannon = false;
 	
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_CurrentBall = null;
@@ -44,7 +47,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     [ReadOnly] public Vector2 shootAngle;
     [ReadOnly] public float normalizedShootPower = 0.5f;
     private float m_PowerMaskMultiplier = 1;
-    public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * SHOOT_POWER_MULTIPLIER * m_PowerMaskMultiplier); } }
+    public Vector2 ShootPower { get { return shootAngle * (normalizedShootPower * (useCannon ? SHOOT_POWER_MULTIPLIER_CANNON : SHOOT_POWER_MULTIPLIER) * m_PowerMaskMultiplier); } }
     //public Vector2 ShootPower { get { return new Vector2(0, 1) * SHOOT_POWER_MULTIPLIER; } }
 
     public Action OnNextTurn = delegate { };
@@ -69,10 +72,14 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
 
         OnNextTurn();
+
+        if (useCannon) {
+            TimeUtilities.ExecuteAfterDelay(TriggerNextTurn, 1, this);
+        }
     }
 
     private void Update() {
-		if(GetBall() == null) { return; }
+		if(GetBall() == null || useCannon) { return; }
 
         if (Input.GetKeyDown(KeyCode.U)) {
             TriggerNextTurn();
@@ -104,50 +111,69 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         MaskSelectionMenu.Instance.HideOpenButton();
         BallSelectionMenu.Instance.HideOpenButton();
 
-		//start play animation
-		Animation a = characterInstance.GetComponentInChildren<Animation>();
-		a.Play("AN_Golf_Swing", PlayMode.StopAll);
+        //start play animation
+        if (!useCannon) {
+            Animation a = characterInstance.GetComponentInChildren<Animation>();
+            a.Play("AN_Golf_Swing", PlayMode.StopAll);
 
-		//wait for seconds
-		yield return new WaitForSeconds(animationDelayShoot);
-		
-		//shoot ball.
-        GetBall().HitBall(ShootPower);
+            //wait for seconds
+            yield return new WaitForSeconds(animationDelayShoot);
 
-		yield return new WaitForSeconds(1);
-		a.Play("AN_Base_Pose", PlayMode.StopAll);
-		
-		yield return null;
+            //shoot ball.
+            GetBall().HitBall(ShootPower);
+
+            yield return new WaitForSeconds(1);
+            a.Play("AN_Base_Pose", PlayMode.StopAll);
+        } else {
+            GameBall ball = GetBall();
+            ball.transform.position = CannonController.Instance.ballSpawnPoint.position;
+            ball.gameObject.SetActive(true);
+            ball.HitBall(ShootPower);
+
+            CannonController.Instance.shotParticles.SetActive(true);
+            CannonController.Instance.shotParticles.GetComponent<ParticleSystem>().Play(true);
+        }
+
+        yield return null;
 	}
 
     public void TriggerNextTurn() {
-        levelState = LevelState.SHOOTING;
-        RandomizeWind();
-		ResetShootingAngle();
-        OnNextTurn();
+        if (useCannon && shotsFired == 0) {
+            levelState = LevelState.SHOOTING;
+            RandomizeWind();
+            ResetShootingAngle();
+            OnNextTurn();
+        }else {
+            if(levelState != LevelState.ENDING) {
+                Debug.Log("Game over");
+            }
+            return;
+        }
 
-		if(characterInstance == null) { 
-			characterInstance = Instantiate(levelData.playerCharacterPrefab);
-            ApplyCharacterMask(characterInstance.GetComponent<CharacterSpriteHandler>().maskPrefab);
-        } else {
-            if (m_PlayerDisappearParticle != null) {
-                Destroy(m_PlayerDisappearParticle);
+        if (!useCannon) {
+            if (characterInstance == null) {
+                characterInstance = Instantiate(levelData.playerCharacterPrefab);
+                ApplyCharacterMask(characterInstance.GetComponent<CharacterSpriteHandler>().maskPrefab);
+            } else {
+                if (m_PlayerDisappearParticle != null) {
+                    Destroy(m_PlayerDisappearParticle);
+                }
+
+                m_PlayerDisappearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
             }
 
-            m_PlayerDisappearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
+            GetBall().CalculateSlotLocations();
+            characterInstance.transform.position = GetBall().slotLeft;
+
+            if (m_PlayerAppearParticle != null) {
+                Destroy(m_PlayerAppearParticle);
+            }
+
+            m_PlayerAppearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
+            MaskSelectionMenu.Instance.ShowOpenButton();
         }
-
-		GetBall().CalculateSlotLocations();
-		characterInstance.transform.position = GetBall().slotLeft;
-
-        if(m_PlayerAppearParticle != null) {
-            Destroy(m_PlayerAppearParticle);
-        }
-
-        m_PlayerAppearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
 
         ShootingHUD.Instance.Show();
-        MaskSelectionMenu.Instance.ShowOpenButton();
         BallSelectionMenu.Instance.ShowOpenButton();
     }
 
@@ -166,37 +192,46 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         m_PowerMaskMultiplier = mask.powerMultiplier;
     }
 
-	public void ShowEndGame() {
-		if(levelState == LevelState.ENDING) { return; }
-		Debug.Log("Game ending.");
+    public void ShowEndGame() {
+        if (levelState == LevelState.ENDING) { return; }
+        Debug.Log("Game ending.");
 
-		//calc stars
-		List<int> thresholds = new List<int>() {starThreshold2, starThreshold1, starThreshold0};
-		int stars = 3;
-		for(int i = 0; i < thresholds.Count; i++) {
-			if(shotsFired >= thresholds[i]) { stars--; }
-		}
+        if (!useCannon) {
+            //calc stars
+            List<int> thresholds = new List<int>() { starThreshold2, starThreshold1, starThreshold0 };
+            int stars = 3;
+            for (int i = 0; i < thresholds.Count; i++) {
+                if (shotsFired >= thresholds[i]) { stars--; }
+            }
 
-		//show end game
-		if(EndGame.Instance == null){
-			Debug.LogWarning("Levelinstance could not find end game instance.");
-			return;
-		}
-        EndGame.Instance.ShowEndGameUI(stars);
+            //show end game
+            if (EndGame.Instance == null) {
+                Debug.LogWarning("Levelinstance could not find end game instance.");
+                return;
+            }
+            EndGame.Instance.ShowEndGameUI(stars);
 
-		if(LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
-			SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
-		} else {
-			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
-		}
-		
-		//set level ended.
-		levelState = LevelState.ENDING;
+            if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
+                SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
+            } else {
+                Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
+            }
+        } else {
+            //Good shit, 1 shot, 1 goal
+        }
+
+        //set level ended.
+        levelState = LevelState.ENDING;
 
         SaveDataManager.Instance.Save();
     }
 
     public void ResetShootingAngle() {
+        if (useCannon) {
+            shootAngle = new Vector2(0.5f, 0.5f).normalized;
+            return;
+        }
+
 		DirectionZoneDirection direction = DirectionZoneDirection.RIGHT;
 
 		foreach(DirectionZone dz in directionZones) {
@@ -219,22 +254,22 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
     }
 
-	public void SetBall(GameObject go) {
-		if(go.GetComponent<GameBall>() == null) { return; }
-		m_CurrentBall = go;
-	}
-
 	public void SetBall(GameBall gb) {
-        Vector3 pos = gb.transform.position;
-        if(m_CurrentBall != null) {
-            m_BallToDelete = m_CurrentBall;
-            pos = m_BallToDelete.transform.position;
-            Destroy(m_BallToDelete, 0.01f);
-            gb.StartSleepRoutine(true);
+        if (!useCannon) {
+            Vector3 pos = gb.transform.position;
+            if (m_CurrentBall != null) {
+                m_BallToDelete = m_CurrentBall;
+                pos = m_BallToDelete.transform.position;
+                Destroy(m_BallToDelete, 0.01f);
+                gb.StartSleepRoutine(true);
+            }
+            m_CurrentBall = gb.gameObject;
+            m_CurrentBall.transform.position = pos;
+            m_CurrentBall.GetComponent<GameBall>().CalculateSlotLocations();
+        } else {
+            m_CurrentBall = gb.gameObject;
+            gb.gameObject.SetActive(false);
         }
-        m_CurrentBall = gb.gameObject;
-        m_CurrentBall.transform.position = pos;
-        m_CurrentBall.GetComponent<GameBall>().CalculateSlotLocations();
 	}
 
 	public GameBall GetBall() {

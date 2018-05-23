@@ -31,9 +31,7 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
         foreach(ObjectLerper o in m_ObjectsToLerp) {
             m_OriginalPositions.Add(o, o.GetComponent<RectTransform>().anchoredPosition);
         }
-    }
 
-    private void Start() {
         Hide(true);
     }
 
@@ -101,7 +99,7 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
             if(!bForce) {
                 o.targetPosition = temp;
             } else {
-                o.rectTransform.anchoredPosition = temp;
+                o.GetComponent<RectTransform>().anchoredPosition = temp;
                 o.targetPosition = temp;
             }
         }

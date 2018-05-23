@@ -72,6 +72,8 @@ public class TrajectoryRenderer : MonoBehaviour {
     }
 
     void CleanRenderTrajectoryGameObjects() {
+        if (trajectoryPoints == null) return;
+
         foreach(GameObject rtgo in trajectoryPoints) {
             Destroy(rtgo);
         }

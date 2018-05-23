@@ -49,6 +49,8 @@ public class GameBall : MonoBehaviour {
         isInSpeedzone = false;
 
         levelInstance.SetBall(this);
+
+        if (levelInstance.useCannon) isSleeping = true;
     }
 
     private void Update() {
@@ -136,7 +138,7 @@ public class GameBall : MonoBehaviour {
         if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD || forceSleep) {
 
             if(!forceSleep) LevelInstance.Instance.TriggerNextTurn();
-            m_TrajectoryRenderer.StartRender();
+            if(!LevelInstance.Instance.useCannon) m_TrajectoryRenderer.StartRender();
 
             while (isSleeping) {
                 m_RigidBody.velocity = Vector2.zero;
