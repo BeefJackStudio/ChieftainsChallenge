@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EndGame : MonoBehaviourSingleton<EndGame> {
 
-	[Header("Stars")]
+    [Header("Objects")]
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI cannonRewardText;
+    public GameObject continueButton;
+    public GameObject exitButton;
+
+    [Header("Stars")]
 	public List<GameObject> stars;
 	public Sprite emptyImage;
 	public Sprite acquiredImage;
@@ -42,6 +49,38 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 		StartCoroutine(EndGameAnimation(starAmount));
 	}
 
+    public void ShowEndGameUICannon() {
+        gameObject.SetActive(true);
+
+        foreach (GameObject star in stars) {
+            star.gameObject.SetActive(false);
+        }
+
+        bool nextLevel = IsNextLevelAvailable();
+        cannonRewardText.text = nextLevel ? "Proceed to the next level!" : "Claim your rewards here!";
+        cannonRewardText.gameObject.SetActive(true);
+
+        continueButton.SetActive(true);
+        exitButton.SetActive(false);
+    }
+
+    public void ShowEndGameFailCannon() {
+        gameObject.SetActive(true);
+
+        foreach (GameObject star in stars) {
+            star.gameObject.SetActive(false);
+        }
+
+        title.text = "Level failed";
+
+        bool nextLevel = IsNextLevelAvailable();
+        cannonRewardText.text = "Only one shot per try. Again?";
+        cannonRewardText.gameObject.SetActive(true);
+
+        continueButton.SetActive(false);
+        exitButton.SetActive(true);
+    }
+
 	public IEnumerator EndGameAnimation(int starAmount) {
 		isAnimating = true;
 		if(sepRef != null && onCompletedLevel != null) { 
@@ -61,16 +100,34 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 	}
 
 	public void GoNextLevel() {
-		if(LevelManager.Instance.CurrentLevel == null) {
+        bool nextLevel = IsNextLevelAvailable();
+
+        if (LevelManager.Instance.CurrentLevel == null) {
 			Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
 			return;
 		} 
 
-		GameLevelSet nextLevel = LevelManager.Instance.CurrentLevel.GetNextLevel();
-		if(nextLevel == null) {
+		if(!nextLevel) {
 			LevelManager.Instance.LoadScene("MainMenu");
 		} else {
-			LevelManager.Instance.LoadLevel(nextLevel);
+			LevelManager.Instance.LoadLevel(LevelManager.Instance.CurrentLevel.GetNextLevel());
 		}
 	}
+
+    public void QuitToMainMenu() {
+        LevelManager.Instance.LoadScene("MainMenu");
+    }
+
+    private bool IsNextLevelAvailable() {
+        if (LevelManager.Instance.CurrentLevel == null) {
+            return false;
+        }
+
+        GameLevelSet nextLevel = LevelManager.Instance.CurrentLevel.GetNextLevel();
+        if (nextLevel == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

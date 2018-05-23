@@ -145,7 +145,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             OnNextTurn();
         }else {
             if(levelState != LevelState.ENDING) {
-                Debug.Log("Game over");
+                EndGame.Instance.ShowEndGameFailCannon();
             }
             return;
         }
@@ -196,10 +196,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         if (levelState == LevelState.ENDING) { return; }
         Debug.Log("Game ending.");
 
+        int stars = 3;
+
         if (!useCannon) {
             //calc stars
             List<int> thresholds = new List<int>() { starThreshold2, starThreshold1, starThreshold0 };
-            int stars = 3;
             for (int i = 0; i < thresholds.Count; i++) {
                 if (shotsFired >= thresholds[i]) { stars--; }
             }
@@ -210,14 +211,14 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 return;
             }
             EndGame.Instance.ShowEndGameUI(stars);
-
-            if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
-                SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
-            } else {
-                Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
-            }
         } else {
-            //Good shit, 1 shot, 1 goal
+            EndGame.Instance.ShowEndGameUICannon();
+        }
+
+        if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
+            SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
+        } else {
+            Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
         }
 
         //set level ended.
