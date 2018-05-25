@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using System;
 
 //Must be a MonoBehaviour in order to use OnApplicationQuit
 public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
@@ -23,6 +24,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
             Directory.CreateDirectory(GetFolderPath());
         }
 
+        UpdateLivesGained();
         data.SerializeScores(m_LevelScores);
 
         string jsonData = JsonUtility.ToJson(data);
@@ -37,6 +39,8 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         if (File.Exists(GetFilePath())) {
             data = JsonUtility.FromJson<SaveData>(File.ReadAllText(GetFilePath()));
             m_LevelScores = data.DeserializeScores();
+
+            UpdateLivesGained();
         } else {
             data = new SaveData();
         }
@@ -47,6 +51,21 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
             m_SaveDataPath = Path.Combine(GetFolderPath(), FILE_NAME);
         }
         return m_SaveDataPath;
+    }
+
+    private void UpdateLivesGained() {
+        TimeSpan timeSpan = new TimeSpan(0, 0, GetSecondsSinceEpoch() - data.lastLifeGained);
+        int livesToGain = Mathf.FloorToInt((int)timeSpan.TotalHours / 3f);
+
+        if (livesToGain != 0) {
+            data.lastLifeGained = GetSecondsSinceEpoch();
+            data.currentLives = Mathf.Clamp(data.currentLives + livesToGain, 0, 3);
+        }
+    }
+
+    private int GetSecondsSinceEpoch() {
+        TimeSpan t = (DateTime.UtcNow - new DateTime(1970, 1, 1));
+        return (int)t.TotalSeconds;
     }
 #endregion
 
