@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Mayan/Level_Mayan_2.unity
     guid: 2cc8f2d7c38e85849923dbc01d34a096
   - enabled: 1
-    path: Assets/Scenes/Levels/OneShots/Level_OS_Japan.unity
+    path: Assets/Scenes/Levels/OneShots/Level_OS_Japan_1.unity
     guid: ab67bdfd6fe200544b6ba69f218bfd3d
   - enabled: 1
     path: Assets/Scenes/Levels/Mayan/Level_Mayan_3.unity
@@ -59,3 +59,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Mayan/Level_Mayan_12.unity
     guid: d16e9a57124c8854a9d0a50223d824b2
+  - enabled: 1
+    path: Assets/Scenes/Levels/OneShots/Level_OS_Japan_2.unity
+    guid: b8396bdcf2b89804fb75876c08ff3249

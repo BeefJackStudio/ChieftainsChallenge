@@ -13,6 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Africa
   levels:
-  - scene: Level_OS_Japan
+  - scene: Level_OS_Japan_1
     index: 0
+    continent: {fileID: 11400000}
+  - scene: Level_OS_Japan_2
+    index: 1
     continent: {fileID: 11400000}
