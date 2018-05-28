@@ -64,7 +64,6 @@ public class LivesIndicator : MonoBehaviourSingleton<LivesIndicator> {
 
     private class LifeObject
     {
-        private bool m_IsEnabled = false;
         private Image m_Image;
         private float m_SwitchValue = 0;
         private Coroutine m_SwitchRoutine = null;

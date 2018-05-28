@@ -138,19 +138,22 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	}
 
     public void TriggerNextTurn() {
-        if (useCannon && shotsFired == 0) {
-            levelState = LevelState.SHOOTING;
-            RandomizeWind();
-            ResetShootingAngle();
-            OnNextTurn();
-        }else {
-            if(levelState != LevelState.ENDING) {
-                EndGame.Instance.ShowEndGameFailCannon();
-            }
-            return;
-        }
+        if (levelState == LevelState.ENDING) return;
 
-        if (!useCannon) {
+        if (useCannon) {
+            if (shotsFired != 0) {
+                if (levelState != LevelState.ENDING) {
+                    EndGame.Instance.ShowEndGameFailCannon();
+                }
+                return;
+            }
+        } else {
+            if(shotsFired >= starThreshold0) {
+                SaveDataManager.Instance.ModifyLifeCount(-1);
+                ShowEndGame();
+                return;
+            }
+
             if (characterInstance == null) {
                 characterInstance = Instantiate(levelData.playerCharacterPrefab);
                 ApplyCharacterMask(characterInstance.GetComponent<CharacterSpriteHandler>().maskPrefab);
@@ -175,6 +178,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
         ShootingHUD.Instance.Show();
         BallSelectionMenu.Instance.ShowOpenButton();
+
+        levelState = LevelState.SHOOTING;
+        RandomizeWind();
+        ResetShootingAngle();
+        OnNextTurn();
     }
 
     public void RandomizeWind() {

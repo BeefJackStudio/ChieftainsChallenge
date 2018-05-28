@@ -9,7 +9,7 @@ public class SaveData {
     public List<CutsceneTypes> watchedCutscenes = new List<CutsceneTypes>();
     public List<string> completedLevels = new List<string>();
     public int currentLives = 3;
-    public int lastLifeGained = 0;
+    public int lastLivesClaim = 0;
 
     public Dictionary<string, int> DeserializeScores() {
         Dictionary<string, int> scores = new Dictionary<string, int>();

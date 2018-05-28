@@ -45,6 +45,19 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 			Debug.LogWarning("EndGame can't play sound effects.");
 		}
 
+        if(starAmount == 0) {
+            title.text = "Level failed";
+            
+            if(IsNextLevelAvailable() && SaveDataManager.Instance.GetLevelScore(LevelManager.Instance.CurrentLevel.scene) == -1) {
+                continueButton.SetActive(false);
+            }else {
+                continueButton.SetActive(true);
+            }
+        } else {
+            title.text = "Level completed";
+            continueButton.SetActive(true);
+        }
+
 		gameObject.SetActive(true);
 		StartCoroutine(EndGameAnimation(starAmount));
 	}

@@ -40,7 +40,13 @@ public class LevelSelectButton : MonoBehaviour {
         backdrop.color = isLocked ? Color.gray : Color.white;
 
         if (!isLocked) {
-            m_Button3D.onButtonClick.AddListener(() => { LevelManager.Instance.LoadLevel(levelData); });
+            m_Button3D.onButtonClick.AddListener(() => {
+                if(SaveDataManager.Instance.data.currentLives == 0) {
+                    VideoAdMenu.Instance.gameObject.SetActive(true);
+                }else {
+                    LevelManager.Instance.LoadLevel(levelData);
+                }
+            });
         }
 
         m_Button3D.onInteractSound = m_IsLocked ? lockedSounds : unlockedSounds;
