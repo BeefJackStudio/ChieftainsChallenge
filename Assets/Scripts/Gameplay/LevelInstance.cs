@@ -269,12 +269,17 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             if (m_CurrentBall != null) {
                 m_BallToDelete = m_CurrentBall;
                 pos = m_BallToDelete.transform.position;
-                Destroy(m_BallToDelete, 0.01f);
+                Destroy(m_BallToDelete);
                 gb.StartSleepRoutine(true);
             }
-            m_CurrentBall = gb.gameObject;
-            m_CurrentBall.transform.position = pos;
-            m_CurrentBall.GetComponent<GameBall>().CalculateSlotLocations();
+
+            gb.transform.position = pos;
+            gb.GetComponent<GameBall>().CalculateSlotLocations();
+
+            TimeUtilities.ExecuteAfterDelay(() => {
+                m_CurrentBall = gb.gameObject;
+            }, 0.05f, this);
+
         } else {
             m_CurrentBall = gb.gameObject;
             gb.gameObject.SetActive(false);
