@@ -4,8 +4,15 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class VideoAdMenu : MonoBehaviourSingleton<VideoAdMenu> {
+
+#if UNITY_IOS
+    private string gameId = "2659070";
+#elif UNITY_ANDROID
+    private string gameId = "2659072";
+#endif
 
     public GameObject maxLivesGroup;
     public GameObject nonMaxLivesGroup;
@@ -28,6 +35,10 @@ public class VideoAdMenu : MonoBehaviourSingleton<VideoAdMenu> {
     private void Start() {
         watchAdButton.onClick.AddListener(WatchAd);
         claimButton.onClick.AddListener(ClaimLives);
+
+        if (Advertisement.isSupported) {
+            Advertisement.Initialize(gameId, true);
+        }
     }
 
     private void OnEnable() {
@@ -81,13 +92,27 @@ public class VideoAdMenu : MonoBehaviourSingleton<VideoAdMenu> {
     }
 
     private void WatchAd() {
-        adObject.SetActive(true);
+        const string RewardedPlacementId = "rewardedVideo";
 
-        TimeUtilities.ExecuteAfterDelay(() => {
-            adObject.SetActive(false);
-            SaveDataManager.Instance.ModifyLifeCount(3);
-            gameObject.SetActive(false);
-        }, 5, this);
+        ShowOptions options = new ShowOptions();
+        options.resultCallback = HandleShowResult;
+
+        Advertisement.Show(RewardedPlacementId, options);
+    }
+
+
+    private void HandleShowResult(ShowResult result) {
+        switch (result) {
+            case ShowResult.Finished:
+                SaveDataManager.Instance.ModifyLifeCount(3);
+
+                break;
+            case ShowResult.Skipped:
+            case ShowResult.Failed:
+                break;
+        }
+
+        OnEnable();
     }
 
     private void ClaimLives() {

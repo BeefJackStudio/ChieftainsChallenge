@@ -620,9 +620,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: 2461953b-ae29-4d5e-87f6-54560e3f43b7
-  projectName: Chieftains Challenge
-  organizationId: beefjackdanny
+  cloudProjectId: 8a506683-a91d-43f2-a669-36d102c7ba48
+  projectName: Chieftain's Challenge
+  organizationId: goblin-boss-games
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

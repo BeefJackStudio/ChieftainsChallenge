@@ -26,11 +26,11 @@ SpriteAtlas:
       enableTightPacking: 0
     packedHash:
       serializedVersion: 2
-      Hash: 0ebf707bf87c903432d2d882d1651e16
+      Hash: 8772abdc40b7287570197470ef53fb4a
     variantMultiplier: 1
     bindAsDefault: 1
     finalFormat: 4
-    hashString: 0ebf707bf87c903432d2d882d1651e16
+    hashString: 8772abdc40b7287570197470ef53fb4a
     totalSpriteSurfaceArea: 1711244
     packables:
     - {fileID: 2800000, guid: 17d10e6f9ed95374c9222874b1bc1b7d, type: 3}
@@ -67,7 +67,7 @@ SpriteAtlas:
   - UI_Game_Logo
   - UI_Game_Logo_NoShadow
   - UI_Mask_Info_Backdrop
-  - HUD_Button_1
+  - UI_Button_1
   - UI_Fade
   - UI_Equipment_Cannon
   - UI_Equipment_Unknown
