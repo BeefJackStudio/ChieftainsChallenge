@@ -10,6 +10,7 @@ public static class SoundManager {
         set {
             SaveDataManager.Instance.data.volumeMaster = value;
             SoundMusicPlayer.Instance.SetVolume(BackgroundMusicVolume);
+            SoundEffectsPlayer.Instance.SetVolume(SoundEffectVolume);
         }
     }
 
