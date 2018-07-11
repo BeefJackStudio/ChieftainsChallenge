@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fe2932b798d3c429f38f7b752e5c7a, type: 3}
+  m_Name: Mask_Hawk
+  m_EditorClassIdentifier: 
+  customizationType: 3
+  headerText: Hawk Mask
+  options:
+  - {fileID: 1283725383624662, guid: 95c1f93eba5540c45a38c851b739b851, type: 2}
+  - {fileID: 1335421156854776, guid: eb8926013e962b7498d8318324432509, type: 2}
+  - {fileID: 1283725383624662, guid: 95c1f93eba5540c45a38c851b739b851, type: 2}
+  - {fileID: 1283725383624662, guid: 95c1f93eba5540c45a38c851b739b851, type: 2}

@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 4491011419808008}
   jiggleAmount: 5
   damping: 0.5
+  flipRotations: 
 --- !u!212 &212034224957142400
 SpriteRenderer:
   m_ObjectHideFlags: 1

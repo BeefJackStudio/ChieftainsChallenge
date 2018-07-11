@@ -50,7 +50,7 @@ public class GameCamera : MonoBehaviour {
         }
 
         if(levelInstance.GetBall() == null) { 
-            Debug.LogError("GameCamera could not find ball!");
+            Debug.LogWarning("GameCamera could not find ball!");
             return;
         }
         

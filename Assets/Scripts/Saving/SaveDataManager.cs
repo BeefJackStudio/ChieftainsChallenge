@@ -11,6 +11,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     public const float HOUR_REGEN_PER_LIFE = 3f;
 
     public SaveData data;
+    public CustomizationDatabase customizeData;
 
     private string m_SaveDataPath;
     private Dictionary<string, int> m_LevelScores = new Dictionary<string, int>();
@@ -24,9 +25,12 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         if (!Directory.Exists(GetFolderPath())) {
             Directory.CreateDirectory(GetFolderPath());
         }
+
         data.SerializeScores(m_LevelScores);
+        data.SerializeCustomization();
 
         string jsonData = JsonUtility.ToJson(data);
+        Debug.Log("Saved to " + GetFilePath());
         File.WriteAllText(GetFilePath(), jsonData);
     }
 
@@ -37,7 +41,10 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
         if (File.Exists(GetFilePath())) {
             data = JsonUtility.FromJson<SaveData>(File.ReadAllText(GetFilePath()));
+
             m_LevelScores = data.DeserializeScores();
+            data.DeserializeCustomization();
+
         } else {
             data = new SaveData();
         }

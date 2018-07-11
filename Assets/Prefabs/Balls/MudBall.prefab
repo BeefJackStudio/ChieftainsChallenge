@@ -72,7 +72,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1521759096168640}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: eb4a16f77e0a036468186a2502b83ec5, type: 2}
+  m_Material: {fileID: 6200000, guid: 21314ccaac2dfbd4d9a010694752b8db, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -111,10 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a0d84c05bd6034180cd896247dc8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Mud Ball
-  description: A heavier ball that rolls and bounces less as well as having resistance
-    against wind.
-  windEffectMultiplier: 0.8
+  displayName: Stone Ball
+  description: A standard ball with balanced properties.
+  windEffectMultiplier: 1
   characterSlotDistance: 2
   sepRef: {fileID: 0}
   BallHitSound: {fileID: 11400000, guid: d342401135b62e44f97015cab3f8b7dd, type: 2}

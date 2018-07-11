@@ -363,6 +363,10 @@ MonoBehaviour:
     completedLevels: []
     currentLives: 3
     lastLivesClaim: 0
+    customizeMaskOptions: 00000000000000000000000000000000
+    customizeBallOptions: 00000000000000000000000000000000
+    customizeParticleOption: 0
+  customizeData: {fileID: 11400000, guid: 68834b784e5885344bb3f9bbc018c2f7, type: 2}
 --- !u!114 &310102360
 MonoBehaviour:
   m_ObjectHideFlags: 0

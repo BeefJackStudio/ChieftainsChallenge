@@ -12,6 +12,7 @@ public class LivesIndicator : MonoBehaviourSingleton<LivesIndicator> {
     private RectTransform m_RectTransform;
     private List<LifeObject> m_LifeObjects = new List<LifeObject>();
     private Vector2 m_StartPosition;
+    private Vector2 m_HiddenPosition;
     private ObjectLerper m_Lerper;
 
     private void Awake() {
@@ -23,7 +24,8 @@ public class LivesIndicator : MonoBehaviourSingleton<LivesIndicator> {
         m_Lerper = GetComponent<ObjectLerper>();
         m_StartPosition = m_RectTransform.anchoredPosition;
 
-        m_RectTransform.anchoredPosition += new Vector2(0, 200);
+        m_HiddenPosition = m_RectTransform.anchoredPosition + new Vector2(0, 200);
+        m_RectTransform.anchoredPosition = m_HiddenPosition;
         m_Lerper.targetPosition = m_RectTransform.anchoredPosition;
     }
 
@@ -34,6 +36,11 @@ public class LivesIndicator : MonoBehaviourSingleton<LivesIndicator> {
         TimeUtilities.ExecuteAfterDelay(() => {
             SetLivesCount(SaveDataManager.Instance.data.currentLives);
         }, 1, this);
+    }
+
+    public void Hide() {
+        ObjectLerper lerper = GetComponent<ObjectLerper>();
+        lerper.targetPosition = m_HiddenPosition;
     }
 
     public void SetLivesCount(int livesCount) {

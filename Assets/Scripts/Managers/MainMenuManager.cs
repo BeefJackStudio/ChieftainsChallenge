@@ -19,6 +19,8 @@ public class MainMenuManager : MonoBehaviour {
         SaveDataManager.Instance.Save();
         SoundMusicPlayer.Instance.PlayMusic(songToPlay);
         LivesIndicator.Instance.Show();
+
+        TimeUtilities.ExecuteAfterDelay(LivesIndicator.Instance.Hide, 4, this);
     }
 
     //Android back button behaviour

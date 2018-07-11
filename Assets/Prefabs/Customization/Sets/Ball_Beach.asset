@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fe2932b798d3c429f38f7b752e5c7a, type: 3}
+  m_Name: Ball_Beach
+  m_EditorClassIdentifier: 
+  customizationType: 8
+  headerText: Beach Ball
+  options:
+  - {fileID: 1521759096168640, guid: dac463e770b1b8541beb7e9f0f9ad9bb, type: 2}
+  - {fileID: 1521759096168640, guid: dac463e770b1b8541beb7e9f0f9ad9bb, type: 2}
+  - {fileID: 1521759096168640, guid: dac463e770b1b8541beb7e9f0f9ad9bb, type: 2}
+  - {fileID: 1521759096168640, guid: dac463e770b1b8541beb7e9f0f9ad9bb, type: 2}

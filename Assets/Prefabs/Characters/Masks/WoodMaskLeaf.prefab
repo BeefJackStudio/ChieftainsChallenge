@@ -111,12 +111,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96e6ee6be2d3dd45abc38dab8bac777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Mask name
+  description: Mask description
+  powerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  powerMultiplier: 1
+  powerTimeScale: 0.5
   useJiggleBones: 1
   jigglebones:
   - {fileID: 0}
   - {fileID: 0}
   jiggleAmount: 5
   damping: 0.5
+  flipRotations: 
 --- !u!212 &212505027436390328
 SpriteRenderer:
   m_ObjectHideFlags: 1

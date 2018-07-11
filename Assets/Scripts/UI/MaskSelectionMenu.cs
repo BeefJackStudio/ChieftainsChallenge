@@ -40,18 +40,24 @@ public class MaskSelectionMenu : MonoBehaviourSingleton<MaskSelectionMenu> {
         m_OpenButtonTargetY = m_OpenButtonHideY;
         openButton.anchoredPosition = new Vector2(openButton.anchoredPosition.x, m_OpenButtonTargetY);
 
+        CharacterMask[] skinnedMasks = new CharacterMask[4] { CustomizationSelected.woodenMask.Obj, CustomizationSelected.hawkMask.Obj, CustomizationSelected.royalMask.Obj, CustomizationSelected.skullMask.Obj };
+
         for (int i = 0; i < 4; i++) {
             CharacterMask mask = masksToGenerate[i];
+            CharacterMask skinnedMask = skinnedMasks[i];
+
+            mask.CopySettingsTo(skinnedMask);
+
             Button button = maskSelectButtons[i];
 
-            button.GetComponentsInChildren<Image>()[1].sprite = mask.GetComponentInChildren<SpriteRenderer>().sprite;
+            button.GetComponentsInChildren<Image>()[1].sprite = skinnedMask.GetComponentInChildren<SpriteRenderer>().sprite;
 
             button.onClick.AddListener(() => {
-                SelectMask(mask);
+                SelectMask(skinnedMask);
             });
         }
 
-        maskSelectButtons[0].onClick.Invoke();
+        SelectMask(skinnedMasks[0]);
     }
 
     private void Update() {

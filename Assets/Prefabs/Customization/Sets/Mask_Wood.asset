@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fe2932b798d3c429f38f7b752e5c7a, type: 3}
+  m_Name: Mask_Wood
+  m_EditorClassIdentifier: 
+  customizationType: 2
+  headerText: Wooden Mask
+  options:
+  - {fileID: 1549554340965932, guid: 2f41c0245407eab4eb0e4cb54336fefa, type: 2}
+  - {fileID: 1401347835994716, guid: 16256f27d17c6f24c90bb6183b269bde, type: 2}
+  - {fileID: 1473674352146658, guid: 49b4f5198fff1db4fa990afc8f7a4d7b, type: 2}
+  - {fileID: 1515229697819414, guid: 54c676b54c4063d4d9f3b12fcd874eaf, type: 2}

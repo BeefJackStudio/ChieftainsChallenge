@@ -122,7 +122,7 @@ MonoBehaviour:
   levelInstance: {fileID: 0}
   slotLeft: {x: 0, y: 0}
   slotRight: {x: 0, y: 0}
-  allowSleeping: 1
+  isInSpeedzone: 0
 --- !u!212 &212354625978125896
 SpriteRenderer:
   m_ObjectHideFlags: 1

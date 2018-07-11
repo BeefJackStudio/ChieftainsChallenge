@@ -25,6 +25,16 @@ public class CharacterMask : MonoBehaviour {
 
     private void Awake() {
         m_LastPosition = transform.position;
+
+        List<Transform> cleanJiggleBonesList = new List<Transform>();
+
+        foreach (Transform t in jigglebones) {
+            if (t == null) continue;
+            cleanJiggleBonesList.Add(t);
+        }
+
+        jigglebones = cleanJiggleBonesList.ToArray();
+
         foreach (Transform t in jigglebones) {
             m_StartScales.Add(t, t.localScale);
             m_StartRotations.Add(t, t.transform.localEulerAngles.z);
@@ -52,6 +62,7 @@ public class CharacterMask : MonoBehaviour {
 
         for (int i = 0; i < jigglebones.Length; i++) {
             Transform t = jigglebones[i];
+
             bool flippedJigglebone = true;
             if (flipRotations.Length == jigglebones.Length) flippedJigglebone = flipRotations[i];
             //float rotation = Mathf.Lerp(t.rotation.eulerAngles.z, m_StartRotations[t] + targetRotation, 0.05f);
@@ -59,5 +70,13 @@ public class CharacterMask : MonoBehaviour {
             t.localRotation = Quaternion.Euler(0, flippedJigglebone ? 180 : 0, Mathf.Lerp(t.localEulerAngles.z, m_StartRotations[t] + targetRotation, 0.05f));           
         }
         m_LastPosition = pos;
+    }
+
+    public void CopySettingsTo(CharacterMask targetMask) {
+        targetMask.displayName = displayName;
+        targetMask.description = description;
+        targetMask.powerCurve = powerCurve;
+        targetMask.powerMultiplier = powerMultiplier;
+        targetMask.powerTimeScale = powerTimeScale;
     }
 }

@@ -40,14 +40,20 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
         m_OpenButtonTargetY = m_OpenButtonHideY;
         openButton.anchoredPosition = new Vector2(openButton.anchoredPosition.x, m_OpenButtonTargetY);
 
+        GameBall[] skinnedBalls = new GameBall[4] { CustomizationSelected.stoneBall.Obj, CustomizationSelected.mudBall.Obj, CustomizationSelected.beachBall.Obj, CustomizationSelected.sunBall.Obj };
+
         for (int i = 0; i < 4; i++) {
             GameBall ball = ballsToGenerate[i];
+            GameBall skinnedBall = skinnedBalls[i];
+
+            ball.CopySettingsTo(skinnedBall);
+
             Button button = ballSelectButtons[i];
 
-            button.GetComponentsInChildren<Image>()[1].sprite = ball.GetComponentInChildren<SpriteRenderer>().sprite;
+            button.GetComponentsInChildren<Image>()[1].sprite = skinnedBall.GetComponentInChildren<SpriteRenderer>().sprite;
 
             button.onClick.AddListener(() => {
-                SelectBall(ball);
+                SelectBall(skinnedBall);
             });
         }
 

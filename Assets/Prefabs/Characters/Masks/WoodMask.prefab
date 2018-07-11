@@ -128,8 +128,8 @@ MonoBehaviour:
       inSlope: 2
       outSlope: 2
       tangentMode: 0
-    m_PreInfinity: 0
-    m_PostInfinity: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
     m_RotationOrder: 0
   powerMultiplier: 1
   powerTimeScale: 0.75
@@ -137,6 +137,7 @@ MonoBehaviour:
   jigglebones: []
   jiggleAmount: 5
   damping: 0.5
+  flipRotations: 
 --- !u!212 &212310127259871640
 SpriteRenderer:
   m_ObjectHideFlags: 1

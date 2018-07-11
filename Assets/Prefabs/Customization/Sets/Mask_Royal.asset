@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fe2932b798d3c429f38f7b752e5c7a, type: 3}
+  m_Name: Mask_Royal
+  m_EditorClassIdentifier: 
+  customizationType: 4
+  headerText: Royal Mask
+  options:
+  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
+  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
+  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
+  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}

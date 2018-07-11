@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TrajectoryRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class GameBall : MonoBehaviour {
 
     [Header("Visualization")]
@@ -48,6 +48,12 @@ public class GameBall : MonoBehaviour {
 
         isInSpeedzone = false;
 
+        GameObject particlePrefab = CustomizationSelected.particle.Obj;
+        if(particlePrefab != null) {
+            GameObject particle = Instantiate(particlePrefab);
+            particle.transform.SetParent(transform, false);
+            particle.transform.localPosition = Vector3.zero;
+        }
         levelInstance.SetBall(this);
 
         if (levelInstance.useCannon) isSleeping = true;
@@ -88,7 +94,16 @@ public class GameBall : MonoBehaviour {
         m_Collider.enabled = true;
     }
 
-#region Ball sleeping
+    public void CopySettingsTo(GameBall targetBall) {
+        targetBall.displayName = displayName;
+        targetBall.description = description;
+        targetBall.BallHitSound = BallHitSound;
+        targetBall.windEffectMultiplier = windEffectMultiplier;
+        targetBall.characterSlotDistance = characterSlotDistance;
+        targetBall.GetComponent<CircleCollider2D>().sharedMaterial = GetComponent<Collider2D>().sharedMaterial;
+    }
+
+    #region Ball sleeping
     private void OnCollisionEnter2D(Collision2D collision) {
         m_BallCollisionStart = Time.time;
     }
