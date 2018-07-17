@@ -48,6 +48,7 @@ public class CustomizeButton : MonoBehaviour {
 
     public void SetLocked(bool locked) {
         m_BackgroundImage.color = locked ? Color.gray : Color.white;
+        m_Button.enabled = !locked;
         lockIcon.gameObject.SetActive(locked);
     }
 
@@ -58,7 +59,7 @@ public class CustomizeButton : MonoBehaviour {
             m_TargetScale = m_StartScale;
         }
 
-        m_BackgroundImage.color = selected ? new Color(0.5f, 1, 0.5f, 1) : Color.white;
+        if (!lockIcon.gameObject.activeSelf)  m_BackgroundImage.color = selected ? new Color(0.5f, 1, 0.5f, 1) : Color.white;
     }
 
     public void SetPreview(GameObject prefab) {

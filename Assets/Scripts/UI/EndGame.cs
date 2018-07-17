@@ -11,6 +11,13 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
     public TextMeshProUGUI cannonRewardText;
     public GameObject continueButton;
     public GameObject exitButton;
+    public GameObject standardLevelParent;
+
+    [Header("Unlocks")]
+    public Image unlockImage;
+    public Sprite questionSprite;
+    public Sprite particleSprite;
+    public TextMeshProUGUI unlockText;
 
     [Header("Stars")]
 	public List<GameObject> stars;
@@ -31,10 +38,10 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 
     [ContextMenu("End Game Test")]
 	public void EndGameTest() {
-		ShowEndGameUI(3);
+		ShowEndGameUI(3, 0, null);
 	}
 
-	public void ShowEndGameUI(int starAmount) {
+	public void ShowEndGameUI(int starAmount, int lastStarAmount, GameObject unlock) {
 		if(stars.Count < 3) {
 			Debug.LogError("Could not find enough star sprites.");
 			return;
@@ -44,6 +51,10 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 		if(sepRef == null) {
 			Debug.LogWarning("EndGame can't play sound effects.");
 		}
+
+        for (int i = 0; i < stars.Count; i++) {
+            stars[i].GetComponent<Image>().sprite = (i + 1) <= lastStarAmount ? acquiredImage : emptyImage;
+        }
 
         if(starAmount == 0) {
             title.text = "Level failed";
@@ -59,15 +70,30 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
         }
 
 		gameObject.SetActive(true);
-		StartCoroutine(EndGameAnimation(starAmount));
+        cannonRewardText.gameObject.SetActive(false);
+        standardLevelParent.SetActive(true);
+
+        if (unlock == null) {
+            unlockText.text = SaveDataManager.Instance.GetScoreLeftToUnlock() + " more perfect scores for unlock!";
+            unlockImage.sprite = questionSprite;
+        } else {
+            unlockText.text = "New customization unlocked!";
+
+            SpriteRenderer renderer = unlock.GetComponentInChildren<SpriteRenderer>();
+            if (renderer != null) {
+                unlockImage.sprite = renderer.sprite;
+            } else {
+                unlockImage.sprite = particleSprite;
+            }
+        }
+        
+        StartCoroutine(EndGameAnimation(starAmount));
 	}
 
     public void ShowEndGameUICannon() {
         gameObject.SetActive(true);
 
-        foreach (GameObject star in stars) {
-            star.gameObject.SetActive(false);
-        }
+        standardLevelParent.SetActive(false);
 
         bool nextLevel = IsNextLevelAvailable();
         cannonRewardText.text = nextLevel ? "Proceed to the next level!" : "Claim your rewards here!";
@@ -80,9 +106,7 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
     public void ShowEndGameFailCannon() {
         gameObject.SetActive(true);
 
-        foreach (GameObject star in stars) {
-            star.gameObject.SetActive(false);
-        }
+        standardLevelParent.SetActive(false);
 
         title.text = "Level failed";
 
@@ -96,20 +120,37 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 
 	public IEnumerator EndGameAnimation(int starAmount) {
 		isAnimating = true;
-		if(sepRef != null && onCompletedLevel != null) { 
+
+        RectTransform unlockTransform = unlockText.GetComponent<RectTransform>();
+        RectTransform unlockImageTransform = unlockImage.GetComponent<RectTransform>();
+        unlockTransform.localScale = Vector2.zero;
+        unlockImageTransform.localScale = Vector2.zero;
+
+        if (sepRef != null && onCompletedLevel != null) { 
 			sepRef.PlaySFX(onCompletedLevel);
 			yield return new WaitForSeconds(onCompletedLevel.GetLengthInSeconds());
 		}
 
 		for(int i = 0; i < starAmount; i++) {
+            if (stars[i].GetComponent<Image>().sprite == acquiredImage) continue;
+
 			Animator an = stars[i].GetComponent<Animator>();
 			if(an == null){ continue; }
 
 			an.Play("AquiredAnimation");
-			if(sepRef != null && onStarEarned != null) { sepRef.PlaySFX(onStarEarned); }
+            stars[i].GetComponent<Image>().sprite = acquiredImage;
+            if (sepRef != null && onStarEarned != null) { sepRef.PlaySFX(onStarEarned); }
 			yield return new WaitForSeconds(animationDelay);
 		}
-		isAnimating = false;
+
+        while(Vector2.Distance(unlockTransform.localScale, Vector2.one) >= 0.01f) {
+            Vector2 newScale = Vector2.Lerp(unlockTransform.localScale, Vector2.one, 0.1f);
+            unlockTransform.localScale = newScale;
+            unlockImageTransform.localScale = newScale;
+            yield return null;
+        }
+
+        isAnimating = false;
 	}
 
 	public void GoNextLevel() {

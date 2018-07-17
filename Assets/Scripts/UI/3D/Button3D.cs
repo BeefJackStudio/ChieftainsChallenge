@@ -37,6 +37,7 @@ public class Button3D : UI3DElement {
 
     public override void OnInteract(RaycastHit hit) {
         base.OnInteract(hit);
+        if (!enabled) return;
 
         onButtonClick.Invoke();
 

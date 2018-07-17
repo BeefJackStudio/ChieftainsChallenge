@@ -178,8 +178,25 @@ public class CustomizeMenu : MonoBehaviour {
                     if(i == 0) {
                         m_LastButton = button;
                     }
-                    button.SetLocked(false);
-                    button.SetSelected(i == currentSelection);
+
+                    bool[] array;
+                    if (section.customizationType == CustomizationTypes.MASK_HAWK ||
+                        section.customizationType == CustomizationTypes.MASK_ROYAL ||
+                        section.customizationType == CustomizationTypes.MASK_SKULL ||
+                        section.customizationType == CustomizationTypes.MASK_WOODEN) array = SaveDataManager.Instance.data.masksUnlocked;
+                    else if (section.customizationType == CustomizationTypes.BALL_BEACH ||
+                        section.customizationType == CustomizationTypes.BALL_MUD ||
+                        section.customizationType == CustomizationTypes.BALL_STONE ||
+                        section.customizationType == CustomizationTypes.BALL_SUN) array = SaveDataManager.Instance.data.ballsUnlocked;
+                    else if (section.customizationType == CustomizationTypes.PARTICLES) array = SaveDataManager.Instance.data.particlesUnlocked;
+                    else array = SaveDataManager.Instance.data.skinsUnlocked;
+
+                    bool isSelected = i == currentSelection;
+
+                    if (isSelected) m_LastButton = button;
+
+                    button.SetLocked(!(i == 0 || array[(m_CurrentPage * (array.Length == 16 ? 4 : 0)) + i]));
+                    button.SetSelected(isSelected);
                     button.SetPreview(section.options[i]);
                 }
             } else {

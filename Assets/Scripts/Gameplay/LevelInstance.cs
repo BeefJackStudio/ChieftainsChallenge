@@ -82,7 +82,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		if(GetBall() == null || useCannon) { return; }
 
         if (Input.GetKeyDown(KeyCode.U)) {
-            TriggerNextTurn();
+            ShowEndGame();
         }
 
 		if(GetBall().isSleeping && characterInstance != null) {
@@ -96,6 +96,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 characterInstance.transform.localScale = new Vector3(-Mathf.Abs(scale.x), scale.y, scale.z);
             }
 		}
+
+
     }
 
     public void ShootBall() {
@@ -213,20 +215,27 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 if (shotsFired >= thresholds[i]) { stars--; }
             }
 
+            int lastScore = SaveDataManager.Instance.GetLevelScore(LevelManager.Instance.CurrentLevel.scene);
+            if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
+                SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
+            } else {
+                Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
+            }
+
             //show end game
             if (EndGame.Instance == null) {
                 Debug.LogWarning("Levelinstance could not find end game instance.");
                 return;
             }
-            EndGame.Instance.ShowEndGameUI(stars);
+
+            GameObject unlockObject = null;
+            if (SaveDataManager.Instance.UpdateItemClaimCount()) {
+                unlockObject = SaveDataManager.Instance.UnlockRandomItem();
+            }
+
+            EndGame.Instance.ShowEndGameUI(stars, lastScore, unlockObject);
         } else {
             EndGame.Instance.ShowEndGameUICannon();
-        }
-
-        if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
-            SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
-        } else {
-            Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
         }
 
         //set level ended.

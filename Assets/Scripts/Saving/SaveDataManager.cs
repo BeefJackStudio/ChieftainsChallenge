@@ -9,12 +9,14 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
     public const string FILE_NAME = "Chieftains_Challenge_Save_Data.json";
     public const float HOUR_REGEN_PER_LIFE = 3f;
+    public const int LEVELS_PER_ITEM = 5;
 
     public SaveData data;
     public CustomizationDatabase customizeData;
 
     private string m_SaveDataPath;
     private Dictionary<string, int> m_LevelScores = new Dictionary<string, int>();
+    private int m_ClaimedItems = 0;
 
     #region Saving and loading
     void OnApplicationQuit() {
@@ -30,7 +32,6 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         data.SerializeCustomization();
 
         string jsonData = JsonUtility.ToJson(data);
-        Debug.Log("Saved to " + GetFilePath());
         File.WriteAllText(GetFilePath(), jsonData);
     }
 
@@ -124,5 +125,80 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
     private string GetFolderPath() {
         return Application.persistentDataPath;
+    }
+
+    public int GetScoreLeftToUnlock() {
+        int perfectLevelScores = 0;
+        foreach (int score in m_LevelScores.Values) {
+            if (score == 3) perfectLevelScores++;
+        }
+
+        return Mathf.FloorToInt(perfectLevelScores % LEVELS_PER_ITEM);
+    }
+
+    public bool UpdateItemClaimCount() {
+        int perfectLevelScores = 0;
+        foreach (int score in m_LevelScores.Values) {
+            if (score == 3) perfectLevelScores++;
+        }
+
+        bool unlock = GetScoreLeftToUnlock() == 0;
+        bool canUseUnlock = unlock && !data.hasUsedUnlock;
+        Debug.Log("left to unlock = " + GetScoreLeftToUnlock() + ", has used unlock = " + data.hasUsedUnlock);
+        Debug.Log("Can unlock something? " + canUseUnlock);
+        if (unlock) data.hasUsedUnlock = true;
+        return canUseUnlock; 
+    }
+
+    public GameObject UnlockRandomItem() {
+        data.hasUsedUnlock = false;
+
+        List<int> maskIndexes = GetLockedIndexes(data.masksUnlocked);
+        List<int> ballIndexes = GetLockedIndexes(data.ballsUnlocked);
+        List<int> skinIndexes = GetLockedIndexes(data.skinsUnlocked);
+        List<int> particleIndexes = GetLockedIndexes(data.particlesUnlocked);
+
+        GameObject obj = null;
+        while(obj == null) {
+            int category = UnityEngine.Random.Range(0, 5);
+
+            if(category == 0 && maskIndexes.Count != 0) {
+                int index = maskIndexes[UnityEngine.Random.Range(0, maskIndexes.Count - 1)];
+                obj = customizeData.sectionMask[Mathf.FloorToInt(index / 4)].options[index % 4];
+                data.masksUnlocked[index] = true;
+            }
+
+            if (category == 1 && ballIndexes.Count != 0) {
+                int index = ballIndexes[UnityEngine.Random.Range(0, ballIndexes.Count - 1)];
+                obj = customizeData.sectionBall[Mathf.FloorToInt(index / 4)].options[index % 4];
+                data.ballsUnlocked[index] = true;
+            }
+
+            if (category == 2 && skinIndexes.Count != 0) {
+                int index = skinIndexes[UnityEngine.Random.Range(0, skinIndexes.Count - 1)];
+                obj = customizeData.sectionSkin.options[index];
+                data.skinsUnlocked[index] = true;
+            }
+
+            if (category == 3 && particleIndexes.Count != 0) {
+                int index = particleIndexes[UnityEngine.Random.Range(0, particleIndexes.Count - 1)];
+                obj = customizeData.sectionParticle.options[index];
+                data.particlesUnlocked[index] = true;
+            }
+
+            if (maskIndexes.Count == 0 &&
+                ballIndexes.Count == 0 &&
+                skinIndexes.Count == 0 &&
+                particleIndexes.Count == 0) break;
+        }
+        return obj;
+    }
+
+    private List<int> GetLockedIndexes(bool[] array) {
+        List<int> l = new List<int>();
+        for(int i = 0;i < array.Length; i++) {
+            if (!array[i]) l.Add(i);
+        }
+        return l;
     }
 }

@@ -14,7 +14,7 @@ public class SpeedZoneParticle : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void LateUpdate () {
-		if(LevelInstance.Instance == null) { return; }
+		if(LevelInstance.Instance == null || LevelInstance.Instance.GetBall()) { return; }
 
 		var velocityOverLifetime = particleSystem.velocityOverLifetime;
 		var main = particleSystem.main;

@@ -14,6 +14,12 @@ public class SaveData {
     public int[] customizeMaskOptions = new int[4] { 0, 0, 0, 0 };
     public int[] customizeBallOptions = new int[4] { 0, 0, 0, 0 };
     public int customizeParticleOption = 0;
+    public int customizeSkinOption = 0;
+    public bool[] masksUnlocked = new bool[16];
+    public bool[] ballsUnlocked = new bool[16];
+    public bool[] particlesUnlocked = new bool[12];
+    public bool[] skinsUnlocked = new bool[12];
+    public bool hasUsedUnlock = true;
 
     public Dictionary<string, int> DeserializeScores() {
         Dictionary<string, int> scores = new Dictionary<string, int>();
@@ -37,7 +43,6 @@ public class SaveData {
     public void DeserializeCustomization() {
         CustomizationDatabase data = SaveDataManager.Instance.customizeData;
 
-        Debug.Log("Mask = " + customizeMaskOptions[0]);
         CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[0].options[customizeMaskOptions[0]].GetComponent<CharacterMask>(), customizeMaskOptions[0]);
         CustomizationSelected.hawkMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[1].options[customizeMaskOptions[1]].GetComponent<CharacterMask>(), customizeMaskOptions[1]);
         CustomizationSelected.royalMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[2].options[customizeMaskOptions[2]].GetComponent<CharacterMask>(), customizeMaskOptions[2]);

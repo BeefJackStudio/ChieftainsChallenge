@@ -33,12 +33,15 @@ public static class CustomizationSelected {
 
     public class SelectionWrapper<T> {
 
-        public T Obj { get; private set; }
-        public int ID { get; private set; }
+        private readonly T _obj;
+        private readonly int _id;
+
+        public T Obj { get { return _obj; } }
+        public int ID { get { return _id; } }
 
         public SelectionWrapper(T obj, int number) {
-            Obj = obj;
-            ID = number;
+            _obj = obj;
+            _id = number;
         }
     }
 }
