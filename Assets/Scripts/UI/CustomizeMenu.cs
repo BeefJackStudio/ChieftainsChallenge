@@ -28,6 +28,10 @@ public class CustomizeMenu : MonoBehaviour {
     private CustomizeButton m_LastButton;
 
     private void Awake() {
+        SetDefault();
+    }
+
+    private void Start() {
         m_FourButtonChildren = options4Parent.GetComponentsInChildren<CustomizeButton>(true);
         for (int i = 0; i < m_FourButtonChildren.Length; i++) {
             m_FourButtonChildren[i].Initialize(OnCustomizeButtonPress, i);
@@ -37,29 +41,40 @@ public class CustomizeMenu : MonoBehaviour {
         for (int i = 0; i < m_TwelveButtonChildren.Length; i++) {
             m_TwelveButtonChildren[i].Initialize(OnCustomizeButtonPress, i);
         }
-    }
 
-    private void Start() {
         SetCategory(0);
-        SetDefault();
     }
 
     private void SetDefault() {
 
         //Just check if it's already loaded via SaveDataManager.cs
-        if (CustomizationSelected.woodenMask != null) return;
+        if (CustomizationSelected.woodenMask == null) {
 
-        CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[0].options[0].GetComponent<CharacterMask>(), 0);
-        CustomizationSelected.hawkMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[1].options[0].GetComponent<CharacterMask>(), 0);
-        CustomizationSelected.royalMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[2].options[0].GetComponent<CharacterMask>(), 0);
-        CustomizationSelected.skullMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[3].options[0].GetComponent<CharacterMask>(), 0);
+            CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[0].options[0].GetComponent<CharacterMask>(), 0);
+            CustomizationSelected.hawkMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[1].options[0].GetComponent<CharacterMask>(), 0);
+            CustomizationSelected.royalMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[2].options[0].GetComponent<CharacterMask>(), 0);
+            CustomizationSelected.skullMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[3].options[0].GetComponent<CharacterMask>(), 0);
 
-        CustomizationSelected.stoneBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
-        CustomizationSelected.mudBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[1].options[0].GetComponent<GameBall>(), 0);
-        CustomizationSelected.beachBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[2].options[0].GetComponent<GameBall>(), 0);
-        CustomizationSelected.sunBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[3].options[0].GetComponent<GameBall>(), 0);
+            CustomizationSelected.stoneBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
+            CustomizationSelected.mudBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[1].options[0].GetComponent<GameBall>(), 0);
+            CustomizationSelected.beachBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[2].options[0].GetComponent<GameBall>(), 0);
+            CustomizationSelected.sunBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[3].options[0].GetComponent<GameBall>(), 0);
 
-        CustomizationSelected.particle = new CustomizationSelected.SelectionWrapper<GameObject>(data.sectionParticle.options[0], 0);
+            CustomizationSelected.particle = new CustomizationSelected.SelectionWrapper<GameObject>(data.sectionParticle.options[0], 0);
+        }
+
+        SaveDataManager.Instance.data.masksUnlocked[0] = true;
+        SaveDataManager.Instance.data.masksUnlocked[4] = true;
+        SaveDataManager.Instance.data.masksUnlocked[8] = true;
+        SaveDataManager.Instance.data.masksUnlocked[12] = true;
+
+        SaveDataManager.Instance.data.ballsUnlocked[0] = true;
+        SaveDataManager.Instance.data.ballsUnlocked[4] = true;
+        SaveDataManager.Instance.data.ballsUnlocked[8] = true;
+        SaveDataManager.Instance.data.ballsUnlocked[12] = true;
+
+        SaveDataManager.Instance.data.particlesUnlocked[0] = true;
+        SaveDataManager.Instance.data.skinsUnlocked[0] = true;
     }
 
     private void OnCustomizeButtonPress(CustomizeButton button, int i) {
@@ -166,6 +181,18 @@ public class CustomizeMenu : MonoBehaviour {
         bool isValid = section != null;
         m_CurrentSectionInstance = section;
 
+        bool[] array;
+        if (section.customizationType == CustomizationTypes.MASK_HAWK ||
+            section.customizationType == CustomizationTypes.MASK_ROYAL ||
+            section.customizationType == CustomizationTypes.MASK_SKULL ||
+            section.customizationType == CustomizationTypes.MASK_WOODEN) array = SaveDataManager.Instance.data.masksUnlocked;
+        else if (section.customizationType == CustomizationTypes.BALL_BEACH ||
+            section.customizationType == CustomizationTypes.BALL_MUD ||
+            section.customizationType == CustomizationTypes.BALL_STONE ||
+            section.customizationType == CustomizationTypes.BALL_SUN) array = SaveDataManager.Instance.data.ballsUnlocked;
+        else if (section.customizationType == CustomizationTypes.PARTICLES) array = SaveDataManager.Instance.data.particlesUnlocked;
+        else array = SaveDataManager.Instance.data.skinsUnlocked;
+
         title.text = isValid ? section.headerText : "No customization found!";
         for (int i = 0; i < m_CurrentButtons.Length; i++) {
             CustomizeButton button = m_CurrentButtons[i];
@@ -178,18 +205,6 @@ public class CustomizeMenu : MonoBehaviour {
                     if(i == 0) {
                         m_LastButton = button;
                     }
-
-                    bool[] array;
-                    if (section.customizationType == CustomizationTypes.MASK_HAWK ||
-                        section.customizationType == CustomizationTypes.MASK_ROYAL ||
-                        section.customizationType == CustomizationTypes.MASK_SKULL ||
-                        section.customizationType == CustomizationTypes.MASK_WOODEN) array = SaveDataManager.Instance.data.masksUnlocked;
-                    else if (section.customizationType == CustomizationTypes.BALL_BEACH ||
-                        section.customizationType == CustomizationTypes.BALL_MUD ||
-                        section.customizationType == CustomizationTypes.BALL_STONE ||
-                        section.customizationType == CustomizationTypes.BALL_SUN) array = SaveDataManager.Instance.data.ballsUnlocked;
-                    else if (section.customizationType == CustomizationTypes.PARTICLES) array = SaveDataManager.Instance.data.particlesUnlocked;
-                    else array = SaveDataManager.Instance.data.skinsUnlocked;
 
                     bool isSelected = i == currentSelection;
 

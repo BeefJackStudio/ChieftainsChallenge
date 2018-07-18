@@ -133,7 +133,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
             if (score == 3) perfectLevelScores++;
         }
 
-        return Mathf.FloorToInt(perfectLevelScores % LEVELS_PER_ITEM);
+        return LEVELS_PER_ITEM - Mathf.FloorToInt(perfectLevelScores % LEVELS_PER_ITEM);
     }
 
     public bool UpdateItemClaimCount() {
@@ -142,16 +142,17 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
             if (score == 3) perfectLevelScores++;
         }
 
-        bool unlock = GetScoreLeftToUnlock() == 0;
+        int leftToUnlock = GetScoreLeftToUnlock();
+        bool unlock = leftToUnlock == LEVELS_PER_ITEM;
         bool canUseUnlock = unlock && !data.hasUsedUnlock;
-        Debug.Log("left to unlock = " + GetScoreLeftToUnlock() + ", has used unlock = " + data.hasUsedUnlock);
+        Debug.Log("left to unlock = " + leftToUnlock + ", has used unlock = " + data.hasUsedUnlock);
         Debug.Log("Can unlock something? " + canUseUnlock);
-        if (unlock) data.hasUsedUnlock = true;
+        if (leftToUnlock != LEVELS_PER_ITEM) data.hasUsedUnlock = false;
         return canUseUnlock; 
     }
 
     public GameObject UnlockRandomItem() {
-        data.hasUsedUnlock = false;
+        data.hasUsedUnlock = true;
 
         List<int> maskIndexes = GetLockedIndexes(data.masksUnlocked);
         List<int> ballIndexes = GetLockedIndexes(data.ballsUnlocked);
