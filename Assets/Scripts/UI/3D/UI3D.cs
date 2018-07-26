@@ -26,7 +26,7 @@ public class UI3D : MonoBehaviourSingleton<UI3D> {
             RaycastHit hit;
             Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, layers)) {
+            if (Physics.Raycast(ray, out hit, 1000, layers)) {
                 UI3DElement element = hit.transform.GetComponent(typeof(UI3DElement)) as UI3DElement;
                 if (element == null) return;
 

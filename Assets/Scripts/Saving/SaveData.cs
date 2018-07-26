@@ -20,6 +20,7 @@ public class SaveData {
     public bool[] particlesUnlocked = new bool[12];
     public bool[] skinsUnlocked = new bool[12];
     public bool hasUsedUnlock = true;
+    public int boxesToOpen = 0;
 
     public Dictionary<string, int> DeserializeScores() {
         Dictionary<string, int> scores = new Dictionary<string, int>();

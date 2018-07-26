@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Particles
   m_EditorClassIdentifier: 
   customizationType: 1
-  headerText: Particles
+  headerText: Effects
   options:
   - {fileID: 1385098733713336, guid: 29f69da7df99dc246a44b01c7d92a97e, type: 2}
   - {fileID: 1820790430792676, guid: 508f68c92673765469a0450752682ba1, type: 2}

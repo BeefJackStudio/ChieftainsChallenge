@@ -124,6 +124,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     }
 
     private string GetFolderPath() {
+        Debug.Log(Application.persistentDataPath);
         return Application.persistentDataPath;
     }
 
@@ -145,9 +146,11 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         int leftToUnlock = GetScoreLeftToUnlock();
         bool unlock = leftToUnlock == LEVELS_PER_ITEM;
         bool canUseUnlock = unlock && !data.hasUsedUnlock;
-        Debug.Log("left to unlock = " + leftToUnlock + ", has used unlock = " + data.hasUsedUnlock);
-        Debug.Log("Can unlock something? " + canUseUnlock);
         if (leftToUnlock != LEVELS_PER_ITEM) data.hasUsedUnlock = false;
+
+        if (canUseUnlock) {
+            data.boxesToOpen++;
+        }
         return canUseUnlock; 
     }
 

@@ -228,12 +228,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 return;
             }
 
-            GameObject unlockObject = null;
-            if (SaveDataManager.Instance.UpdateItemClaimCount()) {
-                unlockObject = SaveDataManager.Instance.UnlockRandomItem();
-            }
-
-            EndGame.Instance.ShowEndGameUI(stars, lastScore, unlockObject);
+            EndGame.Instance.ShowEndGameUI(stars, lastScore, SaveDataManager.Instance.UpdateItemClaimCount());
         } else {
             EndGame.Instance.ShowEndGameUICannon();
         }

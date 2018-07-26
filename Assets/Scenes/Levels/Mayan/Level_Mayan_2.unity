@@ -2497,15 +2497,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354a6b1133d0e824f9d4d36333fdbfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useCannon: 0
   levelState: 0
   enableWind: 0
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
   shotsFired: 0
-  starThreshold2: 4
-  starThreshold1: 6
-  starThreshold0: 8
+  starThreshold2: 3
+  starThreshold1: 5
+  starThreshold0: 7
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   animationDelayShoot: 2.1

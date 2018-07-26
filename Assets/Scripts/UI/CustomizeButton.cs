@@ -18,6 +18,7 @@ public class CustomizeButton : MonoBehaviour {
     private Vector3 m_StartPos;
     private Vector3 m_StartScale;
     private Vector3 m_TargetScale;
+    private float m_TargetScaleMultiplier = 1;
 
     private void Awake() {
         m_Button = GetComponent<Button3D>();
@@ -38,7 +39,9 @@ public class CustomizeButton : MonoBehaviour {
             m_TargetScale = m_StartScale * Mathf.Sin(Time.time * 2.5f).Remap(-1, 1, 0.8f, 1.1f);
         }
 
-        m_PreviewObj.transform.localScale = Vector3.Lerp(m_PreviewObj.transform.localScale, m_TargetScale, 0.05f);
+        if (m_PreviewObj != null) {
+            m_PreviewObj.transform.localScale = Vector3.Lerp(m_PreviewObj.transform.localScale, m_TargetScale, 0.05f) * m_TargetScaleMultiplier;
+        }
     }
 
     public void Initialize(Action<CustomizeButton, int> onClick, int buttonNumber) {
@@ -85,6 +88,8 @@ public class CustomizeButton : MonoBehaviour {
     }
 
     private void CleanPreview() {
+        m_TargetScaleMultiplier = 1;
+
         CharacterMask mask = m_PreviewObj.GetComponent<CharacterMask>();
         if (mask != null) {
             m_PreviewObj.transform.localScale = Vector3.one;
@@ -118,6 +123,8 @@ public class CustomizeButton : MonoBehaviour {
             m_PreviewObj.transform.localPosition = Vector3.zero;
             ParticleSystem.MainModule main = particle.main;
             main.simulationSpace = ParticleSystemSimulationSpace.Local;
+            main.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            m_TargetScaleMultiplier = 0.95f;
         }
     }
 }

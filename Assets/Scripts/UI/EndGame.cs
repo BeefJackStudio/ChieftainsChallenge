@@ -16,7 +16,7 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
     [Header("Unlocks")]
     public Image unlockImage;
     public Sprite questionSprite;
-    public Sprite particleSprite;
+    public Sprite boxSprite;
     public TextMeshProUGUI unlockText;
 
     [Header("Stars")]
@@ -38,10 +38,10 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
 
     [ContextMenu("End Game Test")]
 	public void EndGameTest() {
-		ShowEndGameUI(3, 0, null);
+		ShowEndGameUI(3, 0, false);
 	}
 
-	public void ShowEndGameUI(int starAmount, int lastStarAmount, GameObject unlock) {
+	public void ShowEndGameUI(int starAmount, int lastStarAmount, bool unlock) {
 		if(stars.Count < 3) {
 			Debug.LogError("Could not find enough star sprites.");
 			return;
@@ -73,18 +73,12 @@ public class EndGame : MonoBehaviourSingleton<EndGame> {
         cannonRewardText.gameObject.SetActive(false);
         standardLevelParent.SetActive(true);
 
-        if (unlock == null) {
+        if (!unlock) {
             unlockText.text = SaveDataManager.Instance.GetScoreLeftToUnlock() + " more perfect scores for unlock!";
             unlockImage.sprite = questionSprite;
         } else {
-            unlockText.text = "New customization unlocked!";
-
-            SpriteRenderer renderer = unlock.GetComponentInChildren<SpriteRenderer>();
-            if (renderer != null) {
-                unlockImage.sprite = renderer.sprite;
-            } else {
-                unlockImage.sprite = particleSprite;
-            }
+            unlockText.text = "Lootbox gained!";
+            unlockImage.sprite = boxSprite;
         }
         
         StartCoroutine(EndGameAnimation(starAmount));
