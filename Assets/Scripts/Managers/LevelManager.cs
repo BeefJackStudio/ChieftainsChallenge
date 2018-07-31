@@ -53,10 +53,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager> {
             if (m_QueuedScenes.Count == 0) {
                 LoadingScreen.Instance.Hide(() => { });
                 OnScenesLoaded();
-            }else {
-                foreach(string s in m_QueuedScenes) {
-                    LoadScene(s, LoadSceneMode.Additive);
-                }
+            } else {
+                LoadScene(m_QueuedScenes[0], LoadSceneMode.Additive);
                 m_QueuedScenes.Clear();
             }
         }

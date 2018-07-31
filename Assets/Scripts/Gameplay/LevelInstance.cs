@@ -28,7 +28,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	public Vector2 windForce = Vector2.zero;
 
 	[Header("Stars")]
-	[ReadOnly] 													public int shotsFired = 0;
+	[ReadOnly] 													public int currentShot = 0;
 	[Tooltip("Amount of shots when we drop to two stars.")]		public int starThreshold2 = 4;
 	[Tooltip("Amount of shots when we drop to one star.")]		public int starThreshold1 = 6;
 	[Tooltip("Amount of shots when we drop to no stars.")]		public int starThreshold0 = 8;
@@ -142,15 +142,17 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     public void TriggerNextTurn() {
         if (levelState == LevelState.ENDING) return;
 
+        currentShot++;
+
         if (useCannon) {
-            if (shotsFired != 0) {
+            if (currentShot != 1) {
                 if (levelState != LevelState.ENDING) {
                     EndGame.Instance.ShowEndGameFailCannon();
                 }
                 return;
             }
         } else {
-            if(shotsFired >= starThreshold0) {
+            if(currentShot >= starThreshold0) {
                 SaveDataManager.Instance.ModifyLifeCount(-1);
                 ShowEndGame();
                 return;
@@ -176,6 +178,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
             m_PlayerAppearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
             MaskSelectionMenu.Instance.ShowOpenButton();
+
+            int stars = 3;
+            int shotsLeft = 0;
+            GetCurrentScoreStats(out stars, out shotsLeft);
+            TurnsLeftHUD.Instance.StartSequence(stars - 1, shotsLeft);
         }
 
         ShootingHUD.Instance.Show();
@@ -192,7 +199,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
 	public void OnShotFired() {
-		shotsFired++;
+
 	}
 
     public void ApplyCharacterMask(CharacterMask mask) {
@@ -207,13 +214,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         Debug.Log("Game ending.");
 
         int stars = 3;
+        int shotsLeft = 0;
 
         if (!useCannon) {
             //calc stars
-            List<int> thresholds = new List<int>() { starThreshold2, starThreshold1, starThreshold0 };
-            for (int i = 0; i < thresholds.Count; i++) {
-                if (shotsFired >= thresholds[i]) { stars--; }
-            }
+            GetCurrentScoreStats(out stars, out shotsLeft);
 
             int lastScore = SaveDataManager.Instance.GetLevelScore(LevelManager.Instance.CurrentLevel.scene);
             if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
@@ -237,6 +242,20 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         levelState = LevelState.ENDING;
 
         SaveDataManager.Instance.Save();
+    }
+
+    private void GetCurrentScoreStats(out int stars, out int shotsLeft) {
+        stars = 3;
+
+        List<int> thresholds = new List<int>() { starThreshold2, starThreshold1, starThreshold0 };
+        shotsLeft = thresholds[0] - currentShot;
+        for (int i = 0; i < thresholds.Count; i++) {
+            if (currentShot >= thresholds[i]) {
+                stars--;
+                if (stars == 0) break;
+                shotsLeft = thresholds[i + 1] - currentShot;
+            }
+        }
     }
 
     public void ResetShootingAngle() {
