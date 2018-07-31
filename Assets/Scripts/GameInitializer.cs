@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameInitializer : MonoBehaviour {
 
     public string cutsceneName;
+    public GenericLevelData levelData;
 
     private SaveDataManager m_SaveDataManager;
     private LoadingScreen m_LoadingScreen;
@@ -15,6 +16,8 @@ public class GameInitializer : MonoBehaviour {
     private void Awake() {
         m_SaveDataManager = GetComponent<SaveDataManager>();
         m_LevelManager = GetComponent<LevelManager>();
+
+        Physics2D.gravity *= levelData.gameSpeed;
     }
 
     private void Start() {

@@ -90,6 +90,7 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
 
     public void ApplyBall() {
         GameObject newBall = Instantiate(m_SelectedBall).gameObject;
+        newBall.GetComponent<GameBall>().SetGravityScale(m_SelectedBall.GetComponent<Rigidbody2D>().gravityScale);
         LevelInstance.Instance.SetBall(newBall.GetComponent<GameBall>());
         Hide();
     }

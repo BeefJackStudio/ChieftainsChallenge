@@ -18,7 +18,7 @@ public class SpeedZone : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.GetComponent<GameBall>() == null) return;
 
-	    other.GetComponent<Rigidbody2D>().AddForce(other.GetComponent<Rigidbody2D>().velocity * force);
+	    other.GetComponent<Rigidbody2D>().AddForce(other.GetComponent<Rigidbody2D>().velocity * force * LevelInstance.Instance.levelData.gameSpeed);
 
 	}
 

@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneName: Cutscene_Intro
+  levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
 --- !u!114 &310102359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +367,13 @@ MonoBehaviour:
     customizeMaskOptions: 00000000000000000000000000000000
     customizeBallOptions: 00000000000000000000000000000000
     customizeParticleOption: 0
+    customizeSkinOption: 0
+    masksUnlocked: 00000000000000000000000000000000
+    ballsUnlocked: 00000000000000000000000000000000
+    particlesUnlocked: 000000000000000000000000
+    skinsUnlocked: 000000000000000000000000
+    hasUsedUnlock: 1
+    boxesToOpen: 0
   customizeData: {fileID: 11400000, guid: 68834b784e5885344bb3f9bbc018c2f7, type: 2}
 --- !u!114 &310102360
 MonoBehaviour:

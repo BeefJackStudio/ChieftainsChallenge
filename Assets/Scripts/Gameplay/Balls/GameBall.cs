@@ -30,8 +30,9 @@ public class GameBall : MonoBehaviour {
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
     private TrajectoryRenderer m_TrajectoryRenderer;
+    private float m_GravityScale;
 
-    private const float VELOCITY_SLEEP_THRESHOLD = 0.1f;
+    private const float VELOCITY_SLEEP_THRESHOLD = 0.15f;
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -60,9 +61,11 @@ public class GameBall : MonoBehaviour {
     }
 
     private void Update() {
-        Debug.DrawLine(transform.position, transform.position + new Vector3(m_RigidBody.velocity.x, m_RigidBody.velocity.y, 0), Color.yellow, 5);
-
         if(levelInstance == null) { return; }
+
+        if(m_GravityScale == 0) {
+            m_GravityScale = m_RigidBody.gravityScale;
+        }
 
         if (Input.GetKeyDown(KeyCode.D)) {
             m_RigidBody.AddForce(levelInstance.ShootPower, ForceMode2D.Impulse);
@@ -74,7 +77,11 @@ public class GameBall : MonoBehaviour {
             m_TrajectoryRenderer.Plot(m_RigidBody);
         }
     }
-    
+
+    public void SetGravityScale(float scale) {
+        m_GravityScale = scale;
+    }
+
     public void HitBall(Vector2 power) {
         StartCoroutine(HitBallRoutine(power));
     }
@@ -86,6 +93,8 @@ public class GameBall : MonoBehaviour {
         }
 
         m_Collider.enabled = false;
+        m_RigidBody.gravityScale = m_GravityScale;
+        power *= (levelInstance.levelData.gameSpeed * 0.75f);
         m_RigidBody.AddForce(power, ForceMode2D.Impulse);
         m_TrajectoryRenderer.StopRender();
         levelInstance.OnShotFired();
@@ -100,7 +109,10 @@ public class GameBall : MonoBehaviour {
         targetBall.BallHitSound = BallHitSound;
         targetBall.windEffectMultiplier = windEffectMultiplier;
         targetBall.characterSlotDistance = characterSlotDistance;
+        targetBall.GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale;
         targetBall.GetComponent<CircleCollider2D>().sharedMaterial = GetComponent<Collider2D>().sharedMaterial;
+
+        targetBall.SetGravityScale(m_GravityScale);
     }
 
     #region Ball sleeping
@@ -115,7 +127,7 @@ public class GameBall : MonoBehaviour {
         if ((Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) || (isInSpeedzone && velocityMagnitude >= 0.1f)) return;
 
         float materialFriction = Mathf.Clamp01((collision.collider.sharedMaterial.friction - 1) * 0.5f);
-        m_RigidBody.velocity *= ((1f - materialFriction) - (Time.time - m_BallCollisionStart) * 0.075f);
+        m_RigidBody.velocity *= ((1f - materialFriction) - (Time.time - m_BallCollisionStart) * 0.2f);
 
         //Start a routine to check if the ball will stay still
         if (velocityMagnitude <= VELOCITY_SLEEP_THRESHOLD) {
@@ -157,6 +169,7 @@ public class GameBall : MonoBehaviour {
 
             while (isSleeping) {
                 m_RigidBody.velocity = Vector2.zero;
+                m_RigidBody.gravityScale = 0;
                 yield return null;
             }
         } 
