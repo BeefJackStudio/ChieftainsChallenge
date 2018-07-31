@@ -375,6 +375,17 @@ MonoBehaviour:
     hasUsedUnlock: 1
     boxesToOpen: 0
   customizeData: {fileID: 11400000, guid: 68834b784e5885344bb3f9bbc018c2f7, type: 2}
+  customizeDataRefs:
+  - {fileID: 11400000, guid: fa9ee365f55ad324296daa519e619ec4, type: 2}
+  - {fileID: 11400000, guid: 8abaf8e7e843a3a42a811d532f142b9a, type: 2}
+  - {fileID: 11400000, guid: 0634e0e1b59d0074d960f46d557db4a1, type: 2}
+  - {fileID: 11400000, guid: 5baaaa11dd0d6094ea58f2838799504f, type: 2}
+  - {fileID: 11400000, guid: 7a44a277ae2d61c429d71b1ae185cf19, type: 2}
+  - {fileID: 11400000, guid: 7406b9ff26b247f46896c4524a2e633a, type: 2}
+  - {fileID: 11400000, guid: fbe16a98801216b4aa4b9397c1d29035, type: 2}
+  - {fileID: 11400000, guid: 92a3b570d98df624a81cad036a888958, type: 2}
+  - {fileID: 11400000, guid: aeeb35c353b869746989b458a1e613cc, type: 2}
+  - {fileID: 11400000, guid: 355cc994b2a76d44786dacd8a6219929, type: 2}
 --- !u!114 &310102360
 MonoBehaviour:
   m_ObjectHideFlags: 0

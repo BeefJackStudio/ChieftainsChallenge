@@ -203,6 +203,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	}
 
     public void ApplyCharacterMask(CharacterMask mask) {
+        if(mask == null) {
+            Debug.LogError("No mask selected!");
+            return;
+        }
         characterInstance.GetComponent<CharacterSpriteHandler>().ApplyMask(mask);
         ShootingHUD.Instance.powerCurve = mask.powerCurve;
         ShootingHUD.Instance.powerTimeScale = mask.powerTimeScale;
