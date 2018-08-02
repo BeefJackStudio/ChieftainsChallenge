@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd0e8570e6f72f8469c3fd2d8ed37d31, type: 3}
-  m_Name: Customize_Data
+  m_Name: Customize_Data_New
   m_EditorClassIdentifier: 
   sectionMask:
   - {fileID: 11400000, guid: 92a3b570d98df624a81cad036a888958, type: 2}

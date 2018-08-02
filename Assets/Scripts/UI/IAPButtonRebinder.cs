@@ -22,7 +22,10 @@ public class IAPButtonRebinder : MonoBehaviour {
     }
 
     void Start () {
-        titleText.text = m_IAPButton.titleText.text;
+        string shortenedText = m_IAPButton.titleText.text;
+        int parenthesisIndex = shortenedText.IndexOf('(');
+        if(parenthesisIndex != -1) shortenedText = shortenedText.Substring(0, shortenedText.IndexOf('('));
+        titleText.text = shortenedText;
         descriptionText.text = m_IAPButton.descriptionText.text;
         priceText.text = m_IAPButton.priceText.text;
     }

@@ -29,13 +29,22 @@ public class LivesIndicator : MonoBehaviourSingleton<LivesIndicator> {
         m_Lerper.targetPosition = m_RectTransform.anchoredPosition;
     }
 
-    public void Show() {
+    public void Show(bool setLives = true) {
         ObjectLerper lerper = GetComponent<ObjectLerper>();
         lerper.targetPosition = m_StartPosition;
 
+        if (setLives) {
+            TimeUtilities.ExecuteAfterDelay(() => {
+                SetLivesCount(SaveDataManager.Instance.data.currentLives);
+            }, 1, this);
+        }
+    }
+
+    public void Show(float hideDelay, bool setLives = true) {
+        Show(setLives);
         TimeUtilities.ExecuteAfterDelay(() => {
-            SetLivesCount(SaveDataManager.Instance.data.currentLives);
-        }, 1, this);
+            Hide();
+        }, hideDelay, this);
     }
 
     public void Hide() {

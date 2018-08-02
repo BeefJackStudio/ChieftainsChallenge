@@ -80,6 +80,14 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
         m_IsAimingRight = false;
     }
 
+    public void ApplyMask(CharacterMask mask) {
+        powerCurve = mask.powerCurve;
+        powerTimeScale = mask.powerTimeScale;
+
+        powerCurve.postWrapMode = WrapMode.PingPong;
+        powerCurve.preWrapMode = WrapMode.PingPong;
+    }
+
     public void Hide(bool bForce = false) {
         foreach(ObjectLerper o in m_ObjectsToLerp) {
             foreach(Button button in o.GetComponentsInChildren<Button>()) {

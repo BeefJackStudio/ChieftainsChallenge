@@ -53,6 +53,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
     public string GetFilePath() {
         if (string.IsNullOrEmpty(m_SaveDataPath)) {
+            Debug.Log(GetFolderPath());
             m_SaveDataPath = Path.Combine(GetFolderPath(), FILE_NAME);
         }
         return m_SaveDataPath;
@@ -124,7 +125,6 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
     }
 
     private string GetFolderPath() {
-        Debug.Log(Application.persistentDataPath);
         return Application.persistentDataPath;
     }
 

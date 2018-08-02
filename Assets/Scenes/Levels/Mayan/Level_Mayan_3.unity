@@ -1043,11 +1043,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 33.555405
-    bot: -1.8354044
-    left: -15.857981
-    right: 79.15798
-    squaredArea: 3362.692
+    top: 29.357445
+    bot: -1.8374434
+    left: -15.851297
+    right: 14.251297
+    squaredArea: 939.04706
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -1134,10 +1134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 39
-    bot: 7.800001
-    left: 14.050002
-    right: 44.149998
+    top: 60.8
+    bot: 29.600002
+    left: -15.049998
+    right: 15.049998
     squaredArea: 939.1198
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
@@ -1371,11 +1371,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 32.6
-    bot: 1.4000015
-    left: 14.850001
-    right: 44.949997
-    squaredArea: 939.11975
+    top: 39
+    bot: 7.800001
+    left: 14.050002
+    right: 44.149998
+    squaredArea: 939.1198
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1098781893
@@ -2272,10 +2272,10 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
-  shotsFired: 0
-  starThreshold2: 2
-  starThreshold1: 3
-  starThreshold0: 4
+  currentShot: 0
+  starThreshold2: 3
+  starThreshold1: 4
+  starThreshold0: 5
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   animationDelayShoot: 2.1

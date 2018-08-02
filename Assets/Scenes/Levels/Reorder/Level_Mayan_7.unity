@@ -4189,7 +4189,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4101691877970236, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -34.55
+      value: -33.22
       objectReference: {fileID: 0}
     - target: {fileID: 4101691877970236, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7123,12 +7123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354a6b1133d0e824f9d4d36333fdbfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useCannon: 0
   levelState: 0
   enableWind: 0
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
-  shotsFired: 0
+  currentShot: 0
   starThreshold2: 4
   starThreshold1: 6
   starThreshold0: 8

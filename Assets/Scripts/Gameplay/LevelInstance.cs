@@ -71,11 +71,15 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             }
 		}
 
-        OnNextTurn();
-
         if (useCannon) {
-            TimeUtilities.ExecuteAfterDelay(TriggerNextTurn, 1, this);
+            LevelManager.Instance.WaitForScenesLoaded(() => {
+                TimeUtilities.ExecuteAfterDelay(TriggerNextTurn, 1, this);
+            });
         }
+    }
+
+    private void WaitForDoneLoading() {
+
     }
 
     private void Update() {
@@ -142,6 +146,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     public void TriggerNextTurn() {
         if (levelState == LevelState.ENDING) return;
 
+        LevelManager.Instance.WaitForScenesLoaded(DoNextTurn);
+    }
+
+    private void DoNextTurn() {
         currentShot++;
 
         if (useCannon) {
@@ -152,7 +160,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 return;
             }
         } else {
-            if(currentShot >= starThreshold0) {
+            if (currentShot >= starThreshold0) {
                 SaveDataManager.Instance.ModifyLifeCount(-1);
                 ShowEndGame();
                 return;
@@ -208,8 +216,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             return;
         }
         characterInstance.GetComponent<CharacterSpriteHandler>().ApplyMask(mask);
-        ShootingHUD.Instance.powerCurve = mask.powerCurve;
-        ShootingHUD.Instance.powerTimeScale = mask.powerTimeScale;
+        ShootingHUD.Instance.ApplyMask(mask);
         m_PowerMaskMultiplier = mask.powerMultiplier;
     }
 

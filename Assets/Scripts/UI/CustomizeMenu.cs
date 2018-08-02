@@ -27,10 +27,6 @@ public class CustomizeMenu : MonoBehaviour {
 
     private CustomizeButton m_LastButton;
 
-    private void Awake() {
-        SetDefault();
-    }
-
     private void Start() {
         m_FourButtonChildren = options4Parent.GetComponentsInChildren<CustomizeButton>(true);
         for (int i = 0; i < m_FourButtonChildren.Length; i++) {
@@ -43,35 +39,6 @@ public class CustomizeMenu : MonoBehaviour {
         }
 
         SetCategory(0);
-    }
-
-    private void SetDefault() {
-
-        //Just check if it's already loaded via SaveDataManager.cs
-        if (CustomizationSelected.woodenMask == null) CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[0].options[0].GetComponent<CharacterMask>(), 0);
-        if (CustomizationSelected.hawkMask == null) CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[1].options[0].GetComponent<CharacterMask>(), 0);
-        if (CustomizationSelected.royalMask == null) CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[2].options[0].GetComponent<CharacterMask>(), 0);
-        if (CustomizationSelected.skullMask == null) CustomizationSelected.woodenMask = new CustomizationSelected.SelectionWrapper<CharacterMask>(data.sectionMask[3].options[0].GetComponent<CharacterMask>(), 0);
-
-        if(CustomizationSelected.stoneBall == null) CustomizationSelected.stoneBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
-        if (CustomizationSelected.mudBall == null) CustomizationSelected.mudBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
-        if (CustomizationSelected.beachBall == null) CustomizationSelected.beachBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
-        if (CustomizationSelected.sunBall == null) CustomizationSelected.sunBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[0].options[0].GetComponent<GameBall>(), 0);
-
-        if(CustomizationSelected.particle == null) CustomizationSelected.particle = new CustomizationSelected.SelectionWrapper<GameObject>(data.sectionParticle.options[0], 0);
-
-        SaveDataManager.Instance.data.masksUnlocked[0] = true;
-        SaveDataManager.Instance.data.masksUnlocked[4] = true;
-        SaveDataManager.Instance.data.masksUnlocked[8] = true;
-        SaveDataManager.Instance.data.masksUnlocked[12] = true;
-
-        SaveDataManager.Instance.data.ballsUnlocked[0] = true;
-        SaveDataManager.Instance.data.ballsUnlocked[4] = true;
-        SaveDataManager.Instance.data.ballsUnlocked[8] = true;
-        SaveDataManager.Instance.data.ballsUnlocked[12] = true;
-
-        SaveDataManager.Instance.data.particlesUnlocked[0] = true;
-        SaveDataManager.Instance.data.skinsUnlocked[0] = true;
     }
 
     private void OnCustomizeButtonPress(CustomizeButton button, int i) {
