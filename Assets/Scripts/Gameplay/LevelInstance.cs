@@ -13,7 +13,7 @@ public enum LevelState {
 public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
     private const float SHOOT_POWER_MULTIPLIER = 30;
-    private const float SHOOT_POWER_MULTIPLIER_CANNON = 45;
+    private const float SHOOT_POWER_MULTIPLIER_CANNON = 40;
 
     public bool useCannon = false;
 	
@@ -36,7 +36,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	[Header("Character")]
 	[ReadOnly] 	public GameObject characterInstance;
 				public GenericLevelData levelData;
-				public float animationDelayShoot = 2.1f;
+				private float shotDelay = 0.5f;
 
 	[Header("Music")]
 	[ReadOnly]	public SoundMusicPlayer smpRef = null;
@@ -121,19 +121,18 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         if (!useCannon) {
             Animation a = characterInstance.GetComponentInChildren<Animation>();
             a.Play("AN_Golf_Swing", PlayMode.StopAll);
+            a.PlayQueued("AN_Base_Pose");
 
             //wait for seconds
-            yield return new WaitForSeconds(animationDelayShoot);
+            yield return new WaitForSeconds(shotDelay);
 
             //shoot ball.
             GetBall().HitBall(ShootPower);
-
-            yield return new WaitForSeconds(1);
-            a.Play("AN_Base_Pose", PlayMode.StopAll);
         } else {
             GameBall ball = GetBall();
             ball.transform.position = CannonController.Instance.ballSpawnPoint.position;
             ball.gameObject.SetActive(true);
+            ball.SetGravityScale(ball.GetComponent<Rigidbody2D>().gravityScale);
             ball.HitBall(ShootPower);
 
             CannonController.Instance.shotParticles.SetActive(true);
@@ -158,6 +157,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                     EndGame.Instance.ShowEndGameFailCannon();
                 }
                 return;
+            }else {
+                ApplyCharacterMask(CustomizationSelected.woodenMask.Obj);
             }
         } else {
             if (currentShot >= starThreshold0) {
@@ -215,8 +216,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             Debug.LogError("No mask selected!");
             return;
         }
-        characterInstance.GetComponent<CharacterSpriteHandler>().ApplyMask(mask);
-        ShootingHUD.Instance.ApplyMask(mask);
+        if(characterInstance != null) characterInstance.GetComponent<CharacterSpriteHandler>().ApplyMask(mask);
+        if(ShootingHUD.Instance != null) ShootingHUD.Instance.ApplyMask(mask);
         m_PowerMaskMultiplier = mask.powerMultiplier;
     }
 

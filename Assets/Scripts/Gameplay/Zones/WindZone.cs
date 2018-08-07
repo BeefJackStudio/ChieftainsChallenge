@@ -11,6 +11,8 @@ public class WindZone : MonoBehaviour {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
         if (ball == null) return;
 
+        Vector2 force = transform.up * windForce * ball.windEffectMultiplier;
+        force.y *= LevelInstance.Instance.levelData.gameSpeed * 1.5f;
         collision.GetComponent<Rigidbody2D>().AddForce(transform.up * windForce * ball.windEffectMultiplier);
     }
 

@@ -1186,11 +1186,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 19.517113
-    bot: -1.8371124
-    left: -15.861924
-    right: 46.761925
-    squaredArea: 1337.2838
+    top: 33.555405
+    bot: -1.8354044
+    left: -15.857981
+    right: 79.15798
+    squaredArea: 3362.692
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -2301,13 +2301,13 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
-  shotsFired: 0
+  currentShot: 0
   starThreshold2: 2
   starThreshold1: 3
   starThreshold0: 4
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
-  animationDelayShoot: 2.1
+  animationDelayShoot: 0.2
   smpRef: {fileID: 0}
   backgroundMusic: {fileID: 0}
   directionZones: []

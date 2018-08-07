@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SaveDataManager))]
 [RequireComponent(typeof(LevelManager))]
 public class GameInitializer : MonoBehaviour {
+
+    private const string STORAGE_PERMISSION = "android.permission.READ_EXTERNAL_STORAGE";
 
     public string cutsceneName;
     public GenericLevelData levelData;
@@ -22,13 +22,35 @@ public class GameInitializer : MonoBehaviour {
 
     private void Start() {
         m_LoadingScreen = LoadingScreen.Instance;
-
         SetCustomizationDefaults();
-        m_SaveDataManager.Load();
-        m_LevelManager.Initialize();
-        m_LoadingScreen.Initialize();
 
-        LevelManager.Instance.LoadScene(cutsceneName);
+        if (Application.platform != RuntimePlatform.Android) {
+            OnPermissionRequested(true);
+        } else {
+            if (!AndroidPermissionsManager.IsPermissionGranted(STORAGE_PERMISSION)) AskPermission();
+        }
+    }
+
+    private void AskPermission() {
+        AndroidPermissionsManager.RequestPermission(new[] { STORAGE_PERMISSION }, new AndroidPermissionCallback(
+            grantedPermission => {
+                OnPermissionRequested(true);
+            },
+            deniedPermission => {
+                OnPermissionRequested(false);
+            }));
+    }
+
+    private void OnPermissionRequested(bool result) {
+        if (true) {
+            m_SaveDataManager.Load();
+            m_LevelManager.Initialize();
+            m_LoadingScreen.Initialize();
+
+            LevelManager.Instance.LoadScene(cutsceneName);
+        } else {
+            
+        }
     }
 
     private void SetCustomizationDefaults() {
