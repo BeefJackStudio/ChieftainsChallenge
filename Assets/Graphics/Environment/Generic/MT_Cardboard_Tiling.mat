@@ -60,8 +60,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FadeLength: 3.33
-    - _FadeMax: 7.8
-    - _FadeMin: -110.86
+    - _FadeMax: 20
+    - _FadeMin: 0
     - _FadeOffset: 2.51
     - _GlossMapScale: 0
     - _Glossiness: 0.222
@@ -76,7 +76,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.27058825, g: 0.21568629, b: 0.15686275, a: 1}
+    - _Color: {r: 0.1764706, g: 0.23921569, b: 0.078431375, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FadeColor: {r: 0.78676474, g: 0.9382353, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GroundVariance: {r: 0.27058825, g: 0.21568628, b: 0.15686275, a: 1}

@@ -28,6 +28,7 @@ public class GameInitializer : MonoBehaviour {
             OnPermissionRequested(true);
         } else {
             if (!AndroidPermissionsManager.IsPermissionGranted(STORAGE_PERMISSION)) AskPermission();
+            else OnPermissionRequested(true);
         }
     }
 
