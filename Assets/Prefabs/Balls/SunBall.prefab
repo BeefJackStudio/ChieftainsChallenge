@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 58540886183153540}
   - component: {fileID: 50864706338638080}
   - component: {fileID: 114928585710083838}
-  - component: {fileID: 114717812761546326}
   m_Layer: 0
   m_Name: SunBall
   m_TagString: Untagged
@@ -79,27 +78,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
---- !u!114 &114717812761546326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521759096168640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ec006b146c1b6048b4ae2ad68ea23ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trajectoryPositions: []
-  timer: 0
-  includeWindInPrediction: 0
-  predictionDuration: 0.25
-  pointPrefab: {fileID: 1089893719854048, guid: a70cf672962beb645afae11a459dfd6e,
-    type: 2}
-  calculateEachSeconds: 0.01
-  StartScale: {x: 1, y: 1}
-  EndScale: {x: 0.2, y: 0.2}
-  color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114928585710083838
 MonoBehaviour:
   m_ObjectHideFlags: 1

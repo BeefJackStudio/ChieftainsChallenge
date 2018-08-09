@@ -29,7 +29,6 @@ public class GameBall : MonoBehaviour {
     private Collider2D m_Collider;
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
-    private TrajectoryRenderer m_TrajectoryRenderer;
     private float m_GravityScale;
 
     private const float VELOCITY_SLEEP_THRESHOLD = 0.15f;
@@ -37,7 +36,6 @@ public class GameBall : MonoBehaviour {
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
-        m_TrajectoryRenderer = GetComponent<TrajectoryRenderer>();
         sepRef = SoundEffectsPlayer.Instance;
 
         levelInstance = LevelInstance.Instance;
@@ -73,8 +71,6 @@ public class GameBall : MonoBehaviour {
 
         if (!isSleeping && levelInstance != null && levelInstance.enableWind) {
             m_RigidBody.AddForce(levelInstance.windForce);
-        }else {
-            m_TrajectoryRenderer.Plot(m_RigidBody);
         }
     }
 
@@ -96,7 +92,7 @@ public class GameBall : MonoBehaviour {
         m_RigidBody.gravityScale = m_GravityScale;
         power *= (levelInstance.levelData.gameSpeed * 0.75f);
         m_RigidBody.AddForce(power, ForceMode2D.Impulse);
-        m_TrajectoryRenderer.StopRender();
+        TrajectoryRenderer.Instance.gameObject.SetActive(false);
         levelInstance.OnShotFired();
 
         yield return new WaitForFixedUpdate();
@@ -165,7 +161,7 @@ public class GameBall : MonoBehaviour {
         if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD || forceSleep) {
 
             if(!forceSleep) LevelInstance.Instance.TriggerNextTurn();
-            if(!LevelInstance.Instance.useCannon) m_TrajectoryRenderer.StartRender();
+            TrajectoryRenderer.Instance.gameObject.SetActive(true);
 
             while (isSleeping) {
                 m_RigidBody.velocity = Vector2.zero;

@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.04, y: 4.22, z: 0.25}
+  m_LocalPosition: {x: 5.566475, y: 6.4036665, z: -46.57575}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 451956}
@@ -7114,6 +7114,7 @@ MonoBehaviour:
   ballSpawnPoint: {fileID: 4334036565920522}
   cannonPiece: {fileID: 431700}
   shotParticles: {fileID: 184170}
+  trajectoryLocation: {fileID: 4334036565920522}
 --- !u!114 &114875217591473272
 MonoBehaviour:
   m_ObjectHideFlags: 1

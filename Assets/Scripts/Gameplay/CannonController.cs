@@ -7,6 +7,7 @@ public class CannonController : MonoBehaviourSingleton<CannonController> {
     public Transform ballSpawnPoint;
     public Transform cannonPiece;
     public GameObject shotParticles;
+    public Transform trajectoryLocation;
 
     private LevelInstance m_LevelInstance;
 

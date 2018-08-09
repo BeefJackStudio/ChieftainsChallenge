@@ -71,10 +71,17 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             }
 		}
 
+        TrajectoryRenderer trajectoryRenderer = Instantiate(levelData.trajectoryRendererPrefab).GetComponent<TrajectoryRenderer>();
+
         if (useCannon) {
             LevelManager.Instance.WaitForScenesLoaded(() => {
                 TimeUtilities.ExecuteAfterDelay(TriggerNextTurn, 1, this);
             });
+
+            trajectoryRenderer.transform.SetParent(CannonController.Instance.trajectoryLocation, false);
+            trajectoryRenderer.transform.localPosition = Vector2.zero;
+        } else {
+            Destroy(CannonController.Instance.gameObject);
         }
     }
 
@@ -83,25 +90,27 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     private void Update() {
-		if(GetBall() == null || useCannon) { return; }
+        GameBall ball = GetBall();
+
+        if (ball == null || useCannon) { return; }
 
         if (Input.GetKeyDown(KeyCode.U)) {
             ShowEndGame();
         }
 
-		if(GetBall().isSleeping && characterInstance != null) {
+		if(ball.isSleeping && characterInstance != null) {
             Vector3 scale = characterInstance.transform.localScale;
 
-            if (GetBall().IsAimingRight()) {
-				characterInstance.transform.position = GetBall().slotLeft;
+            if (ball.IsAimingRight()) {
+				characterInstance.transform.position = ball.slotLeft;
                 characterInstance.transform.localScale = new Vector3(Mathf.Abs(scale.x), scale.y, scale.z);
 			} else {
-				characterInstance.transform.position = GetBall().slotRight;
+				characterInstance.transform.position = ball.slotRight;
                 characterInstance.transform.localScale = new Vector3(-Mathf.Abs(scale.x), scale.y, scale.z);
             }
-		}
 
-
+            TrajectoryRenderer.Instance.transform.position = ball.transform.position;
+        }
     }
 
     public void ShootBall() {

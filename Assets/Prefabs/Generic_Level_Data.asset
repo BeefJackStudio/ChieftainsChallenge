@@ -11,7 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83110a3ab14d1e94d8efd57095b72276, type: 3}
   m_Name: Generic_Level_Data
   m_EditorClassIdentifier: 
+  gameSpeed: 2
   playerCharacterPrefab: {fileID: 1695672560433144, guid: b96454e19b8b45d438d6b331c093a450,
     type: 2}
   playerAppearParticle: {fileID: 1350047506798148, guid: 3d922d1178e29a84f8a041237bc42b0d,
+    type: 2}
+  trajectoryRendererPrefab: {fileID: 1437428813942392, guid: c3fb1d6fd673c84408830c0b1ccbe12c,
     type: 2}
