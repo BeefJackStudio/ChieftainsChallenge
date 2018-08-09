@@ -61,7 +61,22 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     private void Start() {
-		smpRef = SoundMusicPlayer.Instance;
+
+        //We can do this better... but should work for now
+        UVStretcher[] boxObjects = FindObjectsOfType<UVStretcher>();
+        float minY = float.MaxValue;
+        foreach (UVStretcher boxobj in boxObjects) {
+            float y = boxobj.transform.position.y;
+            if (y < minY) minY = y;
+        }
+        minY += 1;
+        float maxY = minY + 20;
+        foreach (UVStretcher boxobj in boxObjects) {
+            boxobj.GetComponent<MeshRenderer>().material.SetFloat("_FadeMin", minY);
+            boxobj.GetComponent<MeshRenderer>().material.SetFloat("_FadeMax", maxY);
+        }
+
+        smpRef = SoundMusicPlayer.Instance;
 
 		if(smpRef != null) {
             if (backgroundMusic == null) {
@@ -158,6 +173,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     private void DoNextTurn() {
+        GameBall ball = GetBall();
+
+        //Somehow we exited the level and this was called
+        if (ball == null) return;
+
         currentShot++;
 
         if (useCannon) {
@@ -187,8 +207,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 m_PlayerDisappearParticle = Instantiate(levelData.playerAppearParticle, characterInstance.transform.position, Quaternion.identity);
             }
 
-            GetBall().CalculateSlotLocations();
-            characterInstance.transform.position = GetBall().slotLeft;
+            ball.CalculateSlotLocations();
+            characterInstance.transform.position = ball.slotLeft;
 
             if (m_PlayerAppearParticle != null) {
                 Destroy(m_PlayerAppearParticle);
