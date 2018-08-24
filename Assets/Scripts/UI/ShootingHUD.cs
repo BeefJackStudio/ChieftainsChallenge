@@ -60,7 +60,7 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
     }
 
     public void OnPowerChange(float power) {
-        LevelInstance.Instance.normalizedShootPower = power + 0.001f;
+        LevelInstance.Instance.normalizedShootPower = (power + 0.001f).Remap(0, 1, 0.15f, 1);
         powerBar.localScale = new Vector3(powerBar.localScale.x, power, powerBar.localScale.z);
     }
 

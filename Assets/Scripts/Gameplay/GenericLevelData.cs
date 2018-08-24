@@ -8,4 +8,5 @@ public class GenericLevelData : ScriptableObject {
     public GameObject playerCharacterPrefab;
     public GameObject playerAppearParticle;
     public GameObject trajectoryRendererPrefab;
+    public AnimationCurve ballSlowdownCurve;
 }

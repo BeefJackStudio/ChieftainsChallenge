@@ -29,9 +29,10 @@ public class GameBall : MonoBehaviour {
     private Collider2D m_Collider;
     private Coroutine m_BallSleepRoutine;
     private float m_BallCollisionStart = 0;
+    private bool m_BallCollisionStartReset = true;
     private float m_GravityScale;
 
-    private const float VELOCITY_SLEEP_THRESHOLD = 0.15f;
+    private const float VELOCITY_SLEEP_THRESHOLD = 0.25f;
 
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -117,13 +118,27 @@ public class GameBall : MonoBehaviour {
     }
 
     private void OnCollisionStay2D(Collision2D collision) {
-        Vector2 direction = new Vector2(transform.position.x, transform.position.y) - collision.contacts[0].point;
-        float angle = Vector2.SignedAngle(direction, Vector2.up);
-        float velocityMagnitude = m_RigidBody.velocity.magnitude;
-        if ((Mathf.Abs(angle) >= 20 && velocityMagnitude >= VELOCITY_SLEEP_THRESHOLD) || (isInSpeedzone && velocityMagnitude >= 0.1f)) return;
+        Vector2 direction = collision.contacts[0].normal;
 
-        float materialFriction = Mathf.Clamp01((collision.collider.sharedMaterial.friction - 1) * 0.5f);
-        m_RigidBody.velocity *= ((1f - materialFriction) - (Time.time - m_BallCollisionStart) * 0.2f);
+        float velocityMagnitude = m_RigidBody.velocity.magnitude;
+        if (isInSpeedzone && velocityMagnitude >= 0.1f) {
+            m_BallCollisionStartReset = true;
+            return;
+        }
+
+        if (m_BallCollisionStartReset) {
+            m_BallCollisionStartReset = false;
+            m_BallCollisionStart = Time.time;
+        }
+
+        float angle = Mathf.Abs(Vector2.SignedAngle(direction, Vector2.up));
+        float maxAngle = 20;
+        float lerpValue = Mathf.Clamp((maxAngle - angle) / maxAngle, 0, 1);
+        lerpValue = levelInstance.levelData.ballSlowdownCurve.Evaluate(lerpValue);
+
+        float materialFriction = Mathf.Lerp(1, Mathf.Clamp01((collision.collider.sharedMaterial.friction) * 0.8f), lerpValue);
+        float finalMultiplier = Mathf.Clamp01(materialFriction + 0.2f) - ((Time.time - m_BallCollisionStart) * 0.1f * lerpValue);
+        m_RigidBody.velocity *= finalMultiplier;
 
         //Start a routine to check if the ball will stay still
         if (velocityMagnitude <= VELOCITY_SLEEP_THRESHOLD) {

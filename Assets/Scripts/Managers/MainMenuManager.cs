@@ -15,6 +15,9 @@ public class MainMenuManager : MonoBehaviour {
     [Header("Unique cases")]
     public GameObject boxOverlay;
 
+    [Header("Misc")]
+    public CharacterSpriteHandler mainMenuCharacter;
+
     private void Start() {
         SaveDataManager.Instance.Save();
         SoundMusicPlayer.Instance.PlayMusic(songToPlay);

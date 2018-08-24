@@ -12,8 +12,8 @@ public enum LevelState {
 
 public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
-    private const float SHOOT_POWER_MULTIPLIER = 30;
-    private const float SHOOT_POWER_MULTIPLIER_CANNON = 40;
+    private const float SHOOT_POWER_MULTIPLIER = 25;
+    private const float SHOOT_POWER_MULTIPLIER_CANNON = 35;
 
     public bool useCannon = false;
 	
