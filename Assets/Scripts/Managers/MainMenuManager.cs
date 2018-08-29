@@ -17,11 +17,14 @@ public class MainMenuManager : MonoBehaviour {
 
     [Header("Misc")]
     public CharacterSpriteHandler mainMenuCharacter;
+    public GameBall mainMenuBall;
 
     private void Start() {
         SaveDataManager.Instance.Save();
         SoundMusicPlayer.Instance.PlayMusic(songToPlay);
         LivesIndicator.Instance.Show(4);
+
+        ReloadCharacter();
     }
 
     //Android back button behaviour
@@ -44,5 +47,17 @@ public class MainMenuManager : MonoBehaviour {
                 boxOverlay.SetActive(false);
             }
         }
+    }
+
+    [ContextMenu("Reload characters")]
+    public void ReloadCharacter() {
+        mainMenuCharacter.ApplyMask(CustomizationSelected.GetMaskType(Random.Range(0, 4)).Obj);
+        Vector3 ballPos = mainMenuBall.transform.position;
+        Destroy(mainMenuBall.gameObject);
+
+        mainMenuBall = Instantiate(CustomizationSelected.GetBallType(Random.Range(0, 4)).Obj);
+        mainMenuBall.isInGame = false;
+        mainMenuBall.GetComponent<Rigidbody2D>().isKinematic = true;
+        mainMenuBall.transform.position = ballPos;
     }
 }

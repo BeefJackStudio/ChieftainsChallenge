@@ -12,6 +12,7 @@ public class GameBall : MonoBehaviour {
     [Header("Config")]
     public float windEffectMultiplier = 1;
     public float characterSlotDistance = 2f;
+    public bool isInGame = true;
 
     [Header("SFX")]
 	[ReadOnly]	public SoundEffectsPlayer sepRef = null;
@@ -41,26 +42,31 @@ public class GameBall : MonoBehaviour {
 
         levelInstance = LevelInstance.Instance;
 
-        if(levelInstance == null) {
-            Debug.LogError("GameBall could not find levelinstance!");
+        GameObject particlePrefab = CustomizationSelected.particle.Obj;
+        if (particlePrefab != null) {
+            GameObject particle = Instantiate(particlePrefab);
+            particle.transform.SetParent(transform, false);
+            particle.transform.localPosition = Vector3.zero;
+        }
+
+        if (!isInGame) {
+            m_RigidBody.isKinematic = true;
+            return;
+        }
+
+        if (levelInstance == null) {
             return;
         }
 
         isInSpeedzone = false;
 
-        GameObject particlePrefab = CustomizationSelected.particle.Obj;
-        if(particlePrefab != null) {
-            GameObject particle = Instantiate(particlePrefab);
-            particle.transform.SetParent(transform, false);
-            particle.transform.localPosition = Vector3.zero;
-        }
         levelInstance.SetBall(this);
 
         if (levelInstance.useCannon) isSleeping = true;
     }
 
     private void Update() {
-        if(levelInstance == null) { return; }
+        if(levelInstance == null || !isInGame) { return; }
 
         if(m_GravityScale == 0) {
             m_GravityScale = m_RigidBody.gravityScale;
@@ -114,10 +120,12 @@ public class GameBall : MonoBehaviour {
 
     #region Ball sleeping
     private void OnCollisionEnter2D(Collision2D collision) {
+        if (!isInGame) return;
         m_BallCollisionStart = Time.time;
     }
 
     private void OnCollisionStay2D(Collision2D collision) {
+        if (!isInGame) return;
         Vector2 direction = collision.contacts[0].normal;
 
         float velocityMagnitude = m_RigidBody.velocity.magnitude;
@@ -149,6 +157,7 @@ public class GameBall : MonoBehaviour {
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
+        if (!isInGame) return;
         StopSleepRoutine();
     }
 

@@ -93,6 +93,7 @@ MonoBehaviour:
   description: A standard ball with balanced properties.
   windEffectMultiplier: 1
   characterSlotDistance: 2
+  isInGame: 1
   sepRef: {fileID: 0}
   BallHitSound: {fileID: 11400000, guid: d342401135b62e44f97015cab3f8b7dd, type: 2}
   isSleeping: 0
