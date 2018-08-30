@@ -2134,6 +2134,14 @@ Prefab:
       propertyPath: panSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4915740152175138, guid: 95ed8577924b0b4419a6c10955c04a05, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 56.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274137269810306, guid: 95ed8577924b0b4419a6c10955c04a05, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.42
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95ed8577924b0b4419a6c10955c04a05, type: 2}
   m_IsPrefabParent: 0
