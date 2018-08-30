@@ -13,6 +13,7 @@ public class ShopMenu : MonoBehaviour {
     public Button3D itemsCoverButton;
     public TextMeshPro subTitle;
     public GameObject storeBlocker;
+    public Button3D rerollButton;
 
     [Header("Box shop")]
     public GameObject mainBuyArea;
@@ -23,16 +24,25 @@ public class ShopMenu : MonoBehaviour {
     private Coroutine m_Routine;
     private Vector3 m_ItemsParentStartScale;
     private CustomizeButton[] m_CustomizeButtons;
+    private TextMeshPro m_RerollButtonText;
+
+    private Vector3 m_RerollButtonPosHidden;
+    private Vector3 m_RerollButtonPosShown;
 
     private void Awake() {
         m_ItemsParentStartScale = itemsParent.localScale;
         m_CustomizeButtons = itemsParent.GetComponentsInChildren<CustomizeButton>(true);
+        m_RerollButtonText = rerollButton.GetComponentInChildren<TextMeshPro>();
 
         openButton.onButtonClick.AddListener(OpenChest);
         itemsCoverButton.onButtonClick.AddListener(UpdateState);
 
+        m_RerollButtonPosShown = rerollButton.transform.localPosition;
+        m_RerollButtonPosHidden = m_RerollButtonPosShown - new Vector3(0, 10, 0);
+
         itemsCoverButton.gameObject.SetActive(false);
         chestOpenParticle.gameObject.SetActive(false);
+        rerollButton.gameObject.SetActive(false);
     }
 
     private void Start() {
@@ -128,8 +138,8 @@ public class ShopMenu : MonoBehaviour {
 
         SaveDataManager.Instance.data.boxesToOpen--;
         foreach (CustomizeButton button in m_CustomizeButtons) {
-            GameObject unlocked = SaveDataManager.Instance.UnlockRandomItem();
-            button.SetPreview(unlocked);
+            CustomizationUnlockData unlocked = SaveDataManager.Instance.UnlockRandomItem();
+            button.SetPreview(unlocked.obj);
             button.SetLocked(false);
             button.GetComponent<Button3D>().enabled = false;
         }
@@ -148,8 +158,11 @@ public class ShopMenu : MonoBehaviour {
 
         //Scale items
         yield return new WaitForSeconds(1);
+        rerollButton.transform.localPosition = m_RerollButtonPosHidden;
+        rerollButton.gameObject.SetActive(true);
         while (Vector3.Distance(itemsParent.localScale, m_ItemsParentStartScale) >= 0.01f) {
             itemsParent.localScale = Vector3.Lerp(itemsParent.localScale, m_ItemsParentStartScale, 0.1f);
+            rerollButton.transform.localPosition = Vector3.Lerp(rerollButton.transform.localPosition, m_RerollButtonPosShown, 0.1f);
             yield return null;
         }
 

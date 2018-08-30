@@ -154,7 +154,9 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         return canUseUnlock; 
     }
 
-    public GameObject UnlockRandomItem() {
+    public CustomizationUnlockData UnlockRandomItem() {
+        CustomizationUnlockData unlockData = null;
+
         data.hasUsedUnlock = true;
 
         List<int> maskIndexes = GetLockedIndexes(data.masksUnlocked);
@@ -162,40 +164,48 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         List<int> skinIndexes = GetLockedIndexes(data.skinsUnlocked);
         List<int> particleIndexes = GetLockedIndexes(data.particlesUnlocked);
 
-        GameObject obj = null;
-        while(obj == null) {
-            int category = UnityEngine.Random.Range(0, 5);
-
-            if(category == 0 && maskIndexes.Count != 0) {
-                int index = maskIndexes[UnityEngine.Random.Range(0, maskIndexes.Count - 1)];
-                obj = customizeData.sectionMask[Mathf.FloorToInt(index / 4)].options[index % 4];
-                data.masksUnlocked[index] = true;
-            }
-
-            if (category == 1 && ballIndexes.Count != 0) {
-                int index = ballIndexes[UnityEngine.Random.Range(0, ballIndexes.Count - 1)];
-                obj = customizeData.sectionBall[Mathf.FloorToInt(index / 4)].options[index % 4];
-                data.ballsUnlocked[index] = true;
-            }
-
-            if (category == 2 && skinIndexes.Count != 0) {
-                int index = skinIndexes[UnityEngine.Random.Range(0, skinIndexes.Count - 1)];
-                obj = customizeData.sectionSkin.options[index];
-                data.skinsUnlocked[index] = true;
-            }
-
-            if (category == 3 && particleIndexes.Count != 0) {
-                int index = particleIndexes[UnityEngine.Random.Range(0, particleIndexes.Count - 1)];
-                obj = customizeData.sectionParticle.options[index];
-                data.particlesUnlocked[index] = true;
-            }
-
+        while(unlockData == null) {
+            
+            //If nothing is left to unlock
             if (maskIndexes.Count == 0 &&
                 ballIndexes.Count == 0 &&
                 skinIndexes.Count == 0 &&
                 particleIndexes.Count == 0) break;
+
+            unlockData = new CustomizationUnlockData();
+
+            int category = UnityEngine.Random.Range(0, 5);
+            unlockData.category = category;
+
+            if (category == 0 && maskIndexes.Count != 0) {
+                int index = maskIndexes[UnityEngine.Random.Range(0, maskIndexes.Count - 1)];
+
+                unlockData.listIndex = index;
+                unlockData.obj = customizeData.sectionMask[Mathf.FloorToInt(index / 4)].options[index % 4];
+            }
+
+            if (category == 1 && ballIndexes.Count != 0) {
+                int index = ballIndexes[UnityEngine.Random.Range(0, ballIndexes.Count - 1)];
+
+                unlockData.listIndex = index;
+                unlockData.obj = customizeData.sectionBall[Mathf.FloorToInt(index / 4)].options[index % 4];
+            }
+
+            if (category == 2 && skinIndexes.Count != 0) {
+                int index = skinIndexes[UnityEngine.Random.Range(0, skinIndexes.Count - 1)];
+
+                unlockData.listIndex = index;
+                unlockData.obj = customizeData.sectionSkin.options[index];
+            }
+
+            if (category == 3 && particleIndexes.Count != 0) {
+                int index = particleIndexes[UnityEngine.Random.Range(0, particleIndexes.Count - 1)];
+
+                unlockData.listIndex = index;
+                unlockData.obj = customizeData.sectionParticle.options[index];
+            }
         }
-        return obj;
+        return unlockData;
     }
 
     private List<int> GetLockedIndexes(bool[] array) {
