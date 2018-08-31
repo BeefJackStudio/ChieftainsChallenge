@@ -9,8 +9,6 @@ public class SaveData {
     public float volumeMusic = 1;
     public List<CutsceneTypes> watchedCutscenes = new List<CutsceneTypes>();
     public List<string> completedLevels = new List<string>();
-    public int currentLives = 3;
-    public int lastLivesClaim = 0;
     public int[] customizeMaskOptions = new int[4] { 0, 0, 0, 0 };
     public int[] customizeBallOptions = new int[4] { 0, 0, 0, 0 };
     public int customizeParticleOption = 0;

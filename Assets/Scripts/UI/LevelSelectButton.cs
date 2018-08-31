@@ -41,11 +41,7 @@ public class LevelSelectButton : MonoBehaviour {
 
         if (!isLocked) {
             m_Button3D.onButtonClick.AddListener(() => {
-                if(SaveDataManager.Instance.data.currentLives == 0) {
-                    VideoAdMenu.Instance.gameObject.SetActive(true);
-                }else {
-                    LevelManager.Instance.LoadLevel(levelData);
-                }
+                LevelManager.Instance.LoadLevel(levelData);
             });
         }
 

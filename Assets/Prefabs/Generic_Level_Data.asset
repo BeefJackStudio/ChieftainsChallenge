@@ -42,3 +42,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  defaultTerrainMaterial: {fileID: 6200000, guid: cca3a9c088537024d835d68b0556a9e5,
+    type: 2}

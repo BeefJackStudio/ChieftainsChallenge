@@ -22,7 +22,6 @@ public class MainMenuManager : MonoBehaviour {
     private void Start() {
         SaveDataManager.Instance.Save();
         SoundMusicPlayer.Instance.PlayMusic(songToPlay);
-        LivesIndicator.Instance.Show(4);
 
         ReloadCharacter();
     }

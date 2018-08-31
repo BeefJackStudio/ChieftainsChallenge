@@ -59,53 +59,6 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
         return m_SaveDataPath;
     }
 
-    public void UpdateLivesGained() {
-        int livesToGain = GetLivesToGain();
-        ModifyLifeCount(livesToGain);
-    }
-
-    public void ModifyLifeCount(int i) {
-        if (i != 0) {
-            if (i > 0) {
-                int secondsSinceEpoch = GetSecondsSinceEpoch();
-                int stepAmount = (int)(60 * 60 * HOUR_REGEN_PER_LIFE);
-                while (true) {
-                    if (data.lastLivesClaim + stepAmount > secondsSinceEpoch) break;
-                    data.lastLivesClaim += stepAmount;
-                }
-            }
-
-            data.currentLives = Mathf.Clamp(data.currentLives + i, 0, 3);
-            LivesIndicator.Instance.SetLivesCount(data.currentLives);
-        }
-    }
-
-    public TimeSpan GetTimespanUntilNextLife() {
-        int secondsSinceEpoch = GetSecondsSinceEpoch();
-        int lastClaimSeconds = data.lastLivesClaim;
-        int futureClaimSeconds = lastClaimSeconds + (int)((GetLivesToGain() + 1) * 60 * 60 * HOUR_REGEN_PER_LIFE);
-
-        TimeSpan difference = new TimeSpan(0, 0, futureClaimSeconds - secondsSinceEpoch);
-        return difference;
-    }
-
-    public int GetLivesToGain() {
-        TimeSpan timeSpan = new TimeSpan(0, 0, GetSecondsSinceEpoch() - data.lastLivesClaim);
-        return Mathf.FloorToInt((int)(timeSpan.TotalMinutes / 60 / HOUR_REGEN_PER_LIFE));
-    }
-
-    public int GetPotentialLivesToGain() {
-        return 3 - data.currentLives;
-    }
-
-    private int GetSecondsSinceEpoch() {
-        return (int)GetTimeSinceEpoch().TotalSeconds;
-    }
-    
-    private TimeSpan GetTimeSinceEpoch() {
-        return (DateTime.UtcNow - new DateTime(1970, 1, 1));
-    }
-
 #endregion
 
     public void SetCutsceneWatched(CutsceneTypes cutscene) {

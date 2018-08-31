@@ -191,7 +191,6 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             }
         } else {
             if (currentShot >= starThreshold0) {
-                SaveDataManager.Instance.ModifyLifeCount(-1);
                 ShowEndGame();
                 return;
             }

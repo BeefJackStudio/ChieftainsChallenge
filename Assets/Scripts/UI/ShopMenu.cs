@@ -174,18 +174,21 @@ public class ShopMenu : MonoBehaviour {
             m_RerollButtonText.text = "Watch ad";
             m_RerollButtonConfirm = true;
         }else {
-            m_RerollButtonText.text = "Reroll?";
-            m_RerollButtonConfirm = false;
+            VideoAd.Instance.WatchAd(() => {
+                m_RerollButtonText.text = "Reroll?";
+                m_RerollButtonConfirm = false;
 
-            foreach(CustomizationUnlockData lootObj in m_UnlockData) {
-                lootObj.Lock();
-            }
+                foreach (CustomizationUnlockData lootObj in m_UnlockData) {
+                    lootObj.Lock();
+                }
 
-            rerollButton.transform.localPosition = m_RerollButtonPosHidden;
-            itemsParent.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+                rerollButton.transform.localPosition = m_RerollButtonPosHidden;
+                itemsParent.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 
-            SetNewLoot();
-            m_Routine = StartCoroutine(OpenChestSequence());
+                SetNewLoot();
+                m_Routine = StartCoroutine(OpenChestSequence());
+            },
+            null);
         }
     }
 
