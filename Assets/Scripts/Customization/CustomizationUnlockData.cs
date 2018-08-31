@@ -9,16 +9,24 @@ public class CustomizationUnlockData {
     public int listIndex;
 
     public void Unlock() {
+        SetUnlockState(true);
+    }
+
+    public void Lock() {
+        SetUnlockState(false);
+    }
+
+    private void SetUnlockState(bool b) {
         SaveData data = SaveDataManager.Instance.data;
 
         if (category == 0) {
-            data.masksUnlocked[listIndex] = true;
+            data.masksUnlocked[listIndex] = b;
         } else if (category == 1) {
-            data.ballsUnlocked[listIndex] = true;
+            data.ballsUnlocked[listIndex] = b;
         } else if (category == 2) {
-            data.skinsUnlocked[listIndex] = true;
+            data.skinsUnlocked[listIndex] = b;
         } else if (category == 3) {
-            data.particlesUnlocked[listIndex] = true;
+            data.particlesUnlocked[listIndex] = b;
         }
     }
 

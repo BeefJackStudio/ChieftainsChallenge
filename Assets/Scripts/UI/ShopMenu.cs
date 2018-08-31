@@ -28,6 +28,9 @@ public class ShopMenu : MonoBehaviour {
 
     private Vector3 m_RerollButtonPosHidden;
     private Vector3 m_RerollButtonPosShown;
+    private bool m_RerollButtonConfirm = false;
+
+    private List<CustomizationUnlockData> m_UnlockData = new List<CustomizationUnlockData>();
 
     private void Awake() {
         m_ItemsParentStartScale = itemsParent.localScale;
@@ -36,6 +39,7 @@ public class ShopMenu : MonoBehaviour {
 
         openButton.onButtonClick.AddListener(OpenChest);
         itemsCoverButton.onButtonClick.AddListener(UpdateState);
+        rerollButton.onButtonClick.AddListener(RerollChest);
 
         m_RerollButtonPosShown = rerollButton.transform.localPosition;
         m_RerollButtonPosHidden = m_RerollButtonPosShown - new Vector3(0, 10, 0);
@@ -115,6 +119,7 @@ public class ShopMenu : MonoBehaviour {
         itemsCoverButton.gameObject.SetActive(false);
         itemsParent.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
         openButton.gameObject.SetActive(true);
+        rerollButton.gameObject.SetActive(false);
 
         if (boxesToOpen != 0) {
             ResetChest();
@@ -137,13 +142,7 @@ public class ShopMenu : MonoBehaviour {
         if (m_Routine != null) return;
 
         SaveDataManager.Instance.data.boxesToOpen--;
-        foreach (CustomizeButton button in m_CustomizeButtons) {
-            CustomizationUnlockData unlocked = SaveDataManager.Instance.UnlockRandomItem();
-            button.SetPreview(unlocked.obj);
-            button.SetLocked(false);
-            button.GetComponent<Button3D>().enabled = false;
-        }
-        SaveDataManager.Instance.Save();
+        SetNewLoot();
 
         m_Routine = StartCoroutine(OpenChestSequence());
     }
@@ -168,5 +167,38 @@ public class ShopMenu : MonoBehaviour {
 
         itemsCoverButton.gameObject.SetActive(true);
         m_Routine = null;
+    }
+
+    private void RerollChest() {
+        if (!m_RerollButtonConfirm) {
+            m_RerollButtonText.text = "Watch ad";
+            m_RerollButtonConfirm = true;
+        }else {
+            m_RerollButtonText.text = "Reroll?";
+            m_RerollButtonConfirm = false;
+
+            foreach(CustomizationUnlockData lootObj in m_UnlockData) {
+                lootObj.Lock();
+            }
+
+            rerollButton.transform.localPosition = m_RerollButtonPosHidden;
+            itemsParent.localScale = new Vector3(0.001f, 0.001f, 0.001f);
+
+            SetNewLoot();
+            m_Routine = StartCoroutine(OpenChestSequence());
+        }
+    }
+
+    private void SetNewLoot() {
+        m_UnlockData.Clear();
+        foreach (CustomizeButton button in m_CustomizeButtons) {
+            CustomizationUnlockData lootObj = SaveDataManager.Instance.UnlockRandomItem();
+            button.SetPreview(lootObj.obj);
+            button.SetLocked(false);
+            button.GetComponent<Button3D>().enabled = false;
+            lootObj.Unlock();
+            m_UnlockData.Add(lootObj);
+        }
+        SaveDataManager.Instance.Save();
     }
 }
