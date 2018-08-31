@@ -18,11 +18,16 @@ public class CustomizeButton : MonoBehaviour {
     private Vector3 m_StartPos;
     private Vector3 m_StartScale;
     private Vector3 m_TargetScale;
+    private Vector3 m_StartPosition;
+    private Vector3 m_FloatPosition;
     private float m_TargetScaleMultiplier = 1;
+    private float m_StartFloatTime = 0;
 
     private void Awake() {
         m_Button = GetComponent<Button3D>();
         m_BackgroundImage = GetComponent<SpriteRenderer>();
+        m_StartPosition = transform.localPosition;
+        m_FloatPosition = m_StartPosition - new Vector3(0, 0, 2);
     }
 
     private void Start() {
@@ -42,11 +47,17 @@ public class CustomizeButton : MonoBehaviour {
         if (m_PreviewObj != null) {
             m_PreviewObj.transform.localScale = Vector3.Lerp(m_PreviewObj.transform.localScale, m_TargetScale, 0.05f) * m_TargetScaleMultiplier;
         }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, m_IsSelected ? GetFloatPosition() : m_StartPosition, 0.05f);
     }
 
     public void Initialize(Action<CustomizeButton, int> onClick, int buttonNumber) {
         m_ButtonNumber = buttonNumber;
         m_Button.onButtonClick.AddListener(() => { onClick(this, buttonNumber); });
+    }
+
+    private Vector3 GetFloatPosition() {
+        return m_FloatPosition + new Vector3(0, 0, Mathf.Sin((m_StartFloatTime - Time.time) * 2) * 0.5f);
     }
 
     public void SetLocked(bool locked) {
@@ -60,9 +71,11 @@ public class CustomizeButton : MonoBehaviour {
 
         if (!m_IsSelected) {
             m_TargetScale = m_StartScale;
+        }else {
+            m_StartFloatTime = Time.time;
         }
 
-        if (!lockIcon.gameObject.activeSelf)  m_BackgroundImage.color = selected ? new Color(0.5f, 1, 0.5f, 1) : Color.white;
+        if (!lockIcon.gameObject.activeSelf)  m_BackgroundImage.color = selected ? new Color(0.7f, 1, 0.7f, 1) : Color.white;
     }
 
     public void SetPreview(GameObject prefab) {

@@ -25,13 +25,10 @@ public class UI3D : MonoBehaviourSingleton<UI3D> {
             Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, 100000, layers)) {
-                Debug.Log("Hit: " + hit.collider.gameObject.name);
                 UI3DElement element = hit.transform.GetComponent(typeof(UI3DElement)) as UI3DElement;
                 if (element == null) return;
 
                 element.OnInteract(hit);
-            }else {
-                Debug.Log("No hit");
             }
         }
     }
