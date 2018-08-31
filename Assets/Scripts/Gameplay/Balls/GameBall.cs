@@ -126,6 +126,11 @@ public class GameBall : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision) {
         if (!isInGame) return;
+        if(collision.collider.sharedMaterial == null) {
+            Debug.LogError("The terrain object " + collision.collider.gameObject.name + " didn't have a physics material assigned to it. Temporarily set to default.", collision.collider.gameObject);
+            collision.collider.sharedMaterial = levelInstance.levelData.defaultTerrainMaterial;
+        }
+
         Vector2 direction = collision.contacts[0].normal;
 
         float velocityMagnitude = m_RigidBody.velocity.magnitude;

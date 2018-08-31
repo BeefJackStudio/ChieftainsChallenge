@@ -9,4 +9,5 @@ public class GenericLevelData : ScriptableObject {
     public GameObject playerAppearParticle;
     public GameObject trajectoryRendererPrefab;
     public AnimationCurve ballSlowdownCurve;
+    public PhysicsMaterial2D defaultTerrainMaterial;
 }
