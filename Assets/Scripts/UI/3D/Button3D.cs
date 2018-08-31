@@ -35,6 +35,13 @@ public class Button3D : UI3DElement {
         m_SwingEffectVelocity *= swingEffectReduction;
     }
 
+    public void SetActive(bool b) {
+        if (b) {
+            if (!gameObject.activeInHierarchy) m_SwingEffectVelocity = 0;
+        }
+        gameObject.SetActive(b);
+    }
+
     public override void OnInteract(RaycastHit hit) {
         base.OnInteract(hit);
         if (!enabled) return;

@@ -27,7 +27,7 @@ public class CustomizeButton : MonoBehaviour {
         m_Button = GetComponent<Button3D>();
         m_BackgroundImage = GetComponent<SpriteRenderer>();
         m_StartPosition = transform.localPosition;
-        m_FloatPosition = m_StartPosition - new Vector3(0, 0, 2);
+        m_FloatPosition = m_StartPosition - new Vector3(0, 0, 1);
     }
 
     private void Start() {
