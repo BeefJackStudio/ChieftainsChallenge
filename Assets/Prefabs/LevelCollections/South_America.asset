@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: South America
   levels:
-  - scene: Level_Aztec_16
+  - scene: WIP_Aztec_18
     index: 0
     continent: {fileID: 11400000}
   - scene: Level_Mayan_2
