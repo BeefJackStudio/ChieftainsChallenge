@@ -33,9 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Reorder/Level_Aztec_10.unity
     guid: 1c5598fc7f656d34094f461194481c90
   - enabled: 1
-    path: Assets/Scenes/Levels/Reorder/Level_Mayan_104.unity
-    guid: f6ef620cc491a9243bfb200b2ba33d2e
-  - enabled: 1
     path: Assets/Scenes/Levels/Reorder/Level_Mayan_105.unity
     guid: cd485fea80a65b640920c2165beb5a26
   - enabled: 1
@@ -44,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Reorder/Level_Mayan_7.unity
     guid: 750b379e1a3d17f4cad52822d47947cf
+  - enabled: 1
+    path: Assets/Scenes/Levels/Reorder/Level_Mayan_104.unity
+    guid: f6ef620cc491a9243bfb200b2ba33d2e
   - enabled: 1
     path: Assets/Scenes/Levels/Reorder/Level_Mayan_8.unity
     guid: d12a8b0119d389b4791b89a3de751913
@@ -99,5 +99,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Reorder/Level_Aztec_16.unity
     guid: 6c42ea28beb428a4abf5a900549cff5b
   - enabled: 1
-    path: Assets/Scenes/Levels/Reorder/WIP_Aztec_18.unity
+    path: Assets/Scenes/Levels/Reorder/Level_Aztec_18.unity
     guid: dbfb8269112a1df419cff1306a052ce1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Reorder/WIP_Aztec_19.unity
+    guid: efc52d481c7daf94c8eee088e0692ec1
