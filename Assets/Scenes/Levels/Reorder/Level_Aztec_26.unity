@@ -3822,9 +3822,9 @@ MonoBehaviour:
   maxWindForce: 3
   windForce: {x: 0, y: 0}
   currentShot: 0
-  starThreshold2: 2
-  starThreshold1: 3
-  starThreshold0: 5
+  starThreshold2: 3
+  starThreshold1: 5
+  starThreshold0: 7
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   smpRef: {fileID: 0}
