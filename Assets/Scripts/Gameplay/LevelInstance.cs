@@ -27,6 +27,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	public float maxWindForce = 0.3f;
 	public Vector2 windForce = Vector2.zero;
 
+    public int ballSwitchCount = 0;
+
 	[Header("Stars")]
 	[ReadOnly] 													public int currentShot = 0;
 	[Tooltip("Amount of shots when we drop to two stars.")]		public int starThreshold2 = 4;
@@ -326,14 +328,15 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 		}
     }
 
-	public void SetBall(GameBall gb) {
-        if (!useCannon) {
+	public void SetBall(GameBall gb, bool sleepBall = true) {
+        ballSwitchCount++;
+        if (!useCannon) {            
             Vector3 pos = gb.transform.position;
             if (m_CurrentBall != null) {
                 m_BallToDelete = m_CurrentBall;
                 pos = m_BallToDelete.transform.position;
                 Destroy(m_BallToDelete);
-                gb.StartSleepRoutine(true);
+                if(sleepBall) gb.StartSleepRoutine(true);
             }
 
             gb.transform.position = pos;
@@ -348,6 +351,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             gb.gameObject.SetActive(false);
         }
 	}
+
+    private void SetupCustomization() {
+        //if (BallSelectionMenu.Instance != null) BallSelectionMenu.Instance.ApplyBall(SaveDataManager.Instance.data.ballTypeSelected);
+        //if (MaskSelectionMenu.Instance != null) MaskSelectionMenu.Instance.ApplyMask(SaveDataManager.Instance.data.maskTypeSelected);
+    }
 
 	public GameBall GetBall() {
 		if(m_CurrentBall == null) { return null; }

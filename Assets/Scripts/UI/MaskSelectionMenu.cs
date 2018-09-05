@@ -28,7 +28,12 @@ public class MaskSelectionMenu : MonoBehaviourSingleton<MaskSelectionMenu> {
     private float m_OpenButtonShowY;
     private float m_OpenButtonTargetY;
 
+    private CharacterMask[] m_SkinnedMasks;
+    private int m_SelectedIndex = 0;
+
     private void Awake() {
+        Instance = this;
+
         m_BackgroundFade = GetComponent<Image>();
 
         m_ContainerHideY = container.anchoredPosition.y;
@@ -40,11 +45,11 @@ public class MaskSelectionMenu : MonoBehaviourSingleton<MaskSelectionMenu> {
         m_OpenButtonTargetY = m_OpenButtonHideY;
         openButton.anchoredPosition = new Vector2(openButton.anchoredPosition.x, m_OpenButtonTargetY);
 
-        CharacterMask[] skinnedMasks = new CharacterMask[4] { CustomizationSelected.woodenMask.Obj, CustomizationSelected.hawkMask.Obj, CustomizationSelected.royalMask.Obj, CustomizationSelected.skullMask.Obj };
+        m_SkinnedMasks = new CharacterMask[4] { CustomizationSelected.woodenMask.Obj, CustomizationSelected.hawkMask.Obj, CustomizationSelected.royalMask.Obj, CustomizationSelected.skullMask.Obj };
 
         for (int i = 0; i < 4; i++) {
             CharacterMask mask = masksToGenerate[i];
-            CharacterMask skinnedMask = skinnedMasks[i];
+            CharacterMask skinnedMask = m_SkinnedMasks[i];
 
             mask.CopySettingsTo(skinnedMask);
 
@@ -57,7 +62,11 @@ public class MaskSelectionMenu : MonoBehaviourSingleton<MaskSelectionMenu> {
             });
         }
 
-        SelectMask(skinnedMasks[0]);
+        SelectMask(m_SkinnedMasks[0]);
+    }
+
+    private void Start() {
+        ApplyMask(SaveDataManager.Instance.data.maskTypeSelected);
     }
 
     private void Update() {
@@ -80,11 +89,24 @@ public class MaskSelectionMenu : MonoBehaviourSingleton<MaskSelectionMenu> {
         maskInformationTitle.text = mask.displayName;
         maskInformationDescription.text = mask.description;
         m_SelectedMask = mask;
+
+        for(int i = 0; i < m_SkinnedMasks.Length; i++) {
+            if(m_SkinnedMasks[i] == mask) {
+                m_SelectedIndex = i;
+                break;
+            }
+        }
     }
 
     public void ApplyMask() {
         LevelInstance.Instance.ApplyCharacterMask(m_SelectedMask);
+        SaveDataManager.Instance.data.maskTypeSelected = m_SelectedIndex;
         Hide();
+    }
+
+    public void ApplyMask(int type) {
+        SelectMask(m_SkinnedMasks[type]);
+        ApplyMask();
     }
 
     [ContextMenu("Show")]

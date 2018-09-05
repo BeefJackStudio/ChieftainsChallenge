@@ -28,7 +28,12 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
     private float m_OpenButtonShowY;
     private float m_OpenButtonTargetY;
 
+    private GameBall[] m_SkinnedBalls;
+    private int m_SelectedIndex = 0;
+
     private void Awake() {
+        Instance = this;
+
         m_BackgroundFade = GetComponent<Image>();
 
         m_ContainerHideY = container.anchoredPosition.y;
@@ -40,11 +45,11 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
         m_OpenButtonTargetY = m_OpenButtonHideY;
         openButton.anchoredPosition = new Vector2(openButton.anchoredPosition.x, m_OpenButtonTargetY);
 
-        GameBall[] skinnedBalls = new GameBall[4] { CustomizationSelected.stoneBall.Obj, CustomizationSelected.mudBall.Obj, CustomizationSelected.beachBall.Obj, CustomizationSelected.sunBall.Obj };
+        m_SkinnedBalls = new GameBall[4] { CustomizationSelected.stoneBall.Obj, CustomizationSelected.mudBall.Obj, CustomizationSelected.beachBall.Obj, CustomizationSelected.sunBall.Obj };
 
         for (int i = 0; i < 4; i++) {
             GameBall ball = ballsToGenerate[i];
-            GameBall skinnedBall = skinnedBalls[i];
+            GameBall skinnedBall = m_SkinnedBalls[i];
 
             ball.CopySettingsTo(skinnedBall);
 
@@ -64,6 +69,8 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
         if (LevelInstance.Instance.useCannon) {
             openButton.anchoredPosition = new Vector2(0, openButton.anchoredPosition.y);
         }
+
+        ApplyBall(SaveDataManager.Instance.data.ballTypeSelected);
     }
 
     private void Update() {
@@ -86,13 +93,31 @@ public class BallSelectionMenu : MonoBehaviourSingleton<BallSelectionMenu> {
         ballInformationTitle.text = ball.displayName;
         ballInformationDescription.text = ball.description;
         m_SelectedBall = ball;
+
+        for (int i = 0; i < m_SkinnedBalls.Length; i++) {
+            if (m_SkinnedBalls[i] == ball) {
+                m_SelectedIndex = i;
+                break;
+            }
+        }
     }
 
+    //Shorthand for unity
     public void ApplyBall() {
+        ApplyBall(true);
+    }
+
+    public void ApplyBall(bool sleepBall = true) {
         GameObject newBall = Instantiate(m_SelectedBall).gameObject;
         newBall.GetComponent<GameBall>().SetGravityScale(m_SelectedBall.GetComponent<Rigidbody2D>().gravityScale);
-        LevelInstance.Instance.SetBall(newBall.GetComponent<GameBall>());
+        LevelInstance.Instance.SetBall(newBall.GetComponent<GameBall>(), sleepBall);
+        SaveDataManager.Instance.data.ballTypeSelected = m_SelectedIndex;
         Hide();
+    }
+
+    public void ApplyBall(int type) {
+        SelectBall(m_SkinnedBalls[type]);
+        ApplyBall(false);
     }
 
     [ContextMenu("Show")]

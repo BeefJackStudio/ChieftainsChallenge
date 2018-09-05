@@ -38,9 +38,7 @@ public class GameBall : MonoBehaviour {
     private void Awake() {
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
-        sepRef = SoundEffectsPlayer.Instance;
 
-        levelInstance = LevelInstance.Instance;
 
         GameObject particlePrefab = CustomizationSelected.particle.Obj;
         if (particlePrefab != null) {
@@ -54,13 +52,22 @@ public class GameBall : MonoBehaviour {
             return;
         }
 
+        isInSpeedzone = false;
+    }
+
+    private void Start() {
+        sepRef = SoundEffectsPlayer.Instance;
+
+        levelInstance = LevelInstance.Instance;
         if (levelInstance == null) {
             return;
         }
 
-        isInSpeedzone = false;
-
-        levelInstance.SetBall(this);
+        if(LevelInstance.Instance.ballSwitchCount == 2) {
+            levelInstance.SetBall(this, false);
+        } else {
+            levelInstance.SetBall(this);
+        }
 
         if (levelInstance.useCannon) isSleeping = true;
     }

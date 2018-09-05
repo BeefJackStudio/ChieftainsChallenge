@@ -20,6 +20,9 @@ public class SaveData {
     public bool hasUsedUnlock = true;
     public int boxesToOpen = 0;
 
+    public int maskTypeSelected = 0;
+    public int ballTypeSelected = 0;
+
     public Dictionary<string, int> DeserializeScores() {
         Dictionary<string, int> scores = new Dictionary<string, int>();
 

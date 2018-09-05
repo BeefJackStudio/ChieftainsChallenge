@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuManager : MonoBehaviour {
+public class MainMenuManager : MonoBehaviourSingleton<MainMenuManager> {
 
     public AudioClip songToPlay;
 
@@ -50,11 +50,11 @@ public class MainMenuManager : MonoBehaviour {
 
     [ContextMenu("Reload characters")]
     public void ReloadCharacter() {
-        mainMenuCharacter.ApplyMask(CustomizationSelected.GetMaskType(Random.Range(0, 4)).Obj);
+        mainMenuCharacter.ApplyMask(CustomizationSelected.GetMaskType(SaveDataManager.Instance.data.maskTypeSelected).Obj);
+
         Vector3 ballPos = mainMenuBall.transform.position;
         Destroy(mainMenuBall.gameObject);
-
-        mainMenuBall = Instantiate(CustomizationSelected.GetBallType(Random.Range(0, 4)).Obj);
+        mainMenuBall = Instantiate(CustomizationSelected.GetBallType(SaveDataManager.Instance.data.ballTypeSelected).Obj);
         mainMenuBall.isInGame = false;
         mainMenuBall.GetComponent<Rigidbody2D>().isKinematic = true;
         mainMenuBall.transform.position = ballPos;

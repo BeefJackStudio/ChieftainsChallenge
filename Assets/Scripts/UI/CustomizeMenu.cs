@@ -54,6 +54,7 @@ public class CustomizeMenu : MonoBehaviour {
             case 0:
                 CharacterMask mask = m_CurrentSectionInstance.options[i].GetComponent<CharacterMask>();
                 CustomizationSelected.SelectionWrapper<CharacterMask> maskWrapper = new CustomizationSelected.SelectionWrapper<CharacterMask>(mask, i);
+                SaveDataManager.Instance.data.maskTypeSelected = m_CurrentPage;
                 switch (m_CurrentPage) {
                     case 0:         //Wooden
                         CustomizationSelected.woodenMask = maskWrapper;
@@ -76,6 +77,7 @@ public class CustomizeMenu : MonoBehaviour {
             case 1:
                 GameBall ball = m_CurrentSectionInstance.options[i].GetComponent<GameBall>();
                 CustomizationSelected.SelectionWrapper<GameBall> ballWrapper = new CustomizationSelected.SelectionWrapper<GameBall>(ball, i);
+                SaveDataManager.Instance.data.ballTypeSelected = m_CurrentPage;
                 switch (m_CurrentPage) {
                     case 0:         //Wooden
                         CustomizationSelected.stoneBall = ballWrapper;
@@ -101,6 +103,8 @@ public class CustomizeMenu : MonoBehaviour {
                 CustomizationSelected.particle = new CustomizationSelected.SelectionWrapper<GameObject>(m_CurrentSectionInstance.options[i], i);
                 break;
         }
+
+        MainMenuManager.Instance.ReloadCharacter();
     }
 
     public void NextPage() {
