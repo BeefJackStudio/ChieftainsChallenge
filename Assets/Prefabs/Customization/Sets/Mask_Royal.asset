@@ -15,6 +15,6 @@ MonoBehaviour:
   headerText: Royal Mask
   options:
   - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
-  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
-  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
-  - {fileID: 1547045280354896, guid: 0daabb7d8b305ef45899acce053bc1b1, type: 2}
+  - {fileID: 1547045280354896, guid: 073f50f6852e3a34c9274c5120a0fd9b, type: 2}
+  - {fileID: 1547045280354896, guid: 7b3733242546da44c9bb9c1d5d0555ab, type: 2}
+  - {fileID: 1547045280354896, guid: b51be385f5b7e3e40815c700c84248e9, type: 2}

@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SA_Balls
+  m_EditorData:
+    textureSettings:
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      colorSpace: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+    platformSettings: []
+    packingParameters:
+      paddingPower: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    packedHash:
+      serializedVersion: 2
+      Hash: 79c732ae707f26d311c43db7b9bfeb48
+    variantMultiplier: 1
+    bindAsDefault: 1
+    finalFormat: 4
+    hashString: 79c732ae707f26d311c43db7b9bfeb48
+    totalSpriteSurfaceArea: 288123
+    packables:
+    - {fileID: 102900000, guid: 6d0c6dc4d40b77346a580e22b61cd2f1, type: 3}
+    packedSpriteRenderDataKeys:
+    - 27d9a9d234f84334cba88f21cd941d22: 21300000
+    - 92b89c6a0b34fbd4cbb99c6c0c59cf91: 21300000
+    - 500f14057ec08e645b4170ab0d2bb00e: 21300000
+    - be1c99415caa32b45840eb8e4f200721: 21300000
+    - 6f83626c20a7bc7458be04201da44c8a: 21300000
+    - 13100518db0df284fb540852bd29674c: 21300000
+    - 140a467e55a94d648a394f82f7760f03: 21300000
+    - 2500ade6be2e8fc4ea5bbb2f800d5f24: 21300000
+    - 2abf47c4184d0974b971b86eb624f312: 21300000
+    - 670dcfd9411f0b0438e7406e070be85a: 21300000
+    - fd6c78c1cc64b7a46ad4221612c866c1: 21300000
+    - 806a7354c5c788643ac176f6d63eba3e: 21300000
+    - 65a618e2ff59fb3468996c85f9f8027d: 21300000
+    - 4d7c756381c1261489a1cb73c6d48e5d: 21300000
+    - 9f31858c6379fcb4292460981a052a48: 21300000
+    - 06456bee7bde7214f876e846bcefe36d: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 27d9a9d234f84334cba88f21cd941d22, type: 3}
+  - {fileID: 21300000, guid: 92b89c6a0b34fbd4cbb99c6c0c59cf91, type: 3}
+  - {fileID: 21300000, guid: 500f14057ec08e645b4170ab0d2bb00e, type: 3}
+  - {fileID: 21300000, guid: be1c99415caa32b45840eb8e4f200721, type: 3}
+  - {fileID: 21300000, guid: 6f83626c20a7bc7458be04201da44c8a, type: 3}
+  - {fileID: 21300000, guid: 13100518db0df284fb540852bd29674c, type: 3}
+  - {fileID: 21300000, guid: 140a467e55a94d648a394f82f7760f03, type: 3}
+  - {fileID: 21300000, guid: 2500ade6be2e8fc4ea5bbb2f800d5f24, type: 3}
+  - {fileID: 21300000, guid: 2abf47c4184d0974b971b86eb624f312, type: 3}
+  - {fileID: 21300000, guid: 670dcfd9411f0b0438e7406e070be85a, type: 3}
+  - {fileID: 21300000, guid: fd6c78c1cc64b7a46ad4221612c866c1, type: 3}
+  - {fileID: 21300000, guid: 806a7354c5c788643ac176f6d63eba3e, type: 3}
+  - {fileID: 21300000, guid: 65a618e2ff59fb3468996c85f9f8027d, type: 3}
+  - {fileID: 21300000, guid: 4d7c756381c1261489a1cb73c6d48e5d, type: 3}
+  - {fileID: 21300000, guid: 9f31858c6379fcb4292460981a052a48, type: 3}
+  - {fileID: 21300000, guid: 06456bee7bde7214f876e846bcefe36d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - TX_Mayan_Ball_Beach
+  - TX_Mayan_Ball_Earth
+  - TX_Mayan_Ball_Plants3
+  - TX_Mayan_Ball_Rock
+  - TX_Mayan_Ball_Bronze
+  - TX_Mayan_Ball_SunStylized
+  - TX_Mayan_Ball_Basketball
+  - TX_Mayan_Ball_Magma
+  - TX_Mayan_Ball_Constellation
+  - TX_Mayan_Ball_Football
+  - TX_Mayan_Ball_Galaxy
+  - TX_Mayan_Ball_Emoji
+  - TX_Mayan_Ball_Plants2
+  - TX_Mayan_Ball_Plants1
+  - TX_Mayan_Ball_Sun
+  - TX_Mayan_Ball_Default
+  m_Tag: SA_Balls
+  m_IsVariant: 0

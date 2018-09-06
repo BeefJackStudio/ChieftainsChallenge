@@ -15,6 +15,6 @@ MonoBehaviour:
   headerText: Stone Ball
   options:
   - {fileID: 1521759096168640, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
-  - {fileID: 1521759096168640, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
-  - {fileID: 1521759096168640, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
-  - {fileID: 1521759096168640, guid: 3782b719351a98a42a1f42bbe1abf629, type: 2}
+  - {fileID: 1521759096168640, guid: f07df15631c132341b11d647b4a623cf, type: 2}
+  - {fileID: 1521759096168640, guid: 6e5d6e0a36143d54eb0242e9ca248a53, type: 2}
+  - {fileID: 1521759096168640, guid: 5254b5c70442cfb48a61e6950ba832b1, type: 2}

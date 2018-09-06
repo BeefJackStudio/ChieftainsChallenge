@@ -26,13 +26,14 @@ public class CharacterSpriteHandler : MonoBehaviour {
     public CharacterSpriteSet lowerArmLeft;
     public CharacterSpriteSet handRight;
     public CharacterSpriteSet handLeft;
+    public CharacterSpriteSet club;
 
     public Material spriteMaterial;
     public Material outlineMaterial;
     public float outlineWidth = 0.1f;
 
-    [ContextMenu("Apply sprites")]
-    public void ApplyChanges() {
+    public void ApplySkin(CharacterSpriteBase spriteSet) {
+        bodyType = spriteSet;
         head.ApplySprite(bodyType.head, spriteMaterial, outlineMaterial, outlineWidth);
         chest.ApplySprite(bodyType.chest, spriteMaterial, outlineMaterial, outlineWidth);
         cape.ApplySprite(bodyType.cape, spriteMaterial, outlineMaterial, outlineWidth);
@@ -49,8 +50,7 @@ public class CharacterSpriteHandler : MonoBehaviour {
         lowerArmLeft.ApplySprite(bodyType.lowerArmLeft, spriteMaterial, outlineMaterial, outlineWidth);
         handRight.ApplySprite(bodyType.handRight, spriteMaterial, outlineMaterial, outlineWidth);
         handLeft.ApplySprite(bodyType.handLeft, spriteMaterial, outlineMaterial, outlineWidth);
-
-        ApplyMask(maskPrefab);
+        club.ApplySprite(bodyType.club, spriteMaterial, outlineMaterial, outlineWidth);
     }
 
     public void ApplyMask(CharacterMask mask) {

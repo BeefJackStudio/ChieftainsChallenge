@@ -15,6 +15,6 @@ MonoBehaviour:
   headerText: Sun Ball
   options:
   - {fileID: 1521759096168640, guid: 7f6ecda2836a1d541bacbf1eec207129, type: 2}
-  - {fileID: 1521759096168640, guid: 7f6ecda2836a1d541bacbf1eec207129, type: 2}
-  - {fileID: 1521759096168640, guid: 7f6ecda2836a1d541bacbf1eec207129, type: 2}
-  - {fileID: 1521759096168640, guid: 7f6ecda2836a1d541bacbf1eec207129, type: 2}
+  - {fileID: 1521759096168640, guid: c7326533666c8434f8929fb6dd462582, type: 2}
+  - {fileID: 1521759096168640, guid: fc71ff2e33592ab47bc95ca4c5b90a43, type: 2}
+  - {fileID: 1521759096168640, guid: 2cc9395d175e37c4fa59594867eaa03e, type: 2}

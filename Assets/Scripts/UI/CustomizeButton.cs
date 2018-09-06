@@ -109,6 +109,12 @@ public class CustomizeButton : MonoBehaviour {
             m_PreviewObj.transform.localPosition = new Vector3(0.41f, 0.225f, 0);
         }
 
+        CustomizationSkinWrapper skin = m_PreviewObj.GetComponent<CustomizationSkinWrapper>();
+        if (skin != null) {
+            m_PreviewObj.transform.localScale = Vector3.one * 1.2f;
+            m_PreviewObj.transform.localPosition = new Vector3(0, 0, 0);
+        }
+
         TrajectoryRenderer trajectory = m_PreviewObj.GetComponent<TrajectoryRenderer>();
         if (trajectory != null) {
             DestroyImmediate(trajectory);

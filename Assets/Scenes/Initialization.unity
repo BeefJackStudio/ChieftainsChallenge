@@ -171,8 +171,6 @@ MonoBehaviour:
     volumeMusic: 1
     watchedCutscenes: 
     completedLevels: []
-    currentLives: 3
-    lastLivesClaim: 0
     customizeMaskOptions: 00000000000000000000000000000000
     customizeBallOptions: 00000000000000000000000000000000
     customizeParticleOption: 0
@@ -183,6 +181,8 @@ MonoBehaviour:
     skinsUnlocked: 000000000000000000000000
     hasUsedUnlock: 1
     boxesToOpen: 0
+    maskTypeSelected: 0
+    ballTypeSelected: 0
   customizeData: {fileID: 11400000, guid: 22e2a778995ef874480c0e702d91587f, type: 2}
 --- !u!114 &310102360
 MonoBehaviour:

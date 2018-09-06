@@ -14,6 +14,7 @@ public static class CustomizationSelected {
     public static SelectionWrapper<GameBall> sunBall;
 
     public static SelectionWrapper<GameObject> particle;
+    public static SelectionWrapper<CustomizationSkinWrapper> skin;
 
     public static SelectionWrapper<CharacterMask> GetMaskType(int i) {
         if (i == 0) return woodenMask;

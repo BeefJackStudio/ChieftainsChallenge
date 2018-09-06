@@ -69,6 +69,7 @@ public class GameInitializer : MonoBehaviour {
         CustomizationSelected.sunBall = new CustomizationSelected.SelectionWrapper<GameBall>(data.sectionBall[3].options[0].GetComponent<GameBall>(), 0);
 
         CustomizationSelected.particle = new CustomizationSelected.SelectionWrapper<GameObject>(data.sectionParticle.options[0], 0);
+        CustomizationSelected.skin = new CustomizationSelected.SelectionWrapper<CustomizationSkinWrapper>(data.sectionSkin.options[0].GetComponent<CustomizationSkinWrapper>(), 0);
 
         SaveDataManager.Instance.data.masksUnlocked[0] = true;
         SaveDataManager.Instance.data.masksUnlocked[4] = true;

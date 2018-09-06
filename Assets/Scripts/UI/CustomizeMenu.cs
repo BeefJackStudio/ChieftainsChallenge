@@ -26,6 +26,7 @@ public class CustomizeMenu : MonoBehaviour {
     private CustomizeButton[] m_TwelveButtonChildren;
 
     private CustomizeButton m_LastButton;
+    public SkinSnapshotter skinSnapshotter;
 
     private void Start() {
         m_FourButtonChildren = options4Parent.GetComponentsInChildren<CustomizeButton>(true);
@@ -39,6 +40,17 @@ public class CustomizeMenu : MonoBehaviour {
         }
 
         SetCategory(0);
+
+        GenerateSkinTextures();
+    }
+
+    private void GenerateSkinTextures() {
+        List<Texture2D> skinTextures = skinSnapshotter.GenerateImages();
+        for(int i = 0; i < data.sectionSkin.options.Count; i++) {
+            SpriteRenderer skin = data.sectionSkin.options[i].GetComponent<SpriteRenderer>();
+            Texture2D tex = skinTextures[i];
+            skin.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
     }
 
     private void OnCustomizeButtonPress(CustomizeButton button, int i) {
@@ -96,6 +108,9 @@ public class CustomizeMenu : MonoBehaviour {
 
             //Skins
             case 2:
+                CustomizationSkinWrapper skin = m_CurrentSectionInstance.options[i].GetComponent<CustomizationSkinWrapper>();
+                CustomizationSelected.SelectionWrapper<CustomizationSkinWrapper> skinWrapper = new CustomizationSelected.SelectionWrapper<CustomizationSkinWrapper>(skin, i);
+                CustomizationSelected.skin = skinWrapper;
                 break;
 
             //Particles
@@ -135,7 +150,7 @@ public class CustomizeMenu : MonoBehaviour {
 
             //Skins
             case 2:
-                SetSection(data.sectionSkin, 0);
+                SetSection(data.sectionSkin, CustomizationSelected.skin.ID);
                 break;
 
             //Particles
@@ -149,17 +164,17 @@ public class CustomizeMenu : MonoBehaviour {
         bool isValid = section != null;
         m_CurrentSectionInstance = section;
 
-        bool[] array;
+        bool[] unlockedArray;
         if (section.customizationType == CustomizationTypes.MASK_HAWK ||
             section.customizationType == CustomizationTypes.MASK_ROYAL ||
             section.customizationType == CustomizationTypes.MASK_SKULL ||
-            section.customizationType == CustomizationTypes.MASK_WOODEN) array = SaveDataManager.Instance.data.masksUnlocked;
+            section.customizationType == CustomizationTypes.MASK_WOODEN) unlockedArray = SaveDataManager.Instance.data.masksUnlocked;
         else if (section.customizationType == CustomizationTypes.BALL_BEACH ||
             section.customizationType == CustomizationTypes.BALL_MUD ||
             section.customizationType == CustomizationTypes.BALL_STONE ||
-            section.customizationType == CustomizationTypes.BALL_SUN) array = SaveDataManager.Instance.data.ballsUnlocked;
-        else if (section.customizationType == CustomizationTypes.PARTICLES) array = SaveDataManager.Instance.data.particlesUnlocked;
-        else array = SaveDataManager.Instance.data.skinsUnlocked;
+            section.customizationType == CustomizationTypes.BALL_SUN) unlockedArray = SaveDataManager.Instance.data.ballsUnlocked;
+        else if (section.customizationType == CustomizationTypes.PARTICLES) unlockedArray = SaveDataManager.Instance.data.particlesUnlocked;
+        else unlockedArray = SaveDataManager.Instance.data.skinsUnlocked;
 
         title.text = isValid ? section.headerText : "No customization found!";
         for (int i = 0; i < m_CurrentButtons.Length; i++) {
@@ -178,7 +193,7 @@ public class CustomizeMenu : MonoBehaviour {
 
                     if (isSelected) m_LastButton = button;
 
-                    button.SetLocked(!(i == 0 || array[(m_CurrentPage * (array.Length == 16 ? 4 : 0)) + i]));
+                    button.SetLocked(!(i == 0 || unlockedArray[(m_CurrentPage * (unlockedArray.Length == 16 ? 4 : 0)) + i]));
                     button.SetSelected(isSelected);
                     button.SetPreview(section.options[i]);
                 }

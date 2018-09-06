@@ -51,6 +51,7 @@ public class MainMenuManager : MonoBehaviourSingleton<MainMenuManager> {
     [ContextMenu("Reload characters")]
     public void ReloadCharacter() {
         mainMenuCharacter.ApplyMask(CustomizationSelected.GetMaskType(SaveDataManager.Instance.data.maskTypeSelected).Obj);
+        mainMenuCharacter.ApplySkin(CustomizationSelected.skin.Obj.spriteSet);
 
         Vector3 ballPos = mainMenuBall.transform.position;
         Destroy(mainMenuBall.gameObject);
@@ -58,5 +59,7 @@ public class MainMenuManager : MonoBehaviourSingleton<MainMenuManager> {
         mainMenuBall.isInGame = false;
         mainMenuBall.GetComponent<Rigidbody2D>().isKinematic = true;
         mainMenuBall.transform.position = ballPos;
+
+
     }
 }

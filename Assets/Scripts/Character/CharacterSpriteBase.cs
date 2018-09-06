@@ -20,4 +20,5 @@ public class CharacterSpriteBase : ScriptableObject {
     public Sprite lowerArmLeft;
     public Sprite handRight;
     public Sprite handLeft;
+    public Sprite club;
 }
