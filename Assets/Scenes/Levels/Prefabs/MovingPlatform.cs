@@ -23,4 +23,22 @@ public class MovingPlatform : MonoBehaviour {
 		newPosition.x = startPosition.x + (maxDistance * Mathf.Sin(Time.time * speed));
 		transform.position = newPosition;
 	}
+
+
+//	private void OnCollisionEnter2D(Collision2D collision)
+//	{
+//		if (collision.WasWithPlayer ()) {
+//			collision.collider.transform.SetParent (transform);
+//		}
+//	}
+//
+//	private void OnCollisionExit2D(Collision2D collision)
+//	{
+//		if (collision.WasWithPlayer ()) {
+//			collision.collider.transform.SetParent (null); 
+//		}
+//	}
+//
+
 }
+	
