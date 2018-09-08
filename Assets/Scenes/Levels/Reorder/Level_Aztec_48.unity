@@ -291,11 +291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -5.9300013
-    bot: -23.07
-    left: 3.4000015
-    right: 61.78
-    squaredArea: 1000.63306
+    top: -27.93
+    bot: -45.07
+    left: 80.23247
+    right: 107.68753
+    squaredArea: 470.57977
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &126083405
@@ -1432,11 +1432,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -31.23
-    bot: -48.37
-    left: 20.710003
-    right: 79.09
-    squaredArea: 1000.63306
+    top: 35.67
+    bot: 18.530003
+    left: 45.01
+    right: 103.39
+    squaredArea: 1000.63293
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &972739415
@@ -2682,11 +2682,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 46.57
-    bot: 29.43
-    left: -2.619998
-    right: 19.98
-    squaredArea: 387.36395
+    top: -6.330001
+    bot: -23.469997
+    left: 4.196045
+    right: 60.443954
+    squaredArea: 964.089
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1591150323
@@ -2936,9 +2936,9 @@ MonoBehaviour:
   windForce: {x: 0, y: 0}
   ballSwitchCount: 0
   currentShot: 0
-  starThreshold2: 2
-  starThreshold1: 3
-  starThreshold0: 5
+  starThreshold2: 3
+  starThreshold1: 5
+  starThreshold0: 7
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   smpRef: {fileID: 0}
@@ -3055,11 +3055,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -6.330001
-    bot: -23.469997
-    left: 4.200001
-    right: 60.44
-    squaredArea: 963.95337
+    top: -28.529999
+    bot: -45.67
+    left: 21.280003
+    right: 77.520004
+    squaredArea: 963.9536
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1802658903
@@ -3951,11 +3951,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 46.57
-    bot: 29.43
-    left: -2.619998
-    right: 19.98
-    squaredArea: 387.36395
+    top: 11.614026
+    bot: -2.4140263
+    left: 21.541153
+    right: 89.45885
+    squaredArea: 952.753
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &2133554477
