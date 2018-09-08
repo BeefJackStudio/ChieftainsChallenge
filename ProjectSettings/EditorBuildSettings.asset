@@ -159,5 +159,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Reorder/Level_Aztec_46.unity
     guid: 8e31851effee4e049a9424d688758a6f
   - enabled: 1
-    path: Assets/Scenes/Levels/Reorder/WIP_Aztec_47.unity
+    path: Assets/Scenes/Levels/Reorder/Level_Aztec_47.unity
     guid: affbe56dcecd15e48b403425953505b7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Reorder/Test.unity
+    guid: d2b9b5f64d91a24458d0ecc6f24a9647

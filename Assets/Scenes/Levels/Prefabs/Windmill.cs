@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Windmill : MonoBehaviour {
 
-	public float SpinSpeed; 
+	[SerializeField] private float SpinSpeed; 
 
 	// Use this for initialization
 	void Start () {
