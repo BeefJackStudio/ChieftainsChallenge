@@ -3224,9 +3224,9 @@ MonoBehaviour:
   windForce: {x: 0, y: 0}
   ballSwitchCount: 0
   currentShot: 0
-  starThreshold2: 5
-  starThreshold1: 7
-  starThreshold0: 9
+  starThreshold2: 4
+  starThreshold1: 6
+  starThreshold0: 8
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   smpRef: {fileID: 0}
@@ -3727,7 +3727,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4125542111330886, guid: 3b9d4be13f27d214586459f4a5422824, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 26.5
+      value: 26.62
       objectReference: {fileID: 0}
     - target: {fileID: 4125542111330886, guid: 3b9d4be13f27d214586459f4a5422824, type: 2}
       propertyPath: m_LocalPosition.y
