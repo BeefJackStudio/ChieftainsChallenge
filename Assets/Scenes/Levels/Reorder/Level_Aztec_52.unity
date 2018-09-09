@@ -155,11 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 68.90013
-    bot: 33.499866
-    left: 67.03734
-    right: 90.762665
-    squaredArea: 839.8828
+    top: 19.253887
+    bot: -6.8538885
+    left: 33.078423
+    right: 72.521576
+    squaredArea: 1029.773
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &40218766
@@ -1339,11 +1339,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 70.05704
-    bot: -5.457039
-    left: -31.30219
-    right: 59.50219
-    squaredArea: 6857.009
+    top: 78.03006
+    bot: 25.169935
+    left: -26.402191
+    right: 64.40219
+    squaredArea: 4799.931
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -2759,9 +2759,9 @@ MonoBehaviour:
   windForce: {x: 0, y: 0}
   ballSwitchCount: 0
   currentShot: 0
-  starThreshold2: 2
-  starThreshold1: 3
-  starThreshold0: 5
+  starThreshold2: 3
+  starThreshold1: 5
+  starThreshold0: 7
   characterInstance: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6929d3038c7ff7a428f54e3cb868ca77, type: 2}
   smpRef: {fileID: 0}
