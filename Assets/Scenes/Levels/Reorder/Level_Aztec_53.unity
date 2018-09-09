@@ -337,11 +337,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 45.792118
-    bot: 29.007885
-    left: 65.24236
-    right: 88.75764
-    squaredArea: 394.68585
+    top: 32.792118
+    bot: 16.007881
+    left: 60.742363
+    right: 84.25764
+    squaredArea: 394.68594
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &56684509
@@ -700,11 +700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 32.79
-    bot: 16.01
-    left: 60.74
-    right: 84.26
-    squaredArea: 394.66562
+    top: -36.010002
+    bot: -52.79
+    left: 16.294445
+    right: 63.705555
+    squaredArea: 795.55835
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &275770313
@@ -2139,11 +2139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 2.6580496
-    bot: -34.25805
-    left: -4.9151917
-    right: 112.87519
-    squaredArea: 4348.3613
+    top: 54.78927
+    bot: -57.989265
+    left: -79.24866
+    right: -32.95134
+    squaredArea: 5221.3438
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &951864476
@@ -4025,6 +4025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751838738}
   - component: {fileID: 1751838737}
+  - component: {fileID: 1751838739}
   m_Layer: 0
   m_Name: level_data_windmill_v2_0 (1)
   m_TagString: Untagged
@@ -4087,6 +4088,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 88.105}
+--- !u!65 &1751838739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1751838736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7600001, y: 3.3400004, z: 0.20000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804466354
 Prefab:
   m_ObjectHideFlags: 0
@@ -4179,11 +4192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 25.56
-    bot: 0.6400013
-    left: 59.67
-    right: 92.53
-    squaredArea: 818.87115
+    top: 3.159999
+    bot: -21.759998
+    left: 20.570002
+    right: 53.43
+    squaredArea: 818.8711
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1819625187
@@ -4455,9 +4468,9 @@ MonoBehaviour:
   boundaries:
     top: 54.789997
     bot: -57.989994
-    left: -31.349998
-    right: 14.949998
-    squaredArea: 5221.7134
+    left: -30.49376
+    right: 17.093758
+    squaredArea: 5366.92
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &2025952340
@@ -4653,6 +4666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072771729}
   - component: {fileID: 2072771728}
+  - component: {fileID: 2072771730}
   m_Layer: 0
   m_Name: level_data_windmill_v2_0
   m_TagString: Untagged
@@ -4715,6 +4729,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 88.105}
+--- !u!65 &2072771730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072771727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7600001, y: 3.3400004, z: 0.20000003}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2082634501
 Prefab:
   m_ObjectHideFlags: 0
