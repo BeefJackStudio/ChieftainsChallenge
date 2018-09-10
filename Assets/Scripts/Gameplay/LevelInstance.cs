@@ -199,7 +199,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
             if (characterInstance == null) {
                 characterInstance = Instantiate(levelData.playerCharacterPrefab);
-                ApplyCharacterMask(CustomizationSelected.woodenMask.Obj);
+                characterInstance.GetComponent<CharacterSpriteHandler>().ApplySkin(CustomizationSelected.skin.Obj.spriteSet);
+                ApplyCharacterMask(CustomizationSelected.GetMaskType(SaveDataManager.Instance.data.maskTypeSelected).Obj);
             } else {
                 if (m_PlayerDisappearParticle != null) {
                     Destroy(m_PlayerDisappearParticle);

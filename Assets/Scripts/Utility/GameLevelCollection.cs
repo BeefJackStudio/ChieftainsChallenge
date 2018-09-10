@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameLevelCollection : ScriptableObject {
 
     public string displayName;
+    public string scenePrefix;
     public List<GameLevelSet> levels = new List<GameLevelSet>();
 
     private void OnEnable() {
@@ -28,6 +29,16 @@ public class GameLevelCollection : ScriptableObject {
     [ContextMenu("Re-order levels")]
     private void OrderLevels() {
         levels.Sort((l1, l2) => l1.index.CompareTo(l2.index));
+    }
+
+    [ContextMenu("Auto name levels")]
+    private void NameLevels() {
+        int i = 1;
+        foreach(GameLevelSet set in levels) {
+            set.scene = scenePrefix + i;
+            set.index = i;
+            i++;
+        }
     }
 }
 

@@ -127,7 +127,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
             unlockData = new CustomizationUnlockData();
 
-            int category = UnityEngine.Random.Range(0, 5);
+            int category = UnityEngine.Random.Range(0, 4);
             unlockData.category = category;
 
             if (category == 0 && maskIndexes.Count != 0) {
@@ -157,6 +157,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
                 unlockData.listIndex = index;
                 unlockData.obj = customizeData.sectionParticle.options[index];
             }
+            Debug.Log("Unlock data = " + category + ", " + unlockData.listIndex);
         }
         return unlockData;
     }
