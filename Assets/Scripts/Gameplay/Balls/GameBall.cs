@@ -128,7 +128,6 @@ public class GameBall : MonoBehaviour {
     #region Ball sleeping
     private void OnCollisionEnter2D(Collision2D collision) {
         if (!isInGame) return;
-        Debug.Log("Collision enter @" + Time.time);
         m_BallCollisionStart = Time.time;
     }
 
