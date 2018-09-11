@@ -23,8 +23,8 @@ public class GameBall : MonoBehaviour {
     [ReadOnly] public LevelInstance levelInstance = null;
     [ReadOnly] public Vector2 slotLeft;
     [ReadOnly] public Vector2 slotRight;
-    [ReadOnly]
-    public bool isInSpeedzone = false;
+    [ReadOnly] public bool isInSpeedzone = false;
+    [ReadOnly] public float groundAngle = 0;
 
     private Rigidbody2D m_RigidBody;
     private Collider2D m_Collider;
@@ -128,6 +128,7 @@ public class GameBall : MonoBehaviour {
     #region Ball sleeping
     private void OnCollisionEnter2D(Collision2D collision) {
         if (!isInGame) return;
+        Debug.Log("Collision enter @" + Time.time);
         m_BallCollisionStart = Time.time;
     }
 
@@ -151,9 +152,9 @@ public class GameBall : MonoBehaviour {
             m_BallCollisionStart = Time.time;
         }
 
-        float angle = Mathf.Abs(Vector2.SignedAngle(direction, Vector2.up));
+        groundAngle = Mathf.Abs(Vector2.SignedAngle(direction, Vector2.up));
         float maxAngle = 20;
-        float lerpValue = Mathf.Clamp((maxAngle - angle) / maxAngle, 0, 1);
+        float lerpValue = Mathf.Clamp((maxAngle - groundAngle) / maxAngle, 0, 1);
         lerpValue = levelInstance.levelData.ballSlowdownCurve.Evaluate(lerpValue);
 
         float materialFriction = Mathf.Lerp(1, Mathf.Clamp01((collision.collider.sharedMaterial.friction) * 0.8f), lerpValue);
