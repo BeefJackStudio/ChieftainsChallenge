@@ -4,43 +4,56 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour {
 
-	private Vector2 startPosition; 
-
-	private Vector2 newPosition; 
-
 	[SerializeField] private int speed = 3;
-	[SerializeField] private float maxDistance = 1;
+	[SerializeField] private int direction = 1;
+	private int directionhold;
+
 
 	// Use this for initialization
 	void Start () {
-		startPosition = transform.position;
-		newPosition = transform.position;
-
+		StartCoroutine (ChangeDirection ());
 	}
 
 	// Update is called once per frame
 	void Update () {
-		newPosition.y = startPosition.y + (maxDistance * Mathf.Sin(Time.time * speed));
-		transform.position = newPosition;
+		transform.Translate (0, direction * speed * Time.deltaTime, 0);
 	}
 
 
-	private void OnCollisionEnter2D(Collision2D col)
+	private void OnTriggerEnter2D(Collider2D col)
 	{
-			if (col.gameObject.name == "ball") {
-			Debug.Log ("Detected"); 
-			//collision.collider.transform.SetParent (transform);
-		}
-	}
+		if (col.gameObject.tag == null) {
+			
+		} 
 
-//	private void OnCollisionExit2D(Collision2D collision)
-//	{
-//			if (collision.gameObject.tag == "Player" ()) {
-//			
-//			//collision.collider.transform.SetParent (null); 
-//		}
-//	}
-//
-//
-}
+		if (col.gameObject.tag == "ElevatorStop") {
+			StartCoroutine (ChangeDirection ());
+		}
+	
+		}
+		
+
+	IEnumerator ChangeDirection(){
+		Debug.Log ("Hit");
+		directionhold = direction; 
+		direction = 0; 
+
+
+		yield return new WaitForSeconds (2);
+
+		if (directionhold == -1) {
+			direction = 1 ;
+		}
+
+		if (directionhold == 1) {
+			direction = -1 ;
+		}
+
+		//yield return new WaitForSeconds (2);
+
+	}
+	
+	}
+	 
+
 	
