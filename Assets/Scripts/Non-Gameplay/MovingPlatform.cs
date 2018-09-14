@@ -20,25 +20,27 @@ public class MovingPlatform : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		newPosition.x = startPosition.x + (maxDistance * Mathf.Sin(Time.time * speed));
+		newPosition.y = startPosition.y + (maxDistance * Mathf.Sin(Time.time * speed));
 		transform.position = newPosition;
 	}
 
 
-//	private void OnCollisionEnter2D(Collision2D collision)
-//	{
-//		if (collision.WasWithPlayer ()) {
-//			collision.collider.transform.SetParent (transform);
-//		}
-//	}
-//
+	private void OnCollisionEnter2D(Collision2D col)
+	{
+			if (col.gameObject.name == "ball") {
+			Debug.Log ("Detected"); 
+			//collision.collider.transform.SetParent (transform);
+		}
+	}
+
 //	private void OnCollisionExit2D(Collision2D collision)
 //	{
-//		if (collision.WasWithPlayer ()) {
-//			collision.collider.transform.SetParent (null); 
+//			if (collision.gameObject.tag == "Player" ()) {
+//			
+//			//collision.collider.transform.SetParent (null); 
 //		}
 //	}
 //
-
+//
 }
 	
