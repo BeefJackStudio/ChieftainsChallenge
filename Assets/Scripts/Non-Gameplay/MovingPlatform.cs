@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour {
 
 	[SerializeField] private int speed = 3;
+	[SerializeField] private int delayTime = 2;
 	[SerializeField] private int direction = 1;
 	private int directionhold;
 
@@ -39,7 +40,7 @@ public class MovingPlatform : MonoBehaviour {
 		direction = 0; 
 
 
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (delayTime);
 
 		if (directionhold == -1) {
 			direction = 1 ;
