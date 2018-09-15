@@ -3057,8 +3057,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 955050486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.6, y: 92.4, z: 5}
-  m_LocalScale: {x: 0.120433174, y: 0.09599886, z: 0.023780994}
+  m_LocalPosition: {x: 16.35, y: 56.47, z: 5}
+  m_LocalScale: {x: 0.1442863, y: 0.06985845, z: 0.023780994}
   m_Children: []
   m_Father: {fileID: 570909332}
   m_RootOrder: 0
@@ -4794,8 +4794,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1355560723}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -112.7, y: 145.7, z: 5}
-  m_LocalScale: {x: 0.033348966, y: 0.01786, z: 0.02378}
+  m_LocalPosition: {x: 181.04, y: 39.86, z: 5}
+  m_LocalScale: {x: 0.017991463, y: 0.034197763, z: 0.02378}
   m_Children: []
   m_Father: {fileID: 570909332}
   m_RootOrder: 1
@@ -4812,12 +4812,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 163.56
-    bot: 127.84
-    left: -146.04897
-    right: -79.35103
-    squaredArea: 2382.4504
-  shootingDirection: 0
+    top: 76.659996
+    bot: 40.940002
+    left: 167.65443
+    right: 184.68556
+    squaredArea: 608.3518
+  shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1355560726
 SpriteRenderer:
@@ -4852,7 +4852,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
-  m_Color: {r: 0.007843138, g: 1, b: 0, a: 0.19607843}
+  m_Color: {r: 0, g: 0.007843138, b: 1, a: 0.19607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
