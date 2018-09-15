@@ -1027,9 +1027,9 @@ MonoBehaviour:
   boundaries:
     top: 67.31
     bot: -10.509996
-    left: -110.299995
-    right: 33.1
-    squaredArea: 11159.387
+    left: -118.96179
+    right: 90.761795
+    squaredArea: 16320.688
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &482466676
@@ -1335,7 +1335,7 @@ Transform:
   m_GameObject: {fileID: 797593263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -110.3, y: 68.8, z: 0}
-  m_LocalScale: {x: 1, y: 3.4362888, z: 1}
+  m_LocalScale: {x: 1, y: 4.683784, z: 1}
   m_Children: []
   m_Father: {fileID: 1307827262}
   m_RootOrder: 0
@@ -1567,11 +1567,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 134.20631
-    bot: 56.393696
-    left: -21.270756
-    right: 52.270756
-    squaredArea: 5722.4575
+    top: 184.90631
+    bot: 107.09369
+    left: -110.302635
+    right: 33.10264
+    squaredArea: 11158.74
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -4174,7 +4174,7 @@ Transform:
   m_GameObject: {fileID: 2093709119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 88.6, y: 67.2, z: -10.9}
-  m_LocalScale: {x: 1, y: 2.3296843, z: 1}
+  m_LocalScale: {x: 1, y: 3.5390987, z: 1}
   m_Children: []
   m_Father: {fileID: 1307827262}
   m_RootOrder: 1
