@@ -12,7 +12,7 @@ public class MovingPlatform : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine (ChangeDirection ());
+		StartCoroutine (StartDelay ());
 	}
 
 	// Update is called once per frame
@@ -35,12 +35,11 @@ public class MovingPlatform : MonoBehaviour {
 		
 
 	IEnumerator ChangeDirection(){
-		Debug.Log ("Hit");
 		directionhold = direction; 
 		direction = 0; 
 
 
-		yield return new WaitForSeconds (delayTime);
+		yield return new WaitForSeconds (2);
 
 		if (directionhold == -1) {
 			direction = 1 ;
@@ -49,11 +48,17 @@ public class MovingPlatform : MonoBehaviour {
 		if (directionhold == 1) {
 			direction = -1 ;
 		}
-
-		//yield return new WaitForSeconds (2);
+			
 
 	}
-	
+
+	IEnumerator StartDelay(){
+		direction = 0; 
+		yield return new WaitForSeconds (delayTime);
+		direction = 1; 
+	}
+
+
 	}
 	 
 
