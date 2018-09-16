@@ -2509,11 +2509,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 163.56
-    bot: 127.84
-    left: -146.04999
-    right: -79.350006
-    squaredArea: 2382.5234
+    top: 30.96
+    bot: -4.7599983
+    left: -100.34999
+    right: -33.650005
+    squaredArea: 2382.5232
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &757842424
@@ -5218,7 +5218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4520244267226158, guid: 95ed8577924b0b4419a6c10955c04a05, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -103.1
+      value: -93.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95ed8577924b0b4419a6c10955c04a05, type: 2}
