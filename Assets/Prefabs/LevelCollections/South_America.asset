@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: South_America
   m_EditorClassIdentifier: 
   displayName: South America
-  scenePrefix: Level_Aztec_
+  scenePrefix: Level_Aztec
   levels:
-  - scene: WIP_Aztec_65
+  - scene: WIP_Aztec_64
     index: 0
     continent: {fileID: 11400000}
   - scene: Level_Aztec_2
