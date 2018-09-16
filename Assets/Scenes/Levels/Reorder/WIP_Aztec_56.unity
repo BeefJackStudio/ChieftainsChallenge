@@ -321,8 +321,8 @@ MonoBehaviour:
   boundaries:
     top: 42.909996
     bot: -34.909996
-    left: -77.84
-    right: 149.43999
+    left: -38.539993
+    right: 188.73999
     squaredArea: 17686.926
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
@@ -1895,9 +1895,9 @@ MonoBehaviour:
   boundaries:
     top: 139.0063
     bot: 61.19369
-    left: 40.029247
-    right: 113.570755
-    squaredArea: 5722.4565
+    left: -114.09723
+    right: 79.09723
+    squaredArea: 15032.965
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -3899,6 +3899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610959290}
   - component: {fileID: 1610959289}
+  - component: {fileID: 1610959291}
   m_Layer: 0
   m_Name: level_data_windmill_v2_0
   m_TagString: Untagged
@@ -3961,6 +3962,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 94.22}
+--- !u!61 &1610959291
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1610959288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.76, y: 3.34}
+    newSize: {x: 0.76, y: 3.34}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.76, y: 3.34}
+  m_EdgeRadius: 0
 --- !u!1 &1615229900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,11 +4100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 42.909996
-    bot: -34.909996
-    left: -38.539993
-    right: 188.73999
-    squaredArea: 17686.926
+    top: 72.10103
+    bot: 42.498966
+    left: 83.84382
+    right: 133.55618
+    squaredArea: 1471.5885
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1620934503
@@ -4257,11 +4283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 139.01
-    bot: 61.190002
-    left: -114.09999
-    right: 79.09999
-    squaredArea: 15034.821
+    top: 21.838932
+    bot: 5.361068
+    left: -79.85439
+    right: -38.94561
+    squaredArea: 674.08936
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1742925317
