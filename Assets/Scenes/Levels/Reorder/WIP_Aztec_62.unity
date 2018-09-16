@@ -223,6 +223,11 @@ Prefab:
       propertyPath: speed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 61830638741040882, guid: 051ed854934efc7468a061985c0baeec,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: cca3a9c088537024d835d68b0556a9e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 051ed854934efc7468a061985c0baeec, type: 2}
   m_IsPrefabParent: 0
@@ -632,9 +637,9 @@ MonoBehaviour:
   boundaries:
     top: 17.254162
     bot: -48.738346
-    left: 89.14052
-    right: 125.90251
-    squaredArea: 2426.016
+    left: 97.60603
+    right: 125.63699
+    squaredArea: 1849.8334
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &179688824
@@ -2493,11 +2498,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 3.6874008
-    bot: -54.971584
-    left: -21.925964
-    right: 88.368996
-    squaredArea: 6469.7905
+    top: 7.787401
+    bot: -50.871582
+    left: -29.50869
+    right: 95.95172
+    squaredArea: 7359.3804
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &981720522
@@ -4944,6 +4949,11 @@ Prefab:
       propertyPath: m_Name
       value: Moving Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 61830638741040882, guid: 051ed854934efc7468a061985c0baeec,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: cca3a9c088537024d835d68b0556a9e5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 051ed854934efc7468a061985c0baeec, type: 2}
   m_IsPrefabParent: 0
