@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 53747881}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -122.2, y: 33.3, z: 0}
+  m_LocalPosition: {x: -122.2, y: 33.3, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -1075,7 +1075,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 650200438}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -47.2, y: -5.1, z: 0}
+  m_LocalPosition: {x: -47.2, y: -5.1, z: 0.02}
   m_LocalScale: {x: 0.9039056, y: 0.97006977, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -2981,6 +2981,7 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
+  ballSwitchCount: 0
   currentShot: 0
   starThreshold2: 2
   starThreshold1: 3

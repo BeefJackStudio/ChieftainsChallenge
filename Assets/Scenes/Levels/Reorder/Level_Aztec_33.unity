@@ -447,11 +447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -19.982096
-    bot: -69.50209
-    left: 84.75786
-    right: 173.88518
-    squaredArea: 4413.5845
+    top: 44.617905
+    bot: -4.902088
+    left: 55.05785
+    right: 144.18518
+    squaredArea: 4413.585
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &207839244
@@ -592,11 +592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -13.102093
-    bot: -39.98209
-    left: -35.278477
-    right: 155.92151
-    squaredArea: 5139.455
+    top: 16.597908
+    bot: -10.28209
+    left: -83.63255
+    right: 53.075577
+    squaredArea: 3674.7144
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &305173990
@@ -2181,7 +2181,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 946793187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.7, y: 11.1, z: 0}
+  m_LocalPosition: {x: 79.7, y: 11.1, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3225,7 +3225,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1358820183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.6, y: 48.4, z: 0}
+  m_LocalPosition: {x: -17.6, y: 48.4, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3583,11 +3583,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 94.244446
-    bot: -18.928623
-    left: -14.655575
-    right: 135.2986
-    squaredArea: 16970.773
+    top: -13.10284
+    bot: -39.981342
+    left: -35.274418
+    right: 155.91745
+    squaredArea: 5138.951
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1610987353
@@ -3711,6 +3711,7 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 1
   windForce: {x: 0, y: 0}
+  ballSwitchCount: 0
   currentShot: 0
   starThreshold2: 4
   starThreshold1: 6

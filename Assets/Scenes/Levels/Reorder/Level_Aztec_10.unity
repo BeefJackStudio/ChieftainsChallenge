@@ -2749,6 +2749,7 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 1
   windForce: {x: 0, y: 0}
+  ballSwitchCount: 0
   currentShot: 0
   starThreshold2: 4
   starThreshold1: 6
@@ -3247,7 +3248,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1893838268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 112.2, y: -40, z: 0}
+  m_LocalPosition: {x: 112.2, y: -40, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

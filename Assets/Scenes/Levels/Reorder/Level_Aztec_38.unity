@@ -585,11 +585,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 44.617905
-    bot: -4.902088
-    left: 55.05785
-    right: 144.18518
-    squaredArea: 4413.585
+    top: 18.217905
+    bot: -31.302088
+    left: 72.75786
+    right: 161.88518
+    squaredArea: 4413.584
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &207839244
@@ -1884,7 +1884,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 893001532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 28.5, z: 0}
+  m_LocalPosition: {x: -4.1, y: 28.5, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2325,11 +2325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 29.367907
-    bot: -33.25209
-    left: 53.421516
-    right: 72.42152
-    squaredArea: 1189.7799
+    top: 43.428497
+    bot: -13.712681
+    left: -25.168392
+    right: 52.011425
+    squaredArea: 4410.1455
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &981720522
@@ -3850,11 +3850,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: -13.10284
-    bot: -39.981342
-    left: -35.274418
-    right: 155.91745
-    squaredArea: 5138.951
+    top: 29.368551
+    bot: -33.252735
+    left: 53.42131
+    right: 72.42172
+    squaredArea: 1189.8302
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1610987353
@@ -4045,11 +4045,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 18.217905
-    bot: -31.302088
-    left: 72.76152
-    right: 161.88152
-    squaredArea: 4413.2217
+    top: -19.631073
+    bot: -46.45311
+    left: -16.785336
+    right: 53.028362
+    squaredArea: 1872.5455
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1733054277

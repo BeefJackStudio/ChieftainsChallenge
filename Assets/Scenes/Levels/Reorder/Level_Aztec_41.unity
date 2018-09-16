@@ -1486,11 +1486,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 48.615524
-    bot: -50.835526
-    left: 82.80336
-    right: 135.21664
-    squaredArea: 5212.556
+    top: -22.60154
+    bot: -49.978462
+    left: 61.867504
+    right: 135.2125
+    squaredArea: 2007.9601
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &281229223
@@ -2978,11 +2978,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 38.049995
-    bot: -48.969994
-    left: -36.359993
-    right: 61.199997
-    squaredArea: 8489.669
+    top: 65.009995
+    bot: -22.009995
+    left: 62.220005
+    right: 159.78
+    squaredArea: 8489.67
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &606717038
@@ -3351,7 +3351,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 811925919}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.6, y: -43.8, z: 0.1}
+  m_LocalPosition: {x: 59.6, y: -43.8, z: 0.02}
   m_LocalScale: {x: 0.81838, y: 0.81838, z: 0.81838}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -3614,11 +3614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 10.656395
-    bot: -33.856396
-    left: -36.35373
-    right: 81.27373
-    squaredArea: 5235.9263
+    top: 38.051792
+    bot: -48.97179
+    left: -36.35945
+    right: 61.199448
+    squaredArea: 8489.925
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &951864476
@@ -6769,7 +6769,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939697353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.3, y: -40.9, z: 0.1}
+  m_LocalPosition: {x: 13.3, y: -40.9, z: 0.02}
   m_LocalScale: {x: 0.81838, y: 0.81838, z: 0.81838}
   m_Children: []
   m_Father: {fileID: 1380418604}

@@ -1438,7 +1438,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 650200438}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -105.9, y: 74.1, z: 0}
+  m_LocalPosition: {x: -105.9, y: 74.1, z: 0.02}
   m_LocalScale: {x: 0.9039056, y: 0.97006977, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -1792,7 +1792,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702775647}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -77.6, y: 12.2, z: 0}
+  m_LocalPosition: {x: -77.6, y: 12.2, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -1937,7 +1937,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 722128386}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -52.7, y: 34.5, z: 0}
+  m_LocalPosition: {x: -52.7, y: 34.5, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -2088,7 +2088,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 789785226}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -8.3, y: 47.5, z: 0}
+  m_LocalPosition: {x: -8.3, y: 47.5, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -2532,11 +2532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 104.61966
-    bot: -5.81966
-    left: -55.43947
-    right: 32.83947
-    squaredArea: 9749.466
+    top: 93.593994
+    bot: 32.806007
+    left: -51.777306
+    right: 31.977304
+    squaredArea: 5091.274
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &955050489
@@ -2692,8 +2692,8 @@ MonoBehaviour:
   boundaries:
     top: 104.619995
     bot: -5.819996
-    left: 34.379795
-    right: 124.42021
+    left: 34.879795
+    right: 124.92021
     squaredArea: 9944.0625
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
@@ -3128,7 +3128,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1275714851}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -46.6, y: -14.1, z: 0}
+  m_LocalPosition: {x: -46.6, y: -14.1, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
@@ -3821,6 +3821,7 @@ MonoBehaviour:
   minWindForce: 0
   maxWindForce: 3
   windForce: {x: 0, y: 0}
+  ballSwitchCount: 0
   currentShot: 0
   starThreshold2: 3
   starThreshold1: 5
@@ -4150,11 +4151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 104.619995
-    bot: -5.819996
-    left: 34.880005
-    right: 124.92
-    squaredArea: 9944.016
+    top: 30.436096
+    bot: -6.836097
+    left: -16.786331
+    right: 34.986332
+    squaredArea: 1929.6807
   shootingDirection: 1
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1865595502
@@ -4225,7 +4226,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1866692843}
   m_LocalRotation: {x: -0, y: -0, z: -0.22340538, w: 0.97472566}
-  m_LocalPosition: {x: -65.9, y: 54.7, z: 0}
+  m_LocalPosition: {x: -65.9, y: 54.7, z: 0.02}
   m_LocalScale: {x: 0.9039101, y: 0.97007024, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}

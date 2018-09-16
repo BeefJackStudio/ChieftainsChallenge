@@ -3010,11 +3010,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boundaries:
-    top: 48.814507
-    bot: 34.38549
-    left: -15.193113
-    right: 3.593113
-    squaredArea: 271.06677
+    top: 37.591915
+    bot: 24.468086
+    left: -9.579597
+    right: 3.6595979
+    squaredArea: 173.74893
   shootingDirection: 0
   onePixelWhite: {fileID: 21300000, guid: 4bc6ae65a751f7945aa7f5fcc2e39c47, type: 3}
 --- !u!212 &1982280566
@@ -3158,7 +3158,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2133142180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.81, y: -1.5, z: 0}
+  m_LocalPosition: {x: -16.81, y: -1.5, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1380418604}
