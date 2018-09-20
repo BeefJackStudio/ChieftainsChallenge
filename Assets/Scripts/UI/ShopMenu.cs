@@ -15,12 +15,6 @@ public class ShopMenu : MonoBehaviour {
     public GameObject storeBlocker;
     public Button3D rerollButton;
 
-    [Header("Box shop")]
-    public GameObject mainBuyArea;
-    public GameObject popupMessage;
-    public Image mainAreaBackdrop;
-    public AnimationCurve popupAnimCurve;
-
     private Coroutine m_Routine;
     private Vector3 m_ItemsParentStartScale;
     private CustomizeButton[] m_CustomizeButtons;
@@ -52,65 +46,6 @@ public class ShopMenu : MonoBehaviour {
     private void Start() {
         UpdateState();
     }
-    
-    public void AddChestCount(int count) {
-        SaveDataManager.Instance.data.boxesToOpen += count;
-        UpdateState();
-        ShowPopup("Successfully purchased " + count + " lootboxes!", false);
-    }
-
-    public void ShowPurchaseFailed() {
-        ShowPopup("Purchase\nfailed.", true);
-    }
-
-    public void ShowPopup(string text, bool returnToStore) {
-        popupMessage.SetActive(true);
-        popupMessage.GetComponentInChildren<TextMeshProUGUI>().text = text;
-
-        StartCoroutine(PurchaseCompleteRoutine(returnToStore));
-    }
-
-    private IEnumerator PurchaseCompleteRoutine(bool returnToStore) {
-        yield return null;
-        mainBuyArea.SetActive(false);
-
-        RectTransform popupTransform = popupMessage.GetComponent<RectTransform>();
-        popupTransform.localScale = Vector2.zero;
-
-        float duration = 0.5f;
-        float startTime = Time.time;
-        float endTime = Time.time + duration;
-        while(Time.time < startTime + duration) {
-            float scaler = (Time.time - startTime).Remap(0, duration, 0, 1);
-            scaler = Mathf.Clamp01(scaler);
-            popupTransform.localScale = Vector2.one * popupAnimCurve.Evaluate(scaler);
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
-        Color backdropStartColor = mainAreaBackdrop.color;
-        float backdropStartAlpha = backdropStartColor.a;
-        startTime = Time.time;
-        endTime = Time.time + duration;
-        while (Time.time < startTime + duration) {
-            float scaler = (Time.time - startTime).Remap(0, duration, 0, 1);
-            scaler = Mathf.Clamp01(scaler);
-            float curveValue = 1 - popupAnimCurve.Evaluate(scaler);
-            popupTransform.localScale = Vector2.one * curveValue;
-            if(!returnToStore) mainAreaBackdrop.color = new Color(backdropStartColor.r, backdropStartColor.g, backdropStartColor.b, backdropStartAlpha * curveValue);
-            yield return null;
-        }
-        mainAreaBackdrop.color = backdropStartColor;
-
-        mainBuyArea.SetActive(true);
-
-        if (!returnToStore) {
-            mainAreaBackdrop.canvas.gameObject.SetActive(false);
-            storeBlocker.SetActive(false);
-        }
-    }
-
 
     public void UpdateState() {
         int boxesToOpen = SaveDataManager.Instance.data.boxesToOpen;

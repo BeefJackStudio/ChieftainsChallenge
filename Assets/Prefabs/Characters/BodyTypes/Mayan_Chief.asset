@@ -27,3 +27,4 @@ MonoBehaviour:
   lowerArmLeft: {fileID: 21300020, guid: 41d6bcd0130e605408e1638e0a2bb6af, type: 3}
   handRight: {fileID: 21300022, guid: 41d6bcd0130e605408e1638e0a2bb6af, type: 3}
   handLeft: {fileID: 21300024, guid: 41d6bcd0130e605408e1638e0a2bb6af, type: 3}
+  club: {fileID: 21300006, guid: 41d6bcd0130e605408e1638e0a2bb6af, type: 3}

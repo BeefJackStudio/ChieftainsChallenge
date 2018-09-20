@@ -47,6 +47,7 @@ public class GameInitializer : MonoBehaviour {
             m_SaveDataManager.Load();
             m_LevelManager.Initialize();
             m_LoadingScreen.Initialize();
+            SoundManager.Initialize();
 
             LevelManager.Instance.LoadScene(cutsceneName);
         } else {

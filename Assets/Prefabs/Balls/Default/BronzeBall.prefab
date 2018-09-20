@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 21314ccaac2dfbd4d9a010694752b8db, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58540886183153540
 CircleCollider2D:
@@ -101,6 +101,7 @@ MonoBehaviour:
   slotLeft: {x: 0, y: 0}
   slotRight: {x: 0, y: 0}
   isInSpeedzone: 0
+  groundAngle: 0
 --- !u!212 &212354625978125896
 SpriteRenderer:
   m_ObjectHideFlags: 1

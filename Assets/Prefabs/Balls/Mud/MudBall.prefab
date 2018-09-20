@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: eb4a16f77e0a036468186a2502b83ec5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58540886183153540
 CircleCollider2D:
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a0d84c05bd6034180cd896247dc8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Stone Ball
-  description: A standard ball with balanced properties.
+  displayName: Plant Ball
+  description: A heavier ball that is less affected by wind and rolls less far.
   windEffectMultiplier: 1
   characterSlotDistance: 2
   isInGame: 1

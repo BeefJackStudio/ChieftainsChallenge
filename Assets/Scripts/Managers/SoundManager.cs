@@ -5,6 +5,10 @@
 /// </summary>
 public static class SoundManager {
 
+    public static void Initialize() {
+        MasterVolume = SaveDataManager.Instance.data.volumeMaster;
+    }
+
     public static float MasterVolume {
         get { return SaveDataManager.Instance.data.volumeMaster; }
         set {
