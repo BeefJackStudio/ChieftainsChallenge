@@ -24,12 +24,15 @@ public class ShopMenu : MonoBehaviour {
     private Vector3 m_RerollButtonPosShown;
     private bool m_RerollButtonConfirm = false;
 
+    private ShopMenuChest m_Chest;
+
     private List<CustomizationUnlockData> m_UnlockData = new List<CustomizationUnlockData>();
 
     private void Awake() {
         m_ItemsParentStartScale = itemsParent.localScale;
         m_CustomizeButtons = itemsParent.GetComponentsInChildren<CustomizeButton>(true);
         m_RerollButtonText = rerollButton.GetComponentInChildren<TextMeshPro>();
+        m_Chest = GetComponentInChildren<ShopMenuChest>();
 
         openButton.onButtonClick.AddListener(OpenChest);
         itemsCoverButton.onButtonClick.AddListener(UpdateState);
@@ -45,7 +48,17 @@ public class ShopMenu : MonoBehaviour {
 
     private void Start() {
         UpdateState();
+        m_Chest.Reset();
     }
+
+#if UNITY_EDITOR
+    private void Update() {
+        if (Input.GetKey(KeyCode.Space)) {
+            SaveDataManager.Instance.data.boxesToOpen++;
+            UpdateState();
+        }
+    }
+#endif
 
     public void UpdateState() {
         int boxesToOpen = SaveDataManager.Instance.data.boxesToOpen;
@@ -79,18 +92,18 @@ public class ShopMenu : MonoBehaviour {
         SaveDataManager.Instance.data.boxesToOpen--;
         SetNewLoot();
 
+        openButton.gameObject.SetActive(false);
+        chestOpenParticle.SetActive(false);
+
+        m_Chest.PlayAnimation();
+    }
+
+    public void ShowItems() {
+        chestOpenParticle.SetActive(true);
         m_Routine = StartCoroutine(OpenChestSequence());
     }
 
     private IEnumerator OpenChestSequence() {
-        openButton.gameObject.SetActive(false);
-
-        //Toggle particles
-        chestOpenParticle.SetActive(false);
-        yield return null;
-        chestOpenParticle.SetActive(true);
-
-        //Scale items
         yield return new WaitForSeconds(1);
         rerollButton.transform.localPosition = m_RerollButtonPosHidden;
         rerollButton.gameObject.SetActive(true);

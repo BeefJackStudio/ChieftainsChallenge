@@ -12,122 +12,200 @@ MonoBehaviour:
   m_Name: South_America
   m_EditorClassIdentifier: 
   displayName: South America
-  scenePrefix: Level_Aztec
+  scenePrefix: Level_Aztec_
   levels:
   - scene: Level_Aztec_1
-    index: 0
-    continent: {fileID: 11400000}
-  - scene: Level_Aztec_2
     index: 1
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_3
+  - scene: Level_Aztec_2
     index: 2
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_4
+  - scene: Level_Aztec_3
     index: 3
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_5
+  - scene: Level_Aztec_4
     index: 4
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_6
+  - scene: Level_Aztec_5
     index: 5
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_7
+  - scene: Level_Aztec_6
     index: 6
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_8
+  - scene: Level_Aztec_7
     index: 7
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_9
+  - scene: Level_Aztec_8
     index: 8
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_10
+  - scene: Level_Aztec_9
     index: 9
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_11
+  - scene: Level_Aztec_10
     index: 10
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_12
+  - scene: Level_Aztec_11
     index: 11
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_13
+  - scene: Level_Aztec_12
     index: 12
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_14
+  - scene: Level_Aztec_13
     index: 13
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_15
+  - scene: Level_Aztec_14
     index: 14
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_16
+  - scene: Level_Aztec_15
     index: 15
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_17
+  - scene: Level_Aztec_16
     index: 16
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_18
+  - scene: Level_Aztec_17
     index: 17
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_19
+  - scene: Level_Aztec_18
     index: 18
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_20
+  - scene: Level_Aztec_19
     index: 19
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_21
+  - scene: Level_Aztec_20
     index: 20
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_22
+  - scene: Level_Aztec_21
     index: 21
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_23
+  - scene: Level_Aztec_22
     index: 22
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_24
+  - scene: Level_Aztec_23
     index: 23
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_25
+  - scene: Level_Aztec_24
     index: 24
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_26
+  - scene: Level_Aztec_25
     index: 25
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_27
+  - scene: Level_Aztec_26
     index: 26
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_28
+  - scene: Level_Aztec_27
     index: 27
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_29
+  - scene: Level_Aztec_28
     index: 28
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_30
+  - scene: Level_Aztec_29
     index: 29
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_31
+  - scene: Level_Aztec_30
     index: 30
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_32
+  - scene: Level_Aztec_31
     index: 31
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_33
+  - scene: Level_Aztec_32
     index: 32
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_34
+  - scene: Level_Aztec_33
     index: 33
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_35
+  - scene: Level_Aztec_34
     index: 34
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_36
+  - scene: Level_Aztec_35
     index: 35
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_37
+  - scene: Level_Aztec_36
     index: 36
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_38
+  - scene: Level_Aztec_37
     index: 37
     continent: {fileID: 11400000}
-  - scene: Level_Aztec_39
+  - scene: Level_Aztec_38
     index: 38
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_39
+    index: 39
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_40
+    index: 40
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_41
+    index: 41
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_42
+    index: 42
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_43
+    index: 43
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_44
+    index: 44
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_45
+    index: 45
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_46
+    index: 46
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_47
+    index: 47
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_48
+    index: 48
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_49
+    index: 49
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_50
+    index: 50
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_51
+    index: 51
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_52
+    index: 52
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_53
+    index: 53
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_54
+    index: 54
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_55
+    index: 55
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_56
+    index: 56
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_57
+    index: 57
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_58
+    index: 58
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_59
+    index: 59
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_60
+    index: 60
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_61
+    index: 61
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_62
+    index: 62
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_63
+    index: 63
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_64
+    index: 64
+    continent: {fileID: 11400000}
+  - scene: Level_Aztec_65
+    index: 65
     continent: {fileID: 11400000}
