@@ -102,6 +102,7 @@ MonoBehaviour:
   slotRight: {x: 0, y: 0}
   isInWindZone: 0
   groundAngle: 0
+  completeSleep: 0
 --- !u!212 &212354625978125896
 SpriteRenderer:
   m_ObjectHideFlags: 1

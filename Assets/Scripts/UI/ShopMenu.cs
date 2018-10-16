@@ -106,7 +106,7 @@ public class ShopMenu : MonoBehaviour {
     private IEnumerator OpenChestSequence() {
         yield return new WaitForSeconds(1);
         rerollButton.transform.localPosition = m_RerollButtonPosHidden;
-        rerollButton.gameObject.SetActive(true);
+        //rerollButton.gameObject.SetActive(true);
         while (Vector3.Distance(itemsParent.localScale, m_ItemsParentStartScale) >= 0.01f) {
             itemsParent.localScale = Vector3.Lerp(itemsParent.localScale, m_ItemsParentStartScale, 0.1f);
             rerollButton.transform.localPosition = Vector3.Lerp(rerollButton.transform.localPosition, m_RerollButtonPosShown, 0.1f);
