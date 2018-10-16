@@ -153,13 +153,13 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
             yield return new WaitForSeconds(shotDelay);
 
             //shoot ball.
-            GetBall().HitBall(ShootPower);
+            GetBall().HitBall(ShootPower, normalizedShootPower);
         } else {
             GameBall ball = GetBall();
             ball.transform.position = CannonController.Instance.ballSpawnPoint.position;
             ball.gameObject.SetActive(true);
             ball.SetGravityScale(ball.GetComponent<Rigidbody2D>().gravityScale);
-            ball.HitBall(ShootPower);
+            ball.HitBall(ShootPower, normalizedShootPower);
 
             CannonController.Instance.shotParticles.SetActive(true);
             CannonController.Instance.shotParticles.GetComponent<ParticleSystem>().Play(true);

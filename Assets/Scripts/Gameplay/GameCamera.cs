@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GameCamera : MonoBehaviour {
+public class GameCamera : MonoBehaviourSingleton<GameCamera> {
 
     [Header("Status")]
     [ReadOnly]  public LevelInstance levelInstance = null;
@@ -18,6 +18,7 @@ public class GameCamera : MonoBehaviour {
     public float zoomSpeedTouch = 0.1f;
     public float zoomSpeedMouse = 15f;
     private Vector3 defaultOffset = new Vector3(0, 5, -25);
+    public float camShake = 0;
     
     [Header("Restrictions")]
     public Transform leftBound;
@@ -76,9 +77,11 @@ public class GameCamera : MonoBehaviour {
         desiredPosition.z = Mathf.Clamp(desiredPosition.z, minZ, maxZ);
 
         m_PreviousBallPosition = ball.transform.position;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, ball.isSleeping ? 0.2f : followSpeed);
+        Vector3 shake = new Vector3(Random.Range(-camShake, camShake), Random.Range(-camShake, camShake), Random.Range(-camShake, camShake));
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, ball.completeSleep ? 0.2f : followSpeed) + shake;
+        this.camShake *= 0.9f;
 
-        if(Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0)) {
             isAllowingInput = false;
         }
     }

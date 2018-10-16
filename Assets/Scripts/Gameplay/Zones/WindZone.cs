@@ -9,7 +9,7 @@ public class WindZone : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision) {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
-        if (ball == null) return;
+        if (ball == null || ball.isSleeping) return;
 
         Vector2 force = transform.up * windForce * ball.windEffectMultiplier;
         force.y *= LevelInstance.Instance.levelData.gameSpeed * 1.5f;
@@ -21,14 +21,14 @@ public class WindZone : MonoBehaviour {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
         if (ball == null) return;
 
-        ball.isInSpeedzone = true;
+        ball.isInWindZone = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         GameBall ball = collision.gameObject.GetComponent<GameBall>();
         if (ball == null) return;
 
-        ball.isInSpeedzone = false;
+        ball.isInWindZone = false;
     }
 
 }

@@ -23,8 +23,9 @@ public class GameBall : MonoBehaviour {
     [ReadOnly] public LevelInstance levelInstance = null;
     [ReadOnly] public Vector2 slotLeft;
     [ReadOnly] public Vector2 slotRight;
-    [ReadOnly] public bool isInSpeedzone = false;
+    [ReadOnly] public bool isInWindZone = false;
     [ReadOnly] public float groundAngle = 0;
+    [ReadOnly] public bool completeSleep = false;
 
     private Rigidbody2D m_RigidBody;
     private Collider2D m_Collider;
@@ -52,7 +53,7 @@ public class GameBall : MonoBehaviour {
             return;
         }
 
-        isInSpeedzone = false;
+        isInWindZone = false;
     }
 
     private void Start() {
@@ -92,8 +93,12 @@ public class GameBall : MonoBehaviour {
         m_GravityScale = scale;
     }
 
-    public void HitBall(Vector2 power) {
+    public void HitBall(Vector2 power, float normalizedPower) {
         StartCoroutine(HitBallRoutine(power));
+        if(normalizedPower >= 0.8f) {
+            normalizedPower = normalizedPower.Remap(0.8f, 1f, 0.5f, 1f);
+            GameCamera.Instance.camShake += normalizedPower;
+        }
     }
 
     private IEnumerator HitBallRoutine(Vector2 power) {
@@ -141,7 +146,7 @@ public class GameBall : MonoBehaviour {
         Vector2 direction = collision.contacts[0].normal;
 
         float velocityMagnitude = m_RigidBody.velocity.magnitude;
-        if (isInSpeedzone && velocityMagnitude >= 0.1f) {
+        if (isInWindZone && velocityMagnitude >= 0.75f) {
             m_BallCollisionStartReset = true;
             return;
         }
@@ -183,6 +188,7 @@ public class GameBall : MonoBehaviour {
         isSleeping = false;
         if (m_BallSleepRoutine == null) { return; }
         StopCoroutine(m_BallSleepRoutine);
+        completeSleep = false;
         m_BallSleepRoutine = null;
     }
 
@@ -200,6 +206,7 @@ public class GameBall : MonoBehaviour {
             TrajectoryRenderer.Instance.gameObject.SetActive(true);
 
             while (isSleeping) {
+                completeSleep = true;
                 m_RigidBody.velocity = Vector2.zero;
                 m_RigidBody.gravityScale = 0;
                 yield return null;
