@@ -9,6 +9,7 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
     public RectTransform powerBar;
     public AnimationCurve powerCurve;
     public float powerTimeScale = 0.5f;
+    public AnimationCurve zoomShakeEffectÇurve;
 
     [Header("Move Animation (hiding)")]
     public float maDistance = 150;       
@@ -60,8 +61,10 @@ public class ShootingHUD : MonoBehaviourSingleton<ShootingHUD> {
     }
 
     public void OnPowerChange(float power) {
-        LevelInstance.Instance.normalizedShootPower = (power + 0.001f).Remap(0, 1, 0.15f, 1);
+        float remappedPower = (power + 0.001f).Remap(0, 1, 0.15f, 1);
+        LevelInstance.Instance.normalizedShootPower = remappedPower;
         powerBar.localScale = new Vector3(powerBar.localScale.x, power, powerBar.localScale.z);
+        GameCamera.Instance.SetZoomShake(remappedPower, zoomShakeEffectÇurve.Evaluate(power) * 0.25f);
     }
 
     public void OnAimLeftDown() {

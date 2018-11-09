@@ -221,8 +221,10 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
             int stars = 3;
             int shotsLeft = 0;
-            GetCurrentScoreStats(out stars, out shotsLeft);
-            TurnsLeftHUD.Instance.StartSequence(stars - 1, shotsLeft);
+            int totalShotsLeft = 0;
+            GetCurrentScoreStats(out stars, out shotsLeft, out totalShotsLeft);
+            //TurnsLeftHUD.Instance.StartSequence(stars - 1, shotsLeft);
+            TurnsLeftHUD.Instance.SetShotsLeft(totalShotsLeft);
         }
 
         ShootingHUD.Instance.Show();
@@ -258,10 +260,11 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
         int stars = 3;
         int shotsLeft = 0;
+        int totalShotsLeft = 0;
 
         if (!useCannon) {
             //calc stars
-            GetCurrentScoreStats(out stars, out shotsLeft);
+            GetCurrentScoreStats(out stars, out shotsLeft, out totalShotsLeft);
 
             int lastScore = SaveDataManager.Instance.GetLevelScore(LevelManager.Instance.CurrentLevel.scene);
             if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
@@ -287,7 +290,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         SaveDataManager.Instance.Save();
     }
 
-    private void GetCurrentScoreStats(out int stars, out int shotsLeft) {
+    private void GetCurrentScoreStats(out int stars, out int shotsLeft, out int totalShotsLeft) {
         stars = 3;
 
         List<int> thresholds = new List<int>() { starThreshold2, starThreshold1, starThreshold0 };
@@ -299,6 +302,8 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 shotsLeft = thresholds[i + 1] - currentShot;
             }
         }
+
+        totalShotsLeft = thresholds[2] - currentShot;
     }
 
     public void ResetShootingAngle() {

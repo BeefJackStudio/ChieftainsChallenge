@@ -16,7 +16,11 @@ public class TurnsLeftHUD : MonoBehaviourSingleton<TurnsLeftHUD> {
         m_RectTransform = GetComponent<RectTransform>();
         m_Text = GetComponent<TextMeshProUGUI>();
 
-        m_RectTransform.localScale = Vector2.zero;
+        //m_RectTransform.localScale = Vector2.zero;
+    }
+
+    public void SetShotsLeft(int shotsLeft) {
+        m_Text.text = "Par: " + shotsLeft;
     }
 
     public void StartSequence(int nextStar, int shotsLeft) {

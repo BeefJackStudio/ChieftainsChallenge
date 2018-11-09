@@ -34,6 +34,9 @@ public class GameCamera : MonoBehaviourSingleton<GameCamera> {
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
+    private float m_ZoomAmount = 0;
+    private float m_ZoomShakeAmount = 0;
+
     private void OnValidate() {
         if(maxZ > 0) { maxZ = 0; }
         if(maxZ < minZ) { maxZ = minZ; }
@@ -77,9 +80,15 @@ public class GameCamera : MonoBehaviourSingleton<GameCamera> {
         desiredPosition.z = Mathf.Clamp(desiredPosition.z, minZ, maxZ);
 
         m_PreviousBallPosition = ball.transform.position;
-        Vector3 shake = new Vector3(Random.Range(-camShake, camShake), Random.Range(-camShake, camShake), Random.Range(-camShake, camShake));
+        Vector3 shake = new Vector3(
+            Random.Range(-camShake, camShake), 
+            Random.Range(-camShake, camShake), 
+            Random.Range(-camShake, camShake) + (m_ZoomAmount + Random.Range(-m_ZoomShakeAmount, m_ZoomShakeAmount)));
         transform.position = Vector3.Lerp(transform.position, desiredPosition, ball.completeSleep ? 0.2f : followSpeed) + shake;
         this.camShake *= 0.9f;
+
+        m_ZoomAmount *= 0.9f;
+        m_ZoomShakeAmount *= 0.9f;
 
         if (Input.GetMouseButtonUp(0)) {
             isAllowingInput = false;
@@ -174,5 +183,12 @@ public class GameCamera : MonoBehaviourSingleton<GameCamera> {
 
         lastPanPosition = newPanPosition;
     }
-#endregion
+    #endregion
+
+    #region Zoom shake
+    public void SetZoomShake(float zoomAmount, float shakeEffect) {
+        m_ZoomAmount = zoomAmount;
+        m_ZoomShakeAmount = shakeEffect;
+    }
+    #endregion
 }

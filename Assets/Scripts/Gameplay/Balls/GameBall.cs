@@ -84,8 +84,13 @@ public class GameBall : MonoBehaviour {
             m_RigidBody.AddForce(levelInstance.ShootPower, ForceMode2D.Impulse);
         }
 
-        if (!isSleeping && levelInstance != null && levelInstance.enableWind) {
-            m_RigidBody.AddForce(levelInstance.windForce);
+        if (!isSleeping) {
+            if (levelInstance != null && levelInstance.enableWind) {
+                m_RigidBody.AddForce(levelInstance.windForce);
+            }
+
+            //GameCamera.Instance.SetZoomShake(0, m_RigidBody.velocity.sqrMagnitude * 0.0001f);
+            GameCamera.Instance.camShake = Mathf.Clamp((m_RigidBody.velocity.sqrMagnitude * 0.0001f) - 0.075f, 0, 1);
         }
     }
 
