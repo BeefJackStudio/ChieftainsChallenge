@@ -202,7 +202,7 @@ public class GameBall : MonoBehaviour {
 
         if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD || forceSleep) {
 
-            if(!forceSleep) LevelInstance.Instance.TriggerNextTurn();
+            if(!forceSleep && !completeSleep) LevelInstance.Instance.TriggerNextTurn();
             TrajectoryRenderer.Instance.gameObject.SetActive(true);
 
             while (isSleeping) {

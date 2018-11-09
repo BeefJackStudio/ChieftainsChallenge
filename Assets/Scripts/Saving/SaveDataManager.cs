@@ -9,7 +9,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
     public const string FILE_NAME = "Chieftains_Challenge_Save_Data.json";
     public const float HOUR_REGEN_PER_LIFE = 3f;
-    public const int LEVELS_PER_ITEM = 5;
+    public const int LEVELS_PER_ITEM = 3;
 
     public SaveData data;
     public CustomizationDatabase customizeData;

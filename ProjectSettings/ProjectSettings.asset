@@ -141,7 +141,7 @@ PlayerSettings:
   targetPixelDensity: 0
   resolutionScalingMode: 0
   applicationIdentifier:
-    Android: com.goblinboss.Chieftains
+    Android: com.goblinboss.aztecgolf
     Standalone: unity.BeefJack.Chieftains Challenge
     Tizen: com.beefjack.Chieftains
     iOS: com.beefjack.Chieftains
@@ -222,7 +222,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: F:/Work/Beefjack/CC.keystore
+  AndroidKeystoreName: 
   AndroidKeyaliasName: chieftainschallenge2
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
@@ -237,12 +237,15 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
-      m_Width: 0
-      m_Height: 0
+      m_Icon: {fileID: 2800000, guid: 9b7dc5b716f411747b022e52c0154c5b, type: 3}
+      m_Width: 128
+      m_Height: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
-  m_BuildTargetVRSettings: []
+  m_BuildTargetVRSettings:
+  - m_BuildTarget: Android
+    m_Enabled: 0
+    m_Devices: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   webPlayerTemplate: APPLICATION:Default

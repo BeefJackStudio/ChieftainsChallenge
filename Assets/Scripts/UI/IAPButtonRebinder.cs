@@ -6,10 +6,10 @@ using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-[RequireComponent(typeof(IAPButton))]
+//[RequireComponent(typeof(IAPButton))]
 public class IAPButtonRebinder : MonoBehaviour {
 
-    private Button m_Button;
+    /*private Button m_Button;
     private IAPButton m_IAPButton;
 
     public TextMeshProUGUI titleText;
@@ -28,5 +28,5 @@ public class IAPButtonRebinder : MonoBehaviour {
         titleText.text = shortenedText;
         descriptionText.text = m_IAPButton.descriptionText.text;
         priceText.text = m_IAPButton.priceText.text;
-    }
+    }*/
 }
