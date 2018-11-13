@@ -52,6 +52,8 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager> {
     /// </summary>
     /// <param name="levelName"></param>
     public void LoadLevel(GameLevelSet level) {
+        m_QueuedScenes.Clear();
+
         m_CurrentLevel = level;
         LoadScene(level.scene);
         m_QueuedScenes.Add(GAME_HUD_SCENE);
@@ -63,13 +65,23 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager> {
             if (m_QueuedScenes.Count == 0) {
                 LoadingScreen.Instance.Hide(() => { });
                 OnScenesLoaded();
-                foreach(Action call in m_WaitForLoadCalls) {
+                foreach (Action call in m_WaitForLoadCalls) {
                     OnScenesLoaded -= call;
                 }
             } else {
-                LoadScene(m_QueuedScenes[0], LoadSceneMode.Additive);
+                if (!IsSceneLoaded(m_QueuedScenes[0])) {
+                    LoadScene(m_QueuedScenes[0], LoadSceneMode.Additive);
+                }
                 m_QueuedScenes.RemoveAt(0);
             }
         }
+    }
+
+    private bool IsSceneLoaded(string sceneName) {
+        for (int i = 0; i < SceneManager.sceneCount; i++) {
+            Scene s = SceneManager.GetSceneAt(i);
+            if (s.name.Equals(sceneName)) return true;
+        }
+        return false;
     }
 }

@@ -20,8 +20,9 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 	[ReadOnly] public LevelState levelState = LevelState.INTRO;
 	private GameObject m_CurrentBall = null;
     private GameObject m_BallToDelete = null;
+    private bool firstShotUsed = false;
 
-	[Header("Wind")]
+    [Header("Wind")]
 	public bool enableWind = false;
 	public float minWindForce = 0.1f;
 	public float maxWindForce = 0.3f;
@@ -131,6 +132,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
     }
 
     public void ShootBall() {
+        firstShotUsed = true;
 		StartCoroutine(ShootSequence());
     }
 
@@ -180,7 +182,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
         //Somehow we exited the level and this was called
         if (ball == null) return;
 
-        currentShot++;
+        if(firstShotUsed) currentShot++;
 
         if (useCannon) {
             if (currentShot != 1) {
@@ -268,6 +270,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
 
             int lastScore = SaveDataManager.Instance.GetLevelScore(LevelManager.Instance.CurrentLevel.scene);
             if (LevelManager.Instance != null && LevelManager.Instance.CurrentLevel != null) {
+                //SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, 3);
                 SaveDataManager.Instance.SetLevelScore(LevelManager.Instance.CurrentLevel.scene, stars);
             } else {
                 Debug.LogWarning("Could not submit level score to savemanager. Did you start from the Initialization level?");
@@ -279,6 +282,7 @@ public class LevelInstance : MonoBehaviourSingleton<LevelInstance> {
                 return;
             }
 
+            //EndGame.Instance.ShowEndGameUI(3, lastScore, SaveDataManager.Instance.UpdateItemClaimCount());
             EndGame.Instance.ShowEndGameUI(stars, lastScore, SaveDataManager.Instance.UpdateItemClaimCount());
         } else {
             EndGame.Instance.ShowEndGameUICannon();

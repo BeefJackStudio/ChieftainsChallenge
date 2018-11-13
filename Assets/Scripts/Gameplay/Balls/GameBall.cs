@@ -33,6 +33,7 @@ public class GameBall : MonoBehaviour {
     private float m_BallCollisionStart = 0;
     private bool m_BallCollisionStartReset = true;
     private float m_GravityScale;
+    private float m_LastTrigger = 0;
 
     private const float VELOCITY_SLEEP_THRESHOLD = 0.25f;
 
@@ -206,8 +207,9 @@ public class GameBall : MonoBehaviour {
         }
 
         if (m_RigidBody.velocity.magnitude <= VELOCITY_SLEEP_THRESHOLD || forceSleep) {
-
-            if(!forceSleep && !completeSleep) LevelInstance.Instance.TriggerNextTurn();
+            if (!forceSleep && !completeSleep) {
+                LevelInstance.Instance.TriggerNextTurn();
+            }
             TrajectoryRenderer.Instance.gameObject.SetActive(true);
 
             while (isSleeping) {

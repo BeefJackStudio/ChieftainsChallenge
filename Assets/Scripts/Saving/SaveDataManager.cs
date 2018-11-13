@@ -9,7 +9,7 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
 
     public const string FILE_NAME = "Chieftains_Challenge_Save_Data.json";
     public const float HOUR_REGEN_PER_LIFE = 3f;
-    public const int LEVELS_PER_ITEM = 3;
+    public const int LEVELS_PER_ITEM = 2;
 
     public SaveData data;
     public CustomizationDatabase customizeData;
@@ -87,30 +87,27 @@ public class SaveDataManager : MonoBehaviourSingleton<SaveDataManager> {
             if (score == 3) perfectLevelScores++;
         }
 
-        return LEVELS_PER_ITEM - Mathf.FloorToInt(perfectLevelScores % LEVELS_PER_ITEM);
+        int result = LEVELS_PER_ITEM - (perfectLevelScores % LEVELS_PER_ITEM);
+        return result;
     }
 
     public bool UpdateItemClaimCount() {
-        int perfectLevelScores = 0;
-        foreach (int score in m_LevelScores.Values) {
-            if (score == 3) perfectLevelScores++;
-        }
-
         int leftToUnlock = GetScoreLeftToUnlock();
-        bool unlock = leftToUnlock == LEVELS_PER_ITEM;
-        bool canUseUnlock = unlock && !data.hasUsedUnlock;
-        if (leftToUnlock != LEVELS_PER_ITEM) data.hasUsedUnlock = false;
-
-        if (canUseUnlock) {
-            data.boxesToOpen++;
+        bool attemptUnlock = leftToUnlock == LEVELS_PER_ITEM;
+        if (attemptUnlock) {
+            if (!data.hasUsedUnlock) {
+                data.boxesToOpen++;
+                data.hasUsedUnlock = true;
+                return true;
+            }
+        } else {
+            data.hasUsedUnlock = false;
         }
-        return canUseUnlock; 
+        return false; 
     }
 
     public CustomizationUnlockData UnlockRandomItem() {
         CustomizationUnlockData unlockData = null;
-
-        data.hasUsedUnlock = true;
 
         List<int> maskIndexes = GetLockedIndexes(data.masksUnlocked);
         List<int> ballIndexes = GetLockedIndexes(data.ballsUnlocked);
